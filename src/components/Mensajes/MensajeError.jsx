@@ -56,18 +56,17 @@ class MensajeError extends React.Component {
         >
           <div style={getModalStyle()} className={classes.paperModal}>
             <Grid container justify='center'>
-              <Grid item xs={12}>
+              <Grid size={12}>
                 <Typography variant='h5' className={classes.titleError}>Error</Typography>
               </Grid>
-              <Grid item xs={12}>
+              <Grid size={12}>
                 <Typography variant='subtitle1'>{mensaje}</Typography>
               </Grid>
             </Grid>
           </div>
         </Modal>
-
       </div>
-    )
+    );
   }
 }
 

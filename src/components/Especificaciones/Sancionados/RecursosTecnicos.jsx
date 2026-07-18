@@ -116,10 +116,14 @@ const RecursosTecnicos = ({ classes }) => {
       <Typography variant="h5" className={classes.sectionTitle}>
         Recursos Técnicos para Implementación
       </Typography>
-
       <Grid container spacing={3}>
         {recursos.map((recurso, index) => (
-          <Grid item xs={12} sm={6} key={index}>
+          <Grid
+            key={index}
+            size={{
+              xs: 12,
+              sm: 6
+            }}>
             <ResourceCard
               {...recurso}
               buttonComponent={

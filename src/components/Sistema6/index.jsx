@@ -29,13 +29,22 @@ const Index = props => {
   return (
     <div className={classes.root}>
       <HeaderV2 section={system} />
-      <Grid container justifyContent='center' alignItems='center'>
-        <Grid item xs={12} style={{ maxWidth: 1200, margin: '0 auto', marginTop: 50 }}>
+      <Grid
+        container
+        sx={{
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+        <Grid style={{ maxWidth: 1200, margin: '0 auto', marginTop: 50 }} size={12}>
           <Grid container spacing={0}>
-            <Grid item lg={3} xs={12} style={{ display: 'flex',  alignItems: 'stretch' }}
+            <Grid
+              style={{ display: 'flex',  alignItems: 'stretch' }}
               onClick={() => handleSelectTab(0)}
               id={0}
-            >
+              size={{
+                lg: 3,
+                xs: 12
+              }}>
 
               <figure className={isSelected(0) ? classes.selectedTab : classes.card}>
                 <img src={img1} className={classes.logo} alt='explora' />
@@ -47,10 +56,14 @@ const Index = props => {
               </figure>
 
             </Grid>
-            <Grid item lg={3} xs={12} style={{ display: 'flex',  alignItems: 'stretch' }}
+            <Grid
+              style={{ display: 'flex',  alignItems: 'stretch' }}
               onClick={() => handleSelectTab(1)}
               id={1}
-            >
+              size={{
+                lg: 3,
+                xs: 12
+              }}>
 
               <figure className={isSelected(1) ? classes.selectedTab : classes.card}>
                 <img src={img3} className={classes.logo} alt='Visualiza' />
@@ -65,15 +78,21 @@ const Index = props => {
           </Grid>
         </Grid>
       </Grid>
-
-      <Grid container justifyContent='center'>
-        <Grid item xs={12} className={classes.sectionT}>
+      <Grid container sx={{
+        justifyContent: 'center'
+      }}>
+        <Grid className={classes.sectionT} size={12}>
           <Grid container spacing={0}>
             <ThemeProvider theme={ThemeV2}>
               {selectedTab === 0
-                ? <Grid item xs={12} className={classes.tabItem} style={{ overflow: 'auto' }}>
+                ? <Grid className={classes.tabItem} style={{ overflow: 'auto' }} size={12}>
                   <Paper className={classes.paper1} elevation={15}>
-                    <Box paddingLeft={1} paddingRight={1} paddingBottom={3}>
+                    <Box
+                      sx={{
+                        paddingLeft: 1,
+                        paddingRight: 1,
+                        paddingBottom: 3
+                      }}>
 
                       <SelectSupplier dataSupplier={dataSupplier} setDataSupplier={setDataSupplier} />
 
@@ -82,9 +101,13 @@ const Index = props => {
                     <Busqueda dataSupplier={dataSupplier} />
                   </Paper>
                 </Grid>
-                : <Grid item xs={12} className={classes.tabItem}>
+                : <Grid className={classes.tabItem} size={12}>
                   <Paper className={classes.paper2} elevation={15}>
-                    <Box paddingTop={1} paddingBottom={3}>
+                    <Box
+                      sx={{
+                        paddingTop: 1,
+                        paddingBottom: 3
+                      }}>
                       <SelectSupplier dataSupplier={dataSupplier} setDataSupplier={setDataSupplier} />
                     </Box>
 
@@ -102,22 +125,20 @@ const Index = props => {
           </Grid>
         </Grid>
       </Grid>
-
-
       {/* <Grid container spacing={0} justifyContent="center" style={{backgroundColor: "#34b3eb"}}>
             <Grid item xs={12} className={classes.item}>
                 <Perspectivas/>
             </Grid>
         </Grid> */}
-
-      <Grid container spacing={0} justifyContent='center'>
-        <Grid item xs={12} className={classes.item}>
+      <Grid container spacing={0} sx={{
+        justifyContent: 'center'
+      }}>
+        <Grid className={classes.item} size={12}>
           <Descarga url={process.env.REACT_APP_BULK_S6} tipoGA='bulk-s6' />
         </Grid>
       </Grid>
-
     </div>
-  )
+  );
 }
 
 export default withStyles(styles)(Index)

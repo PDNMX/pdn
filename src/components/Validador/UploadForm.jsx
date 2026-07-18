@@ -221,7 +221,9 @@ class UploadForm extends React.Component {
     const { formValues, formErrors, isSubmitting } = this.state
     return (
       <div className={classes.root}>
-        <Grid container direction='row' justifyContent='center'>
+        <Grid container direction='row' sx={{
+          justifyContent: 'center'
+        }}>
           <form onSubmit={this.handleSubmit}>
             <FormControl className={classes.formControl}>
               <ButtonPDN
@@ -281,9 +283,8 @@ class UploadForm extends React.Component {
             </FormControl>
           </form>
         </Grid>
-
       </div>
-    )
+    );
   }
 }
 

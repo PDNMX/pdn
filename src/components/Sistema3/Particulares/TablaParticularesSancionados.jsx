@@ -76,14 +76,20 @@ function TablaParticularesSancionados ({
 }) {
   return (
     <div>
-      <Grid container justifyContent='center' spacing={0} className={classes.gridTable}>
-        <Grid item xs={12} className={classes.section}>
+      <Grid container spacing={0} className={classes.gridTable} sx={{
+        justifyContent: 'center'
+      }}>
+        <Grid className={classes.section} size={12}>
           {data && data.length > 0 &&
-            <Typography variant='h6' color='primary.main'>Pulsa sobre el registro para ver su
+            <Typography variant='h6' sx={{
+              color: 'primary.main'
+            }}>Pulsa sobre el registro para ver su
               detalle<br />
             </Typography>}
         </Grid>
-        <Grid item xs={12} textAlign='right'>
+        <Grid size={12} sx={{
+          textAlign: 'right'
+        }}>
           <Button
             startIcon={<ArrowBackIcon />} onClick={() => returnToPrevios()}
             color='primary' className={classes.buttonBack}
@@ -91,7 +97,7 @@ function TablaParticularesSancionados ({
             Regresar
           </Button>
         </Grid>
-        <Grid item xs={12} className={classes.container1}>
+        <Grid className={classes.container1} size={12}>
           <div className={classes.container2}>
             {data && data.length > 0 &&
               <Table>
@@ -102,13 +108,15 @@ function TablaParticularesSancionados ({
                                           return (
                                             <TableCell key={column.id}>
                                               <Typography
-                                                color='text.clear'
                                                 variant='body1'
+                                                sx={{
+                                                  color: 'text.clear'
+                                                }}
                                               >
                                                 {column.label}
                                               </Typography>
                                             </TableCell>
-                                          )
+                                          );
                                         })
                                     }
                   </TableRow>
@@ -165,7 +173,7 @@ function TablaParticularesSancionados ({
 
         </Grid>
 
-        <Grid item xs={12} className={classes.section}>
+        <Grid className={classes.section} size={12}>
           {
                         nivel !== 'estatal' &&
                           <Typography variant='caption' style={{ fontStyle: 'italic' }}>Nota:
@@ -180,7 +188,7 @@ function TablaParticularesSancionados ({
         </Grid>
       </Grid>
     </div>
-  )
+  );
 }
 
 TablaParticularesSancionados.propTypes = {

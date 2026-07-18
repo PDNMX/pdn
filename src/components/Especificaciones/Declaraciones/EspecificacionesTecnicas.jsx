@@ -40,34 +40,40 @@ class EspecificacionesTecnicas extends React.Component {
 
     return (
       <div className={classes.root}>
-        <Typography variant='h5' className={classes.title} paragraph>
+        <Typography variant='h5' className={classes.title} sx={{
+          marginBottom: "16px"
+        }}>
           Especificaciones técnicas
         </Typography>
-
-        <Typography paragraph className={classes.text} variant='h5'>
+        <Typography className={classes.text} variant='h5' sx={{
+          marginBottom: "16px"
+        }}>
           Diccionario de datos
         </Typography>
-
-        <Typography paragraph className={classes.text}>
+        <Typography className={classes.text} sx={{
+          marginBottom: "16px"
+        }}>
           <ButtonPDN target='_blank' href='https://docs.google.com/spreadsheets/d/19Kyq46YwJk9wM7znYLQdLEKfAF8jTF4WmGJINXd9Lwg/edit?ts=5d88f08f#gid=0' variant='contained'>
             Más información
           </ButtonPDN>
         </Typography>
-
-        <Typography paragraph className={classes.text} variant='h5'>
+        <Typography className={classes.text} variant='h5' sx={{
+          marginBottom: "16px"
+        }}>
           Catálogos de códigos y valores
         </Typography>
-
-        <Typography paragraph className={classes.text}>
+        <Typography className={classes.text} sx={{
+          marginBottom: "16px"
+        }}>
           <ButtonPDN target='_blank' href='https://github.com/PDNMX/catalogos/tree/master/S1%20-%20Declaraciones'>
             Más información
           </ButtonPDN>
         </Typography>
-
-        <Typography paragraph className={classes.text} variant='h5'>
+        <Typography className={classes.text} variant='h5' sx={{
+          marginBottom: "16px"
+        }}>
           Especificaciones en formato Open API Specification
         </Typography>
-
         <ul className={classes.ul}>
           <li className={classes.li}>
             <Link href='/oas/ui/?urls.primaryName=S1%20-%20Inicial' target='_blank'>
@@ -85,26 +91,32 @@ class EspecificacionesTecnicas extends React.Component {
             </Link>
           </li>
         </ul>
-
-        <Typography paragraph className={classes.text} variant='h5'>
+        <Typography className={classes.text} variant='h5' sx={{
+          marginBottom: "16px"
+        }}>
           Seguridad
         </Typography>
-        <Typography paragraph className={classes.text}>
+        <Typography className={classes.text} sx={{
+          marginBottom: "16px"
+        }}>
           <ButtonPDN target='_blank' href='https://drive.google.com/file/d/1-IvF3KYa5rups73BmVV4W8glT9csVGY9/view'>
             Más información
           </ButtonPDN>
         </Typography>
-
-        <Typography paragraph className={classes.text} variant='h5'>
+        <Typography className={classes.text} variant='h5' sx={{
+          marginBottom: "16px"
+        }}>
           Versionado
         </Typography>
-        <Typography paragraph className={classes.text}>
+        <Typography className={classes.text} sx={{
+          marginBottom: "16px"
+        }}>
           <ButtonPDN target='_blank' href='https://drive.google.com/file/d/1xIPoMa-xKlCi9OZs_Uc7ffvANImaKWnK/view'>
             Más información
           </ButtonPDN>
         </Typography>
       </div>
-    )
+    );
   }
 }
 

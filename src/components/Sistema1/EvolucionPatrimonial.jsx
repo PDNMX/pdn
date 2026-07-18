@@ -6,8 +6,21 @@ import iconS1 from '../../assets/rediseno2023/imgs/iconos/sistemas/ico_s1.svg'
 const EvolucionPatrimonial = ({ classes }) => (
   <Paper elevation={15} className={classes.paper1} sx={{ marginBottom: '60px' }}>
     <Box sx={{ maxWidth: '900px', paddingTop: '50px', paddingBottom: '50px', margin: '0 auto' }}>
-      <Box display='flex' flexWrap='wrap' justifyContent='center' alignItems='center' gap={4}>
-        <Box display='flex' justifyContent='center' alignItems='center' sx={{ py: 2 }}>
+      <Box
+        sx={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+          alignItems: 'center',
+          gap: 4
+        }}>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            py: 2
+          }}>
           <img
             src={iconS1}
             alt='Evolución patrimonial'
@@ -19,7 +32,9 @@ const EvolucionPatrimonial = ({ classes }) => (
           />
         </Box>
         <Box sx={{ maxWidth: '640px', textAlign: 'justify' }}>
-          <Typography paragraph className={classes.text_color}>
+          <Typography className={classes.text_color} sx={{
+            marginBottom: "16px"
+          }}>
             En cumplimiento del <strong>Transitorio Quinto</strong> de la {' '}
             <a
               href='https://dof.gob.mx/nota_to_doc.php?codnota=5729579'
@@ -44,7 +59,9 @@ const EvolucionPatrimonial = ({ classes }) => (
             <strong> implementación</strong> y en <strong>fase de pilotaje</strong> el módulo de Evolución Patrimonial,
             con las autoridades que integran las diferentes SESEAS.
           </Typography>
-          <Typography paragraph className={classes.text_color}>
+          <Typography className={classes.text_color} sx={{
+            marginBottom: "16px"
+          }}>
             Esta herramienta permitirá a los Órganos Internos de Control (OIC) y a las autoridades
             fiscalizadoras visualizar, de manera transparente, la evolución del patrimonio de las
             personas servidoras públicas a lo largo del tiempo, cruzando sus declaraciones anuales,

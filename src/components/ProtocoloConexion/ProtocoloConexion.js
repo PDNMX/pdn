@@ -49,9 +49,12 @@ export default function ProtocoloConexion() {
 
   return (
     <div>
-      <Typography paragraph>La Plataforma Digital Nacional (PDN) basa su funcionamiento en el uso de APIs, por medio de las cuales, se comunica con sus proveedores de información para obtener exclusivamente los datos necesarios.</Typography>
-
-      <Typography paragraph>
+      <Typography sx={{
+        marginBottom: "16px"
+      }}>La Plataforma Digital Nacional (PDN) basa su funcionamiento en el uso de APIs, por medio de las cuales, se comunica con sus proveedores de información para obtener exclusivamente los datos necesarios.</Typography>
+      <Typography sx={{
+        marginBottom: "16px"
+      }}>
         Las Instituciones públicas interesadas en ser proveedores de información de la PDN deben establecer sus APIs de acuerdo con las{' '}
         <Link to='/especificaciones' className={classes.link}>
           Especificaciones técnicas
@@ -62,34 +65,35 @@ export default function ProtocoloConexion() {
         </MuiLink>{' '}
         a través del correo pdn@sesna.gob.mx.
       </Typography>
-
-      <Typography paragraph>Asimismo, el proceso de conexión con la PDN contempla un protocolo para verificar el funcionamiento de las APIs, mismo que consiste en la ejecución de conjuntos de pruebas para cada Sistema de la PDN. Cada conjunto de pruebas se divide a su vez en tres categorías:</Typography>
+      <Typography sx={{
+        marginBottom: "16px"
+      }}>Asimismo, el proceso de conexión con la PDN contempla un protocolo para verificar el funcionamiento de las APIs, mismo que consiste en la ejecución de conjuntos de pruebas para cada Sistema de la PDN. Cada conjunto de pruebas se divide a su vez en tres categorías:</Typography>
       <ul>
         <li>Pruebas de seguridad;</li>
         <li>Pruebas funcionales; y</li>
         <li>Pruebas de estrés.</li>
       </ul>
-
-      <Typography paragraph>Estas pruebas se ejecutan en dos ambientes: 1) desarrollo y 2) productivo. En cada uno de ellos, se verifica el funcionamiento de la API, usando datos sintéticos (falsos) y reales (omitiendo datos reservados) de manera correspondiente.</Typography>
-
+      <Typography sx={{
+        marginBottom: "16px"
+      }}>Estas pruebas se ejecutan en dos ambientes: 1) desarrollo y 2) productivo. En cada uno de ellos, se verifica el funcionamiento de la API, usando datos sintéticos (falsos) y reales (omitiendo datos reservados) de manera correspondiente.</Typography>
       <Typography>Las pruebas para la verificación de las APIs, se encuentran descritas en documentos denominados Planes de pruebas, que podrás encontrar en la sección de Especificaciones de cada uno de los Sistemas de la PDN.</Typography>
-
       {planesPrueba.map(plan => (
         <ButtonPDN key={plan.id} href={plan.url} target='_blank'>
           {plan.nombre}
         </ButtonPDN>
       ))}
-
-      <Typography paragraph>En caso de que los resultados no sean aprobatorios, se notificará a la institución para que realice los ajustes necesarios y solicite una nueva revisión.</Typography>
-
-      <Typography paragraph>
+      <Typography sx={{
+        marginBottom: "16px"
+      }}>En caso de que los resultados no sean aprobatorios, se notificará a la institución para que realice los ajustes necesarios y solicite una nueva revisión.</Typography>
+      <Typography sx={{
+        marginBottom: "16px"
+      }}>
         Como apoyo para verificar el cumplimiento de los esquemas de datos de las diferentes APIs, ponemos a su disposición un{' '}
         <Link to='/validador' className={classes.link}>
           Validador
         </Link>
         .
       </Typography>
-
       <Typography>
         Asimismo, te invitamos a probar{' '}
         <MuiLink href='https://www.plataformadigitalnacional.org/validapi/' target='_blank' className={classes.link}>

@@ -87,7 +87,6 @@ const VistaDetalleSistema = props => {
   /* Vista detallada por Sistema */
   return (
     <Box className={classes.container}>
-      
       {/* Header con ícono y nombre del sistema */}
       <Box sx={{ 
         textAlign: 'center',
@@ -120,7 +119,7 @@ const VistaDetalleSistema = props => {
             flexShrink: 0
           }
         }} />
-        
+
         <Box sx={{
           display: 'flex',
           flexDirection: 'column',
@@ -131,7 +130,9 @@ const VistaDetalleSistema = props => {
             alignItems: 'flex-start'
           }
         }}>
-          <Typography variant='subtitle1' fontWeight='bold' color={color} sx={{ 
+          <Typography variant='subtitle1' sx={{
+            color,
+            fontWeight: 'bold',
             flexGrow: 1, 
             fontSize: '1rem',
             '@media (max-width: 900px)': {
@@ -162,28 +163,39 @@ const VistaDetalleSistema = props => {
           )}
         </Box>
       </Box>
-
       {/* Contenido de las gráficas - todas en línea */}
-      <Box display='flex' flexWrap='nowrap' justifyContent='center' alignItems='flex-end' gap={1.5} sx={{ 
-        minHeight: '340px',
-        '@media (max-width: 900px)': {
-          flexWrap: 'wrap',
+      <Box
+        sx={{
+          display: 'flex',
+          flexWrap: 'nowrap',
           justifyContent: 'center',
-          gap: 3,
-          minHeight: 'auto'
-        }
-      }}>
-        
-        <Box p={0.5} textAlign='center' sx={{
+          alignItems: 'flex-end',
+          gap: 1.5,
+          minHeight: '340px',
+
           '@media (max-width: 900px)': {
-            flexBasis: 'calc(50% - 24px)',
-            minWidth: 'auto'
-          },
-          '@media (max-width: 600px)': {
-            flexBasis: 'calc(33.333% - 24px)',
-            minWidth: '100px'
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+            gap: 3,
+            minHeight: 'auto'
           }
         }}>
+
+        <Box
+          sx={{
+            p: 0.5,
+            textAlign: 'center',
+
+            '@media (max-width: 900px)': {
+              flexBasis: 'calc(50% - 24px)',
+              minWidth: 'auto'
+            },
+
+            '@media (max-width: 600px)': {
+              flexBasis: 'calc(33.333% - 24px)',
+              minWidth: '100px'
+            }
+          }}>
           <Typography variant='h5' sx={{ color: bar_colors[0], fontWeight: 'bold' }}>
             {percentage(
               estado.data[`s${system.id}`].ejecutivo.tiene,
@@ -206,16 +218,21 @@ const VistaDetalleSistema = props => {
           </Box>
         </Box>
 
-        <Box p={0.5} textAlign='center' sx={{
-          '@media (max-width: 900px)': {
-            flexBasis: 'calc(50% - 24px)',
-            minWidth: 'auto'
-          },
-          '@media (max-width: 600px)': {
-            flexBasis: 'calc(33.333% - 24px)',
-            minWidth: '100px'
-          }
-        }}>
+        <Box
+          sx={{
+            p: 0.5,
+            textAlign: 'center',
+
+            '@media (max-width: 900px)': {
+              flexBasis: 'calc(50% - 24px)',
+              minWidth: 'auto'
+            },
+
+            '@media (max-width: 600px)': {
+              flexBasis: 'calc(33.333% - 24px)',
+              minWidth: '100px'
+            }
+          }}>
           <Typography variant='h5' sx={{ color: bar_colors[1], fontWeight: 'bold' }}>
             {percentage(
               estado.data[`s${system.id}`].legislativo.tiene,
@@ -236,16 +253,21 @@ const VistaDetalleSistema = props => {
           </Box>
         </Box>
 
-        <Box p={0.5} textAlign='center' sx={{
-          '@media (max-width: 900px)': {
-            flexBasis: 'calc(50% - 24px)',
-            minWidth: 'auto'
-          },
-          '@media (max-width: 600px)': {
-            flexBasis: 'calc(33.333% - 24px)',
-            minWidth: '100px'
-          }
-        }}>
+        <Box
+          sx={{
+            p: 0.5,
+            textAlign: 'center',
+
+            '@media (max-width: 900px)': {
+              flexBasis: 'calc(50% - 24px)',
+              minWidth: 'auto'
+            },
+
+            '@media (max-width: 600px)': {
+              flexBasis: 'calc(33.333% - 24px)',
+              minWidth: '100px'
+            }
+          }}>
           <Typography variant='h5' sx={{ color: bar_colors[2], fontWeight: 'bold' }}>
             {percentage(
               estado.data[`s${system.id}`].judicial.tiene,
@@ -266,16 +288,21 @@ const VistaDetalleSistema = props => {
           </Box>
         </Box>
 
-        <Box p={0.5} textAlign='center' sx={{
-          '@media (max-width: 900px)': {
-            flexBasis: 'calc(50% - 24px)',
-            minWidth: 'auto'
-          },
-          '@media (max-width: 600px)': {
-            flexBasis: 'calc(33.333% - 24px)',
-            minWidth: '100px'
-          }
-        }}>
+        <Box
+          sx={{
+            p: 0.5,
+            textAlign: 'center',
+
+            '@media (max-width: 900px)': {
+              flexBasis: 'calc(50% - 24px)',
+              minWidth: 'auto'
+            },
+
+            '@media (max-width: 600px)': {
+              flexBasis: 'calc(33.333% - 24px)',
+              minWidth: '100px'
+            }
+          }}>
           <Typography variant='h5' sx={{ color: bar_colors[3], fontWeight: 'bold' }}>
             {percentage(
               estado.data[`s${system.id}`].ocas.tiene,
@@ -296,16 +323,21 @@ const VistaDetalleSistema = props => {
           </Box>
         </Box>
 
-        <Box p={0.5} textAlign='center' sx={{
-          '@media (max-width: 900px)': {
-            flexBasis: 'calc(50% - 24px)',
-            minWidth: 'auto'
-          },
-          '@media (max-width: 600px)': {
-            flexBasis: 'calc(33.333% - 24px)',
-            minWidth: '110px'
-          }
-        }}>
+        <Box
+          sx={{
+            p: 0.5,
+            textAlign: 'center',
+
+            '@media (max-width: 900px)': {
+              flexBasis: 'calc(50% - 24px)',
+              minWidth: 'auto'
+            },
+
+            '@media (max-width: 600px)': {
+              flexBasis: 'calc(33.333% - 24px)',
+              minWidth: '110px'
+            }
+          }}>
           <Box sx={{
             borderColor: '#707274',
             borderStyle: 'solid',
@@ -336,35 +368,43 @@ const VistaDetalleSistema = props => {
         </Box>
 
         {/* Gráfica circular */}
-        <Box p={0.5} textAlign='center' sx={{ 
-          maxWidth: 300, 
-          minWidth: 240,
-          '@media (max-width: 900px)': {
-            flexBasis: '100%',
-            maxWidth: '100%',
-            minWidth: 'auto',
-            marginTop: 2
-          }
-        }}>
-          <Typography color='#707274' sx={{ 
-            fontWeight: 'bold', 
-            minHeight: '50px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: '0.95rem',
-            lineHeight: 1.2,
-            paddingX: 1
+        <Box
+          sx={{
+            p: 0.5,
+            textAlign: 'center',
+            maxWidth: 300,
+            minWidth: 240,
+
+            '@media (max-width: 900px)': {
+              flexBasis: '100%',
+              maxWidth: '100%',
+              minWidth: 'auto',
+              marginTop: 2
+            }
           }}>
+          <Typography
+            sx={{
+              color: '#707274',
+              fontWeight: 'bold',
+              minHeight: '50px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '0.95rem',
+              lineHeight: 1.2,
+              paddingX: 1
+            }}>
             {tituloConexion}
           </Typography>
 
           <PieChart color={color} value={get_value(system.id)} />
 
-          <Typography variant='h3' sx={{ fontWeight: 'bold' }} color={color}>
+          <Typography variant='h3' sx={{ color, fontWeight: 'bold' }}>
             {get_value(system.id)}%
           </Typography>
-          <Typography color='#707274' variant='subtitle1'>
+          <Typography variant='subtitle1' sx={{
+            color: '#707274'
+          }}>
             {
               estado.data[`s${system.id}`].ejecutivo.tiene +
               estado.data[`s${system.id}`].legislativo.tiene +
@@ -382,7 +422,7 @@ const VistaDetalleSistema = props => {
         </Box>
       </Box>
     </Box>
-  )
+  );
 }
 
 export default withStyles(styles)(VistaDetalleSistema)

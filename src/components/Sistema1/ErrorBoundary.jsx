@@ -36,12 +36,12 @@ class ErrorBoundary extends React.Component {
     const { classes } = this.props
     if (this.state.hasError) {
       return (
-        <Grid item xs={12} style={{ marginTop: 20 }}>
+        <Grid style={{ marginTop: 20 }} size={12}>
           <Typography className={classes.alertWarning} align='center'>
             Algo ha salido mal... espera unos segundos el navegador se refrescará en 3 segundos.
           </Typography>
         </Grid>
-      )
+      );
     }
     return this.props.children
   }

@@ -33,28 +33,52 @@ function Representacion(props) {
             </BoxAccordionSummary>
             <BoxAccordionDetails>
               <Grid container spacing={1}>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>RELACIÓN:</Typography>
                   <Typography className={classes.card}>{obj.tipoRelacion}</Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>TIPO DE REPRESENTACIÓN:</Typography>
                   <Typography className={classes.card}>{obj.tipoRepresentacion}</Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>FECHA DE INICIO:</Typography>
                   <Typography className={classes.card}>{obj.fechaInicioRepresentacion}</Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>SECTOR PRODUCTIVO:</Typography>
                   <Typography className={classes.card}>{obj.sector.valor}</Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>¿RECIBE REMUNERACIÓN?:</Typography>
                   <Typography className={classes.card}>{obj.recibeRemuneracion ? 'SÍ' : 'NO'}</Typography>
                 </Grid>
                 {obj.recibeRemuneracion && (
-                  <Grid item xs={12} md={4}>
+                  <Grid
+                    size={{
+                      xs: 12,
+                      md: 4
+                    }}>
                     <Typography className={classes.cardTitle}>MONTO MENSUAL NETO:</Typography>
                     <Typography className={classes.card}>
                       {getMoneda(obj.montoMensual.valor)} {obj.montoMensual.moneda}
@@ -62,38 +86,62 @@ function Representacion(props) {
                   </Grid>
                 )}
                 <Divider />
-                <Grid item xs={12} style={{ textAlign: 'center' }}>
+                <Grid style={{ textAlign: 'center' }} size={12}>
                   <Typography className={classes.tituloSubSeccion}>REPRESENTANTE/REPRESENTADO</Typography>
                 </Grid>
                 {obj.tipoPersona === 'FISICA' ? (
-                  <Grid item xs={12}>
+                  <Grid size={12}>
                     <Grid container spacing={1}>
-                      <Grid item xs={12} md={3}>
+                      <Grid
+                        size={{
+                          xs: 12,
+                          md: 3
+                        }}>
                         <Typography className={classes.cardTitle}>TIPO PERSONA:</Typography>
                         <Typography className={classes.cardReserved}>FÍSICA</Typography>
                       </Grid>
-                      <Grid item xs={12} md={6}>
+                      <Grid
+                        size={{
+                          xs: 12,
+                          md: 6
+                        }}>
                         <Typography className={classes.cardTitle}>NOMBRE O RAZÓN SOCIAL DEL REPRESENTANTE/REPRESENTADO:</Typography>
                         <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
                       </Grid>
-                      <Grid item xs={12} md={3}>
+                      <Grid
+                        size={{
+                          xs: 12,
+                          md: 3
+                        }}>
                         <Typography className={classes.cardTitle}>RFC:</Typography>
                         <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
                       </Grid>
                     </Grid>
                   </Grid>
                 ) : (
-                  <Grid item xs={12}>
+                  <Grid size={12}>
                     <Grid container spacing={1}>
-                      <Grid item xs={12} md={3}>
+                      <Grid
+                        size={{
+                          xs: 12,
+                          md: 3
+                        }}>
                         <Typography className={classes.cardTitle}>TIPO PERSONA:</Typography>
                         <Typography className={classes.card}>MORAL</Typography>
                       </Grid>
-                      <Grid item xs={12} md={6}>
+                      <Grid
+                        size={{
+                          xs: 12,
+                          md: 6
+                        }}>
                         <Typography className={classes.cardTitle}>NOMBRE O RAZÓN SOCIAL DEL REPRESENTANTE/REPRESENTADO:</Typography>
                         <Typography className={classes.card}>{obj.nombreRazonSocial}</Typography>
                       </Grid>
-                      <Grid item xs={12} md={3}>
+                      <Grid
+                        size={{
+                          xs: 12,
+                          md: 3
+                        }}>
                         <Typography className={classes.cardTitle}>RFC:</Typography>
                         <Typography className={classes.card}>{obj.rfc}</Typography>
                       </Grid>
@@ -105,11 +153,11 @@ function Representacion(props) {
               </Grid>
             </BoxAccordionDetails>
           </BoxAccordion>
-        )
+        );
       })}
       <AclaracionesObservacions />
     </>
-  )
+  );
 }
 
 const Representaciones = props => {
@@ -121,15 +169,15 @@ const Representaciones = props => {
 
   return (
     <Grid container spacing={2} className={classes.rootPrincipal}>
-      <Grid item xs={12}>
+      <Grid size={12}>
         <Typography className={classes.tituloSeccion} align='center'>
           4. REPRESENTACIÓN (HASTA LOS 2 ÚLTIMOS AÑOS)
         </Typography>
       </Grid>
-      <Grid item xs={12}>
+      <Grid size={12}>
         {typeof data === 'undefined' || data.ninguno ? <DatosNoRegistrados /> : representacion.length ? <Representacion representacion={representacion} /> : <DatosReservados />}
       </Grid>
     </Grid>
-  )
+  );
 }
 export default Representaciones

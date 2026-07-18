@@ -20,16 +20,18 @@ const styles = theme => ({
 function MensajeErrorDatos ({ classes }) {
   return (
     <Grid container>
-      <Grid item xs={12} className={classes.iconContainer}>
+      <Grid className={classes.iconContainer} size={12}>
         <IconProblem className={classes.icon} />
       </Grid>
-      <Grid item xs={12}>
-        <Typography variant='h6' paragraph className={classes.mensaje}>
+      <Grid size={12}>
+        <Typography variant='h6' className={classes.mensaje} sx={{
+          marginBottom: "16px"
+        }}>
           <b>Servicio no disponible</b>
         </Typography>
       </Grid>
     </Grid>
-  )
+  );
 }
 
 export default withStyles(styles, { withTheme: true })(MensajeErrorDatos)

@@ -171,7 +171,9 @@ const Procedimiento = props => {
   return (
     <div>
       <ModalInfo open={open} setOpen={setOpen}>
-        <Typography variant='h6' className={classes.titulo} paragraph>
+        <Typography variant='h6' className={classes.titulo} sx={{
+          marginBottom: "16px"
+        }}>
           Tipos de procesos
         </Typography>
         <Typography variant='body1'>
@@ -270,7 +272,7 @@ const Procedimiento = props => {
                 }
       </ContainerChart>
     </div>
-  )
+  );
 }
 
 export default withStyles(styles)(Procedimiento)

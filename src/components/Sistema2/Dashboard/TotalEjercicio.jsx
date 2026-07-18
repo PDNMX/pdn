@@ -128,7 +128,9 @@ const Ejercicio = props => {
   return (
     <div  style={{ height: '500px' }}>
       <ModalInfo open={open} setOpen={setOpen}>
-        <Typography variant='h6' className={classes.titulo} paragraph>
+        <Typography variant='h6' className={classes.titulo} sx={{
+          marginBottom: "16px"
+        }}>
           Registros de personas servidoras públicas que intervinieron en procesos de contrataciones por año
         </Typography>
         <Typography variant='body1'>
@@ -194,9 +196,8 @@ const Ejercicio = props => {
                       <Alert severity='error'> No disponible por el momento, intente más tarde. </Alert>
                 }
       </ContainerChart>
-
     </div>
-  )
+  );
 }
 
 export default withStyles(styles)(Ejercicio)

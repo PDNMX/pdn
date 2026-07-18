@@ -115,7 +115,11 @@ const FormParticulares = ({ classes, providers }) => {
 
   const renderPersonaFisicaForm = () => (
     <>
-      <Grid item xs={12} md={4}>
+      <Grid
+        size={{
+          xs: 12,
+          md: 4
+        }}>
         <TextField
           className={classes.formControl}
           label="Nombre"
@@ -127,7 +131,11 @@ const FormParticulares = ({ classes, providers }) => {
           fullWidth
         />
       </Grid>
-      <Grid item xs={12} md={4}>
+      <Grid
+        size={{
+          xs: 12,
+          md: 4
+        }}>
         <TextField
           className={classes.formControl}
           label="Primer Apellido"
@@ -139,7 +147,11 @@ const FormParticulares = ({ classes, providers }) => {
           fullWidth
         />
       </Grid>
-      <Grid item xs={12} md={4}>
+      <Grid
+        size={{
+          xs: 12,
+          md: 4
+        }}>
         <TextField
           className={classes.formControl}
           label="Segundo Apellido"
@@ -156,7 +168,11 @@ const FormParticulares = ({ classes, providers }) => {
 
   const renderPersonaMoralForm = () => (
     <>
-      <Grid item xs={12} md={6}>
+      <Grid
+        size={{
+          xs: 12,
+          md: 6
+        }}>
         <TextField
           className={classes.formControl}
           label="RFC"
@@ -168,7 +184,11 @@ const FormParticulares = ({ classes, providers }) => {
           fullWidth
         />
       </Grid>
-      <Grid item xs={12} md={6}>
+      <Grid
+        size={{
+          xs: 12,
+          md: 6
+        }}>
         <TextField
           className={classes.formControl}
           label="Nombre o Razón Social"
@@ -189,7 +209,11 @@ const FormParticulares = ({ classes, providers }) => {
 
     return (
       <>
-        <Grid item xs={12} md={12}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 12
+          }}>
           <FormControl variant="outlined" className={classes.formControl} size="small" fullWidth>
             <InputLabel shrink id="cometio-falta-entidad-label">
               Entidad Federativa donde se cometió la falta
@@ -228,7 +252,11 @@ const FormParticulares = ({ classes, providers }) => {
             </Select>
           </FormControl>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 6
+          }}>
           <FormControl variant="outlined" className={classes.formControl} size="small" fullWidth>
             <InputLabel shrink>Falta Cometida</InputLabel>
             <Select
@@ -255,7 +283,11 @@ const FormParticulares = ({ classes, providers }) => {
             </Select>
           </FormControl>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 6
+          }}>
           <FormControl variant="outlined" className={classes.formControl} size="small" fullWidth>
             <InputLabel shrink>Tipo de Sanción</InputLabel>
             <Select

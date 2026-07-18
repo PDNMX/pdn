@@ -111,16 +111,15 @@ const StatsCard = ({ title, total, subtitle, icon: Icon, gradient, color }) => (
       <Icon sx={{ fontSize: 150 }} />
     </Box>
 
-    <Box 
-      display="flex" 
-      flexDirection="column" 
-      alignItems="flex-start"
-      sx={{ 
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-start",
         p: 3,
         position: 'relative',
         zIndex: 1
-      }}
-    >
+      }}>
       <Typography 
         variant="body2" 
         color="textSecondary"
@@ -320,7 +319,11 @@ const Ejercicio = ({ classes, providers, onDataUpdate }) => {
 
   return (
     <Grid container spacing={3} className={classes.root}>
-      <Grid item xs={12} md={6}>
+      <Grid
+        size={{
+          xs: 12,
+          md: 6
+        }}>
         <StatsCard
           title="Personas servidoras públicas con Faltas Graves"
           total={formatNumber(data.graves.total)}
@@ -330,8 +333,11 @@ const Ejercicio = ({ classes, providers, onDataUpdate }) => {
           color="#f37878"
         />
       </Grid>
-
-      <Grid item xs={12} md={6}>
+      <Grid
+        size={{
+          xs: 12,
+          md: 6
+        }}>
         <StatsCard
           title="Personas servidoras públicas con Faltas No Graves"
           total={formatNumber(data.noGraves.total)}

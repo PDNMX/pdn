@@ -81,9 +81,7 @@ const InterconexionMenu = props => {
         justifyContent: 'center',
       }}
     >
-
-
-      <Link className={classes.link} href="/mapa-sla/" onClick={() => ReactGA.pageview('/mapa-sla')}>
+      <Link className={classes.link} href="/mapa-sla/" onClick={() => ReactGA.send({ hitType: 'pageview', page: '/mapa-sla' })}>
         <Box
           className={`${classes.item}`}
           sx={{
@@ -94,12 +92,13 @@ const InterconexionMenu = props => {
         >
           <div className={`${classes.opc} `}>
             <img src={legislacion_icono} alt="Legislación" className={classes.icon} />
-            <Typography color="#3a1c3a">Legislación</Typography>
+            <Typography sx={{
+              color: "#3a1c3a"
+            }}>Legislación</Typography>
           </div>
         </Box>
       </Link>
-
-      <Link className={classes.link} href="/mapa-avance/" onClick={() => ReactGA.pageview('/mapa-avance')}>
+      <Link className={classes.link} href="/mapa-avance/" onClick={() => ReactGA.send({ hitType: 'pageview', page: '/mapa-avance' })}>
         <Box
           className={`${classes.item}`}
           sx={{
@@ -110,11 +109,12 @@ const InterconexionMenu = props => {
         >
           <div className={`${classes.opc} `}>
             <img src={mapa_s2s3_icono} alt="Sistemas 1, 2, 3 y 6" className={classes.icon} />
-            <Typography color="#3a1c3a">Sistemas 1, 2, 3 y 6</Typography>
+            <Typography sx={{
+              color: "#3a1c3a"
+            }}>Sistemas 1, 2, 3 y 6</Typography>
           </div>
         </Box>
       </Link>
-
       <Link className={classes.link} component={RouterLink} to="/cobertura">
         <Box
           className={`${classes.item}`}
@@ -126,12 +126,13 @@ const InterconexionMenu = props => {
         >
           <div className={`${classes.opc} `}>
             <img src={icon_cobertura} alt="Cobertura" className={classes.icon} />
-            <Typography color="#3a1c3a">Cobertura</Typography>
+            <Typography sx={{
+              color: "#3a1c3a"
+            }}>Cobertura</Typography>
           </div>
         </Box>
       </Link>
-
-      <Link className={classes.link} href="https://cobertura.plataformadigitalnacional.org" onClick={() => ReactGA.pageview('/tablero-cobertura')}>
+      <Link className={classes.link} href="https://cobertura.plataformadigitalnacional.org" onClick={() => ReactGA.send({ hitType: 'pageview', page: '/tablero-cobertura' })}>
         <Box
           className={`${classes.item}`}
           sx={{
@@ -142,7 +143,9 @@ const InterconexionMenu = props => {
         >
           <div className={`${classes.opc} `}>
             <img src={tablero_interconexion} alt="Tablero" className={classes.icon} />
-            <Typography color="#3a1c3a">Tablero Estadístico de Interconexión Nacional</Typography>
+            <Typography sx={{
+              color: "#3a1c3a"
+            }}>Tablero Estadístico de Interconexión Nacional</Typography>
           </div>
         </Box>
       </Link>

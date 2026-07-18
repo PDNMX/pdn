@@ -125,12 +125,16 @@ const Implementacion = (props) => {
   return (
     <div className={classes.root}>
       <Grid container spacing={0}>
-        <Grid item xs={12}>
+        <Grid size={12}>
           {" "}
-          <Typography variant="h5" className={classes.title} paragraph>
+          <Typography variant="h5" className={classes.title} sx={{
+            marginBottom: "16px"
+          }}>
             Procedimiento de implementación del estándar
           </Typography>
-          <Typography paragraph className={classes.text}>
+          <Typography className={classes.text} sx={{
+            marginBottom: "16px"
+          }}>
             La implementación del Estándar para la Interoperabilidad de datos de
             Servidores Públicos y Particulares Sancionados requiere un enfoque
             sistemático que variará según el nivel de madurez tecnológica de
@@ -141,21 +145,31 @@ const Implementacion = (props) => {
               <Typography component="span" className={classes.stepTitle}>
                 Diagnóstico:
               </Typography>
-              <Typography paragraph className={classes.text}>
+              <Typography className={classes.text} sx={{
+                marginBottom: "16px"
+              }}>
                 Revisar y comparar los datos del sistema actual con los
                 requeridos por el nuevo estándar. Consultar los siguientes
                 formatos oficiales:
               </Typography>
 
               <Grid container spacing={3}>
-                <Grid item xs={12} md={6}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 6
+                  }}>
                   <FormatSection
                     title="Servidores Públicos"
                     links={formatosLinks.servidoresPublicos}
                     classes={classes}
                   />
                 </Grid>
-                <Grid item xs={12} md={6}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 6
+                  }}>
                   <FormatSection
                     title="Particulares Sancionados"
                     links={formatosLinks.particulares}
@@ -165,9 +179,11 @@ const Implementacion = (props) => {
               </Grid>
 
               <Typography
-                paragraph
                 className={classes.text}
                 style={{ marginTop: "24px" }}
+                sx={{
+                  marginBottom: "16px"
+                }}
               >
                 Si bien es importante disponer de todos los campos requeridos,
                 la ausencia de algunos datos no impide iniciar las pruebas de
@@ -181,7 +197,9 @@ const Implementacion = (props) => {
               <Typography component="span" className={classes.stepTitle}>
                 Diseño de arquitectura:{" "}
               </Typography>
-              <Typography paragraph className={classes.text}>
+              <Typography className={classes.text} sx={{
+                marginBottom: "16px"
+              }}>
                 Es necesario evaluar la capacidad de la infraestructura actual
                 para mantener la operación normal del sistema y gestionar las
                 consultas adicionales de la PDN, garantizando tiempos de
@@ -196,7 +214,9 @@ const Implementacion = (props) => {
               <Typography component="span" className={classes.stepTitle}>
                 Desarrollo:{" "}
               </Typography>
-              <Typography paragraph className={classes.text}>
+              <Typography className={classes.text} sx={{
+                marginBottom: "16px"
+              }}>
                 El desarrollo del API puede realizarse en cualquier lenguaje de
                 programación, siempre que se respeten las especificaciones
                 técnicas detalladas en esta guía. Las especificaciones son

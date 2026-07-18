@@ -38,15 +38,20 @@ const Evolucion = props => {
 
   return (
     <div className={classes.root}>
-
       <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
 
-        <Box p={3}>
+        <Box sx={{
+          p: 3
+        }}>
           <img src={logo} alt='Semana PDN' className={classes.logo} />
         </Box>
 
-        <Box p={3}>
-          <Typography variant='h5' className={classes.headingText} paragraph>
+        <Box sx={{
+          p: 3
+        }}>
+          <Typography variant='h5' className={classes.headingText} sx={{
+            marginBottom: "16px"
+          }}>
             Herramienta de Verificación de
             Evolucion patrimonial y de intereses
           </Typography>
@@ -68,7 +73,7 @@ const Evolucion = props => {
 
       </Box>
     </div>
-  )
+  );
 }
 
 export default withStyles(styles)(Evolucion)

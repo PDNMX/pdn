@@ -258,7 +258,7 @@ export function ResultadosS3p (props) {
         {/* Buscador */}
         <Grid container spacing={0}>
 
-          <Grid item xs={12}>
+          <Grid size={12}>
             {
                                 loading &&
                                   <Modal
@@ -279,7 +279,7 @@ export function ResultadosS3p (props) {
         {/* Previos */}
         {view === 1 && previos && previos.length > 0 &&
           <Grid container>
-            <Grid item xs={12} className={classes.section}>
+            <Grid className={classes.section} size={12}>
               <Chips criterios={JSON.stringify(data)} />
               <Previos
                 data={previos}
@@ -290,7 +290,7 @@ export function ResultadosS3p (props) {
         {/* Tabla */}
         {view === 2 && filterData && filterData.length > 0 && selectedItem === null &&
           <Grid container>
-            <Grid item xs={12}>
+            <Grid size={12}>
               <TablaParticularesSancionados
                 data={filterData} page={pagination.page}
                 rowsPerPage={pagination.rowsPerPage}
@@ -312,8 +312,7 @@ export function ResultadosS3p (props) {
                     }
       </>
     </ThemeProvider>
-
-  )
+  );
 }
 
 // export default ResultadosS3p;

@@ -21,38 +21,62 @@ function Duenio({ obj }) {
   return (
     <>
       <Divider />
-      <Grid item xs={12} style={{ textAlign: 'center' }}>
+      <Grid style={{ textAlign: 'center' }} size={12}>
         <Typography className={classes.tituloSubSeccion}>DUEÑO O TITULAR</Typography>
       </Grid>
       {obj.duenoTitular.tipoDuenoTitular === 'FISICA' ? (
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Grid container spacing={1}>
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <Typography className={classes.cardTitle}>NOMBRE DEL DUEÑO O TITULAR:</Typography>
               <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <Typography className={classes.cardTitle}>RFC:</Typography>
               <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <Typography className={classes.cardTitle}>RELACIÓN CON EL DUEÑO O EL TITULAR:</Typography>
               <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
             </Grid>
           </Grid>
         </Grid>
       ) : (
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Grid container spacing={1}>
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <Typography className={classes.cardTitle}>NOMBRE DEL DUEÑO O TITULAR:</Typography>
               <Typography className={classes.card}>{obj.duenoTitular.nombreTitular}</Typography>
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <Typography className={classes.cardTitle}>RFC:</Typography>
               <Typography className={classes.card}>{obj.duenoTitular.rfc}</Typography>
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <Typography className={classes.cardTitle}>RELACIÓN CON EL DUEÑO O EL TITULAR:</Typography>
               <Typography className={classes.card}>{obj.duenoTitular.relacionConTitular}</Typography>
             </Grid>
@@ -60,7 +84,7 @@ function Duenio({ obj }) {
         </Grid>
       )}
     </>
-  )
+  );
 }
 
 function Prestamo({ prestamo }) {
@@ -80,11 +104,19 @@ function Prestamo({ prestamo }) {
             </BoxAccordionSummary>
             <BoxAccordionDetails>
               <Grid container spacing={1}>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>TIPO DE BIEN:</Typography>
                   <Typography className={classes.card}>INMUEBLE</Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>UBICACIÓN DEL INMUEBLE:</Typography>
                   <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
                 </Grid>
@@ -102,27 +134,51 @@ function Prestamo({ prestamo }) {
             </BoxAccordionSummary>
             <BoxAccordionDetails>
               <Grid container spacing={1}>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>TIPO DE BIEN:</Typography>
                   <Typography className={classes.card}>VEHÍCULO</Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>MARCA:</Typography>
                   <Typography className={classes.card}>{vehiculo.marca}</Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>MODELO:</Typography>
                   <Typography className={classes.card}>{vehiculo.modelo}</Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>AÑO:</Typography>
                   <Typography className={classes.card}>{vehiculo.anio}</Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>NÚMERO DE SERIE O REGISTRO:</Typography>
                   <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>¿DÓNDE SE ENCUENTRA REGISTRADO?:</Typography>
                   <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
                 </Grid>
@@ -133,8 +189,8 @@ function Prestamo({ prestamo }) {
         )}
         <AclaracionesObservacions />
       </React.Fragment>
-    )
-  })
+    );
+  });
 }
 
 const Prestamos = ({ data, titulo }) => {
@@ -151,19 +207,19 @@ const Prestamos = ({ data, titulo }) => {
 
   return (
     <Grid container spacing={2} className={classes.rootPrincipal}>
-      <Grid item xs={12}>
+      <Grid size={12}>
         <Typography className={classes.tituloSeccion} align='center'>
           {titulo}
         </Typography>
       </Grid>
       {data ? (
-        <Grid item xs={12}>
+        <Grid size={12}>
           {data.ninguno ? <DatosNoRegistrados /> : prestamo.length ? <Prestamo prestamo={prestamo} /> : <DatosReservados />}
         </Grid>
       ) : (
         <Disclaimer />
       )}
     </Grid>
-  )
+  );
 }
 export default Prestamos

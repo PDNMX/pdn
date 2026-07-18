@@ -100,17 +100,15 @@ const TotalRamos = ({ providers }) => {
       >
         <EventBusy sx={{ fontSize: 150 }} />
       </Box>
-
-      <Box 
-        display="flex" 
-        flexDirection="column" 
-        alignItems="flex-start"
-        sx={{ 
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start",
           p: 3,
           position: 'relative',
           zIndex: 1
-        }}
-      >
+        }}>
         <Typography 
           variant="body2" 
           color="textSecondary"

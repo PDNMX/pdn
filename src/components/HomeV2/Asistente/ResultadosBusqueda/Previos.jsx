@@ -75,9 +75,11 @@ function Previos ({ data, classes, handleChangeSujetoObligado }) {
     <div>
       <Grid
         container
-        justifyContent='center'
+        sx={{
+          justifyContent: 'center'
+        }}
       >
-        <Grid item xs={12}>
+        <Grid size={12}>
           {sumador > 0 ? (
             <>
               <div className={classes.container}>
@@ -130,7 +132,7 @@ function Previos ({ data, classes, handleChangeSujetoObligado }) {
         </Grid>
       </Grid>
     </div>
-  )
+  );
 }
 
 Previos.propTypes = {

@@ -31,68 +31,124 @@ const DatosGenerales = ({ data: info, titulo }) => {
 
   return (
     <Grid container spacing={2} className={classes.rootPrincipal}>
-      <Grid item xs={12}>
+      <Grid size={12}>
         <Typography className={classes.tituloSeccion} align='center'>
           {titulo}
         </Typography>
       </Grid>
-      <Grid item xs={12}>
+      <Grid size={12}>
         <Paper className={classes.paper}>
           <Grid container spacing={1}>
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <Typography className={classes.cardTitle}>NOMBRES(S)</Typography>
               <Typography className={classes.card}>{data.nombre}</Typography>
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <Typography className={classes.cardTitle}>PRIMER APELLIDO</Typography>
               <Typography className={classes.card}>{data.primerApellido}</Typography>
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <Typography className={classes.cardTitle}>SEGUNDO APELLIDO</Typography>
               <Typography className={classes.card}>{data.segundoApellido}</Typography>
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <Typography className={classes.cardTitle}>CURP</Typography>
               <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <Typography className={classes.cardTitle}>RFC</Typography>
               <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <Typography className={classes.cardTitle}>HOMOCLAVE</Typography>
               <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <Typography className={classes.cardTitle}>CORREO ELECTRÓNICO INSTITUCIONAL</Typography>
               <Typography className={classes.card}>{data.correoElectronico.institucional}</Typography>
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <Typography className={classes.cardTitle}>CORREO ELECTRÓNICO PERSONAL/ALTERNO</Typography>
               <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <Typography className={classes.cardTitle}>NÚMERO TELEFÓNICO DE CASA</Typography>
               <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
             </Grid>
 
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <Typography className={classes.cardTitle}>NÚMERO CELULAR PERSONAL</Typography>
               <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <Typography className={classes.cardTitle}>SITUACIÓN PERSONAL/ESTADO CIVIL</Typography>
               <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <Typography className={classes.cardTitle}>RÉGIMEN MATRIMONIAL</Typography>
               <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <Typography className={classes.cardTitle}>PAÍS DE NACIMIENTO</Typography>
               <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <Typography className={classes.cardTitle}>NACIONALIDAD</Typography>
               <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
             </Grid>
@@ -101,6 +157,6 @@ const DatosGenerales = ({ data: info, titulo }) => {
         <AclaracionesObservacions />
       </Grid>
     </Grid>
-  )
+  );
 }
 export default DatosGenerales

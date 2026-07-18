@@ -31,40 +31,72 @@ function Apoyo(props) {
             </BoxAccordionSummary>
             <BoxAccordionDetails>
               <Grid container spacing={1}>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>BENEFICIARIO:</Typography>
                   <Typography className={classes.card}>{obj.beneficiarioPrograma.valor}</Typography>
                 </Grid>
 
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>NOMBRE DEL PROGRAMA:</Typography>
                   <Typography className={classes.card}>{obj.nombrePrograma}</Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>INSTITUCIÓN QUE OTORGA EL APOYO:</Typography>
                   <Typography className={classes.card}>{obj.institucionOtorgante}</Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>NIVEL U ORDEN DE GOBIERNO:</Typography>
                   <Typography className={classes.card}>{obj.nivelOrdenGobierno}</Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>TIPO DE APOYO:</Typography>
                   <Typography className={classes.card}>{obj.tipoApoyo.valor}</Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>FORMA DE RECEPCIÓN DEL APOYO:</Typography>
                   <Typography className={classes.card}>{obj.formaRecepcion}</Typography>
                 </Grid>
                 {obj.formaRecepcion === 'MONETARIO' ? (
-                  <Grid item xs={12} md={4}>
+                  <Grid
+                    size={{
+                      xs: 12,
+                      md: 4
+                    }}>
                     <Typography className={classes.cardTitle}>MONTO APROXIMADO DEL APOYO MENSUAL:</Typography>
                     <Typography className={classes.card}>
                       {getMoneda(obj.montoApoyoMensual.valor)} {obj.montoApoyoMensual.moneda}
                     </Typography>
                   </Grid>
                 ) : (
-                  <Grid item xs={12} md={4}>
+                  <Grid
+                    size={{
+                      xs: 12,
+                      md: 4
+                    }}>
                     <Typography className={classes.cardTitle}>ESPECIFIQUE EL APOYO:</Typography>
                     <Typography className={classes.card}>{obj.especifiqueApoyo}</Typography>
                   </Grid>
@@ -72,11 +104,11 @@ function Apoyo(props) {
               </Grid>
             </BoxAccordionDetails>
           </BoxAccordion>
-        )
+        );
       })}
       <AclaracionesObservacions />
     </>
-  )
+  );
 }
 
 const ApoyosBeneficios = props => {
@@ -88,16 +120,16 @@ const ApoyosBeneficios = props => {
 
   return (
     <Grid container spacing={2} className={classes.rootPrincipal}>
-      <Grid item xs={12}>
+      <Grid size={12}>
         <Typography className={classes.tituloSeccion} align='center'>
           3. APOYOS O BENEFICIOS PÚBLICOS (HASTA LOS 2 ÚLTIMOS AÑOS)
         </Typography>
       </Grid>
-      <Grid item xs={12}>
+      <Grid size={12}>
         {typeof data === 'undefined' || data.ninguno ? <DatosNoRegistrados /> : apoyo.length ? <Apoyo apoyo={apoyo} /> : <DatosReservados />}
       </Grid>
     </Grid>
-  )
+  );
 }
 
 export default ApoyosBeneficios

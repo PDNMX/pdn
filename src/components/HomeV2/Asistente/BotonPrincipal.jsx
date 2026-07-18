@@ -107,17 +107,24 @@ export default function CustomizedDialogs () {
         <DialogContent>
           <Grid
             container
-            alignItems='center'
-            justifyContent='center'
             className={classes.container}
             spacing={0}
-          >
-            <Grid item md={12} sm={12} xs={12} align='center'>
+            sx={{
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+            <Grid
+              sx={{ textAlign: 'center' }}
+              size={{
+                md: 12,
+                sm: 12,
+                xs: 12
+              }}>
               <Stepper stateChanger={setTitulo} />
             </Grid>
           </Grid>
         </DialogContent>
       </BootstrapDialog>
     </>
-  )
+  );
 }

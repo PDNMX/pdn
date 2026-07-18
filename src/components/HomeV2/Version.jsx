@@ -22,16 +22,20 @@ function Version (props) {
   return (
     <>
       <div className={classes.root}>
-        <Typography display='inline'><b>Versión 1.2</b>&nbsp;&nbsp;</Typography>
+        <Typography sx={{
+          display: 'inline'
+        }}><b>Versión 1.2</b>&nbsp;&nbsp;</Typography>
       </div>
       {user.loggedIn &&
         <div className={classes.bienvenida}>
-          <Typography display='inline'>
+          <Typography sx={{
+            display: 'inline'
+          }}>
             <b> Bienvenido {`${user.nombres} ${user.primerApellido}`} - {user.username}</b>
           </Typography>
         </div>}
     </>
-  )
+  );
 }
 
 export default withStyles(styles)(Version)

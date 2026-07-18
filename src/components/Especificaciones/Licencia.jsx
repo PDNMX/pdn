@@ -60,25 +60,28 @@ const Licencia = props => {
   const { classes } = props
   return (
     <div className={classes.root}>
-      <Typography variant='h5' className={classes.title} paragraph>
+      <Typography variant='h5' className={classes.title} sx={{
+        marginBottom: "16px"
+      }}>
         Licencia
       </Typography>
-
-      <Typography paragraph variant='h6' className={classes.text}>
+      <Typography variant='h6' className={classes.text} sx={{
+        marginBottom: "16px"
+      }}>
         Plataforma Digital Nacional &copy; 2018 se encuentra bajo la licencia{' '}
         <Link href='https://creativecommons.org/licenses/by-nc/4.0/deed.es' rel='license noreferrer' target='_blank' className={classes.linkMobile}>
           CC BY-NC 4.0
         </Link>
       </Typography>
-
-      <Typography paragraph style={{ marginBottom: 30 }}>
+      <Typography style={{ marginBottom: 30 }} sx={{
+        marginBottom: "16px"
+      }}>
         <Link href='https://creativecommons.org/licenses/by-nc/4.0/deed.es' rel='license noreferrer' target='_blank'>
           <figure className={classes.figure}>
             <img alt='Creative Commons License' style={{ height: '22px!important', marginLeft: 3, verticalAlign: 'text-bottom' }} src='https://i.creativecommons.org/l/by-nc/4.0/80x15.png' />
           </figure>
         </Link>
       </Typography>
-
       {/* <ul className={classes.ul}>
                 <li className={classes.li}>
                     <Typography paragraph display='inline'><b>Compartir</b> &mdash; copiar y redistribuir el material en cualquier medio o formato </Typography></li>
@@ -115,7 +118,7 @@ const Licencia = props => {
                 No se dan garantías. La licencia podría no darle todos los permisos que necesita para el uso que tenga previsto. Por ejemplo, otros derechos como publicidad, privacidad, o derechos morales pueden limitar la forma en que utilice el material.
             </Typography> */}
     </div>
-  )
+  );
 }
 
 export default withStyles(styles)(Licencia)

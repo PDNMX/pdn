@@ -108,13 +108,27 @@ function ResponsiveDialog (props) {
 
           {data !== null &&
             <div>
-              <Typography paragraph><b>{data.tender.title}</b></Typography>
-              <Typography paragraph>{data.tender.description}</Typography>
-              <Typography paragraph>Institución: <b>{data.buyer.name}</b></Typography>
-              <Typography paragraph>Tipo de contratación: <b>{data.tender.procurementMethod}</b></Typography>
-              <Typography paragraph>Estatus de la contratacion: <b>{data.tender.status}</b></Typography>
-              <Typography paragraph>Número de contratos: <b>{data.contracts ? data.contracts.length : 'No disponible'}</b></Typography>
-              <Typography paragraph>Monto total: <b>{getTotal(data)}</b></Typography>
+              <Typography sx={{
+                marginBottom: "16px"
+              }}><b>{data.tender.title}</b></Typography>
+              <Typography sx={{
+                marginBottom: "16px"
+              }}>{data.tender.description}</Typography>
+              <Typography sx={{
+                marginBottom: "16px"
+              }}>Institución: <b>{data.buyer.name}</b></Typography>
+              <Typography sx={{
+                marginBottom: "16px"
+              }}>Tipo de contratación: <b>{data.tender.procurementMethod}</b></Typography>
+              <Typography sx={{
+                marginBottom: "16px"
+              }}>Estatus de la contratacion: <b>{data.tender.status}</b></Typography>
+              <Typography sx={{
+                marginBottom: "16px"
+              }}>Número de contratos: <b>{data.contracts ? data.contracts.length : 'No disponible'}</b></Typography>
+              <Typography sx={{
+                marginBottom: "16px"
+              }}>Monto total: <b>{getTotal(data)}</b></Typography>
 
               <Typography variant='h5'>Participantes</Typography>
 
@@ -135,7 +149,9 @@ function ResponsiveDialog (props) {
                                     {data.contracts[0].documents.map((d, i) => { return <Document doc={d} index={i} key={i} /> })}
                                   </div>}
 
-              <Typography paragraph variant='h5'>Datos en formato JSON</Typography>
+              <Typography variant='h5' sx={{
+                marginBottom: "16px"
+              }}>Datos en formato JSON</Typography>
               <Box sx={{ maxWidth: '100%', overflowX: 'auto' }}>
                 <JsonValue value={data} />
               </Box>
@@ -154,18 +170,22 @@ function ResponsiveDialog (props) {
         </DialogActions>
       </Dialog>
     </div>
-  )
+  );
 }
 
 const Party = props => {
   const { party, index } = props
 
   return (
-    <Box p={1}>
+    <Box sx={{
+      p: 1
+    }}>
       <Paper sx={{ p: 1 }} elevation={3}>
         <Typography sx={{ fontWeight: 'bold' }}>Participante {index + 1}</Typography>
         <Typography>{party.name}</Typography>
-        <Typography paragraph>Roles: {party.roles ? `${party.roles.join(', ')}` : ''}</Typography>
+        <Typography sx={{
+          marginBottom: "16px"
+        }}>Roles: {party.roles ? `${party.roles.join(', ')}` : ''}</Typography>
         {party.contactPoint &&
           <div>
             <Typography variant='body2' sx={{ fontWeight: 'bold' }}>Contacto:</Typography>
@@ -174,23 +194,27 @@ const Party = props => {
           </div>}
       </Paper>
     </Box>
-  )
+  );
 }
 
 const Document = props => {
   const { doc, index } = props
   return (
-    <Box p={1}>
+    <Box sx={{
+      p: 1
+    }}>
       <Paper sx={{ p: 1 }} elevation={3}>
         <Typography sx={{ fontWeight: 'bold' }}>Documento {index + 1}</Typography>
         <Typography>Título: {doc.title}</Typography>
-        <Typography paragraph>Descripción: {doc.description}</Typography>
+        <Typography sx={{
+          marginBottom: "16px"
+        }}>Descripción: {doc.description}</Typography>
         <ButtonPDN variant='contained' size='small' href={doc.url} target='_blank'>
           URL
         </ButtonPDN>
       </Paper>
     </Box>
-  )
+  );
 }
 
 ResponsiveDialog.propTypes = {

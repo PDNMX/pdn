@@ -81,13 +81,26 @@ const VistaDetalleEstado = props => {
     return (
       <div>
         <HeaderV2 section={section} />
-        <Grid container spacing={0} justifyContent='center'>
-          <Grid item xs={12} className={classes.rootItem}>
+        <Grid container spacing={0} sx={{
+          justifyContent: 'center'
+        }}>
+          <Grid className={classes.rootItem} size={12}>
             <Paper elevation={15} className={classes.rootPaper}>
-              <Typography variant='h3' paragraph align='center' color='#713972'>
+              <Typography
+                variant='h3'
+                align='center'
+                sx={{
+                  color: '#713972',
+                  marginBottom: "16px"
+                }}>
                 Estado no encontrado
               </Typography>
-              <Typography align='center' color='#000' paragraph>
+              <Typography
+                align='center'
+                sx={{
+                  color: '#000',
+                  marginBottom: "16px"
+                }}>
                 No se encontró información para el estado solicitado.
               </Typography>
             </Paper>
@@ -196,15 +209,28 @@ const VistaDetalleEstado = props => {
   return (
     <div>
       <HeaderV2 section={section} />
-      <Grid container spacing={0} justifyContent='center'>
-        <Grid item xs={12} className={classes.rootItem}>
+      <Grid container spacing={0} sx={{
+        justifyContent: 'center'
+      }}>
+        <Grid className={classes.rootItem} size={12}>
           <Paper elevation={15} className={classes.rootPaper}>
 
-            <Typography variant='h3' paragraph align='center' color='#713972'>
+            <Typography
+              variant='h3'
+              align='center'
+              sx={{
+                color: '#713972',
+                marginBottom: "16px"
+              }}>
               {estado.name}
             </Typography>
 
-            <Typography align='center' color='#000' paragraph>
+            <Typography
+              align='center'
+              sx={{
+                color: '#000',
+                marginBottom: "16px"
+              }}>
               Información al 30 de junio de 2026, reportada por la Secretaría Ejecutiva del Sistema Estatal Anticorrupción 
             </Typography>
 
@@ -245,22 +271,30 @@ const VistaDetalleEstado = props => {
                   width: '100%'
                 }
               }}>
-                <Box display='flex'>
+                <Box sx={{
+                  display: 'flex'
+                }}>
                   <img src={icon_s1} alt='Sistema 1' style={{ width: '40px', padding: '2px' }} />
                   <CustomizedProgressBar value={avance_s1} color={colors.s1} />
                 </Box>
 
-                <Box display='flex'>
+                <Box sx={{
+                  display: 'flex'
+                }}>
                   <img src={icon_s2} alt='Sistema 2' style={{ width: '40px', padding: '2px' }} />
                   <CustomizedProgressBar value={avance_s2} color={colors.s2} />
                 </Box>
 
-                <Box display='flex'>
+                <Box sx={{
+                  display: 'flex'
+                }}>
                   <img src={icon_s3} alt='Sistema 3' style={{ width: '40px', padding: '2px' }} />
                   <CustomizedProgressBar value={avance_s3} color={colors.s3} />
                 </Box>
 
-                <Box display='flex'>
+                <Box sx={{
+                  display: 'flex'
+                }}>
                   <img src={icon_s6} alt='Sistema 6' style={{ width: '40px', padding: '2px' }} />
                   <CustomizedProgressBar value={avance_s6} color={colors.s6} />
                 </Box>
@@ -275,14 +309,24 @@ const VistaDetalleEstado = props => {
                   width: '100%'
                 }
               }}>
-                <Typography variant='h5' color='#713972' sx={{ fontWeight: 'bold', mb: 2 }}>
+                <Typography
+                  variant='h5'
+                  sx={{
+                    color: '#713972',
+                    fontWeight: 'bold',
+                    mb: 2
+                  }}>
                   Instituciones en la PDN
                 </Typography>
 
-                <Typography variant='h4' color={colors.s1} sx={{ fontWeight: 'bold' }}>
+                <Typography variant='h4' sx={{ color: colors.s1, fontWeight: 'bold' }}>
                   {avance_s1}%
                 </Typography>
-                <Typography color='#713972' textAlign='center'>
+                <Typography
+                  sx={{
+                    color: '#713972',
+                    textAlign: 'center'
+                  }}>
                   {
                     estado.data.s1.ejecutivo.tiene +
                     estado.data.s1.legislativo.tiene +
@@ -298,10 +342,14 @@ const VistaDetalleEstado = props => {
                   }
                 </Typography>
 
-                <Typography variant='h4' color={colors.s2} sx={{ fontWeight: 'bold' }}>
+                <Typography variant='h4' sx={{ color: colors.s2, fontWeight: 'bold' }}>
                   {avance_s2}%
                 </Typography>
-                <Typography color='#713972' textAlign='center'>
+                <Typography
+                  sx={{
+                    color: '#713972',
+                    textAlign: 'center'
+                  }}>
                   {
                     estado.data.s2.ejecutivo.tiene +
                     estado.data.s2.legislativo.tiene +
@@ -317,10 +365,14 @@ const VistaDetalleEstado = props => {
                   }
                 </Typography>
 
-                <Typography variant='h4' color={colors.s3} sx={{ fontWeight: 'bold' }}>
+                <Typography variant='h4' sx={{ color: colors.s3, fontWeight: 'bold' }}>
                   {avance_s3}%
                 </Typography>
-                <Typography color='#713972' textAlign='center'>
+                <Typography
+                  sx={{
+                    color: '#713972',
+                    textAlign: 'center'
+                  }}>
                   {
                     estado.data.s3.ejecutivo.tiene +
                     estado.data.s3.legislativo.tiene +
@@ -335,14 +387,23 @@ const VistaDetalleEstado = props => {
                     estado.data.s3.municipal.total
                   }
                 </Typography>
-                <Typography color='#713972' textAlign='center' variant='body2'>
+                <Typography
+                  variant='body2'
+                  sx={{
+                    color: '#713972',
+                    textAlign: 'center'
+                  }}>
                   Tribunal: {estado.data.s3.s3t ? 'Sí' : 'No'}
                 </Typography>
 
-                <Typography variant='h4' color={colors.s6} sx={{ fontWeight: 'bold' }}>
+                <Typography variant='h4' sx={{ color: colors.s6, fontWeight: 'bold' }}>
                   {avance_s6}%
                 </Typography>
-                <Typography color='#713972' textAlign='center'>
+                <Typography
+                  sx={{
+                    color: '#713972',
+                    textAlign: 'center'
+                  }}>
                   {
                     estado.data.s6.ejecutivo.tiene +
                     estado.data.s6.legislativo.tiene +
@@ -386,7 +447,7 @@ const VistaDetalleEstado = props => {
         </Grid>
       </Grid>
     </div>
-  )
+  );
 }
 
 export default withStyles(styles)(VistaDetalleEstado)

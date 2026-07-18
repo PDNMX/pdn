@@ -34,7 +34,15 @@ const styles = () => ({
 const SysCard = (props) => {
   const { classes, sys } = props;
   return (
-    <Grid item lg={2} sm={4} xs={6} p={1}>
+    <Grid
+      size={{
+        lg: 2,
+        sm: 4,
+        xs: 6
+      }}
+      sx={{
+        p: 1
+      }}>
       <Card
         className={classes.card}
         component={RouterLink}
@@ -55,7 +63,13 @@ const SysCard = (props) => {
                 width: "auto",
               }}
             />
-            <Typography mx={1} mb={2} color="#fff" variant="body1">
+            <Typography
+              variant="body1"
+              sx={{
+                mx: 1,
+                mb: 2,
+                color: "#fff"
+              }}>
               {sys.name}
             </Typography>
             {/* <CardContent>

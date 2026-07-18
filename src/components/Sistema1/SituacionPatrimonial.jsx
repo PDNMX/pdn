@@ -373,10 +373,19 @@ export default function SituacionPatrimonial({ data, value, setValue, tipo }) {
   return (
     <Paper square className={classes.root}>
       <Grid container spacing={0}>
-        <Grid item xs={12} md={2} className={classes2.menulateral_fondo}>
+        <Grid
+          className={classes2.menulateral_fondo}
+          size={{
+            xs: 12,
+            md: 2
+          }}>
           <MenuLateral value={value} setValue={setValue} opciones={situacionPatrimonial(data, tipo)} />
         </Grid>
-        <Grid item xs={12} md={10}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 10
+          }}>
           <ErrorBoundary>{opcion(value, data, tipo)}</ErrorBoundary>
         </Grid>
       </Grid>

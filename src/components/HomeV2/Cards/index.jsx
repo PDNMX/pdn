@@ -5,15 +5,27 @@ import BlogComponent from '../Blog/BlogComponent'
 
 const Cards = () => {
   return (
-    <Grid container direction='row' justifyContent='space-evenly' alignItems='stretch'>
-      <Grid item>
+    <Grid
+      container
+      direction='row'
+      sx={{
+        justifyContent: 'space-evenly',
+        alignItems: 'stretch'
+      }}>
+      <Grid>
         <Mercado />
       </Grid>
-      <Grid item xs={12} md={12} lg={12} xl={12}>
+      <Grid
+        size={{
+          xs: 12,
+          md: 12,
+          lg: 12,
+          xl: 12
+        }}>
         <BlogComponent />
       </Grid>
     </Grid>
-  )
+  );
 }
 
 export default Cards

@@ -17,10 +17,10 @@ export default function Disclaimer(props) {
           Plataforma Digital Nacional
         </DialogTitle>
         <DialogContent>
-          <DialogContentText paragraph id='alert-dialog-description' style={{ textAlign: 'justify' }} className={classes.text_color}>
+          <DialogContentText id='alert-dialog-description' style={{ textAlign: 'justify' }} className={classes.text_color} sx={{ marginBottom: '16px' }}>
             Toda la información que se muestra en este Sistema es responsabilidad de quien la genera, concentra y provee a la PDN.
           </DialogContentText>
-          <DialogContentText paragraph id='alert-dialog-description' style={{ textAlign: 'justify' }} className={classes.text_color}>
+          <DialogContentText id='alert-dialog-description' style={{ textAlign: 'justify' }} className={classes.text_color} sx={{ marginBottom: '16px' }}>
             Lo anterior se encuentra fundamentado en las{' '}
             <Link href='https://www.dof.gob.mx/nota_detalle.php?codigo=5541802&fecha=23/10/2018' target='_blank' underline='none' className={classes.enlaces} rel='noreferrer'>
               Bases para el Funcionamiento de la Plataforma Digital Nacional
@@ -31,12 +31,12 @@ export default function Disclaimer(props) {
             </Link>{' '}
             (artículos 31 y 32).
           </DialogContentText>
-          <DialogContentText paragraph id='alert-dialog-description' style={{ textAlign: 'justify' }} className={classes.text_color}>
+          <DialogContentText id='alert-dialog-description' style={{ textAlign: 'justify' }} className={classes.text_color} sx={{ marginBottom: '16px' }}>
             <Link to='/terminos' className={classes.enlaces}>
               Conoce los términos y condiciones de uso
             </Link>
           </DialogContentText>
-          <DialogContentText paragraph id='alert-dialog-description' style={{ textAlign: 'justify' }} className={classes.text_color}>
+          <DialogContentText id='alert-dialog-description' style={{ textAlign: 'justify' }} className={classes.text_color} sx={{ marginBottom: '16px' }}>
             Conoce nuestros Avisos de Privacidad:{' '}
             <Link href={avisoSimplificado} target='_blank' underline='none' className={classes.enlaces}>
               Simplificado

@@ -30,11 +30,13 @@ const EnhancedTableToolbar = () => {
 
   return (
     <Toolbar className={classes.title}>
-      <Typography paragraph variant='h6' style={{ color: 'white' }} id='tableTitle'>
+      <Typography variant='h6' style={{ color: 'white' }} id='tableTitle' sx={{
+        marginBottom: "16px"
+      }}>
         Pulsa sobre el registro para ver su detalle
       </Typography>
     </Toolbar>
-  )
+  );
 }
 
 export default EnhancedTableToolbar

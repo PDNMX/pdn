@@ -19,29 +19,29 @@ const ActiveResultProv = props => {
     <BoxAccordion square key={'res-' + i}>
       <BoxAccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
         <Grid container spacing={0}>
-          <Grid item xs={8}>
+          <Grid size={8}>
             <Typography className={classes.resultadosHeading}>{p.supplier_name}</Typography>
             <Typography className={classes.resultadosHeading}>[{p.levels.join(', ')}]</Typography>
           </Grid>
           {p.finding ? (
-            <Grid item xs={4}>
+            <Grid size={4}>
               <Grid container spacing={0}>
-                <Grid item xs={2}>
+                <Grid size={2}>
                   <CircularProgress color='primary' size={20} />
                 </Grid>
               </Grid>
             </Grid>
           ) : (
-            <Grid item xs={4}>
+            <Grid size={4}>
               <Grid container spacing={0}>
-                <Grid item xs={4}>
+                <Grid size={4}>
                   <Typography className={classes.resultadosHeading}>
                     <Tooltip title={p.estatus ? 'Con respuesta' : 'Sin respuesta: ' + p.error.status + ' ' + p.error.statusText}>
                       <IconSunny color={p.estatus ? 'primary' : 'inherit'} />
                     </Tooltip>
                   </Typography>
                 </Grid>
-                <Grid item xs={8}>
+                <Grid size={8}>
                   <Typography className={classes.resultadosHeading}> Total de registros: {new Intl.NumberFormat('es-MX').format(p.total)} </Typography>
                 </Grid>
               </Grid>
@@ -55,7 +55,7 @@ const ActiveResultProv = props => {
 
           {p.error && (
             <Grid container spacing={1}>
-              <Grid item xs={12}>
+              <Grid size={12}>
                 <Typography className={classes.alertWarning} align='center'>
                   No se logró establecer la conexión con el proveedor, por favor intenta nuevamente más tarde.
                 </Typography>
@@ -65,7 +65,7 @@ const ActiveResultProv = props => {
         </BoxAccordionDetails>
       )}
     </BoxAccordion>
-  )
+  );
 }
 
 export default ActiveResultProv

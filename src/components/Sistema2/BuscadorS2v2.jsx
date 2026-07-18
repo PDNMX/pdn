@@ -403,19 +403,27 @@ const BuscadorS2 = props => {
     <div>
       <Paper className={classes.paper} elevation={15}>
         {/* Información de la búsqueda */}
-        <Box p={1}>
-          <Typography paragraph>
+        <Box sx={{
+          p: 1
+        }}>
+          <Typography sx={{
+            marginBottom: "16px"
+          }}>
             <b>Aquí puedes consultar:</b>
           </Typography>
 
           <ul className={classes.ul}>
             <li className={classes.li}>
-              <Typography color='textPrimary' display='inline'>
+              <Typography color='textPrimary' sx={{
+                display: 'inline'
+              }}>
                 Datos como: nombre, puesto e institución en la que laboran las personas servidoras públicas que intervienen en procedimientos de contratación.
               </Typography>
             </li>
             <li className={classes.li}>
-              <Typography color='textPrimary' display='inline'>
+              <Typography color='textPrimary' sx={{
+                display: 'inline'
+              }}>
                 El nivel de responsabilidad que tienen las personas servidoras públicas que intervienen en procedimientos de contratación.
               </Typography>
             </li>
@@ -423,7 +431,9 @@ const BuscadorS2 = props => {
         </Box>
 
         {/* Parámetros de búsqueda */}
-        <Box p={1}>
+        <Box sx={{
+          p: 1
+        }}>
           <EntradasBuscador
             handleCleanAll={handleCleanAll}
             handleSearch={handleBroadSearch}
@@ -443,7 +453,9 @@ const BuscadorS2 = props => {
 
         {/* Resumen de resultados */}
         {showSummaryPanel && state.summaryData && state.summaryData.length > 0 &&
-          <Box p={1}>
+          <Box sx={{
+            p: 1
+          }}>
             <div className={classes.container}>
               <Previos data={state.summaryData} handleChangeSujetoObligado={handleSearchSupplier} />
 
@@ -451,13 +463,17 @@ const BuscadorS2 = props => {
             </div>
           </Box>}
 
-        <Box p={1}>
+        <Box sx={{
+          p: 1
+        }}>
           <AlertaError open={error} setOpen={open => { setError(open) }} />
         </Box>
 
         {/* Desplegar resultados de la búsqueda */}
         {showResultsTable && state.results && state.results.length > 0 &&
-          <Box p={1}>
+          <Box sx={{
+            p: 1
+          }}>
 
             <Box sx={{ display: 'flex', flexDirection: 'row' }}>
               <Box sx={{ flexGrow: 1 }}>
@@ -551,18 +567,15 @@ const BuscadorS2 = props => {
             }
 
       </Paper>
-
       <Box>
         <Descarga url={process.env.REACT_APP_BULK_S2} tipoGA='bulk-s2' />
       </Box>
-
       {state.loading &&
         <Modal open={state.loading} disableAutoFocus>
           <CircularProgress className={classes.progress} id='spinnerLoading' size={200} />
         </Modal>}
-
     </div>
-  )
+  );
 }
 
 export default withStyles(styles)(BuscadorS2)

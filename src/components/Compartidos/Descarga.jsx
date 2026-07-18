@@ -38,10 +38,11 @@ class Descarga extends React.Component {
         <Grid
           container
           direction='row'
-          justifyContent='center'
-          alignItems='stretch'
-        >
-          <Grid item xs={12} align='center'>
+          sx={{
+            justifyContent: 'center',
+            alignItems: 'stretch'
+          }}>
+          <Grid size={12} sx={{ textAlign: 'center' }}>
             <Typography className={classes.descarga} variant='h5'>
               Descarga todos los datos
             </Typography>
@@ -59,7 +60,7 @@ class Descarga extends React.Component {
           </Grid>
         </Grid>
       </div>
-    )
+    );
   }
 }
 

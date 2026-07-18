@@ -104,12 +104,11 @@ const SancionesResueltasAnio = ({ providers }) => {
             const isParticular = () => {
                 return (
                     // Verificaciones para personas físicas
-                    (item.datosGenerales?.nombres || item.datosGenerales?.primerApellido) ||
+                    ((item.datosGenerales?.nombres || item.datosGenerales?.primerApellido) ||
                     // Verificaciones para personas morales
                     (item.datosGenerales?.nombreRazonSocial || item.datosGenerales?.rfc) ||
                     // Otras posibles verificaciones específicas
-                    (item.tipoPersona === 'particular') ||
-                    (item.datosGenerales?.tipoPersona === 'particular')
+                    (item.tipoPersona === 'particular') || (item.datosGenerales?.tipoPersona === 'particular'))
                 );
             };
 

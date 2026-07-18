@@ -58,14 +58,22 @@ function BuscadorParticularesSancionados ({ classes }) {
       <Paper className={classes.paper} elevation={15} >
         {/* TEXTO */}
         <Grid container className={classes.container}>
-          <Grid item xs={12} style={{ maxWidth: 1200, margin: 0 }}>
-          <Box p={1}>
-            <Typography paragraph>
+          <Grid style={{ maxWidth: 1200, margin: 0 }} size={12}>
+          <Box sx={{
+            p: 1
+          }}>
+            <Typography sx={{
+              marginBottom: "16px"
+            }}>
               <b>Aquí puedes consultar:</b>
             </Typography>
             <ul className={classes.ul}>
-              <li className={classes.li}><Typography display='inline'>Datos de la sanción firme impuesta a particulares como: número de expediente, autoridad que sanciona y resolución.</Typography></li>
-              <li className={classes.li}><Typography display='inline'>Información del particular sancionado como: nombre, razón social, causa y tipo de sanción.</Typography></li>
+              <li className={classes.li}><Typography sx={{
+                display: 'inline'
+              }}>Datos de la sanción firme impuesta a particulares como: número de expediente, autoridad que sanciona y resolución.</Typography></li>
+              <li className={classes.li}><Typography sx={{
+                display: 'inline'
+              }}>Información del particular sancionado como: nombre, razón social, causa y tipo de sanción.</Typography></li>
               {/* <li className={classes.li}>
                                 <Typography display='inline'>
                                     Obtén los datos de la sanción impuesta al particular como: expediente, hechos de la
@@ -79,20 +87,24 @@ function BuscadorParticularesSancionados ({ classes }) {
         </Grid>
 
         {/* BUSCADOR */}
-        <Grid container spacing={4} justifyContent='center' className={classes.container}>
-          <Grid item xs={12}>
+        <Grid container spacing={4} className={classes.container} sx={{
+          justifyContent: 'center'
+        }}>
+          <Grid size={12}>
             <BusquedaParticular />
           </Grid>
         </Grid>
       </Paper>
       {/* DESCARGA */}
-      <Grid container spacing={0} justifyContent='center'>
-        <Grid item xs={12} className={classes.itemD}>
+      <Grid container spacing={0} sx={{
+        justifyContent: 'center'
+      }}>
+        <Grid className={classes.itemD} size={12}>
           <Descarga url={process.env.REACT_APP_BULK_S3_PARTICULARES} tipoGA='bulk-s3P' />
         </Grid>
       </Grid>
     </div>
-  )
+  );
 }
 
 export default withStyles(styles)(BuscadorParticularesSancionados)

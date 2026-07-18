@@ -31,7 +31,9 @@ const FooterPage = (props) => {
         </Typography>
         <Typography className={classes.text} variant='body2'>
           Los datos utilizados para la realización de estas gráficas fueron tomados de la página
-          <Link display='inline' href='https://datos.gob.mx/' target='_blank' className={classes.link} rel='noreferrer'>
+          <Link href='https://datos.gob.mx/' target='_blank' className={classes.link} rel='noreferrer' sx={{
+            display: 'inline'
+          }}>
             {' datos.gob.mx '}
           </Link>
           y corresponden al conjunto de datos <b>{`"${dataSet}"`}</b> publicado por la <b>{`${provider}`}</b>.
@@ -40,7 +42,7 @@ const FooterPage = (props) => {
 
       </Paper>
     </>
-  )
+  );
 }
 
 export default withStyles(styles)(FooterPage)

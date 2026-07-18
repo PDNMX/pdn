@@ -166,7 +166,13 @@ const Index = ({ classes }) => {
 
   if (loading) {
     return (
-      <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          minHeight: "100vh"
+        }}>
         <CircularProgress />
       </Box>
     );
@@ -174,7 +180,13 @@ const Index = ({ classes }) => {
 
   if (error) {
     return (
-      <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          minHeight: "100vh"
+        }}>
         <div>Error al cargar los datos: {error}</div>
       </Box>
     );
@@ -183,9 +195,10 @@ const Index = ({ classes }) => {
   return (
     <div className={classes.root}>
       <HeaderV2 section={system} />
-
-      <Grid container justifyContent="center">
-        <Grid item xs={12} className={classes.section}>
+      <Grid container sx={{
+        justifyContent: "center"
+      }}>
+        <Grid className={classes.section} size={12}>
           <Paper className={classes.mainContainer} elevation={0}>
             <Box className={classes.tabsContainer}>
             <Tabs 

@@ -15,20 +15,20 @@ const MantenimentResultProv = props => {
     <BoxAccordion>
       <BoxAccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header' className={classes.resultadosTituloMantenimiento} style={{ backgroundColor: '#7a3e7c' }}>
         <Grid container spacing={0}>
-          <Grid item xs={8}>
+          <Grid size={8}>
             <Typography className={classes.resultadosHeading} style={{ color: '#fff' }}>{p.supplier_name}</Typography>
             <Typography className={classes.resultadosHeading} style={{ color: '#fff' }}>[{p.levels.join(', ')}]</Typography>
           </Grid>
-          <Grid item xs={4}>
+          <Grid size={4}>
             <Grid container spacing={0}>
-              <Grid item xs={4}>
+              <Grid size={4}>
                 <Typography className={classes.resultadosHeading}>
                   <Tooltip title='En mantenimiento'>
                     <Timelapse style={{ color: '#F7E455' }} />
                   </Tooltip>
                 </Typography>
               </Grid>
-              <Grid item xs={8}>
+              <Grid size={8}>
                 <Typography className={classes.resultadosHeading} style={{ color: '#F7E455' }}>
                   En mantenimiento
                 </Typography>
@@ -39,7 +39,7 @@ const MantenimentResultProv = props => {
       </BoxAccordionSummary>
       <BoxAccordionDetails style={{ backgroundColor: '#FCFCFF' }}>
         <Grid container spacing={0}>
-          <Grid item xs={12}>
+          <Grid size={12}>
             <Typography className={classes.alertSuccess} align='center' style={{ backgroundColor: '#eae1ea' , borderColor:'#7a3e7c'} } >
               En este momento esta API se encuentra en proceso de Mantenimiento, por favor vuelve a revisar mas tarde.
             </Typography>
@@ -47,7 +47,7 @@ const MantenimentResultProv = props => {
         </Grid>
       </BoxAccordionDetails>
     </BoxAccordion>
-  )
+  );
 }
 
 export default MantenimentResultProv

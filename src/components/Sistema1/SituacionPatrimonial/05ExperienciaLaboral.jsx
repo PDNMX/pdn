@@ -21,12 +21,12 @@ const ExperienciaLaboral = ({ data, titulo }) => {
 
   return (
     <Grid container spacing={2} className={classes.rootPrincipal}>
-      <Grid item xs={12}>
+      <Grid size={12}>
         <Typography className={classes.tituloSeccion} align='center'>
           {titulo}
         </Typography>
       </Grid>
-      <Grid item xs={12}>
+      <Grid size={12}>
         {data.ninguno ? (
           <DatosNoRegistrados />
         ) : (
@@ -57,43 +57,83 @@ const ExperienciaLaboral = ({ data, titulo }) => {
                   <BoxAccordionDetails>
                     {expe.ambitoSector.clave === 'PUB' && (
                       <Grid container spacing={1}>
-                        <Grid item xs={12} md={4}>
+                        <Grid
+                          size={{
+                            xs: 12,
+                            md: 4
+                          }}>
                           <Typography className={classes.cardTitle}>ÁMBITO/SECTOR EN EL QUE LABORASTE:</Typography>
                           <Typography className={classes.card}>{expe.ambitoSector.valor}</Typography>
                         </Grid>
-                        <Grid item xs={12} md={4}>
+                        <Grid
+                          size={{
+                            xs: 12,
+                            md: 4
+                          }}>
                           <Typography className={classes.cardTitle}>NIVEL/ORDEN DE GOBIERNO</Typography>
                           <Typography className={classes.card}>{expe.nivelOrdenGobierno === 'MUNICIPAL_ALCALDIA' ? 'MUNICIPAL/ALCALDÍA' : expe.nivelOrdenGobierno}</Typography>
                         </Grid>
-                        <Grid item xs={12} md={4}>
+                        <Grid
+                          size={{
+                            xs: 12,
+                            md: 4
+                          }}>
                           <Typography className={classes.cardTitle}>ÁMBITO PÚBLICO</Typography>
                           <Typography className={classes.card}>{expe.ambitoPublico}</Typography>
                         </Grid>
-                        <Grid item xs={12} md={8}>
+                        <Grid
+                          size={{
+                            xs: 12,
+                            md: 8
+                          }}>
                           <Typography className={classes.cardTitle}>NOMBRE DEL ENTE PÚBLICO/NOMBRE DE LA EMPRESA, SOCIEDAD O ASOCIACIÓN</Typography>
                           <Typography className={classes.card}>{expe.nombreEntePublico}</Typography>
                         </Grid>
-                        <Grid item xs={12} md={4}>
+                        <Grid
+                          size={{
+                            xs: 12,
+                            md: 4
+                          }}>
                           <Typography className={classes.cardTitle}>ÁREA DE ADSCRIPCIÓN/ÁREA</Typography>
                           <Typography className={classes.card}>{expe.areaAdscripcion}</Typography>
                         </Grid>
-                        <Grid item xs={12} md={4}>
+                        <Grid
+                          size={{
+                            xs: 12,
+                            md: 4
+                          }}>
                           <Typography className={classes.cardTitle}>EMPLEO, CARGO O COMISIÓN/PUESTO</Typography>
                           <Typography className={classes.card}>{expe.empleoCargoComision}</Typography>
                         </Grid>
-                        <Grid item xs={12} md={4}>
+                        <Grid
+                          size={{
+                            xs: 12,
+                            md: 4
+                          }}>
                           <Typography className={classes.cardTitle}>ESPECIFIQUE FUNCIÓN PRINCIPAL</Typography>
                           <Typography className={classes.card}>{expe.funcionPrincipal}</Typography>
                         </Grid>
-                        <Grid item xs={12} md={4}>
+                        <Grid
+                          size={{
+                            xs: 12,
+                            md: 4
+                          }}>
                           <Typography className={classes.cardTitle}>FECHA DE INGRESO</Typography>
                           <Typography className={classes.card}>{expe.fechaIngreso}</Typography>
                         </Grid>
-                        <Grid item xs={12} md={4}>
+                        <Grid
+                          size={{
+                            xs: 12,
+                            md: 4
+                          }}>
                           <Typography className={classes.cardTitle}>FECHA DE EGRESO</Typography>
                           <Typography className={classes.card}>{expe.fechaEgreso}</Typography>
                         </Grid>
-                        <Grid item xs={12} md={4}>
+                        <Grid
+                          size={{
+                            xs: 12,
+                            md: 4
+                          }}>
                           <Typography className={classes.cardTitle}>LUGAR DONDE SE UBICA</Typography>
                           <Typography className={classes.card}>{expe.ubicacion === 'MX' ? 'MÉXICO' : 'EXTRANJERO'}</Typography>
                         </Grid>
@@ -101,39 +141,75 @@ const ExperienciaLaboral = ({ data, titulo }) => {
                     )}
                     {expe.ambitoSector.clave !== 'PUB' && (
                       <Grid container spacing={1}>
-                        <Grid item xs={12} md={4}>
+                        <Grid
+                          size={{
+                            xs: 12,
+                            md: 4
+                          }}>
                           <Typography className={classes.cardTitle}>ÁMBITO/SECTOR EN EL QUE LABORASTE:</Typography>
                           <Typography className={classes.card}>{expe.ambitoSector.valor}</Typography>
                         </Grid>
-                        <Grid item xs={12} md={8}>
+                        <Grid
+                          size={{
+                            xs: 12,
+                            md: 8
+                          }}>
                           <Typography className={classes.cardTitle}>NOMBRE DEL ENTE PÚBLICO/NOMBRE DE LA EMPRESA, SOCIEDAD O ASOCIACIÓN</Typography>
                           <Typography className={classes.card}>{expe.nombreEmpresaSociedadAsociacion}</Typography>
                         </Grid>
-                        <Grid item xs={12} md={4}>
+                        <Grid
+                          size={{
+                            xs: 12,
+                            md: 4
+                          }}>
                           <Typography className={classes.cardTitle}>RFC</Typography>
                           <Typography className={classes.card}>{expe.rfc}</Typography>
                         </Grid>
-                        <Grid item xs={12} md={4}>
+                        <Grid
+                          size={{
+                            xs: 12,
+                            md: 4
+                          }}>
                           <Typography className={classes.cardTitle}>ÁREA DE ADSCRIPCIÓN/ÁREA</Typography>
                           <Typography className={classes.card}>{expe.area}</Typography>
                         </Grid>
-                        <Grid item xs={12} md={4}>
+                        <Grid
+                          size={{
+                            xs: 12,
+                            md: 4
+                          }}>
                           <Typography className={classes.cardTitle}>EMPLEO, CARGO O COMISIÓN/PUESTO</Typography>
                           <Typography className={classes.card}>{expe.puesto}</Typography>
                         </Grid>
-                        <Grid item xs={12} md={4}>
+                        <Grid
+                          size={{
+                            xs: 12,
+                            md: 4
+                          }}>
                           <Typography className={classes.cardTitle}>SECTOR AL QUE PERTENECE</Typography>
                           <Typography className={classes.card}>{expe.sector && expe.sector.valor}</Typography>
                         </Grid>
-                        <Grid item xs={12} md={4}>
+                        <Grid
+                          size={{
+                            xs: 12,
+                            md: 4
+                          }}>
                           <Typography className={classes.cardTitle}>FECHA DE INGRESO</Typography>
                           <Typography className={classes.card}>{expe.fechaIngreso}</Typography>
                         </Grid>
-                        <Grid item xs={12} md={4}>
+                        <Grid
+                          size={{
+                            xs: 12,
+                            md: 4
+                          }}>
                           <Typography className={classes.cardTitle}>FECHA DE EGRESO</Typography>
                           <Typography className={classes.card}>{expe.fechaEgreso}</Typography>
                         </Grid>
-                        <Grid item xs={12} md={4}>
+                        <Grid
+                          size={{
+                            xs: 12,
+                            md: 4
+                          }}>
                           <Typography className={classes.cardTitle}>LUGAR DONDE SE UBICA</Typography>
                           <Typography className={classes.card}>{expe.ubicacion === 'MX' ? 'MÉXICO' : 'EXTRANJERO'}</Typography>
                         </Grid>
@@ -141,13 +217,13 @@ const ExperienciaLaboral = ({ data, titulo }) => {
                     )}
                   </BoxAccordionDetails>
                 </BoxAccordion>
-              )
+              );
             })}
             <AclaracionesObservacions />
           </>
         )}
       </Grid>
     </Grid>
-  )
+  );
 }
 export default ExperienciaLaboral

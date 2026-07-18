@@ -29,19 +29,39 @@ const Footer = () => {
         <Grid
           container
           direction='row'
-          justifyContent={isXsUp ? 'space-between' : 'space-evenly'}
-          alignItems='center'
-          sx={{ maxWidth: 1200, margin: 'auto' }}
           className='mt-5 footerLogos'
           spacing={0}
-        >
-          <Grid item sm={3} xs={12} md={3} align='center'>
+          sx={{
+            justifyContent: isXsUp ? 'space-between' : 'space-evenly',
+            alignItems: 'center',
+            maxWidth: 1200,
+            margin: 'auto'
+          }}>
+          <Grid
+            sx={{ textAlign: 'center' }}
+            size={{
+              sm: 3,
+              xs: 12,
+              md: 3
+            }}>
             <a target="_blank" rel="noreferrer" href="https://www.sna.org.mx/"><img src={logoSNA} alt='logo-sna' /></a>
           </Grid>
-          <Grid item sm={3} xs={12} md={3} align='center'>
+          <Grid
+            sx={{ textAlign: 'center' }}
+            size={{
+              sm: 3,
+              xs: 12,
+              md: 3
+            }}>
           <a target="_blank" rel="noreferrer" href="https://www.sesna.gob.mx/"><img src={logoSESNA} alt='logo-sesna' /></a>
           </Grid>
-          <Grid item sm={3} xs={12} md={3} align='center'>
+          <Grid
+            sx={{ textAlign: 'center' }}
+            size={{
+              sm: 3,
+              xs: 12,
+              md: 3
+            }}>
           <a target="_blank" rel="noreferrer" href="/"><img src={logoPDN} alt='logo-pdn' /></a>
           </Grid>
         </Grid>
@@ -49,12 +69,19 @@ const Footer = () => {
         <Grid
           container
           direction='row'
-          justifyContent='center'
-          alignItems='center'
-          sx={{ maxWidth: 1200, margin: 'auto' }}
           className='mt-2'
-        >
-          <Grid item lg={12} md={12} sm={10}>
+          sx={{
+            justifyContent: 'center',
+            alignItems: 'center',
+            maxWidth: 1200,
+            margin: 'auto'
+          }}>
+          <Grid
+            size={{
+              lg: 12,
+              md: 12,
+              sm: 10
+            }}>
             <Divider />
           </Grid>
         </Grid>
@@ -63,12 +90,20 @@ const Footer = () => {
           container
           spacing={0}
           direction='row'
-          justifyContent={isXsUp ? 'space-between' : 'space-evenly'}
-          alignItems='center'
-          sx={{ maxWidth: 1200, margin: 'auto', textAlign: 'center' }}
           className='mt-2 footerList'
-        >
-          <Grid item md={3} xs={12} sm={3}>
+          sx={{
+            justifyContent: isXsUp ? 'space-between' : 'space-evenly',
+            alignItems: 'center',
+            maxWidth: 1200,
+            margin: 'auto',
+            textAlign: 'center'
+          }}>
+          <Grid
+            size={{
+              md: 3,
+              xs: 12,
+              sm: 3
+            }}>
             <ul>
               <li><Link to='/about'>Acerca de la PDN</Link></li>
               <li><a rel='noreferrer' href='/mapa-sla/'>Avances de
@@ -79,7 +114,12 @@ const Footer = () => {
               </li>
             </ul>
           </Grid>
-          <Grid item md={3} xs={12} sm={3}>
+          <Grid
+            size={{
+              md: 3,
+              xs: 12,
+              sm: 3
+            }}>
             <ul>
               <li>
                 <Link to='/faq'>Preguntas frecuentes</Link>
@@ -91,7 +131,12 @@ const Footer = () => {
               </li>
             </ul>
           </Grid>
-          <Grid item md={3} xs={12} sm={3}>
+          <Grid
+            size={{
+              md: 3,
+              xs: 12,
+              sm: 3
+            }}>
             <ul>
               <li><Link to='/mesa-de-ayuda'>Mesa de ayuda</Link></li>
               <li><Link to='/especificaciones'>Especificaciones técnicas</Link></li>
@@ -103,12 +148,19 @@ const Footer = () => {
         <Grid
           container
           direction='row'
-          justifyContent='center'
-          alignItems='center'
-          sx={{ maxWidth: 1200, margin: 'auto' }}
           className='mt-2'
-        >
-          <Grid item lg={12} md={12} sm={10}>
+          sx={{
+            justifyContent: 'center',
+            alignItems: 'center',
+            maxWidth: 1200,
+            margin: 'auto'
+          }}>
+          <Grid
+            size={{
+              lg: 12,
+              md: 12,
+              sm: 10
+            }}>
             <Divider />
           </Grid>
         </Grid>
@@ -116,29 +168,51 @@ const Footer = () => {
           container
           spacing={0}
           direction='row'
-          justifyContent={isXsUp ? 'space-between' : 'space-evenly'}
-          alignItems='center'
-          sx={{ maxWidth: 1200, margin: 'auto' }}
           className='mb-3 footerIcon'
-        >
-          <Grid item md={2} align='center'>
+          sx={{
+            justifyContent: isXsUp ? 'space-between' : 'space-evenly',
+            alignItems: 'center',
+            maxWidth: 1200,
+            margin: 'auto'
+          }}>
+          <Grid
+            sx={{ textAlign: 'center' }}
+            size={{
+              md: 2
+            }}>
             <a rel='noreferrer' href='https://creativecommons.org/licenses/by-nc/4.0/deed.es' target='_blank'><CreativeIcon /></a>
           </Grid>
-          <Grid item md={2} align='center'>
+          <Grid
+            sx={{ textAlign: 'center' }}
+            size={{
+              md: 2
+            }}>
             <a rel='noreferrer' href='https://twitter.com/SESNAOficial' target='_blank'><TwitterIcon /></a>
           </Grid>
-          <Grid item md={2} align='center'>
+          <Grid
+            sx={{ textAlign: 'center' }}
+            size={{
+              md: 2
+            }}>
             <a rel='noreferrer' href='https://www.facebook.com/SESNAOficial/' target='_blank'><FacebookIcon /></a>
           </Grid>
-          <Grid item md={2} align='center'>
+          <Grid
+            sx={{ textAlign: 'center' }}
+            size={{
+              md: 2
+            }}>
             <a rel='noreferrer' href='https://github.com/orgs/PDNMX/' target='_blank'><GitHubIcon /></a>
           </Grid>
-          <Grid item md={2} align='center'>
+          <Grid
+            sx={{ textAlign: 'center' }}
+            size={{
+              md: 2
+            }}>
             <a rel='noreferrer' href='https://www.youtube.com/channel/UCRUpiHth_WRkNo2sBmZIyfQ/featured' target='_blank'><YouTubeIcon /></a>
           </Grid>
         </Grid>
       </div>
     </>
-  )
+  );
 }
 export default Footer

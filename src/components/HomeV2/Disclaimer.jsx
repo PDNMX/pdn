@@ -43,7 +43,9 @@ const AlertDialog = () => {
     <StyledDialog open={open} onClose={handleClose} aria-labelledby="dialog-title">
       <Paper>
         <DialogTitle id="dialog-title">
-          <Typography variant="h5" component="div" textAlign="center">
+          <Typography variant="h5" component="div" sx={{
+            textAlign: "center"
+          }}>
             <Highlight>La Plataforma Digital Nacional evoluciona de manera continua.</Highlight>
           </Typography>
         </DialogTitle>
@@ -70,13 +72,17 @@ const AlertDialog = () => {
             </ListItemText>
           </List>
           </StyledList>
-          <Typography paragraph>
+          <Typography sx={{
+            marginBottom: "16px"
+          }}>
           <Highlight>Recuerda</Highlight> que la PDN es modular y escalable; esta versión es un paso más en su constante desarrollo y no debe considerarse como definitiva.
           </Typography>
           {/* <Typography>
             <Highlight>Compromiso con la protección de datos personales</Highlight>
           </Typography> */}
-          <Typography paragraph>
+          <Typography sx={{
+            marginBottom: "16px"
+          }}>
             El uso de la PDN debe privilegiar los intereses de las personas titulares de los datos personales. Está <Highlight>prohibido el tratamiento de los datos</Highlight> para actos de discriminación, trato injusto, arbitrario o cualquier uso contrario a lo establecido en la{' '}
             <Highlight href="https://example.com" target="_blank" rel="noopener noreferrer">
               Ley General de Protección de Datos Personales en Posesión de Sujetos Obligados
@@ -85,7 +91,9 @@ const AlertDialog = () => {
           {/* <Typography>
             <Highlight>Conoce más y participa</Highlight>
           </Typography> */}
-          <Typography paragraph>
+          <Typography sx={{
+            marginBottom: "16px"
+          }}>
             Consulta los{' '}
             <Link component={RouterLink} to="/terminos">
               Términos y Condiciones de Uso
@@ -96,7 +104,9 @@ const AlertDialog = () => {
             </Link>{' '}
             para comprender los lineamientos bajo los cuales se protege la información de la PDN.
           </Typography>
-          <Typography paragraph>
+          <Typography sx={{
+            marginBottom: "16px"
+          }}>
             Comparte tus comentarios y sugerencias sobre las funcionalidades o tu experiencia de usuario a través de la liga{' '}
             <Link href={process.env.REACT_APP_LINK_GOOGLEFORM} target="_blank" rel="noopener noreferrer">
               Comenta

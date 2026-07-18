@@ -5,7 +5,12 @@ const PieChart = props => {
   const percentage = Math.min(100, Math.max(0, Number(value) || 0))
 
   return (
-    <Box display='flex' justifyContent='center' flexGrow={1}>
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        flexGrow: 1
+      }}>
       <Box
         role='img'
         aria-label={`${percentage}%`}
@@ -18,7 +23,7 @@ const PieChart = props => {
         }}
       />
     </Box>
-  )
+  );
 }
 
 export default PieChart

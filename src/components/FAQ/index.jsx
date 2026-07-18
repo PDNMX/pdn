@@ -78,8 +78,12 @@ const Faq = props => {
   return (
     <div className={classes.root}>
       <HeaderV2 section={section} />
-      <Grid container spacing={0} justifyContent='center' className={classes.container}>
-        <Grid item xs={12} justifyContent='center' className={classes.item}>
+      <Grid container spacing={0} className={classes.container} sx={{
+        justifyContent: 'center'
+      }}>
+        <Grid className={classes.item} size={12} sx={{
+          justifyContent: 'center'
+        }}>
 
           <Paper className={classes.paper} elevation={15}>
             <Box className={classes.box}>
@@ -144,7 +148,7 @@ const Faq = props => {
         </Grid>
       </Grid>
     </div>
-  )
+  );
 }
 
 export default withStyles(styles)(Faq)

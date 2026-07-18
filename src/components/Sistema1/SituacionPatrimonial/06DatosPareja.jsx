@@ -13,16 +13,16 @@ const DatosPareja = ({ titulo }) => {
 
   return (
     <Grid container spacing={2} className={classes.rootPrincipal}>
-      <Grid item xs={12}>
+      <Grid size={12}>
         <Typography className={classes.tituloSeccion} align='center'>
           {titulo}
         </Typography>
       </Grid>
-      <Grid item xs={12}>
+      <Grid size={12}>
         <DatosReservados />
       </Grid>
     </Grid>
-  )
+  );
 }
 
 export default DatosPareja

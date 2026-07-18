@@ -58,8 +58,15 @@ const Top = props => {
   return (
     <div className={classes.root}>
       <Grid container spacing={0}>
-        <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-          <CustomTypography variant='h6' color='textPrimary' paragraph>Top 10 unidades compradoras</CustomTypography>
+        <Grid
+          size={{
+            xs: 12,
+            sm: 12,
+            md: 6,
+            lg: 6,
+            xl: 6
+          }}>
+          <CustomTypography variant='h6' color='textPrimary' sx={{ marginBottom: '16px' }}>Top 10 unidades compradoras</CustomTypography>
           {/* barChartData && barChartData.length > 0 &&
                         <BarChart data={barChartData}/>
                     */}
@@ -69,8 +76,15 @@ const Top = props => {
               <NivoBar data={barChartData} />
             </div>}
         </Grid>
-        <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-          <CustomTypography variant='h6' color='textPrimary' paragraph> Top 10 proveedores</CustomTypography>
+        <Grid
+          size={{
+            xs: 12,
+            sm: 12,
+            md: 6,
+            lg: 6,
+            xl: 6
+          }}>
+          <CustomTypography variant='h6' color='textPrimary' sx={{ marginBottom: '16px' }}> Top 10 proveedores</CustomTypography>
           {/* suppliers && suppliers.length > 0 &&
                         <SuppliersBarChart data={suppliers}/>
                     */}
@@ -82,7 +96,7 @@ const Top = props => {
         </Grid>
       </Grid>
     </div>
-  )
+  );
 }
 
 export default withStyles(styles)(Top)

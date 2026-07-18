@@ -152,7 +152,7 @@ useEffect(() => {
                 <li className={classes.opc}>
                   <Link
                     href={process.env.REACT_APP_LINK_MDA}
-                    onClick={() => ReactGA.pageview('/mda')}
+                    onClick={() => ReactGA.send({ hitType: 'pageview', page: '/mda' })}
                   >
                     <img src={MDA} alt='Mercado Digital Anticorrupción' />
                     <Typography>MERCADO DIGITAL</Typography>
@@ -180,7 +180,7 @@ useEffect(() => {
           </div>
           <div>
             {user.loggedIn ? (
-              <Grid item onClick={() => handleOpenLoginDialog()}>
+              <Grid onClick={() => handleOpenLoginDialog()}>
                 <div className='logo-sesion'>
                   <img src={LoginIcon} alt='Usuario' />
                 </div>
@@ -194,7 +194,7 @@ useEffect(() => {
                 </div>
               </Grid>
             ) : (
-              <Grid item onClick={() => handleOpenLoginDialog()}>
+              <Grid onClick={() => handleOpenLoginDialog()}>
                 <div className='logo-sesion'>
                   <img src={LoginIcon} alt='Iniciar sesión' />
                   <p>
@@ -222,6 +222,6 @@ useEffect(() => {
         <NormatividadMenu toogle={() => toggleNormatividad()} />
       )}
     </>
-  )
+  );
 }
 export default withStyles(styles)(BannerDesktop)

@@ -39,14 +39,22 @@ const Index = props => {
   return (
     <div className={classes.root}>
       <HeaderV2 section={system} />
-
       {/* TABS */}
-      <Grid container justifyContent='center' alignItems='center'>
-        <Grid item xs={12} className={classes.section}>
+      <Grid
+        container
+        sx={{
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+        <Grid className={classes.section} size={12}>
           <Grid container>
-            <Grid item md={4} xs={12}
+            <Grid
               style={{ display: 'flex', alignItems: 'stretch' }}
-              onClick={() => handleContentId(1)}>
+              onClick={() => handleContentId(1)}
+              size={{
+                md: 4,
+                xs: 12
+              }}>
 
               <figure className={isContentId(1) ? classes.selectedTab : classes.card}>
                 <img src={img1} alt='Servidores que intervinen en procesos de contratacion' className={classes.logo}/>
@@ -70,11 +78,15 @@ const Index = props => {
               </figure>
             </Grid> */}
 
-            <Grid item md={4} xs={12}
+            <Grid
               style={{ display: 'flex', alignItems: 'stretch' }}
               onClick={() => {
                 setContentId(3);
                 ReactGA.event({ category: 'visor-s2', action: 'click' });
+              }}
+              size={{
+                md: 4,
+                xs: 12
               }}>
 
               <figure className={isContentId(3) ? classes.selectedTab : classes.card}>
@@ -109,17 +121,18 @@ const Index = props => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid container justifyContent='center'>
-        <Grid item xs={12} className={classes.contentsSection}>
+      <Grid container sx={{
+        justifyContent: 'center'
+      }}>
+        <Grid className={classes.contentsSection} size={12}>
           <ThemeProvider theme={ThemeV2}>
             <TabContents index={contentId} />
           </ThemeProvider>
         </Grid>
       </Grid>
       <br></br>
-
     </div>
-  )
+  );
 }
 
 export default withStyles(styles)(Index)

@@ -31,19 +31,35 @@ const CardMercardo = (props) => {
       <Grid
         container
         direction='row'
-        justifyContent='center'
-        alignItems='center'
         className={classes.container}
-      >
-        <Grid item xs={12} lg={2}>
-          <Stack direction='row' justifyContent={{ xs: 'center', lg: 'end' }}>
+        sx={{
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+        <Grid
+          size={{
+            xs: 12,
+            lg: 2
+          }}>
+          <Stack direction='row' sx={{
+            justifyContent: { xs: 'center', lg: 'end' }
+          }}>
             <ScrollAnimation>
               <img alt='Logo MDA' src={logoMDA} className={classes.logoMDA} />
             </ScrollAnimation>
           </Stack>
         </Grid>
-        <Grid item xs={12} lg={6} p={{ xs: 1, lg: 0 }}>
-          <Typography variant='h6' paragraph>
+        <Grid
+          size={{
+            xs: 12,
+            lg: 6
+          }}
+          sx={{
+            p: { xs: 1, lg: 0 }
+          }}>
+          <Typography variant='h6' sx={{
+            marginBottom: "16px"
+          }}>
             El <strong>Mercado Digital Anticorrupción (MDA)</strong> es un
             espacio en el que se encuentran disponibles{' '}
             <strong>herramientas de uso libre</strong> con las que se busca
@@ -54,11 +70,20 @@ const CardMercardo = (props) => {
             instituciones y que cumplen los objetivos de la PDN.
           </Typography>
         </Grid>
-        <Grid item sm={12} xs={12} pr={{ xs: 0, md: 1 }}>
-          <Stack direction='row' justifyContent={{ xs: 'center', md: 'end' }}>
+        <Grid
+          size={{
+            sm: 12,
+            xs: 12
+          }}
+          sx={{
+            pr: { xs: 0, md: 1 }
+          }}>
+          <Stack direction='row' sx={{
+            justifyContent: { xs: 'center', md: 'end' }
+          }}>
             <ButtonPDN
               href={process.env.REACT_APP_LINK_MDA}
-              onClick={() => ReactGA.pageview('/mda')}
+              onClick={() => ReactGA.send({ hitType: 'pageview', page: '/mda' })}
               style={{ color: 'white' }}
             >
               CONOCE MÁS
@@ -67,6 +92,6 @@ const CardMercardo = (props) => {
         </Grid>
       </Grid>
     </div>
-  )
+  );
 }
 export default withStyles(styles)(CardMercardo)

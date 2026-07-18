@@ -57,23 +57,31 @@ const Index = props => {
   return (
     <div className={classes.root}>
       <HeaderV2 section={section} />
-      <Grid container justifyContent='center'>
-        <Grid item xs={12} className={classes.rootItem}>
+      <Grid container sx={{
+        justifyContent: 'center'
+      }}>
+        <Grid className={classes.rootItem} size={12}>
           <Paper className={classes.paper}>
             <Box className={classes.box}>
               <Intro />
               <Divider className={classes.divider} />
-              <Typography paragraph variant='h5' className={classes.title}>
+              <Typography variant='h5' className={classes.title} sx={{
+                marginBottom: "16px"
+              }}>
                 Seguridad informática
               </Typography>
-              <Typography paragraph className={classes.text}>
+              <Typography className={classes.text} sx={{
+                marginBottom: "16px"
+              }}>
                 El siguiente documento responde a las principales dudas en términos de seguridad
                 informática que corresponden al: desarrollo, almacenamiento, operación, hospedaje,
                 infraestructura y mecanismos de comunicación que rodean la administración de la
                 Plataforma Digital Nacional y sus datos.
               </Typography>
 
-              <Typography paragraph>
+              <Typography sx={{
+                marginBottom: "16px"
+              }}>
                 <ButtonPDN target='_blank' href='https://drive.google.com/file/d/1-IvF3KYa5rups73BmVV4W8glT9csVGY9/view'>
                   Más información
                 </ButtonPDN>
@@ -87,7 +95,7 @@ const Index = props => {
         </Grid>
       </Grid>
     </div>
-  )
+  );
 }
 
 export default withStyles(styles)(Index)

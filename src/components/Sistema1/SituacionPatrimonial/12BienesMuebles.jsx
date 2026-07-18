@@ -35,11 +35,19 @@ function BienMueble(props) {
             </BoxAccordionSummary>
             <BoxAccordionDetails>
               <Grid container spacing={1}>
-                <Grid item xs={12} md={8}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 8
+                  }}>
                   <Typography className={classes.cardTitle}>TIPO DEL BIEN:</Typography>
                   <Typography className={classes.card}>{obj.tipoBien?.valor}</Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>TITULAR DEL BIEN:</Typography>
                   <Typography className={classes.card}>
                     {obj.titular.map((tit, idx) => {
@@ -48,32 +56,60 @@ function BienMueble(props) {
                   </Typography>
                 </Grid>
 
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>DESCRIPCIÓN GENERAL DEL BIEN:</Typography>
                   <Typography className={classes.card}>{obj.descripcionGeneralBien}</Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>FORMA DE ADQUISICIÓN:</Typography>
                   <Typography className={classes.card}>{obj.formaAdquisicion?.valor}</Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>FORMA DE PAGO:</Typography>
                   <Typography className={classes.card}>{obj.formaPago}</Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>VALOR DE ADQUISICIÓN DEL MUEBLE:</Typography>
                   <Typography className={classes.card}>{getMoneda(obj.valorAdquisicion.valor)}</Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>TIPO DE MONEDA:</Typography>
                   <Typography className={classes.card}>{obj.valorAdquisicion.moneda}</Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>FECHA DE ADQUISICIÓN:</Typography>
                   <Typography className={classes.card}>{obj.fechaAdquisicion}</Typography>
                 </Grid>
 
-                <Grid item xs={12} md={12}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 12
+                  }}>
                   <Typography className={classes.cardTitle}>EN CASO DE BAJA DEL MUEBLE INCLUIR MOTIVO:</Typography>
                   <Typography className={classes.card}>{obj.motivoBaja?.valor}</Typography>
                 </Grid>
@@ -84,11 +120,11 @@ function BienMueble(props) {
               </Grid>
             </BoxAccordionDetails>
           </BoxAccordion>
-        )
+        );
       })}
       <AclaracionesObservacions />
     </>
-  )
+  );
 }
 
 const BienesMuebles = ({ data, titulo }) => {
@@ -108,19 +144,19 @@ const BienesMuebles = ({ data, titulo }) => {
 
   return (
     <Grid container spacing={2} className={classes.rootPrincipal}>
-      <Grid item xs={12}>
+      <Grid size={12}>
         <Typography className={classes.tituloSeccion} align='center'>
           {titulo}
         </Typography>
       </Grid>
       {data ? (
-        <Grid item xs={12}>
+        <Grid size={12}>
           {data.ninguno ? <DatosNoRegistrados /> : bienMueble.length ? <BienMueble bienMueble={bienMueble} /> : <DatosReservados />}
         </Grid>
       ) : (
         <Disclaimer />
       )}
     </Grid>
-  )
+  );
 }
 export default BienesMuebles

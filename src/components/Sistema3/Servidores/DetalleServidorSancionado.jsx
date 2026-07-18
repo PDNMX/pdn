@@ -56,23 +56,26 @@ const styles = theme => ({
 
 function DetalleServidorSancionado ({ classes, handleChangeDetail, servidor }) {
   return (
-
     <Paper className={classes.paper} elevation={3}>
       <Grid container spacing={2}>
-        <Grid item xs={6}>
+        <Grid size={6}>
           <Typography style={{ textAlign: 'left' }}>
             <span className={classes.cuadroActualizacion}>
               Actualización:{' '}{servidor.fechaCaptura}
             </span>
           </Typography>
         </Grid>
-        <Grid item xs={6} style={{ textAlign: 'right' }}>
+        <Grid style={{ textAlign: 'right' }} size={6}>
           <Button
             variant='text' className={classes.btnBack} onClick={() => handleChangeDetail()}
             startIcon={<CloseIcon />}
           />
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 6
+          }}>
           <Typography variant='h6'>
             {servidor.servidorPublicoSancionado.nombres}{' '}{servidor.servidorPublicoSancionado.primerApellido}{' '}{servidor.servidorPublicoSancionado.segundoApellido}
           </Typography>
@@ -80,7 +83,11 @@ function DetalleServidorSancionado ({ classes, handleChangeDetail, servidor }) {
             {servidor.servidorPublicoSancionado.puesto}
           </Typography>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 6
+          }}>
           <Typography className={classes.tituloCard}>
             Dependencia
           </Typography>
@@ -88,16 +95,20 @@ function DetalleServidorSancionado ({ classes, handleChangeDetail, servidor }) {
             {servidor.institucionDependencia.nombre}{servidor.institucionDependencia.siglas ? '(' + servidor.institucionDependencia.siglas + ')' : ''}
           </Typography>
         </Grid>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Divider className={classes.divider} variant='middle' />
         </Grid>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Typography className={classes.titulo} align='center'>
             Información de la falta
           </Typography>
         </Grid>
 
-        <Grid item xs={12} md={4}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 4
+          }}>
           <Typography className={classes.tituloCard}>
             Expediente
           </Typography>
@@ -105,7 +116,11 @@ function DetalleServidorSancionado ({ classes, handleChangeDetail, servidor }) {
             {servidor.expediente}
           </Typography>
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 4
+          }}>
           <Typography className={classes.tituloCard}>
             Tipo falta
           </Typography>
@@ -113,7 +128,11 @@ function DetalleServidorSancionado ({ classes, handleChangeDetail, servidor }) {
             {servidor.tipoFalta.valor}
           </Typography>
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 4
+          }}>
           <Typography className={classes.tituloCard}>
             Causa, motivo o hechos
           </Typography>
@@ -122,13 +141,17 @@ function DetalleServidorSancionado ({ classes, handleChangeDetail, servidor }) {
           </Typography>
         </Grid>
 
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Typography className={classes.titulo} align='center'>
             Información de la sanción
           </Typography>
         </Grid>
 
-        <Grid item xs={12} md={4}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 4
+          }}>
           <Typography className={classes.tituloCard}>
             Autoridad sancionadora
           </Typography>
@@ -136,7 +159,11 @@ function DetalleServidorSancionado ({ classes, handleChangeDetail, servidor }) {
             {servidor.autoridadSancionadora}
           </Typography>
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 4
+          }}>
           <Typography className={classes.tituloCard}>
             Fecha resolución
           </Typography>
@@ -144,7 +171,11 @@ function DetalleServidorSancionado ({ classes, handleChangeDetail, servidor }) {
             {servidor.resolucion.fechaResolucion}
           </Typography>
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 4
+          }}>
           <Typography className={classes.tituloCard}>
             Tipo sanción
           </Typography>
@@ -152,7 +183,11 @@ function DetalleServidorSancionado ({ classes, handleChangeDetail, servidor }) {
             {servidor.tipoSancion.map(e => e.valor).join(', ')}
           </Typography>
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 4
+          }}>
           <Typography className={classes.tituloCard}>
             Multa
           </Typography>
@@ -160,7 +195,11 @@ function DetalleServidorSancionado ({ classes, handleChangeDetail, servidor }) {
             {servidor.multa.monto} {servidor.multa.moneda.clave}
           </Typography>
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 4
+          }}>
           <Typography className={classes.tituloCard}>
             Inhabilitación plazo
           </Typography>
@@ -168,7 +207,11 @@ function DetalleServidorSancionado ({ classes, handleChangeDetail, servidor }) {
             {servidor.inhabilitacion.plazo}
           </Typography>
         </Grid>
-        <Grid item xs={12} md={3}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 3
+          }}>
           <Typography className={classes.tituloCard}>
             Inhabilitación periodo
           </Typography>
@@ -177,7 +220,7 @@ function DetalleServidorSancionado ({ classes, handleChangeDetail, servidor }) {
           </Typography>
         </Grid>
 
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Typography className={classes.tituloCard}>
             Observaciones
           </Typography>
@@ -185,12 +228,14 @@ function DetalleServidorSancionado ({ classes, handleChangeDetail, servidor }) {
             {servidor.observaciones}
           </Typography>
         </Grid>
-        <Grid item xs={12} textAlign='center'>
+        <Grid size={12} sx={{
+          textAlign: 'center'
+        }}>
           <DownloadItem item={servidor} />
         </Grid>
       </Grid>
     </Paper>
-  )
+  );
 }
 
 DetalleServidorSancionado.propTypes = {

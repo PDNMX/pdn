@@ -41,7 +41,7 @@ const Disclaimer = props => {
 
   return (
     <div className={classes.root}>
-      <CustomTypography paragraph color='textPrimary'>
+      <CustomTypography color='textPrimary' sx={{ marginBottom: '16px' }}>
         Aquí encontrarás la siguiente información:
       </CustomTypography>
 
@@ -58,7 +58,7 @@ const Disclaimer = props => {
       </ul>
 
       {dataSupplier && dataSupplier === 'SHCP' &&
-        <CustomTypography paragraph color='textPrimary'>
+        <CustomTypography color='textPrimary' sx={{ marginBottom: '16px' }}>
           Los datos utilizados en esta sección fueron tomados del portal de datos abiertos
           del gobierno <Link
             className={classes.link}

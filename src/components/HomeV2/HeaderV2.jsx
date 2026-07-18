@@ -55,8 +55,10 @@ function HeaderV2 (props) {
   const { id_estado } = useParams()
   return (
     <div className={classes.root}>
-      <Grid container spacing={0} justifyContent='center'>
-        <Grid item xs={12} className={classes.breadcrumItem}>
+      <Grid container spacing={0} sx={{
+        justifyContent: 'center'
+      }}>
+        <Grid className={classes.breadcrumItem} size={12}>
           <Breadcrumbs
             aria-label='breadcrumb'
             sx={{ color: '#824E80', paddingTop: '10px' }}
@@ -99,8 +101,7 @@ function HeaderV2 (props) {
             )}
 
             <Typography
-              color={section.color}
-              sx={{ display: 'flex', alignItems: 'center' }}
+              sx={{ color: section.color, display: 'flex', alignItems: 'center' }}
             >
               <GrainIcon sx={{ mr: 0.5 }} fontSize='inherit' />
               {section.path.includes('/:id_estado')
@@ -113,31 +114,39 @@ function HeaderV2 (props) {
       <Grid
         container
         className={classes.containerName}
-        justifyContent='center'
-        alignItems='center'
         direction='row'
-      >
-        <Grid item xs={12} md={9} align='center'>
+        sx={{
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+        <Grid
+          sx={{ textAlign: 'center' }}
+          size={{
+            xs: 12,
+            md: 9
+          }}>
           {section.icon && (
             <img src={section.icon} alt='PDN' className={classes.icon} />
           )}
           <Typography
             variant='h4'
-            paragraph
-            color={`${section.color}`}
             style={{ fontWeight: 100 }}
+            sx={{
+              color: section.color,
+              marginBottom: "16px"
+            }}
           >
             {section.name}
           </Typography>
           {section.subName && (
-            <Typography variant='h5' color={`${section.color}`}>
+            <Typography variant='h5' sx={{ color: section.color }}>
               {section.subName}
             </Typography>
           )}
         </Grid>
       </Grid>
     </div>
-  )
+  );
 }
 
 // export default withWidth()(withStyles(styles)(HeaderV2));

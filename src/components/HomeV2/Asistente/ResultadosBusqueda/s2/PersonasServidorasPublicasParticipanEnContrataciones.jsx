@@ -344,7 +344,9 @@ export function ResultadosS2 (props) {
     <>
       {/* Resumen de resultados */}
       {showSummaryPanel && state.summaryData && state.summaryData.length > 0 &&
-        <Box p={1}>
+        <Box sx={{
+          p: 1
+        }}>
           <div className={classes.container}>
             <Chips criterios={JSON.stringify(data)} />
             <Previos data={state.summaryData} handleChangeSujetoObligado={handleSearchSupplier} />
@@ -352,13 +354,16 @@ export function ResultadosS2 (props) {
             {/* <TablaResumen summaryData={state.summaryData} handleSearchSupplier={handleSearchSupplier}/> */}
           </div>
         </Box>}
-      <Box p={1}>
+      <Box sx={{
+        p: 1
+      }}>
         <AlertaError open={error} setOpen={open => { setError(open) }} />
       </Box>
-
       {/* Desplegar resultados de la búsqueda */}
       {showResultsTable && state.results && state.results.length > 0 &&
-        <Box p={1}>
+        <Box sx={{
+          p: 1
+        }}>
 
           <Box sx={{ display: 'flex', flexDirection: 'row' }}>
             <Box sx={{ flexGrow: 1 }}>
@@ -446,19 +451,16 @@ export function ResultadosS2 (props) {
             </Table>
           </div>
         </Box>}
-
       {
                 dialog.open &&
                   <FichaDetalle servidorPublico={dialog.elementoSeleccionado} closeDialog={closeDialog} />
             }
-
       {state.loading &&
         <Modal open={state.loading} disableAutoFocus>
           <CircularProgress className={classes.progress} id='spinnerLoading' size={200} />
         </Modal>}
-
     </>
-  )
+  );
 }
 
 // export default ResultadosS2;

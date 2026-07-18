@@ -35,11 +35,19 @@ function BienInmuble(props) {
             </BoxAccordionSummary>
             <BoxAccordionDetails>
               <Grid container spacing={1}>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>TIPO DE INMUEBLE:</Typography>
                   <Typography className={classes.card}>{inm.tipoInmueble.valor}</Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>TITULAR DEL INMUEBLE:</Typography>
                   <Typography className={classes.card}>
                     {inm.titular.map((tit, idx) => {
@@ -48,57 +56,105 @@ function BienInmuble(props) {
                   </Typography>
                 </Grid>
 
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>SUPERFICIE DEL TERRENO</Typography>
                   <Typography className={classes.card}>
                     {inm.superficieTerreno.valor} {getUnidad(inm.superficieTerreno.unidad)}
                   </Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>SUPERFICIE DE CONSTRUCCIÓN</Typography>
                   <Typography className={classes.card}>
                     {inm.superficieConstruccion?.valor} {getUnidad(inm.superficieConstruccion?.unidad)}
                   </Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>FORMA DE ADQUISICIÓN</Typography>
                   <Typography className={classes.card}>{inm.formaAdquisicion.valor}</Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>FORMA DE PAGO</Typography>
                   <Typography className={classes.card}>{inm.formaPago}</Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>VALOR DE ADQUISICIÓN</Typography>
                   <Typography className={classes.card}>{getMoneda(inm.valorAdquisicion.valor)} </Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>TIPO DE MONEDA</Typography>
                   <Typography className={classes.card}>{inm.valorAdquisicion.moneda}</Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>FECHA DE ADQUISICIÓN DEL INMUEBLE</Typography>
                   <Typography className={classes.card}>{inm.fechaAdquiscion}</Typography>
                 </Grid>
 
-                <Grid item xs={12} md={8}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 8
+                  }}>
                   <Typography className={classes.cardTitle}>DATOS DEL REGISTRO PÚBLICO DE LA PROPIEDAD: FOLIO REAL U OTRO DATO QUE PERMITA SU IDENTIFICACIÓN</Typography>
                   <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>¿EL VALOR DE ADQUISICIÓN DEL INMUEBLE ES CONFORME A?</Typography>
                   <Typography className={classes.card}>{inm.valorConformeA}</Typography>
                 </Grid>
-                <Grid item xs={12} md={8}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 8
+                  }}>
                   <Typography className={classes.cardTitle}>PORCENTAJE DE PROPIEDAD DEL DECLARANTE CONFORME A ESCRITURACIÓN O CONTRATO:</Typography>
                   <Typography className={classes.card}>{inm.porcentajePropiedad}%</Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>UBICACIÓN DEL INMUEBLE</Typography>
                   <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
                 </Grid>
 
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>EN CASO DE BAJA DEL INMUEBLE INCLUIR MOTIVO</Typography>
                   <Typography className={classes.card}>{inm.motivoBaja?.valor}</Typography>
                 </Grid>
@@ -109,11 +165,11 @@ function BienInmuble(props) {
               </Grid>
             </BoxAccordionDetails>
           </BoxAccordion>
-        )
+        );
       })}
       <AclaracionesObservacions />
     </>
-  )
+  );
 }
 
 const BienesInmuebles = ({ data, titulo }) => {
@@ -133,19 +189,19 @@ const BienesInmuebles = ({ data, titulo }) => {
 
   return (
     <Grid container spacing={2} className={classes.rootPrincipal}>
-      <Grid item xs={12}>
+      <Grid size={12}>
         <Typography className={classes.tituloSeccion} align='center'>
           {titulo}
         </Typography>
       </Grid>
       {data ? (
-        <Grid item xs={12}>
+        <Grid size={12}>
           {data.ninguno ? <DatosNoRegistrados /> : inmuebles.length ? <BienInmuble inmuebles={inmuebles} /> : <DatosReservados />}
         </Grid>
       ) : (
         <Disclaimer />
       )}
     </Grid>
-  )
+  );
 }
 export default BienesInmuebles

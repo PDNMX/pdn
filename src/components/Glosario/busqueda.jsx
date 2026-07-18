@@ -123,12 +123,12 @@ const ResultDetail = (props) => {
         </AccordionSummary>
         <AccordionDetails>
           <Grid container spacing={2}>
-            <Grid item xs={12}>
+            <Grid size={12}>
               <Typography className={classes.text} variant='body1'>
                 {props[1]}
               </Typography>
             </Grid>
-            <Grid item xs={12}>
+            <Grid size={12}>
               <Typography className={classes.text} variant='body2'>
                 <i><b>Fuente: </b>{props[2]}</i>
               </Typography>
@@ -138,5 +138,5 @@ const ResultDetail = (props) => {
         </AccordionDetails>
       </Accordion>
     </>
-  )
+  );
 }

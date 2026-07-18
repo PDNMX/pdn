@@ -52,13 +52,17 @@ const EntradasBuscador = props => {
     <ThemeProvider theme={themeV2}>
       <div className={classes.root}>
         <Grid container spacing={4}>
-          <Grid item xs={12}>
+          <Grid size={12}>
             <Typography>
               <b>Busca servidores públicos que intervienen en contrataciones, concesiones, enajenaciones y dictámenes</b>
             </Typography>
           </Grid>
 
-          <Grid item xs={12} md={4}>
+          <Grid
+            size={{
+              xs: 12,
+              md: 4
+            }}>
             <FormControl className={classes.formControl}>
               <TextField
                 style={{ background: '#f2f0f2' }}
@@ -71,7 +75,11 @@ const EntradasBuscador = props => {
             </FormControl>
           </Grid>
 
-          <Grid item xs={12} md={4}>
+          <Grid
+            size={{
+              xs: 12,
+              md: 4
+            }}>
             <FormControl className={classes.formControl}>
               <TextField
                 style={{ background: '#f2f0f2' }}
@@ -84,7 +92,11 @@ const EntradasBuscador = props => {
             </FormControl>
           </Grid>
 
-          <Grid item xs={12} md={4}>
+          <Grid
+            size={{
+              xs: 12,
+              md: 4
+            }}>
             <FormControl className={classes.formControl}>
               <TextField
                 style={{ background: '#f2f0f2' }}
@@ -101,14 +113,22 @@ const EntradasBuscador = props => {
                     <Typography>Proveedor de información</Typography>
                 </Grid> */}
 
-          <Grid item xs={12} md={4}>
+          <Grid
+            size={{
+              xs: 12,
+              md: 4
+            }}>
             <TipoProcedimiento
               tipoProcedimiento={tipoProcedimiento}
               asignarTipoProcedimiento={asignarTipoProcedimiento}
             />
           </Grid>
 
-          <Grid item xs={12} md={8}>
+          <Grid
+            size={{
+              xs: 12,
+              md: 8
+            }}>
             {/*<FormControl className={classes.formControl}>
               <TextField style={{ background: '#f2f0f2' }} id='campoSelectInstitucion' name='campoSelectInstitucion-select' margin='normal' select label='Institución' value={current_entity} onChange={(e) => handleSetState('current_entity', e)}>
                 <MenuItem value='ANY' key='ANY'>
@@ -157,7 +177,11 @@ const EntradasBuscador = props => {
   </FormControl>
           </Grid>
 
-          <Grid item md={6} xs={12}>
+          <Grid
+            size={{
+              md: 6,
+              xs: 12
+            }}>
             <FormControl component='fieldset' className={classes.formControl}>
               <FormLabel component='legend'>Nivel de gobierno</FormLabel>
               <RadioGroup
@@ -176,7 +200,12 @@ const EntradasBuscador = props => {
             </FormControl>
           </Grid>
 
-          <Grid item xs={12} md={6} align='right'>
+          <Grid
+            sx={{ textAlign: 'right' }}
+            size={{
+              xs: 12,
+              md: 6
+            }}>
             <ButtonPDN
               variant='contained'
               onClick={() => limpiarBusqueda()}
@@ -197,7 +226,7 @@ const EntradasBuscador = props => {
         </Grid>
       </div>
     </ThemeProvider>
-  )
+  );
 }
 
 export default withStyles(styles)(EntradasBuscador)

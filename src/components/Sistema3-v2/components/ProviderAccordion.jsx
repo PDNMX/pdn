@@ -47,11 +47,20 @@ const ProviderAccordion = ({
       </AccordionSummary>
       <AccordionDetails>
         {loading ? (
-          <Box display="flex" justifyContent="center" p={2}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              p: 2
+            }}>
             <CircularProgress />
           </Box>
         ) : totalRegistros === 0 ? (
-          <Box p={2} textAlign="center">
+          <Box
+            sx={{
+              p: 2,
+              textAlign: "center"
+            }}>
             <Typography color="textSecondary">
               No se encontraron registros para este proveedor
             </Typography>

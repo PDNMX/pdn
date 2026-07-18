@@ -78,7 +78,9 @@ const FichaDetalle = props => {
     <Paper className={classes.root} elevation={3}>
       <Box sx={{ display: 'flex', flexDirection: 'row' }}>
         <Box sx={{ flexGrow: 1 }}>
-          <Typography paragraph variant='h5'>
+          <Typography variant='h5' sx={{
+            marginBottom: "16px"
+          }}>
             FICHA DE LA PERSONA SERVIDORA PÚBLICA
           </Typography>
         </Box>
@@ -87,9 +89,8 @@ const FichaDetalle = props => {
           <Button startIcon={<CloseIcon />} onClick={() => closeDialog()} variant='text' className={classes.btnBack} />
         </Box>
       </Box>
-
       <Grid container spacing={0}>
-        <Grid item xs={6}>
+        <Grid size={6}>
           <Typography component='div'>
 
             <HtmlTooltip title={<Glosario id={1} />}>
@@ -102,24 +103,24 @@ const FichaDetalle = props => {
           </Typography>
         </Grid>
 
-        <Grid item xs={6}>
+        <Grid size={6}>
           <Typography>
             <HtmlTooltip title={<Glosario id={0} />}>
               <b>Institución / Dependencia</b>
             </HtmlTooltip>
           </Typography>
 
-          <Typography paragraph className={classes.sangria}>
+          <Typography className={classes.sangria} sx={{
+            marginBottom: "16px"
+          }}>
             {institucionDependencia.nombre}
           </Typography>
 
         </Grid>
       </Grid>
-
       <Divider className={classes.divider} />
-
       <Grid container spacing={0}>
-        <Grid item xs={6}>
+        <Grid size={6}>
           <Typography>
             <b>Nivel de responsabilidad</b>
           </Typography>
@@ -135,7 +136,7 @@ const FichaDetalle = props => {
           </ul>
         </Grid>
 
-        <Grid item xs={6}>
+        <Grid size={6}>
           <Typography>
             <b>Interviene en</b>
           </Typography>
@@ -151,13 +152,11 @@ const FichaDetalle = props => {
           </ul>
         </Grid>
       </Grid>
-
       <Box sx={{ display: 'flex', justifyContent: 'center', padding: 2 }}>
         <DownloadItem item={servidorPublico} />
       </Box>
-
     </Paper>
-  )
+  );
 }
 
 export default withStyles(styles)(FichaDetalle)

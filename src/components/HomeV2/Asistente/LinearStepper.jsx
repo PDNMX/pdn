@@ -214,12 +214,20 @@ const LinaerStepper = ({ stateChanger }) => {
               container
               spacing={0}
               direction='row'
-              alignItems='stretch'
-              justifyContent='center'
               className={classes.container}
-            >
+              sx={{
+                alignItems: 'stretch',
+                justifyContent: 'center'
+              }}>
               {opciones.map((opcion, index) => (
-                <Grid key={index} item md={4} xs={6} sm={4} style={{ display: 'flex' }}>
+                <Grid
+                  key={index}
+                  style={{ display: 'flex' }}
+                  size={{
+                    md: 4,
+                    xs: 6,
+                    sm: 4
+                  }}>
                   <Card className={classes.card} {...field} style={{ width: '100%', display: 'flex', justifyContent: 'space-between', flexDirection: 'row', borderBottom: '0.3rem solid ' + opcion.color }}>
                     <Tooltip
                       title={opcion.detalle}
@@ -256,7 +264,7 @@ const LinaerStepper = ({ stateChanger }) => {
           )}
         />
       </>
-    )
+    );
   }
 
   const isStepOptional = (step) => {
@@ -370,8 +378,17 @@ const LinaerStepper = ({ stateChanger }) => {
       <Typography className={classes.subTitle} variant='body1'>
         Este <b>buscador</b>, tiene el objetivo de facilitar la búsqueda de datos anticorrupción en la Plataforma Digital Nacional.
       </Typography>
-      <Grid container justifyContent='center' alignItems='center'>
-        <Grid item xs={12} md={8}>
+      <Grid
+        container
+        sx={{
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 8
+          }}>
           <Stepper
             alternativeLabel
             activeStep={activeStep}
@@ -426,7 +443,6 @@ const LinaerStepper = ({ stateChanger }) => {
           </Stepper>
         </Grid>
       </Grid>
-
       {activeStep >= steps.length - 1 ? (
         <>
           <ResultadosBusqueda className={classes.container} />
@@ -495,7 +511,7 @@ const LinaerStepper = ({ stateChanger }) => {
         </>
       )}
     </>
-  )
+  );
 }
 
 export default LinaerStepper

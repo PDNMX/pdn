@@ -36,18 +36,16 @@ const TotalInstituciones = ({ totalInstitutions }) => {
       >
         <AccountBalance sx={{ fontSize: 150 }} />
       </Box>
-
       {/* Content */}
       <Box
-        display="flex"
-        flexDirection="column"
-        alignItems="flex-start"
         sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start",
           p: 3,
           position: 'relative',
           zIndex: 1
-        }}
-      >
+        }}>
         {/* Label */}
         <Typography
           variant="body2"

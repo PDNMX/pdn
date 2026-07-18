@@ -25,15 +25,25 @@ const SysPDN = (props) => {
       <Grid
         container
         direction='row'
-        justifyContent='center'
-        alignItems='stretch'
         className={classes.container}
-      >
-        <Grid item md={12} sm={12} pl={{ xs: 1, xl: 0 }}>
+        sx={{
+          justifyContent: 'center',
+          alignItems: 'stretch'
+        }}>
+        <Grid
+          size={{
+            md: 12,
+            sm: 12
+          }}
+          sx={{
+            pl: { xs: 1, xl: 0 }
+          }}>
           <Typography variant='h4'>
             Sistemas de la Plataforma Digital Nacional
           </Typography>
-          <Typography variant='h6' paragraph>
+          <Typography variant='h6' sx={{
+            marginBottom: "16px"
+          }}>
             El desarrollo de la <b>PDN</b> considera seis sistemas que integran
             datos estratégicos para la lucha contra la corrupción, contemplados
             en la{' '}
@@ -46,7 +56,7 @@ const SysPDN = (props) => {
 
       </Grid>
     </div>
-  )
+  );
 }
 
 export default withStyles(styles)(SysPDN)

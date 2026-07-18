@@ -593,13 +593,15 @@ class Busqueda extends React.Component {
           />
         )}
         {/* DESCARGA */}
-        <Grid container spacing={0} justifyContent='center'>
-          <Grid item xs={12} className={classes.itemD}>
+        <Grid container spacing={0} sx={{
+          justifyContent: 'center'
+        }}>
+          <Grid className={classes.itemD} size={12}>
             <Descarga url={process.env.REACT_APP_S1_BULK} tipoGA='bulk-s1' />
           </Grid>
         </Grid>
       </div>
-    )
+    );
   }
 }
 

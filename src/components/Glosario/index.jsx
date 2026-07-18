@@ -52,14 +52,14 @@ export default function TemporaryDrawer () {
       </Fab>
       <Drawer classes={{ paper: classes.drawerPaper }} variant='temporary' anchor='right' open={state} onClose={toggleDrawer(false)}>
         <Grid container>
-          <Grid item xs={12}>
+          <Grid size={12}>
             <Typography style={{ color: '#55575a' }} variant='h4' gutterBottom> Glosario </Typography>
           </Grid>
-          <Grid style={{ height: '100%' }} item xs={12}>
+          <Grid style={{ height: '100%' }} size={12}>
             <Busqueda />
           </Grid>
         </Grid>
       </Drawer>
     </React.Fragment>
-  )
+  );
 }

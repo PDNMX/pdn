@@ -117,11 +117,19 @@ const LoginDialog = props => {
               : 'Inicie sesión para acceder a las funcionalidades reservadas de la PDN.'}
           </DialogContentText>
 
-          <Box paddingTop={3} paddingBottom={3}>
+          <Box
+            sx={{
+              paddingTop: 3,
+              paddingBottom: 3
+            }}>
 
             {user.loggedIn
-              ? <Box p={4} align='center'>
-                <Typography paragraph variant='h5'>
+              ? <Box align='center' sx={{
+              p: 4
+            }}>
+                <Typography variant='h5' sx={{
+                  marginBottom: "16px"
+                }}>
                   ¿Deseas terminar la sesión?
                 </Typography>
 
@@ -164,7 +172,9 @@ const LoginDialog = props => {
                 </form>}
           </Box>
 
-          <Box p={1}>
+          <Box sx={{
+            p: 1
+          }}>
             <AlertaError alertData={alertData} setAlertData={setAlertData} />
           </Box>
 
@@ -176,6 +186,6 @@ const LoginDialog = props => {
         </DialogActions>
       </Dialog>
     </div>
-  )
+  );
 }
 export default LoginDialog

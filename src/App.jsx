@@ -17,7 +17,11 @@ import { getUser } from './components/Login/Auth'
 import ScrollToTop from './ScrollToTop'
 
 ReactGA.initialize('G-XWEKXGG46G')
-ReactGA.send(window.location.pathname + window.location.search)
+ReactGA.send({
+  hitType: 'pageview',
+  page: window.location.pathname + window.location.search,
+  title: document.title
+})
 
 const App = () => {
   const [user, setUser] = React.useState({

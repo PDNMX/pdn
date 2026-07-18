@@ -67,20 +67,22 @@ const Dashboard = (props) => {
   return (
     <div id='s3sgraf' className={classes.root}>
       <Paper elevation={0} className={classes.paper}>
-        <Grid container spacing={3} justifyContent='center' className={classes.aux}>
-          <Grid item xs={4}>
+        <Grid container spacing={3} className={classes.aux} sx={{
+          justifyContent: 'center'
+        }}>
+          <Grid size={4}>
             <TotalRows />
           </Grid>
-          <Grid item xs={4}>
+          <Grid size={4}>
             <TotalDependencias />
           </Grid>
-          <Grid item xs={4}>
+          <Grid size={4}>
             <TotalSancionesFin />
           </Grid>
-          <Grid item xs={12}>
+          <Grid size={12}>
             <AnioDuracionSanciones/>
           </Grid>
-          <Grid item xs={12}>
+          <Grid size={12}>
             <TiemposSanciones/>
           </Grid>
          {/*  <Grid item xs={12}>
@@ -102,7 +104,7 @@ const Dashboard = (props) => {
                     <Grid item xs={12}  id={"g3"}>
                         <DependenciasSanciones/>
                     </Grid> */}
-          <Grid item xs={12}>
+          <Grid size={12}>
             <FooterPage
               dataSet='Servidores públicos sancionados'
               provider='Secretaría de la Función Pública'
@@ -112,7 +114,7 @@ const Dashboard = (props) => {
         </Grid>
       </Paper>
     </div>
-  )
+  );
 }
 
 Dashboard.propTypes = {

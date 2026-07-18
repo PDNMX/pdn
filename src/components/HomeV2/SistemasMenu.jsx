@@ -97,7 +97,9 @@ const SistemasMenu = (props) => {
                   alt="PDN"
                   className={classes.icon}
                 />
-                <Typography color="#fff">{system.shortName}</Typography>
+                <Typography sx={{
+                  color: "#fff"
+                }}>{system.shortName}</Typography>
               </div>
             </Box>
           </Link>

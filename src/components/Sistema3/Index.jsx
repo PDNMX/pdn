@@ -41,95 +41,121 @@ const Index = ({ classes }) => {
   const system = pdnRoutes.find(route => route.path === '/sancionados')
 
   return (
-      <div className={classes.root}>
-        <HeaderV2 section={system} />
-        <Grid container justifyContent='center' alignItems='center'>
-          <Grid item xs={12} className={classes.section}>
-            <Grid container>
-              <Grid item md={3} xs={12} onClick={() => handleIdContent(1)}>
-                <figure className={isIdContent(1) ? classes.selectedTab : classes.card} >
-                  <img src={img1} alt='Servidores públicos sancionados' className={classes.logo}  />
-                <Typography  variant='subtitle1'  className={classes.labelCard}>
-                  Buscador de personas servidoras públicas sancionadas
-                </Typography>
-                </figure>
-              </Grid>
-              <Grid item md={3} xs={12} onClick={() => handleIdContent(2)}
-              style={{ display: 'flex', alignItems: 'stretch' }} >
-                <figure className={isIdContent(2) ? classes.selectedTab : classes.card}>
-                  <img src={img2} alt='Particulares sancionados' className={classes.logo}  />
-                <Typography  variant='subtitle1'  className={classes.labelCard}>
-                  Buscador de particulares sancionados
-                </Typography>
-                </figure>
-              </Grid>
-              <Grid item md={3} xs={12} onClick={() => {
+    <div className={classes.root}>
+      <HeaderV2 section={system} />
+      <Grid
+        container
+        sx={{
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+        <Grid className={classes.section} size={12}>
+          <Grid container>
+            <Grid
+              onClick={() => handleIdContent(1)}
+              size={{
+                md: 3,
+                xs: 12
+              }}>
+              <figure className={isIdContent(1) ? classes.selectedTab : classes.card} >
+                <img src={img1} alt='Servidores públicos sancionados' className={classes.logo}  />
+              <Typography  variant='subtitle1'  className={classes.labelCard}>
+                Buscador de personas servidoras públicas sancionadas
+              </Typography>
+              </figure>
+            </Grid>
+            <Grid
+              onClick={() => handleIdContent(2)}
+              style={{ display: 'flex', alignItems: 'stretch' }}
+              size={{
+                md: 3,
+                xs: 12
+              }}>
+              <figure className={isIdContent(2) ? classes.selectedTab : classes.card}>
+                <img src={img2} alt='Particulares sancionados' className={classes.logo}  />
+              <Typography  variant='subtitle1'  className={classes.labelCard}>
+                Buscador de particulares sancionados
+              </Typography>
+              </figure>
+            </Grid>
+            <Grid
+              onClick={() => {
                   setIdContent(3);
                   ReactGA.event({ category: 'visor-s3SP', action: 'click' });
                 }}
-              style={{ display: 'flex',      }} >
-                <figure className={isIdContent(3) ? classes.selectedTab : classes.card}>
-                  <img src={img3} alt='Particulares sancionados' className={classes.logo}  />
-                <Typography  variant='subtitle1'  className={classes.labelCard}>
+              style={{ display: 'flex',      }}
+              size={{
+                md: 3,
+                xs: 12
+              }}>
+              <figure className={isIdContent(3) ? classes.selectedTab : classes.card}>
+                <img src={img3} alt='Particulares sancionados' className={classes.logo}  />
+              <Typography  variant='subtitle1'  className={classes.labelCard}>
+              Visor de datos (Servidores públicos sancionados)
+              </Typography>
+              </figure>
+            </Grid>
+            <Grid
+              onClick={() => handleIdContent(4)}
+              style={{ display: 'flex', alignItems: 'stretch' }}
+              size={{
+                md: 3,
+                xs: 12
+              }}>
+              <figure className={isIdContent(4) ? classes.selectedTab : classes.card} >
+                <img src={img4} alt='Particulares sancionados' className={classes.logo}  />
+              <Typography  variant='subtitle1'  className={classes.labelCard}>
+              Visor de datos (Particulares sancionados)
+              </Typography>
+              </figure>
+            </Grid>
+            {/* <Grid
+              item
+              md={3}
+              xs={12}
+              onClick={() => {
+                setIdContent(3);
+                ReactGA.event({ category: 'visor-s3SP', action: 'click' });
+              }}
+            >
+              <figure className={classNames(idContent !== 3 ? classes.card : classes.cardSeleccionada)}>
+                <img src={img3} alt='Visor de datos (Servidores públicos sancionados)' className={classes.image} />
+              </figure>
+              <Typography variant='subtitle1' style={{ fontWeight: idContent === 3 ? 500 : 300 }} className={classes.labelCard}>
                 Visor de datos (Servidores públicos sancionados)
-                </Typography>
-                </figure>
-              </Grid>
-              <Grid item md={3} xs={12} onClick={() => handleIdContent(4)}
-              style={{ display: 'flex', alignItems: 'stretch' }} >
-                <figure className={isIdContent(4) ? classes.selectedTab : classes.card} >
-                  <img src={img4} alt='Particulares sancionados' className={classes.logo}  />
-                <Typography  variant='subtitle1'  className={classes.labelCard}>
-                Visor de datos (Particulares sancionados)
-                </Typography>
-                </figure>
-              </Grid>
-              {/* <Grid
+              </Typography>
+            </Grid>
+            <Grid
                 item
                 md={3}
                 xs={12}
                 onClick={() => {
-                  setIdContent(3);
-                  ReactGA.event({ category: 'visor-s3SP', action: 'click' });
+                  setIdContent(4);
+                  ReactGA.event({category: 'visor-s3P', action: 'click'});
                 }}
-              >
-                <figure className={classNames(idContent !== 3 ? classes.card : classes.cardSeleccionada)}>
-                  <img src={img3} alt='Visor de datos (Servidores públicos sancionados)' className={classes.image} />
-                </figure>
-                <Typography variant='subtitle1' style={{ fontWeight: idContent === 3 ? 500 : 300 }} className={classes.labelCard}>
-                  Visor de datos (Servidores públicos sancionados)
-                </Typography>
-              </Grid>
-              <Grid
-                  item
-                  md={3}
-                  xs={12}
-                  onClick={() => {
-                    setIdContent(4);
-                    ReactGA.event({category: 'visor-s3P', action: 'click'});
-                  }}
-              >
-                <figure className={classNames(idContent !== 4 ? classes.card : classes.cardSeleccionada)}>
-                  <img src={img4} alt='Visor de datos (Particulares sancionados)' className={classes.image}/>
-                </figure>
-                <Typography variant='subtitle1' style={{fontWeight: idContent === 4 ? 500 : 300}}
-                            className={classes.labelCard}>
-                  Visor de datos (Particulares sancionados)
-                </Typography>
-              </Grid> */}
-            </Grid>
+            >
+              <figure className={classNames(idContent !== 4 ? classes.card : classes.cardSeleccionada)}>
+                <img src={img4} alt='Visor de datos (Particulares sancionados)' className={classes.image}/>
+              </figure>
+              <Typography variant='subtitle1' style={{fontWeight: idContent === 4 ? 500 : 300}}
+                          className={classes.labelCard}>
+                Visor de datos (Particulares sancionados)
+              </Typography>
+            </Grid> */}
           </Grid>
         </Grid>
-        
-        <Grid container justifyContent='center'>
-          <Grid item xs={12} className={classes.sectionT}>
-          <ThemeProvider theme={ThemeV2}>
-            <TabContents index={idContent} />
-          </ThemeProvider>
-          </Grid>
+      </Grid>
+      <Grid container sx={{
+        justifyContent: 'center'
+      }}>
+        <Grid className={classes.sectionT} size={12}>
+        <ThemeProvider theme={ThemeV2}>
+          <TabContents index={idContent} />
+        </ThemeProvider>
         </Grid>
-      </div>
-  )
+      </Grid>
+    </div>
+  );
 }
 
 Index.propTypes = {

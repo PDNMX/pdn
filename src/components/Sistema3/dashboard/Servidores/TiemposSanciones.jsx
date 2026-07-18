@@ -140,7 +140,9 @@ const TiemposSanciones = props => {
   return (
     <div style={{ height: '500px' }}>
       <ModalInfo open={open} setOpen={setOpen}>
-        <Typography variant='h6' className={classes.titulo} paragraph>
+        <Typography variant='h6' className={classes.titulo} sx={{
+          marginBottom: "16px"
+        }}>
           Duración de las sanciones en años.
         </Typography>
         <Typography variant='body1'>
@@ -222,7 +224,7 @@ const TiemposSanciones = props => {
         }
       </ContainerChart>
     </div>
-  )
+  );
 }
 
 export default withStyles(styles)(TiemposSanciones)

@@ -31,65 +31,113 @@ function Clientes(props) {
             </BoxAccordionSummary>
             <BoxAccordionDetails>
               <Grid container spacing={1}>
-                <Grid item xs={12} md={9}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 9
+                  }}>
                   <Typography className={classes.cardTitle}>¿REALIZA ALGUNA ACTIVIDAD LUCRATIVA INDEPENDIENTE AL EMPLEO, CARGO O COMISIÓN?:</Typography>
                   <Typography className={classes.card}>{obj.realizaActividadLucrativa ? 'SÍ' : 'NO'}</Typography>
                 </Grid>
-                <Grid item xs={12} md={3}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 3
+                  }}>
                   <Typography className={classes.cardTitle}>RELACIÓN:</Typography>
                   <Typography className={classes.card}>{obj.tipoRelacion}</Typography>
                 </Grid>
-                <Grid item xs={12} md={5}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 5
+                  }}>
                   <Typography className={classes.cardTitle}>NOMBRE DE LA EMPRESA O SERVICIO QUE PROPORCIONA:</Typography>
                   <Typography className={classes.card}>{obj.empresa.nombreEmpresaServicio}</Typography>
                 </Grid>
-                <Grid item xs={12} md={3}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 3
+                  }}>
                   <Typography className={classes.cardTitle}>RFC:</Typography>
                   <Typography className={classes.card}>{obj.empresa.rfc}</Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>SECTOR PRODUCTIVO:</Typography>
                   <Typography className={classes.card}>{obj.sector.valor}</Typography>
                 </Grid>
-                <Grid item xs={12} md={12}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 12
+                  }}>
                   <Typography className={classes.cardTitle}>MONTO APROXIMADO DEL BENEFICIO O GANANCIA MENSUAL QUE OBTIENE DEL CLIENTE PRINCIPAL:</Typography>
                   <Typography className={classes.card}>
                     {getMoneda(obj.montoAproximadoGanancia.valor)} {obj.montoAproximadoGanancia.moneda}
                   </Typography>
                 </Grid>
                 <Divider />
-                <Grid item xs={12} style={{ textAlign: 'center' }}>
+                <Grid style={{ textAlign: 'center' }} size={12}>
                   <Typography className={classes.tituloSubSeccion}>CLIENTE PRINCIPAL</Typography>
                 </Grid>
                 {obj.clientePrincipal.tipoPersona === 'FISICA' ? (
-                  <Grid item xs={12}>
+                  <Grid size={12}>
                     <Grid container spacing={1}>
-                      <Grid item xs={12} md={3}>
+                      <Grid
+                        size={{
+                          xs: 12,
+                          md: 3
+                        }}>
                         <Typography className={classes.cardTitle}>TIPO PERSONA:</Typography>
                         <Typography className={classes.cardReserved}>FÍSICA</Typography>
                       </Grid>
-                      <Grid item xs={12} md={6}>
+                      <Grid
+                        size={{
+                          xs: 12,
+                          md: 6
+                        }}>
                         <Typography className={classes.cardTitle}>SEÑALE NOMBRE O RAZÓN SOCIAL DEL CLIENTE PRINCIPAL:</Typography>
                         <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
                       </Grid>
-                      <Grid item xs={12} md={3}>
+                      <Grid
+                        size={{
+                          xs: 12,
+                          md: 3
+                        }}>
                         <Typography className={classes.cardTitle}>RFC:</Typography>
                         <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
                       </Grid>
                     </Grid>
                   </Grid>
                 ) : (
-                  <Grid item xs={12}>
+                  <Grid size={12}>
                     <Grid container spacing={1}>
-                      <Grid item xs={12} md={3}>
+                      <Grid
+                        size={{
+                          xs: 12,
+                          md: 3
+                        }}>
                         <Typography className={classes.cardTitle}>TIPO PERSONA:</Typography>
                         <Typography className={classes.card}>MORAL</Typography>
                       </Grid>
-                      <Grid item xs={12} md={6}>
+                      <Grid
+                        size={{
+                          xs: 12,
+                          md: 6
+                        }}>
                         <Typography className={classes.cardTitle}>SEÑALE NOMBRE O RAZÓN SOCIAL DEL CLIENTE PRINCIPAL:</Typography>
                         <Typography className={classes.card}>{obj.clientePrincipal.nombreRazonSocial}</Typography>
                       </Grid>
-                      <Grid item xs={12} md={3}>
+                      <Grid
+                        size={{
+                          xs: 12,
+                          md: 3
+                        }}>
                         <Typography className={classes.cardTitle}>RFC:</Typography>
                         <Typography className={classes.card}>{obj.clientePrincipal.rfc}</Typography>
                       </Grid>
@@ -101,11 +149,11 @@ function Clientes(props) {
               </Grid>
             </BoxAccordionDetails>
           </BoxAccordion>
-        )
+        );
       })}
       <AclaracionesObservacions />
     </>
-  )
+  );
 }
 
 const Cliente = props => {
@@ -117,15 +165,15 @@ const Cliente = props => {
 
   return (
     <Grid container spacing={2} className={classes.rootPrincipal}>
-      <Grid item xs={12}>
+      <Grid size={12}>
         <Typography className={classes.tituloSeccion} align='center'>
           5. CLIENTES PRINCIPALES (HASTA LOS 2 ÚLTIMOS AÑOS)
         </Typography>
       </Grid>
-      <Grid item xs={12}>
+      <Grid size={12}>
         {typeof data === 'undefined' || data.ninguno ? <DatosNoRegistrados /> : cliente.length ? <Clientes cliente={cliente} /> : <DatosReservados />}
       </Grid>
     </Grid>
-  )
+  );
 }
 export default Cliente

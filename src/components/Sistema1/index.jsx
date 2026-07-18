@@ -46,10 +46,15 @@ class Declaraciones extends React.Component {
     return (
       <div>
         <HeaderV2 section={system} />
-        <Grid container justifyContent='center' alignItems='center'>
-          <Grid item xs={12} className={classes.section}>
+        <Grid
+          container
+          sx={{
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}>
+          <Grid className={classes.section} size={12}>
             <Grid container spacing={0}>
-              <Grid item style={{ display: 'flex', alignItems: 'stretch' }}>
+              <Grid style={{ display: 'flex', alignItems: 'stretch' }}>
                 <figure
                   className={activeTab === 'busqueda' ? classes.selectedTab : classes.card}
                   onClick={() => this.handleTabChange('busqueda')}
@@ -61,7 +66,7 @@ class Declaraciones extends React.Component {
                   </Typography>
                 </figure>
               </Grid>
-              <Grid item style={{ display: 'flex', alignItems: 'stretch' }}>
+              <Grid style={{ display: 'flex', alignItems: 'stretch' }}>
                 <figure
                   className={activeTab === 'evolucion' ? classes.selectedTab : classes.card}
                   onClick={() => this.handleTabChange('evolucion')}
@@ -76,9 +81,10 @@ class Declaraciones extends React.Component {
             </Grid>
           </Grid>
         </Grid>
-
-        <Grid container justifyContent='center'>
-          <Grid item xs={12} className={classes.contentsSection}>
+        <Grid container sx={{
+          justifyContent: 'center'
+        }}>
+          <Grid className={classes.contentsSection} size={12}>
             {activeTab === 'busqueda' && (
               <Routes>
                 <Route path='/declaraciones' element={<Busqueda />} />
@@ -92,7 +98,7 @@ class Declaraciones extends React.Component {
         </Grid>
         <Disclaimer open={this.state.open} handleClose={this.handleClose} />
       </div>
-    )
+    );
   }
 }
 

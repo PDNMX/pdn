@@ -262,7 +262,7 @@ export function ResultadosS3s (props) {
     <ThemeProvider theme={ThemeV2}>
       {/* Buscador */}
       <Grid container spacing={0}>
-        <Grid item xs={12}>
+        <Grid size={12}>
           {loading && (
             <Modal open={loading} disableAutoFocus>
               <CircularProgress id='spinnerLoading' size={200} className={classes.progress} />
@@ -274,7 +274,7 @@ export function ResultadosS3s (props) {
       {/* PREVIOS */}
       {view === 1 && previos && previos.length > 0 && (
         <Grid container>
-          <Grid item xs={12}>
+          <Grid size={12}>
             {/* {console.log} */}
             <Chips criterios={JSON.stringify(data)} />
             <Previos
@@ -290,7 +290,7 @@ export function ResultadosS3s (props) {
 
         selectedItem === null && (
           <Grid container>
-            <Grid item xs={12}>
+            <Grid size={12}>
               <TablaServidoresSancionados
                 info={filterData}
                 /* page={pagination.page}
@@ -311,7 +311,7 @@ export function ResultadosS3s (props) {
         />
       )}
     </ThemeProvider>
-  )
+  );
 }
 
 export default withStyles(useStyles, { withTheme: false })(
