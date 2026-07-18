@@ -5,7 +5,7 @@ import { Grid, Typography } from '@mui/material'
 import img from '../../assets/rediseno/svg_iconos_azul/SVG/s1_01.svg'
 import QueryStatsIcon from '@mui/icons-material/QueryStats'
 
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 
 import Busqueda from './Busqueda'
 import EvolucionPatrimonial from './EvolucionPatrimonial'
@@ -102,4 +102,4 @@ class Declaraciones extends React.Component {
   }
 }
 
-export default withStyles(styles)(Declaraciones)
+export default withStyles(Declaraciones, styles);

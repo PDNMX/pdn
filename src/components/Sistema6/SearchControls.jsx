@@ -1,4 +1,4 @@
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import FormControl from '@mui/material/FormControl'
 import InputLabel from '@mui/material/InputLabel'
 // import NativeSelect from "@mui/material/NativeSelect";
@@ -23,7 +23,7 @@ const styles = theme => ({
   fondo: {
     background: theme.palette.background.noSelect
   }
-})
+});
 
 const SearchControls = props => {
   const { classes, buyers, buyer_id, procurementMethod, cycle, cycles, inputText, supplierName } = props
@@ -169,13 +169,15 @@ const SearchControls = props => {
             fullWidth
             margin='normal'
                         // variant="outlined"
-            InputLabelProps={{
-              shrink: true
-            }}
             onChange={handleChangeSupplierName}
             onKeyDown={handleSearch}
             value={supplierName}
             className={classes.fondo}
+            slotProps={{
+              inputLabel: {
+                shrink: true
+              }
+            }}
           />
         </Grid>
 
@@ -189,13 +191,15 @@ const SearchControls = props => {
             fullWidth
             margin='normal'
                         // variant="outlined"
-            InputLabelProps={{
-              shrink: true
-            }}
             onChange={handleSetInputText}
             onKeyDown={handleSearch}
             value={inputText}
             className={classes.fondo}
+            slotProps={{
+              inputLabel: {
+                shrink: true
+              }
+            }}
           />
         </Grid>
         {/*
@@ -248,4 +252,4 @@ const SearchControls = props => {
   );
 }
 
-export default withStyles(styles)(SearchControls)
+export default withStyles(SearchControls, styles);

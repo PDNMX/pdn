@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import {
   Table,
   TableBody,
@@ -60,7 +60,7 @@ const styles = theme => ({
     fontWeight: 'bold',
     marginBottom: theme.spacing(1)
   }
-})
+});
 
 function TablaParticularesSancionados ({
   classes,
@@ -200,4 +200,4 @@ TablaParticularesSancionados.propTypes = {
   nivel: PropTypes.string.isRequired
 }
 
-export default withStyles(styles)(TablaParticularesSancionados)
+export default withStyles(TablaParticularesSancionados, styles);

@@ -10,12 +10,12 @@ import FichaDetalle from '../../../../Sistema2/FichaDetalle'
 import columnData from '../../../../Sistema2/column_data'
 import Previos from '../Previos'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
-import { makeStyles } from '@mui/styles'
+import { makeStyles } from 'tss-react/mui';
 
 import ReactGA from 'react-ga4'
 import Chips from '../Chips'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
   container: {
     marginTop: '30px',
     marginBottom: '30px',
@@ -75,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: '#56a3bf'
     }
   }
-}))
+}));
 
 function getSorting (order, orderBy) {
   return order === 'desc'
@@ -95,7 +95,7 @@ export function ResultadosS2 (props) {
     - Tipo de procedimiento (select)
 */
 
-  const classes = useStyles()
+  const { classes } = useStyles()
 
   const [state, setState] = React.useState({
     order: 'asc',

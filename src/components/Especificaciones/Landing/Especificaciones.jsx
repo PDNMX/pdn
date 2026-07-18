@@ -1,5 +1,5 @@
 import { Grid, Box, Paper } from '@mui/material'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import { Link } from 'react-router-dom'
 import Typography from '@mui/material/Typography'
 
@@ -53,7 +53,7 @@ const styles = theme => ({
   box: {
     maxWidth: '900px', paddingTop: '50px', paddingBottom: '50px'
   }
-})
+});
 
 const Especificaciones = props => {
   const { classes } = props
@@ -157,4 +157,4 @@ const Especificaciones = props => {
   );
 }
 
-export default withStyles(styles)(Especificaciones)
+export default withStyles(Especificaciones, styles);

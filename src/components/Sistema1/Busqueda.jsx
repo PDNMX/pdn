@@ -1,6 +1,6 @@
 import React from 'react'
 import { Grid, Paper } from '@mui/material'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 
 import axios from 'axios'
 
@@ -605,4 +605,4 @@ class Busqueda extends React.Component {
   }
 }
 
-export default withStyles(styles)(Busqueda)
+export default withStyles(Busqueda, styles);

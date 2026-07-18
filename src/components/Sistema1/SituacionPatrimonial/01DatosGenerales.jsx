@@ -1,5 +1,5 @@
 import Paper from '@mui/material/Paper'
-import makeStyles from '@mui/styles/makeStyles'
+import { makeStyles } from 'tss-react/mui';
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 
@@ -7,7 +7,7 @@ import style from '../styleSecciones'
 import basicInicial from './00_basic_incial'
 import AclaracionesObservacions from '../common/AclaracionesObservaciones'
 
-const useStyles = makeStyles(style)
+const useStyles = makeStyles()(style);
 // const camposPrivados = [
 // 	'CURP',
 // 	'RFC',
@@ -22,7 +22,7 @@ const useStyles = makeStyles(style)
 // ]
 
 const DatosGenerales = ({ data: info, titulo }) => {
-  const classes = useStyles()
+  const { classes } = useStyles()
 
   const data = {
     ...basicInicial.datosGenerales,

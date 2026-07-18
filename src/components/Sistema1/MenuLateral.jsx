@@ -1,11 +1,11 @@
 import MenuList from '@mui/material/MenuList';
 import MenuItem from '@mui/material/MenuItem';
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 
 import { Badge } from '@mui/material';
-import withStyles from '@mui/styles/withStyles';
+import { withStyles } from 'tss-react/mui';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles()(theme => ({
   root: {
     'backgroundColor': theme.palette.primary.main,
     'color': theme.palette.text.clear,
@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const MyBadge = withStyles(theme => ({
+const MyBadge = withStyles(Badge, theme => ({
   root: {
     padding: theme.spacing(0, 1)
   },
@@ -30,10 +30,10 @@ const MyBadge = withStyles(theme => ({
     marginTop: theme.spacing(0),
     padding: theme.spacing(1)
   }
-}))(Badge);
+}));
 
 export default function TypographyMenu(props) {
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   return (
     <MenuList style={{ backgroundColor: '#b25fac' }}>

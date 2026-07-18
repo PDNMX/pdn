@@ -6,7 +6,7 @@ import pdnRoutes from '../../routes'
 import estados from './estados.json'
 import PropTypes from 'prop-types'
 
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 const styles = theme => ({
   estado: {
     width: '150px',
@@ -38,7 +38,7 @@ const styles = theme => ({
     // border: "2px",
     borderColor: theme.palette.primary.main
   }
-})
+});
 
 const Cobertura = props => {
   const section = pdnRoutes.find(r => r.path === '/cobertura')
@@ -174,4 +174,4 @@ TabPanel.propTypes = {
   value: PropTypes.number.isRequired
 }
 
-export default withStyles(styles)(Cobertura)
+export default withStyles(Cobertura, styles);

@@ -6,25 +6,25 @@ import { SelectElement } from './utils'
 import ExpandLessIcon from '@mui/icons-material/ExpandLess'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
-import makeStyles from '@mui/styles/makeStyles'
+import { makeStyles } from 'tss-react/mui';
 import Ordenamiento from './Ordenamiento'
 import style from '../style'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import ReactGA from 'react-ga4'
 import ButtonPDN from '../Compartidos/ButtonPDN'
-const useStyles = makeStyles(style)
+const useStyles = makeStyles()(style);
 
-const CustomTypography = withStyles(theme => ({
+const CustomTypography = withStyles(Typography, theme => ({
   root: {
     color: theme.palette.text.primary
   },
   background: {
     backgroundColor: theme.palette.background.noSelect
   }
-}))(Typography)
+}));
 
 const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdquisicion, catEntidadesFederativas, catMunicipios, btnSearch, handlerFind, cleanForm, handleOrdenamiento, ordenamiento }) => {
-  const classes = useStyles()
+  const { classes } = useStyles()
   const {
     nombres,
     primerApellido,
@@ -226,9 +226,11 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                       onChange={handleInputChange}
                       margin='normal'
                       fullWidth
-                      InputLabelProps={{
-                        className: classes.inputShrink,
-                        shrink: true
+                      slotProps={{
+                        inputLabel: {
+                          className: classes.inputShrink,
+                          shrink: true
+                        }
                       }}
                     />
                   </Grid>
@@ -242,9 +244,11 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                       onChange={handleInputChange}
                       margin='normal'
                       fullWidth
-                      InputLabelProps={{
-                        className: classes.inputShrink,
-                        shrink: true
+                      slotProps={{
+                        inputLabel: {
+                          className: classes.inputShrink,
+                          shrink: true
+                        }
                       }}
                     />
                   </Grid>
@@ -270,9 +274,11 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                       onChange={handleInputChange}
                       margin='normal'
                       fullWidth
-                      InputLabelProps={{
-                        className: classes.inputShrink,
-                        shrink: true
+                      slotProps={{
+                        inputLabel: {
+                          className: classes.inputShrink,
+                          shrink: true
+                        }
                       }}
                     />
                   </Grid>
@@ -286,9 +292,11 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                       onChange={handleInputChange}
                       margin='normal'
                       fullWidth
-                      InputLabelProps={{
-                        className: classes.inputShrink,
-                        shrink: true
+                      slotProps={{
+                        inputLabel: {
+                          className: classes.inputShrink,
+                          shrink: true
+                        }
                       }}
                     />
                   </Grid>
@@ -314,9 +322,11 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                       onChange={handleInputChange}
                       margin='normal'
                       fullWidth
-                      InputLabelProps={{
-                        className: classes.inputShrink,
-                        shrink: true
+                      slotProps={{
+                        inputLabel: {
+                          className: classes.inputShrink,
+                          shrink: true
+                        }
                       }}
                     />
                   </Grid>
@@ -330,9 +340,11 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                       onChange={handleInputChange}
                       margin='normal'
                       fullWidth
-                      InputLabelProps={{
-                        className: classes.inputShrink,
-                        shrink: true
+                      slotProps={{
+                        inputLabel: {
+                          className: classes.inputShrink,
+                          shrink: true
+                        }
                       }}
                     />
                   </Grid>
@@ -358,9 +370,11 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                       onChange={handleInputChange}
                       margin='normal'
                       fullWidth
-                      InputLabelProps={{
-                        className: classes.inputShrink,
-                        shrink: true
+                      slotProps={{
+                        inputLabel: {
+                          className: classes.inputShrink,
+                          shrink: true
+                        }
                       }}
                     />
                   </Grid>
@@ -374,9 +388,11 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                       onChange={handleInputChange}
                       margin='normal'
                       fullWidth
-                      InputLabelProps={{
-                        className: classes.inputShrink,
-                        shrink: true
+                      slotProps={{
+                        inputLabel: {
+                          className: classes.inputShrink,
+                          shrink: true
+                        }
                       }}
                     />
                   </Grid>

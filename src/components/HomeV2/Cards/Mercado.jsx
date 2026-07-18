@@ -1,5 +1,5 @@
 import { Typography, Grid, Stack } from '@mui/material'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 
 import logoMDA from '../../../assets/rediseno2023/imgs/iconos/logotipos/ico_mda.svg'
 import ReactGA from 'react-ga4'
@@ -22,7 +22,7 @@ const styles = () => ({
     padding: 0,
     height: '15rem'
   }
-})
+});
 
 const CardMercardo = (props) => {
   const { classes } = props
@@ -94,4 +94,4 @@ const CardMercardo = (props) => {
     </div>
   );
 }
-export default withStyles(styles)(CardMercardo)
+export default withStyles(CardMercardo, styles);

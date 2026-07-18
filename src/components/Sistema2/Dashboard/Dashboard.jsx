@@ -1,4 +1,4 @@
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import { Paper, Grid } from '@mui/material'
 /* import Ejercicio from './Ejercicio';
 import Agrupaciones from './Agrupaciones';
@@ -36,7 +36,7 @@ const styles = theme => ({
     color: '#89d4f2', // theme.palette.text.linkColor,
     wordBreak: 'break-word'
   }
-})
+});
 
 const Dashboard = props => {
   const { classes } = props
@@ -92,4 +92,4 @@ Dashboard.propTypes = {
   classes: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(Dashboard)
+export default withStyles(Dashboard, styles);

@@ -1,5 +1,5 @@
 import { Grid, Link, Typography, Stack } from "@mui/material";
-import { withStyles } from "@mui/styles";
+import { withStyles } from 'tss-react/mui';
 import ReactGA from "react-ga4";
 
 import Card from "@mui/material/Card";
@@ -87,4 +87,4 @@ const BlogCard = (props) => {
   );
 };
 
-export default withStyles(styles)(BlogCard);
+export default withStyles(BlogCard, styles);

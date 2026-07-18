@@ -1,4 +1,4 @@
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import { Box, Typography } from '@mui/material'
 import VerticalProgressBar from './VerticalProgressBar'
 import PieChart from './PieChart'
@@ -40,7 +40,7 @@ const styles = theme => ({
     textAlign: 'center',
     fontWeight: 'bold'
   }
-})
+});
 
 const bar_colors = ['#a95879', '#e8bb59', '#b78779', '#7dade3', '#e388af']
 
@@ -425,4 +425,4 @@ const VistaDetalleSistema = props => {
   );
 }
 
-export default withStyles(styles)(VistaDetalleSistema)
+export default withStyles(VistaDetalleSistema, styles);

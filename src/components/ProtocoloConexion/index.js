@@ -1,4 +1,4 @@
-import withStyles from '@mui/styles/withStyles';
+import { withStyles } from 'tss-react/mui';
 import HeaderV2 from '../HomeV2/HeaderV2';
 import pdnRoutes from '../../routes';
 import { Grid, Paper, Box } from '@mui/material';
@@ -61,4 +61,4 @@ const Protocolo = props => {
   );
 };
 
-export default withStyles(styles)(Protocolo);
+export default withStyles(Protocolo, styles);

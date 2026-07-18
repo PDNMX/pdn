@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material'
 import React from 'react'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import ButtonPDN from '../../Compartidos/ButtonPDN'
 
 const styles = theme => ({
@@ -30,7 +30,7 @@ const styles = theme => ({
   title: {
     color: theme.palette.primary.main
   }
-})
+});
 
 class DescripcionEstandar extends React.Component {
   render () {
@@ -171,4 +171,4 @@ class DescripcionEstandar extends React.Component {
   }
 }
 
-export default withStyles(styles)(DescripcionEstandar)
+export default withStyles(DescripcionEstandar, styles);

@@ -1,4 +1,4 @@
-import makeStyles from '@mui/styles/makeStyles'
+import { makeStyles } from 'tss-react/mui';
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 
@@ -12,12 +12,16 @@ import { sumary, expansion, getMoneda, info } from '../utils'
 import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../common/BoxAccordion'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
-const useStyles = makeStyles(styleSecciones)
+const useStyles = makeStyles()(styleSecciones);
 
 export function ActividadFinanciera({ actividadFinanciera }) {
-  const classes = useStyles()
-  const exp = expansion()
-  const sum = sumary()
+  const { classes } = useStyles()
+  const {
+    classes: exp
+  } = expansion()
+  const {
+    classes: sum
+  } = sumary()
 
   return (
     <BoxAccordion>
@@ -90,9 +94,13 @@ export function ActividadFinanciera({ actividadFinanciera }) {
 }
 
 export function ServiciosProfesionales({ serviciosProfesionales }) {
-  const classes = useStyles()
-  const exp = expansion()
-  const sum = sumary()
+  const { classes } = useStyles()
+  const {
+    classes: exp
+  } = expansion()
+  const {
+    classes: sum
+  } = sumary()
 
   return (
     <BoxAccordion>
@@ -165,9 +173,13 @@ export function ServiciosProfesionales({ serviciosProfesionales }) {
 }
 
 export function EnajenacionBienes({ enajenacionBienes }) {
-  const classes = useStyles()
-  const exp = expansion()
-  const sum = sumary()
+  const { classes } = useStyles()
+  const {
+    classes: exp
+  } = expansion()
+  const {
+    classes: sum
+  } = sumary()
 
   return (
     <BoxAccordion>
@@ -240,9 +252,13 @@ export function EnajenacionBienes({ enajenacionBienes }) {
 }
 
 export function OtrosIngresos({ otrosIngresos }) {
-  const classes = useStyles()
-  const exp = expansion()
-  const sum = sumary()
+  const { classes } = useStyles()
+  const {
+    classes: exp
+  } = expansion()
+  const {
+    classes: sum
+  } = sumary()
 
   return (
     <BoxAccordion>

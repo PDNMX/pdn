@@ -1,5 +1,5 @@
 import React from 'react'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import { Grid, Typography, Modal } from '@mui/material'
 
 const styles = theme => ({
@@ -31,7 +31,7 @@ const styles = theme => ({
     textAlign: 'center',
     color: theme.palette.redColor
   }
-})
+});
 
 function getModalStyle () {
   const top = 50
@@ -70,4 +70,4 @@ class MensajeError extends React.Component {
   }
 }
 
-export default withStyles(styles)(MensajeError)
+export default withStyles(MensajeError, styles);

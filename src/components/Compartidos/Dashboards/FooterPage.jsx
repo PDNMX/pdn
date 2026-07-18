@@ -1,5 +1,5 @@
 import { Paper, Typography, Link } from '@mui/material'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 
 const styles = theme => ({
   paperChart: {
@@ -19,7 +19,7 @@ const styles = theme => ({
     color: theme.palette.text.linkColor,
     wordBreak: 'break-word'
   }
-})
+});
 
 const FooterPage = (props) => {
   const { classes, dataSet, provider, referenceDate } = props
@@ -45,4 +45,4 @@ const FooterPage = (props) => {
   );
 }
 
-export default withStyles(styles)(FooterPage)
+export default withStyles(FooterPage, styles);

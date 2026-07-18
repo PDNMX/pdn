@@ -1,5 +1,5 @@
-// import { makeStyles, withStyles } from '@mui/styles';
-import { makeStyles } from '@mui/styles'
+import { makeStyles } from 'tss-react/mui';
+
 // import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
@@ -42,7 +42,7 @@ import Select from '@mui/material/Select'
 //     },
 // }))(InputBase);
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles()(theme => ({
   root: {
     // display: 'flex',
     // flexWrap: 'wrap',
@@ -59,7 +59,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function CustomizedSelect (props) {
-  const classes = useStyles()
+  const { classes } = useStyles()
   // const [age, setAge] = React.useState('');
   const handleChange = event => {
     // etAge(event.target.value);

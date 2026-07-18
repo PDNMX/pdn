@@ -6,7 +6,7 @@ import TableCell from '@mui/material/TableCell'
 import TableSortLabel from '@mui/material/TableSortLabel'
 import Typography from '@mui/material/Typography'
 
-import makeStyles from '@mui/styles/makeStyles'
+import { makeStyles } from 'tss-react/mui';
 
 const headCells = [
   { id: 'nombres', label: 'Nombre(s)' },
@@ -32,7 +32,7 @@ const cellsInmuebles = [
   { id: 'valorAdquisicion', label: 'Valor de Adquisición' }
 ]
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles()(theme => ({
   root: {
     width: '100%'
   },
@@ -57,10 +57,10 @@ const useStyles = makeStyles(theme => ({
   title: {
     flex: '1 1 100%'
   }
-}))
+}));
 
 const Ordenamiento = ({ handleOrdenamiento, ordenamiento }) => {
-  const classes = useStyles()
+  const { classes } = useStyles()
 
   return (
     <TableContainer>

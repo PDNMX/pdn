@@ -1,5 +1,5 @@
 import { Grid, Box, Paper, Typography } from '@mui/material'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import HeaderV2 from '../HomeV2/HeaderV2'
 import pdnRoutes from '../../routes'
 import Link from '@mui/material/Link'
@@ -63,13 +63,13 @@ const styles = theme => ({
     color: theme.palette.text.linkColor,
     wordBreak: 'break-word'
   }
-})
+});
 
-const CustomTypography = withStyles(theme => ({
+const CustomTypography = withStyles(Typography, theme => ({
   root: {
     color: theme.palette.text.primary
   }
-}))(Typography)
+}));
 
 const Faq = props => {
   const { classes } = props
@@ -151,4 +151,4 @@ const Faq = props => {
   );
 }
 
-export default withStyles(styles)(Faq)
+export default withStyles(Faq, styles);

@@ -1,5 +1,5 @@
 import Paper from '@mui/material/Paper'
-import makeStyles from '@mui/styles/makeStyles'
+import { makeStyles } from 'tss-react/mui';
 import Grid from '@mui/material/Grid'
 
 import MenuLateral from './MenuLateral'
@@ -93,15 +93,15 @@ const Menu = data => {
   ]
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles()(theme => ({
   root: {
     flexGrow: 1,
     width: '100%',
     backgroundColor: theme.palette.background.opaque
   }
-}))
+}));
 
-const styles = makeStyles(style)
+const styles = makeStyles()(style);
 
 function opcion(valor, data) {
   const { participacion, participacionTomaDecisiones, apoyos, representacion, clientesPrincipales, beneficiosPrivados, fideicomisos } = data
@@ -128,8 +128,8 @@ function opcion(valor, data) {
 }
 
 export default function Intereses({ data, value, setValue }) {
-  const classes = useStyles()
-  const classes2 = styles()
+  const { classes } = useStyles()
+  const { classes: classes2 } = styles()
 
   if (typeof data === 'undefined') {
     //no operation

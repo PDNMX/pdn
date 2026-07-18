@@ -7,7 +7,7 @@ import {
   Paper,
   Typography
 } from '@mui/material';
-import { withStyles } from '@mui/styles';
+import { withStyles } from 'tss-react/mui';
 import { Person, Business } from '@mui/icons-material';
 import { searchInProvider } from '../../utils/api';
 import { buildSearchQuery } from '../../utils/search';
@@ -251,4 +251,4 @@ TipoPersona.propTypes = {
   onDataUpdate: PropTypes.func.isRequired
 };
 
-export default withStyles(styles)(TipoPersona);
+export default withStyles(TipoPersona, styles);

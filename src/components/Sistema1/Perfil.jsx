@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Typography, Paper } from '@mui/material';
-import withStyles from '@mui/styles/withStyles';
+import { withStyles } from 'tss-react/mui';
 
 import MenuSuperior from './MenuSuperior';
 import SituacionPatrimonial from './SituacionPatrimonial';
@@ -228,4 +228,4 @@ class Perfil extends React.Component {
   }
 }
 
-export default withStyles(styles)(Perfil);
+export default withStyles(Perfil, styles);

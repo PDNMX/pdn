@@ -6,7 +6,7 @@ import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
 import DownloadIcon from '@mui/icons-material/CloudDownload'
 import Typography from '@mui/material/Typography'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import { Box, Paper } from '@mui/material'
 import ButtonPDN from '../Compartidos/ButtonPDN'
 
@@ -224,4 +224,4 @@ ResponsiveDialog.propTypes = {
 
 // const ResponsiveDialogStyled = withStyles(styles)(ResponsiveDialog);
 
-export default withStyles(styles)(ResponsiveDialog)
+export default withStyles(ResponsiveDialog, styles);

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import { Paper, Typography, Grid } from '@mui/material'
 import CountUp from 'react-countup'
 
@@ -33,7 +33,7 @@ const styles = theme => ({
     margin: '5px'
   }
 
-})
+});
 
 const Numeralia = props => {
   const { classes } = props
@@ -276,4 +276,4 @@ const Numeralia = props => {
     </>
   );
 }
-export default withStyles(styles)(Numeralia)
+export default withStyles(Numeralia, styles);

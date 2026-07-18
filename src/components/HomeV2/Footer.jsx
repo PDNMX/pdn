@@ -13,15 +13,11 @@ import TwitterIcon from '@mui/icons-material/Twitter'
 import FacebookIcon from '@mui/icons-material/Facebook'
 import YouTubeIcon from '@mui/icons-material/YouTube'
 import GitHubIcon from '@mui/icons-material/GitHub'
-// import { makeStyles } from '@mui/styles';
-// import css from './cssFooter';
-// const useStyles = makeStyles(css);
 function useIsWidthUp (breakpoint) {
   const theme = useTheme()
   return useMediaQuery(theme.breakpoints.up(breakpoint))
 }
 const Footer = () => {
-  // const classes = useStyles();
   const isXsUp = useIsWidthUp('lg')
   return (
     <>

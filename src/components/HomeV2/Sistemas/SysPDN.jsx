@@ -1,5 +1,5 @@
 import { Grid, Typography } from '@mui/material'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import SysCard from './SysCard'
 import pdnRoutes from '../../../routes/index'
 
@@ -14,7 +14,7 @@ const styles = () => ({
   root: {
     background: '#f2f0f2'
   }
-})
+});
 
 const SysPDN = (props) => {
   const { classes } = props;
@@ -59,4 +59,4 @@ const SysPDN = (props) => {
   );
 }
 
-export default withStyles(styles)(SysPDN)
+export default withStyles(SysPDN, styles);

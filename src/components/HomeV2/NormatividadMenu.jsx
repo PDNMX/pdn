@@ -1,6 +1,6 @@
 /* eslint-disable no-dupe-keys */
 import { useEffect, useRef } from "react";
-import withStyles from "@mui/styles/withStyles";
+import { withStyles } from 'tss-react/mui';
 import { Typography, Link } from "@mui/material";
 import icon_norma from "../../assets/rediseno2023/imgs/iconos/menu/ico_norma.svg";
 import Box from "@mui/material/Box";
@@ -189,4 +189,4 @@ const NormatividadMenu = (props) => {
         </Box>
     );
 };
-export default withStyles(styles)(NormatividadMenu);
+export default withStyles(NormatividadMenu, styles);

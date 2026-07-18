@@ -1,6 +1,6 @@
 // Sancionados.jsx
 import PropTypes from "prop-types";
-import withStyles from "@mui/styles/withStyles";
+import { withStyles } from 'tss-react/mui';
 import Estandar from "./DescripcionEstandar";
 import Licencia from "../Licencia";
 import Implementacion from "./Implementacion";
@@ -147,4 +147,4 @@ Sancionados.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Sancionados);
+export default withStyles(Sancionados, styles);

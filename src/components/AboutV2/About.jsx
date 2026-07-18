@@ -1,6 +1,6 @@
 import { Typography, Grid, Link, Paper, Box } from '@mui/material'
 import { Link as RouterLink } from 'react-router-dom'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import pdnRoutes from '../../routes/index'
 import HeaderV2 from '../HomeV2/HeaderV2'
 
@@ -67,14 +67,14 @@ const styles = theme => ({
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4)
   }
-})
+});
 
-const CustomTypography = withStyles(theme => ({
+const CustomTypography = withStyles(Typography, theme => ({
   root: {
     color: theme.palette.text.primary
 
   }
-}))(Typography)
+}));
 
 const About = props => {
   const { classes } = props
@@ -338,4 +338,4 @@ const About = props => {
   );
 }
 
-export default withStyles(styles)(About)
+export default withStyles(About, styles);

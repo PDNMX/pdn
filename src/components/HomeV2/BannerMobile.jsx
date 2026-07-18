@@ -1,5 +1,5 @@
 import React from 'react'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import {
   AppBar, Box, Typography, IconButton, Menu, MenuItem,
   List, ListItemButton, Collapse, Toolbar
@@ -71,7 +71,7 @@ const styles = theme => ({
   iconSesion: {
     width: theme.spacing(5)
   }
-})
+});
 
 const BannerMobile = props => {
   const { classes, setOpenLoginDialog } = props
@@ -264,4 +264,4 @@ const BannerMobile = props => {
     </Box>
   );
 }
-export default withStyles(styles)(BannerMobile)
+export default withStyles(BannerMobile, styles);

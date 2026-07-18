@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import BusquedaServidor from './BusquedaServidor'
 import Grid from '@mui/material/Grid'
 import { Typography, Box } from '@mui/material'
@@ -53,7 +53,7 @@ const styles = theme => ({
     borderColor: theme.palette.background.border,
     borderRadius: '0px 10px 10px 10px'
   }
-})
+});
 
 function BuscadorServidoresSancionados (props) {
   const { classes } = props
@@ -112,4 +112,4 @@ BuscadorServidoresSancionados.propTypes = {
   classes: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(BuscadorServidoresSancionados)
+export default withStyles(BuscadorServidoresSancionados, styles);

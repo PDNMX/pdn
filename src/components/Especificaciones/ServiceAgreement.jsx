@@ -1,5 +1,5 @@
 import { Typography } from '@mui/material'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import ButtonPDN from '../Compartidos/ButtonPDN'
 
 const url_doc = 'https://drive.google.com/file/d/1f6E1HYEf3EBcqe9iPDdS27eJcyPYuPiO/view?usp=sharing'
@@ -22,7 +22,7 @@ const styles = theme => ({
   title: {
     color: theme.palette.primary.main
   }
-})
+});
 
 const ServiceAgreement = props => {
   const { classes } = props
@@ -50,4 +50,4 @@ const ServiceAgreement = props => {
   );
 }
 
-export default withStyles(styles)(ServiceAgreement)
+export default withStyles(ServiceAgreement, styles);

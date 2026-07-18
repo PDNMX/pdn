@@ -1,4 +1,4 @@
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import { Box, Typography } from '@mui/material'
 import DirectionsWalkIcon from '@mui/icons-material/DirectionsWalk'
 import MenuBookIcon from '@mui/icons-material/MenuBook'
@@ -29,7 +29,7 @@ const styles = theme => ({
     fontWeight: 'bold',
     maxWidth: '450px'
   }
-})
+});
 
 const Evolucion = props => {
   const { classes } = props
@@ -76,4 +76,4 @@ const Evolucion = props => {
   );
 }
 
-export default withStyles(styles)(Evolucion)
+export default withStyles(Evolucion, styles);

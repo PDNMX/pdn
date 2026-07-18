@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ResponsiveLine } from '@nivo/line';
 import axios from 'axios';
 import { Typography, Alert } from '@mui/material'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import ModalInfo from '../../../Compartidos/Dashboards/ModalInfo'
 import ContainerChart from '../../../Compartidos/Dashboards/ContainerChart';
 
@@ -90,7 +90,7 @@ const styles = theme => ({
     paddingRight: theme.spacing(1),
     marginBottom: theme.spacing(3)
   }
-})
+});
 
 const AnioDuracionSanciones = props => {
   const [state, setData] = useState([]);
@@ -216,4 +216,4 @@ const AnioDuracionSanciones = props => {
   );
 };
 
-export default withStyles(styles)(AnioDuracionSanciones)
+export default withStyles(AnioDuracionSanciones, styles);

@@ -1,5 +1,5 @@
 import { Typography, Grid, Paper, Box } from "@mui/material";
-import { withStyles } from "@mui/styles";
+import { withStyles } from 'tss-react/mui';
 import HeaderV2 from "../HomeV2/HeaderV2";
 import pdnRoutes from "../../routes";
 import working from "../../assets/rediseno2023/imgs/iconos/ico-construccion.svg";
@@ -111,4 +111,4 @@ const index = (props) => {
   );
 };
 
-export default withStyles(styles)(index);
+export default withStyles(index, styles);

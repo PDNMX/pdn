@@ -8,12 +8,12 @@ import { ThemeProvider } from '@mui/material/styles'
 import ThemeV2 from '../../../../../ThemeV2'
 
 import ReactGA from 'react-ga4'
-import { makeStyles } from '@mui/styles'
+import { makeStyles } from 'tss-react/mui';
 
 import Chips from '../Chips'
 
 import axios from 'axios'
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
   formControl: {
     width: '100%'
   },
@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1),
     fontWeight: 'bold'
   }
-}))
+}));
 
 const initialPagination = {
   page: 1,
@@ -98,7 +98,7 @@ export function ResultadosS3p (props) {
   const [view, setView] = React.useState(0)
 
   const [fixpaginador, setFixpaginador] = React.useState(false)
-  const classes = useStyles()
+  const { classes } = useStyles()
 
   React.useEffect(() => {
     /* loadInstitutions();

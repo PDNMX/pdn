@@ -1,21 +1,21 @@
-import makeStyles from '@mui/styles/makeStyles'
+import { makeStyles } from 'tss-react/mui';
 import Alert from '@mui/material/Alert'
 import AlertTitle from '@mui/material/AlertTitle'
 import IconButton from '@mui/material/IconButton'
 import Collapse from '@mui/material/Collapse'
 import CloseIcon from '@mui/icons-material/Close'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles()(theme => ({
   root: {
     width: '100%',
     '& > * + *': {
       marginTop: theme.spacing(2)
     }
   }
-}))
+}));
 
 const AlertaError = props => {
-  const classes = useStyles()
+  const { classes } = useStyles()
   const { alertData, setAlertData } = props
 
   return (

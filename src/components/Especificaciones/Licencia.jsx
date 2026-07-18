@@ -1,4 +1,4 @@
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import { Typography } from '@mui/material'
 import Link from '@mui/material/Link'
 
@@ -54,7 +54,7 @@ const styles = theme => ({
   title: {
     color: theme.palette.primary.main
   }
-})
+});
 
 const Licencia = props => {
   const { classes } = props
@@ -121,4 +121,4 @@ const Licencia = props => {
   );
 }
 
-export default withStyles(styles)(Licencia)
+export default withStyles(Licencia, styles);

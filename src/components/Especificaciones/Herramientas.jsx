@@ -1,5 +1,5 @@
 import { Typography, Link } from '@mui/material'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 
 const styles = theme => ({
   root: {
@@ -34,7 +34,7 @@ const styles = theme => ({
   title: {
     color: theme.palette.primary.main
   }
-})
+});
 
 const Herramientas = props => {
   const { classes } = props
@@ -115,4 +115,4 @@ const Herramientas = props => {
   );
 }
 
-export default withStyles(styles)(Herramientas)
+export default withStyles(Herramientas, styles);

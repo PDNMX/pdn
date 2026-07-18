@@ -10,7 +10,7 @@ import {
 } from '@mui/material';
 import { Close } from '@mui/icons-material';
 import PropTypes from 'prop-types';
-import { withStyles } from '@mui/styles';
+import { withStyles } from 'tss-react/mui';
 import commonStyles from '../commonStyles';
 
 const styles = theme => ({
@@ -142,4 +142,4 @@ DetailDialogParticulares.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(DetailDialogParticulares);
+export default withStyles(DetailDialogParticulares, styles);

@@ -1,4 +1,4 @@
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import ExpansionPanels from './ExpansionPanels'
 import Disclaimer from './Disclaimer'
 import HeaderV2 from '../HomeV2/HeaderV2'
@@ -43,7 +43,7 @@ const styles = (theme) => ({
     paddingTop: '50px',
     paddingBottom: '50px'
   }
-})
+});
 
 const HelpDesk = (props) => {
   const { classes } = props
@@ -72,4 +72,4 @@ const HelpDesk = (props) => {
   );
 }
 
-export default withStyles(styles)(HelpDesk)
+export default withStyles(HelpDesk, styles);

@@ -1,11 +1,11 @@
 import React from 'react'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 
 const styles = () => ({
   emptySpace: {
     background: '#eae1ea'// theme.palette.background.opaque
   }
-})
+});
 // Progress bar settings
 const width = 50
 const height = 200
@@ -61,4 +61,4 @@ const VerticalProgressBar = props => {
   )
 }
 
-export default withStyles(styles)(VerticalProgressBar)
+export default withStyles(VerticalProgressBar, styles);

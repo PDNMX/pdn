@@ -1,5 +1,5 @@
 import { Typography, Paper, Box } from '@mui/material'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import styles from '../style'
 import iconS1 from '../../assets/rediseno2023/imgs/iconos/sistemas/ico_s1.svg'
 
@@ -73,4 +73,4 @@ const EvolucionPatrimonial = ({ classes }) => (
   </Paper>
 )
 
-export default withStyles(styles)(EvolucionPatrimonial)
+export default withStyles(EvolucionPatrimonial, styles);

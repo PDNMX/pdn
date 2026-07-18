@@ -1,26 +1,26 @@
 import Paper from '@mui/material/Paper'
-import makeStyles from '@mui/styles/makeStyles'
+import { makeStyles } from 'tss-react/mui';
 import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
 
 import BusinessIcon from '@mui/icons-material/Business'
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance'
 
-const useStyles = makeStyles({
+const useStyles = makeStyles()({
   root: {
     flexGrow: 1,
     width: '100%',
     backgroundColor: '#f2f2f2'
   }
-})
+});
 
-const useTabs = makeStyles({
+const useTabs = makeStyles()({
   indicator: {
     backgroundColor: 'transparent'
   }
-})
+});
 
-const useTab = makeStyles(theme => ({
+const useTab = makeStyles()(theme => ({
   root: {
     'backgroundColor': theme.palette.background.noSelect,
     'color': theme.palette.primary.black,
@@ -34,12 +34,12 @@ const useTab = makeStyles(theme => ({
       fontWeight: 'bolder'
     }
   }
-}))
+}));
 
 export default function MenuSuperior(props) {
-  const classes = useStyles()
-  const tabs = useTabs()
-  const tab = useTab()
+  const { classes } = useStyles()
+  const { classes: tabs } = useTabs()
+  const { classes: tab } = useTab()
 
   return (
     <Paper square className={classes.root}>

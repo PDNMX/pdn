@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
@@ -141,4 +141,4 @@ Previos.propTypes = {
   handleChangeSujetoObligado: PropTypes.func.isRequired
 }
 
-export default withStyles(styles)(Previos)
+export default withStyles(Previos, styles);

@@ -1,5 +1,5 @@
 import AnimatedCanvas from './AnimatedCanvas'
-import withStyles from "@mui/styles/withStyles";
+import { withStyles } from 'tss-react/mui';
 import { Typography, Grid } from "@mui/material";
 // import { Link } from "react-router-dom";
 import BuscadorModal from "./Asistente/BotonPrincipal";
@@ -77,4 +77,4 @@ const QueEsPDN = () => {
     </>
   );
 };
-export default withStyles(styles)(QueEsPDN);
+export default withStyles(QueEsPDN, styles);

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { withStyles } from '@mui/styles';
+import { withStyles } from 'tss-react/mui';
 import {
   Grid,
   Typography,
@@ -501,4 +501,4 @@ FormParticulares.propTypes = {
   ).isRequired,
 };
 
-export default withStyles(styles)(FormParticulares);
+export default withStyles(FormParticulares, styles);

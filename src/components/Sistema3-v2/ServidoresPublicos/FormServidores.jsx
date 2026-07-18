@@ -1,5 +1,5 @@
 import { useState /* useEffect */ } from 'react';
-import { withStyles } from '@mui/styles';
+import { withStyles } from 'tss-react/mui';
 import DetailDialog from '../components/DetailDialog';
 import PaginationControls from '../components/PaginationControls';
 import ProviderAccordion from '../components/ProviderAccordion';
@@ -534,4 +534,4 @@ FormServidores.propTypes = {
   ).isRequired,
 };
 
-export default withStyles(styles)(FormServidores);
+export default withStyles(FormServidores, styles);

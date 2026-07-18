@@ -1,5 +1,5 @@
 import { Modal } from '@mui/material'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 
 const styles = theme => ({
   modal: {
@@ -14,7 +14,7 @@ const styles = theme => ({
     padding: theme.spacing(2),
     borderRadius: theme.spacing(5)
   }
-})
+});
 
 const ModalInfo = (props) => {
   const { classes, children, open, setOpen } = props
@@ -28,4 +28,4 @@ const ModalInfo = (props) => {
   )
 }
 
-export default withStyles(styles)(ModalInfo)
+export default withStyles(ModalInfo, styles);

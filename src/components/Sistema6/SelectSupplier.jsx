@@ -1,5 +1,5 @@
 import { FormControl, MenuItem, Select, InputLabel } from '@mui/material'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 
 // const dataSuppliers = require("./suppliers.json");
 
@@ -12,7 +12,7 @@ const styles = theme => ({
   fondo: {
     background: theme.palette.background.noSelect
   }
-})
+});
 
 const SelectSupplier = props => {
   const { classes, dataSupplier, setDataSupplier } = props
@@ -49,4 +49,4 @@ const SelectSupplier = props => {
   )
 }
 
-export default withStyles(styles)(SelectSupplier)
+export default withStyles(SelectSupplier, styles);

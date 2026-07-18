@@ -1,5 +1,5 @@
 import { Paper, Box, Divider, Grid, Typography } from '@mui/material'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import Intro from './Intro'
 import Licencia from '../Licencia'
 import Herramientas from '../Herramientas'
@@ -49,7 +49,7 @@ const styles = theme => ({
   title: {
     color: theme.palette.primary.main
   }
-})
+});
 
 const Index = props => {
   const { classes } = props
@@ -98,4 +98,4 @@ const Index = props => {
   );
 }
 
-export default withStyles(styles)(Index)
+export default withStyles(Index, styles);

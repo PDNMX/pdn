@@ -1,11 +1,11 @@
-import makeStyles from '@mui/styles/makeStyles'
+import { makeStyles } from 'tss-react/mui';
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import ListItemText from '@mui/material/ListItemText'
 import Checkbox from '@mui/material/Checkbox'
 import { TextField } from '@mui/material'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles()(theme => ({
   formControl: {
     margin: theme.spacing(1),
     marginLeft: 0,
@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     // minWidth: 120,
     // maxWidth: 300,
   }
-}))
+}));
 
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
@@ -47,7 +47,7 @@ const procedimientos = [
 ]
 
 const TipoProcedimiento = props => {
-  const classes = useStyles()
+  const { classes } = useStyles()
   const { tipoProcedimiento, asignarTipoProcedimiento } = props
 
   const handleChange = event => {
@@ -60,12 +60,14 @@ const TipoProcedimiento = props => {
         <TextField
           style={{ background: '#f2f0f2' }} id='campoSelectInstitucion' name='campoSelectInstitucion-select' margin='normal' select
           label='Procedimientos'
-          SelectProps={{
-            multiple: true,
-            renderValue: selected => selected.map(e => e.value).join(', '),
-            MenuProps,
-            onChange: handleChange,
-            value: tipoProcedimiento
+          slotProps={{
+            select: {
+              multiple: true,
+              renderValue: selected => selected.map(e => e.value).join(', '),
+              MenuProps,
+              onChange: handleChange,
+              value: tipoProcedimiento
+            }
           }}
         >
           <MenuItem value='ANY' key='ANY'>
@@ -106,7 +108,7 @@ const TipoProcedimiento = props => {
                 </Select> */}
       </FormControl>
     </div>
-  )
+  );
 }
 
 export default TipoProcedimiento

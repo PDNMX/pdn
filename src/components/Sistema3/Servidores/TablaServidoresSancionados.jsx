@@ -1,4 +1,4 @@
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
@@ -57,7 +57,7 @@ const styles = theme => ({
     fontWeight: 'bold',
     marginBottom: theme.spacing(1)
   }
-})
+});
 
 function TablaServidoresSancionados ({ classes, info, verDetalle, handleChangeRowsPerPage, handleChangePage, returnToPrevios }) {
   const {
@@ -152,4 +152,4 @@ function TablaServidoresSancionados ({ classes, info, verDetalle, handleChangeRo
   );
 }
 
-export default withStyles(styles)(TablaServidoresSancionados)
+export default withStyles(TablaServidoresSancionados, styles);

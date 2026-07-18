@@ -1,4 +1,4 @@
-import { withStyles } from "@mui/styles";
+import { withStyles } from 'tss-react/mui';
 import PropTypes from "prop-types";
 import { Typography, Link, Grid } from "@mui/material";
 import ModeloComunicacion from "../ModeloComunicacion";
@@ -237,4 +237,4 @@ Implementacion.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Implementacion);
+export default withStyles(Implementacion, styles);

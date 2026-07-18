@@ -1,5 +1,5 @@
 import * as React from 'react'
-import makeStyles from '@mui/styles/makeStyles'
+import { makeStyles } from 'tss-react/mui';
 import PropTypes from 'prop-types'
 import Fab from '@mui/material/Fab'
 import { styled } from '@mui/material/styles'
@@ -13,7 +13,7 @@ import SearchIcon from '@mui/icons-material/Search'
 import { Grid } from '@mui/material'
 import Stepper from './LinearStepper'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
   fab: {
     margin: '10px',
     top: 'auto',
@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: 'none'
   }
 
-}))
+}));
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -80,7 +80,7 @@ BootstrapDialogTitle.propTypes = {
 }
 
 export default function CustomizedDialogs () {
-  const classes = useStyles()
+  const { classes } = useStyles()
   const [open, setOpen] = React.useState(false)
   const [titulo, setTitulo] = React.useState('Asistente de búsqueda')
   // console.log(titulo);

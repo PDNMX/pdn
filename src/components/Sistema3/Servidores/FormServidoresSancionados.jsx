@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 
 import { Button, Checkbox, FormControl, Grid, ListItemText, MenuItem, TextField } from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
@@ -42,7 +42,7 @@ const styles = theme => ({
     padding: theme.spacing(1),
     fontWeight: 'bold'
   }
-})
+});
 
 const tiposSancion = [
   { label: 'Inhabilitado', value: 'I' },
@@ -106,11 +106,13 @@ const FormServidoresSancionados = ({ classes, handleForm, handleOrder, query, or
             margin='normal'
             select
             label='Tipo sanción'
-            SelectProps={{
-              multiple: true,
-              renderValue: selected => selected.map(s => s.label).join(', '),
-              onChange: handleForm,
-              value: query.tipoSancion
+            slotProps={{
+              select: {
+                multiple: true,
+                renderValue: selected => selected.map(s => s.label).join(', '),
+                onChange: handleForm,
+                value: query.tipoSancion
+              }
             }}
           >
             <MenuItem disabled value={[]}>
@@ -237,4 +239,4 @@ const FormServidoresSancionados = ({ classes, handleForm, handleOrder, query, or
   );
 }
 
-export default withStyles(styles, { withTheme: true })(FormServidoresSancionados)
+export default withStyles(FormServidoresSancionados, styles);

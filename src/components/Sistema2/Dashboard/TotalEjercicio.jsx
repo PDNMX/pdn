@@ -1,5 +1,5 @@
 import React from 'react'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import { Typography, Alert } from '@mui/material'
 import axios from 'axios'
 import { ResponsiveBar } from '@nivo/bar'
@@ -88,7 +88,7 @@ const styles = theme => ({
     paddingRight: theme.spacing(1),
     marginBottom: theme.spacing(3)
   }
-})
+});
 
 const aux = () => axios({
   url: process.env.REACT_APP_S2_BACKEND + '/api/v0/getAgrupacionEjercicio',
@@ -200,4 +200,4 @@ const Ejercicio = props => {
   );
 }
 
-export default withStyles(styles)(Ejercicio)
+export default withStyles(Ejercicio, styles);

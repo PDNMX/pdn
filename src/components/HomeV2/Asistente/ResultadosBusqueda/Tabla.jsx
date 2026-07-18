@@ -1,5 +1,5 @@
 import React from 'react'
-import makeStyles from '@mui/styles/makeStyles'
+import { makeStyles } from 'tss-react/mui';
 import Table from '@mui/material/Table'
 import TableContainer from '@mui/material/TableContainer'
 import TableBody from '@mui/material/TableBody'
@@ -35,7 +35,7 @@ function getSorting (order, orderBy) {
   return order === 'desc' ? (a, b) => desc(a, b, orderBy) : (a, b) => -desc(a, b, orderBy)
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles()(theme => ({
   root: {
     width: '100%',
     marginTop: theme.spacing(3)
@@ -68,10 +68,10 @@ const useStyles = makeStyles(theme => ({
     top: 20,
     width: 1
   }
-}))
+}));
 
 export default function EnhancedTable ({ rows, pagination, posicion, handleDataSelect, handleSetPage, handleChangeRowsPerPage }) {
-  const classes = useStyles()
+  const { classes } = useStyles()
   const [order, setOrder] = React.useState('asc')
   const [orderBy, setOrderBy] = React.useState('nombres')
 

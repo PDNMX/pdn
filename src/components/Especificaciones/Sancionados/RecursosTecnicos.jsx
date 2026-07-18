@@ -5,7 +5,7 @@ import CodeIcon from "@mui/icons-material/Code";
 import SecurityIcon from "@mui/icons-material/Security";
 import ButtonPDN from "../../Compartidos/ButtonPDN";
 import PropTypes from "prop-types";
-import { withStyles } from "@mui/styles";
+import { withStyles } from 'tss-react/mui';
 
 const styles = (theme) => ({
   cardContainer: {
@@ -143,4 +143,4 @@ RecursosTecnicos.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(RecursosTecnicos);
+export default withStyles(RecursosTecnicos, styles);

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { withStyles } from '@mui/styles';
+import { withStyles } from 'tss-react/mui';
 import { Grid, Box, Tabs, Tab, Paper, CircularProgress } from '@mui/material';
 import PropTypes from 'prop-types';
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
@@ -286,4 +286,4 @@ Index.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Index);
+export default withStyles(Index, styles);

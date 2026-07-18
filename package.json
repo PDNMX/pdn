@@ -32,7 +32,6 @@
     "@emotion/styled": "^11.14.1",
     "@mui/icons-material": "^9.2.0",
     "@mui/material": "^9.2.0",
-    "@mui/styles": "^6.4.8",
     "@nivo/bar": "^0.99.0",
     "@nivo/line": "^0.99.0",
     "@nivo/pie": "^0.99.0",
@@ -56,9 +55,11 @@
     "react-ga4": "^3.0.1",
     "react-hook-form": "^7.81.0",
     "react-router-dom": "^7.18.1",
+    "tss-react": "^4.9.21",
     "util": "^0.12.5"
   },
   "devDependencies": {
+    "@emotion/cache": "^11.14.0",
     "@eslint/js": "^9.39.3",
     "@rsbuild/core": "^2.1.6",
     "@rsbuild/plugin-react": "^2.1.0",

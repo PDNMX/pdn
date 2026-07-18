@@ -1,4 +1,4 @@
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import { Breadcrumbs, Typography, Link } from '@mui/material'
 import Grid from '@mui/material/Grid'
 import { Link as RouterLink, useParams } from 'react-router-dom'
@@ -66,9 +66,8 @@ function HeaderV2 (props) {
             <Link
               component={RouterLink}
               underline='hover'
-              sx={{ display: 'flex', alignItems: 'center' }}
-              color='#824E80'
               to='/'
+              sx={{ color: '#824E80', display: 'flex', alignItems: 'center' }}
             >
               <HomeIcon sx={{ mr: 0.5 }} fontSize='inherit' />
               Plataforma Digital Nacional
@@ -78,9 +77,8 @@ function HeaderV2 (props) {
               <Link
                 component={RouterLink}
                 underline='hover'
-                sx={{ display: 'flex', alignItems: 'center' }}
-                color='#824E80'
                 to='/especificaciones'
+                sx={{ color: '#824E80', display: 'flex', alignItems: 'center' }}
               >
                 <GrainIcon sx={{ mr: 0.5 }} fontSize='inherit' />
                 Especificaciones
@@ -91,9 +89,8 @@ function HeaderV2 (props) {
               <Link
                 component={RouterLink}
                 underline='hover'
-                sx={{ display: 'flex', alignItems: 'center' }}
-                color='#824E80'
                 to='/cobertura'
+                sx={{ color: '#824E80', display: 'flex', alignItems: 'center' }}
               >
                 <GrainIcon sx={{ mr: 0.5 }} fontSize='inherit' />
                 Cobertura
@@ -150,4 +147,4 @@ function HeaderV2 (props) {
 }
 
 // export default withWidth()(withStyles(styles)(HeaderV2));
-export default withStyles(styles)(HeaderV2)
+export default withStyles(HeaderV2, styles);

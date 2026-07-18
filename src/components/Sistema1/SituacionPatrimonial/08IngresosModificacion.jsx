@@ -1,5 +1,5 @@
 import Paper from '@mui/material/Paper'
-import makeStyles from '@mui/styles/makeStyles'
+import { makeStyles } from 'tss-react/mui';
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 
@@ -12,10 +12,10 @@ import ActividadIndustrial from './08Ingresos/ActividadIndustrial'
 import basicModif from './00_basic_modif'
 import AclaracionesObservacions from '../common/AclaracionesObservaciones'
 
-const useStyles = makeStyles(styleSecciones)
+const useStyles = makeStyles()(styleSecciones);
 
 const IngresosModificacion = ({ data: info, titulo }) => {
-  const classes = useStyles()
+  const { classes } = useStyles()
 
   const data = { ...basicModif.ingresos, ...info }
 

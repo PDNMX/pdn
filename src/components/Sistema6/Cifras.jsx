@@ -1,5 +1,5 @@
 import React from 'react'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 // import Donutchart from './Charts/SimpleRadialChart'
@@ -40,19 +40,19 @@ const styles = theme => ({
     paddingRight: theme.spacing(1),
     paddingLeft: theme.spacing(1)
   }
-})
+});
 
-const CustomTypography = withStyles(theme => ({
+const CustomTypography = withStyles(Typography, theme => ({
   root: {
     color: theme.palette.text.primary
   }
-}))(Typography)
+}));
 
-const CustomTitle = withStyles(theme => ({
+const CustomTitle = withStyles(Typography, theme => ({
   root: {
     color: theme.palette.background.select
   }
-}))(Typography)
+}));
 
 const Cifras = props => {
   const { classes, dataSupplier } = props
@@ -265,4 +265,4 @@ const Cifras = props => {
   );
 }
 
-export default withStyles(styles)(Cifras)
+export default withStyles(Cifras, styles);

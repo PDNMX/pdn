@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import withStyles from '@mui/styles/withStyles';
+import { withStyles } from 'tss-react/mui';
 import { Typography, Link } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import legislacion_icono from '../../assets/rediseno2023/imgs/iconos/menu/ico_sistemas123.svg';
@@ -152,4 +152,4 @@ const InterconexionMenu = props => {
     </Box>
   );
 };
-export default withStyles(styles)(InterconexionMenu);
+export default withStyles(InterconexionMenu, styles);

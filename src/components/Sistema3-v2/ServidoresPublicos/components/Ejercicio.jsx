@@ -7,7 +7,7 @@ import {
   Box,
   CircularProgress
 } from '@mui/material';
-import { withStyles } from '@mui/styles';
+import { withStyles } from 'tss-react/mui';
 import {
   ErrorOutlineOutlined,
   Warning
@@ -357,4 +357,4 @@ Ejercicio.propTypes = {
   onDataUpdate: PropTypes.func.isRequired
 };
 
-export default withStyles(styles)(Ejercicio);
+export default withStyles(Ejercicio, styles);

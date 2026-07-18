@@ -1,15 +1,15 @@
 import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Paper, Link } from '@mui/material'
-import makeStyles from '@mui/styles/makeStyles'
+import { makeStyles } from 'tss-react/mui';
 import { Link as RouterLink } from 'react-router-dom'
 import ButtonPDN from '../Compartidos/ButtonPDN'
 const avisoIntegral = 'https://drive.google.com/file/d/1Yotqc3mlHZn56-B8FO6MFMfYVf9x4RZS/view?usp=drive_link';
 const avisoSimplificado = 'https://drive.google.com/file/d/1agSv598orLnyRfQmXQthSplWwoXWwDmL/view?usp=drive_link';
 
 import styles from '../style'
-const useStyles = makeStyles(styles)
+const useStyles = makeStyles()(styles);
 
 export default function Disclaimer(props) {
-  const classes = useStyles()
+  const { classes } = useStyles()
   return (
     <Dialog open={props.open} onClose={props.handleClose} aria-labelledby='alert-dialog-title' aria-describedby='alert-dialog-description'>
       <Paper className={classes.paper_disclaimer} style={{ margin: 0, borderRadius: 0 }}>

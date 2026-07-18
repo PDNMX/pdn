@@ -1,6 +1,6 @@
 import React from 'react'
-import makeStyles from '@mui/styles/makeStyles'
-import withStyles from '@mui/styles/withStyles'
+import { makeStyles } from 'tss-react/mui';
+import { withStyles } from 'tss-react/mui';
 import MuiExpansionPanel from '@mui/material/Accordion'
 import MuiExpansionPanelSummary from '@mui/material/AccordionSummary'
 import MuiExpansionPanelDetails from '@mui/material/AccordionDetails'
@@ -12,15 +12,15 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import ButtonPDN from '../Compartidos/ButtonPDN'
 import Grid from '@mui/material/Grid'
 
-const Accordion = withStyles(theme => ({
+const Accordion = withStyles(MuiExpansionPanel, theme => ({
   root: {
     border: '1px solid' + theme.palette.background.opaque,
     boxShadow: 'none'
   },
   expanded: {}
-}))(MuiExpansionPanel)
+}));
 
-const AccordionSummary = withStyles(theme => ({
+const AccordionSummary = withStyles(MuiExpansionPanelSummary, theme => ({
   root: {
     backgroundColor: theme.palette.background.opaque,
     /* borderBottom: '1px solid rgba(0, 0, 0, .125)', */
@@ -34,18 +34,18 @@ const AccordionSummary = withStyles(theme => ({
   expandIconWrapper: {
     color: theme.palette.secondary.main
   }
-}))(MuiExpansionPanelSummary)
+}));
 
-const AccordionDetails = withStyles(theme => ({
+const AccordionDetails = withStyles(MuiExpansionPanelDetails, theme => ({
   root: {
     padding: theme.spacing(2),
     color: theme.palette.text.primary,
     backgroundColor: theme.palette.background.opaque,
     borderTop: '1px solid' + theme.palette.secondary.main
   }
-}))(MuiExpansionPanelDetails)
+}));
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles()(theme => ({
   link: {
     textDecoration: 'none',
     color: theme.palette.text.linkColor,
@@ -71,7 +71,7 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 'bold',
     color: theme.palette.text.clear
   }
-}))
+}));
 
 export default function CustomizedExpansionPanels () {
   const [expanded, setExpanded] = React.useState('panel1')// 'panel1');
@@ -80,7 +80,7 @@ export default function CustomizedExpansionPanels () {
     setExpanded(newExpanded ? panel : false)
   }
 
-  const classes = useStyles()
+  const { classes } = useStyles()
 
   return (
     <div>

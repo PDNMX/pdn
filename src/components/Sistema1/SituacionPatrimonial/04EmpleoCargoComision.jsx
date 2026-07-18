@@ -1,5 +1,5 @@
 import Paper from '@mui/material/Paper'
-import makeStyles from '@mui/styles/makeStyles'
+import { makeStyles } from 'tss-react/mui';
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 
@@ -10,10 +10,10 @@ import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../commo
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import AclaracionesObservacions from '../common/AclaracionesObservaciones'
 
-const useStyles = makeStyles(style)
+const useStyles = makeStyles()(style);
 
 function Empleo({ data }) {
-  const classes = useStyles()
+  const { classes } = useStyles()
 
   return (
     <>
@@ -109,7 +109,7 @@ function Empleo({ data }) {
 }
 
 const EmpleoCargoComision = ({ data, titulo }) => {
-  const classes = useStyles()
+  const { classes } = useStyles()
 
   return (
     <Grid container spacing={2} className={classes.rootPrincipal}>

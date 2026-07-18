@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Typography, Grid, Box, Paper } from '@mui/material'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import ButtonPDN from '../components/Compartidos/ButtonPDN'
 import HeaderV2 from './HomeV2/HeaderV2'
 
@@ -36,7 +36,7 @@ const styles = theme => ({
   box: {
     maxWidth: '900px', paddingTop: '50px', paddingBottom: '50px'
   }
-})
+});
 
 const P404 = props => {
   const { classes } = props
@@ -79,4 +79,4 @@ const P404 = props => {
   );
 }
 
-export default withStyles(styles)(P404)
+export default withStyles(P404, styles);

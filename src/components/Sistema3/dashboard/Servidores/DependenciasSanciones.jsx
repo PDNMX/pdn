@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import { ResponsiveTreeMap } from '@nivo/treemap'
 import axios from 'axios'
 
@@ -19,7 +19,7 @@ const styles = theme => ({
     paddingRight: theme.spacing(1),
     marginBottom: theme.spacing(3)
   }
-})
+});
 
 
 
@@ -75,4 +75,4 @@ const DependenciasSanciones = () => {
   )
 }
 
-export default withStyles(styles)(DependenciasSanciones)
+export default withStyles(DependenciasSanciones, styles);

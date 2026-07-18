@@ -1,12 +1,12 @@
 import { Grid, Typography } from '@mui/material'
 
-import makeStyles from '@mui/styles/makeStyles'
+import { makeStyles } from 'tss-react/mui';
 
 import style from './styleSecciones'
-const useStyles = makeStyles(style)
+const useStyles = makeStyles()(style);
 
 export default function DatosReservados() {
-  const classes = useStyles()
+  const { classes } = useStyles()
 
   return (
     <Grid size={12}>

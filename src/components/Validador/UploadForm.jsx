@@ -9,7 +9,7 @@ import Ajv from 'ajv'
 import addFormats from 'ajv-formats'
 import localize from 'ajv-i18n'
 import Parser from '@apidevtools/swagger-parser'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import PropTypes from 'prop-types'
 import ReactGA from 'react-ga4'
 import ButtonPDN from '../Compartidos/ButtonPDN'
@@ -43,7 +43,7 @@ const styles = (theme) => ({
     marginBottom: theme.spacing(1),
     color: theme.palette.text.primary
   }
-})
+});
 
 class UploadForm extends React.Component {
   state = {
@@ -292,4 +292,4 @@ UploadForm.propTypes = {
   classes: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(UploadForm)
+export default withStyles(UploadForm, styles);

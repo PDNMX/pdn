@@ -1,12 +1,12 @@
-import makeStyles from '@mui/styles/makeStyles'
+import { makeStyles } from 'tss-react/mui';
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 
 import styleSecciones from './styleSecciones'
-const useStyles = makeStyles(styleSecciones)
+const useStyles = makeStyles()(styleSecciones);
 
 export default function CompTransmisor(props) {
-  const classes = useStyles()
+  const { classes } = useStyles()
   const { transmisor } = props
 
   return (

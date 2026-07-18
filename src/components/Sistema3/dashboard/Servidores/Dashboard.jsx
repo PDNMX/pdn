@@ -1,4 +1,4 @@
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import PropTypes from 'prop-types'
 import { Grid, Paper } from '@mui/material'
 import './legacy/graficas.css';
@@ -60,7 +60,7 @@ const styles = theme => ({
     color: theme.palette.text.linkColor,
     wordBreak: 'break-word'
   }
-})
+});
 
 const Dashboard = (props) => {
   const { classes } = props
@@ -121,4 +121,4 @@ Dashboard.propTypes = {
   classes: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(Dashboard)
+export default withStyles(Dashboard, styles);

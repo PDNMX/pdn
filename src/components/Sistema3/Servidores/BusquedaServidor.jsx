@@ -1,6 +1,6 @@
 // PANTALLA DE BUSQUEDASERVIDOR, CON SELECT PARA SORT
 import { useEffect, useState } from 'react'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import PropTypes from 'prop-types'
 import { Typography, Grid, Modal, CircularProgress } from '@mui/material'
 import MensajeErrorDatos from '../../Mensajes/MensajeErrorDatos'
@@ -50,7 +50,7 @@ const styles = theme => ({
     padding: theme.spacing(1),
     fontWeight: 'bold'
   }
-})
+});
 
 const initialQuery = {
   nombres: '',
@@ -381,4 +381,4 @@ BusquedaServidor.propTypes = {
   classes: PropTypes.object.isRequired
 }
 
-export default withStyles(styles, { withTheme: true })(BusquedaServidor)
+export default withStyles(BusquedaServidor, styles);

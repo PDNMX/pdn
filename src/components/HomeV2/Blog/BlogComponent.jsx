@@ -1,6 +1,6 @@
 import React from 'react'
 import { Stack, Grid, Typography } from '@mui/material'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import BlogCard from './BlogCard'
 import axios from 'axios'
 import ButtonPDN from '../../Compartidos/ButtonPDN'
@@ -19,7 +19,7 @@ const styles = () => ({
   root: {
     background: '#f2f0f2'
   }
-})
+});
 
 const BlogComponent = (props) => {
   const { classes } = props
@@ -104,4 +104,4 @@ const BlogComponent = (props) => {
   );
 }
 
-export default withStyles(styles)(BlogComponent)
+export default withStyles(BlogComponent, styles);

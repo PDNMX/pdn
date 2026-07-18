@@ -1,5 +1,5 @@
 import React from 'react'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import { Grid, Typography } from '@mui/material'
 import PropTypes from 'prop-types'
 import img1 from '../../assets/rediseno/svg_iconos_azul/SVG/s1_01.svg'
@@ -162,4 +162,4 @@ Index.propTypes = {
   classes: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(Index)
+export default withStyles(Index, styles);

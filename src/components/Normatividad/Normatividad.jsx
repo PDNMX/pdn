@@ -1,4 +1,4 @@
-import withStyles from '@mui/styles/withStyles';
+import { withStyles } from 'tss-react/mui';
 import ExpansionPanels from './ExpansionPanels';
 import HeaderV2 from '../HomeV2/HeaderV2';
 import pdnRoutes from '../../routes';
@@ -68,4 +68,4 @@ const Normatividad = props => {
     );
 }
 
-export default withStyles(styles)(Normatividad);
+export default withStyles(Normatividad, styles);

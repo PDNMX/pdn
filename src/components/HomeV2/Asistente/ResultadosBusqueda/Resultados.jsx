@@ -3,16 +3,16 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import CircularProgress from '@mui/material/CircularProgress'
 /* import IconSunny from '@mui/icons-material/WbSunny'; */
 
-import makeStyles from '@mui/styles/makeStyles'
+import { makeStyles } from 'tss-react/mui';
 import styles from '../../../style'
 import { Grid, Typography } from '@mui/material'
 
 import Tabla from './Tabla'
 
-const useStyles = makeStyles(styles)
+const useStyles = makeStyles()(styles);
 
 const Resultados = props => {
-  const classes = useStyles()
+  const { classes } = useStyles()
   const { p, i, handleDataSelect, handleSetPage, handleChangeRowsPerPage } = props
 
   return (

@@ -1,13 +1,13 @@
-import makeStyles from '@mui/styles/makeStyles'
+import { makeStyles } from 'tss-react/mui';
 import Typography from '@mui/material/Typography'
 import style from '../styleSecciones'
 import Grid from '@mui/material/Grid'
 import Paper from '@mui/material/Paper'
 
-const useStyles = makeStyles(style)
+const useStyles = makeStyles()(style);
 
 const AclaracionesObservacions = () => {
-  const classes = useStyles()
+  const { classes } = useStyles()
 
   return (
     <Grid style={{ marginTop: 10 }} size={12}>

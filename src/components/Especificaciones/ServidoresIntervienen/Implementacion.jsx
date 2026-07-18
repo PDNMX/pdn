@@ -1,4 +1,4 @@
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import { Typography, Link } from '@mui/material'
 import Grid from '@mui/material/Grid'
 import ModeloComunicacion from '../ModeloComunicacion'
@@ -40,7 +40,7 @@ const styles = theme => ({
   title: {
     color: theme.palette.primary.main
   }
-})
+});
 
 const Implementacion = props => {
   const { classes } = props
@@ -107,4 +107,4 @@ const Implementacion = props => {
   );
 }
 
-export default withStyles(styles)(Implementacion)
+export default withStyles(Implementacion, styles);

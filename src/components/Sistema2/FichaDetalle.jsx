@@ -1,4 +1,4 @@
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import { Box, Paper, Divider, Grid, Tooltip, Typography, Button } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
 import DownloadItem from '../Compartidos/DownloadItem'
@@ -9,13 +9,13 @@ const Glosario = props => {
   const data = servidores.servidores.find(e => e.id === props.id)
   return (
     <>
-      <Typography color='inherit'>{data.title}</Typography>
+      <Typography sx={{ color: 'inherit' }}>{data.title}</Typography>
       <em>{data.description}</em>
     </>
   )
 }
 
-const HtmlTooltip = withStyles(theme => ({
+const HtmlTooltip = withStyles(Tooltip, theme => ({
   tooltip: {
     backgroundColor: '#f5f5f9',
     color: 'rgba(0, 0, 0, 0.87)',
@@ -23,7 +23,7 @@ const HtmlTooltip = withStyles(theme => ({
     fontSize: theme.typography.pxToRem(12),
     border: '1px solid #dadde9'
   }
-}))(Tooltip)
+}));
 
 const styles = theme => ({
   root: {
@@ -68,7 +68,7 @@ const styles = theme => ({
   btnBack: {
     color: theme.palette.primary.dark
   }
-})
+});
 
 const FichaDetalle = props => {
   const { closeDialog, servidorPublico, classes } = props
@@ -159,4 +159,4 @@ const FichaDetalle = props => {
   );
 }
 
-export default withStyles(styles)(FichaDetalle)
+export default withStyles(FichaDetalle, styles);

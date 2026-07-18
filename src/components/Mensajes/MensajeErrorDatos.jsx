@@ -1,4 +1,4 @@
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import { Grid, Typography } from '@mui/material'
 import IconProblem from '@mui/icons-material/ReportProblem'
 
@@ -15,7 +15,7 @@ const styles = theme => ({
     textAlign: 'center'
 
   }
-})
+});
 
 function MensajeErrorDatos ({ classes }) {
   return (
@@ -34,4 +34,4 @@ function MensajeErrorDatos ({ classes }) {
   );
 }
 
-export default withStyles(styles, { withTheme: true })(MensajeErrorDatos)
+export default withStyles(MensajeErrorDatos, styles);

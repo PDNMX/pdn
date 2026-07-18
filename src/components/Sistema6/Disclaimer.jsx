@@ -1,5 +1,5 @@
 import Typography from '@mui/material/Typography'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import Link from '@mui/material/Link'
 
 const styles = () => ({
@@ -28,13 +28,13 @@ const styles = () => ({
     color: '#7A3D71', // theme.palette.text.linkColor,
     wordBreak: 'break-word'
   }
-})
+});
 
-const CustomTypography = withStyles(theme => ({
+const CustomTypography = withStyles(Typography, theme => ({
   root: {
     color: theme.palette.text.primary
   }
-}))(Typography)
+}));
 
 const Disclaimer = props => {
   const { classes, dataSupplier } = props
@@ -71,4 +71,4 @@ const Disclaimer = props => {
   )
 }
 
-export default withStyles(styles)(Disclaimer)
+export default withStyles(Disclaimer, styles);

@@ -2,7 +2,7 @@ import { Typography } from "@mui/material";
 import { List, ListItem, ListItemText } from "@mui/material";
 // import IconButton from '@mui/material/IconButton';
 // import GetAppIcon from '@mui/icons-material/GetApp';
-import withStyles from "@mui/styles/withStyles";
+import { withStyles } from 'tss-react/mui';
 import { Link } from "react-router-dom";
 import MuiLink from "@mui/material/Link";
 import ButtonPDN from "../Compartidos/ButtonPDN";
@@ -243,4 +243,4 @@ const ProtocoloConexion = (props) => {
   );
 };
 
-export default withStyles(styles)(ProtocoloConexion);
+export default withStyles(ProtocoloConexion, styles);

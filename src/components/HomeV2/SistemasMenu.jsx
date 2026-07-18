@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import withStyles from "@mui/styles/withStyles";
+import { withStyles } from 'tss-react/mui';
 import { Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import Box from "@mui/material/Box";
@@ -108,4 +108,4 @@ const SistemasMenu = (props) => {
     </Box>
   );
 };
-export default withStyles(styles)(SistemasMenu);
+export default withStyles(SistemasMenu, styles);

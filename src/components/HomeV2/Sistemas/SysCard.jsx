@@ -1,6 +1,6 @@
 import { Typography, Grid, CardActionArea } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
-import { withStyles } from "@mui/styles";
+import { withStyles } from 'tss-react/mui';
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import ScrollAnimation from "../ScrollAnimation";
@@ -81,4 +81,4 @@ const SysCard = (props) => {
   );
 };
 
-export default withStyles(styles)(SysCard);
+export default withStyles(SysCard, styles);

@@ -1,4 +1,4 @@
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import { TextField, FormControl, Grid, Typography } from '@mui/material'
 import FormLabel from '@mui/material/FormLabel'
 import RadioGroup from '@mui/material/RadioGroup'
@@ -28,7 +28,7 @@ const styles = theme => ({
     margin: theme.spacing(2),
     marginRight: theme.spacing(1)
   }
-})
+});
 
 const EntradasBuscador = props => {
   const {
@@ -229,4 +229,4 @@ const EntradasBuscador = props => {
   );
 }
 
-export default withStyles(styles)(EntradasBuscador)
+export default withStyles(EntradasBuscador, styles);

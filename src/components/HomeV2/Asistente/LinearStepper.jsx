@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Typography, Step, Stepper, StepLabel, CardActionArea } from '@mui/material'
-import { makeStyles } from '@mui/styles'
+import { makeStyles } from 'tss-react/mui';
 import { useForm, Controller, FormProvider, useFormContext } from 'react-hook-form'
 
 // INPUTS PARA EL FORM
@@ -44,7 +44,7 @@ import ButtonPDN from '../../Compartidos/ButtonPDN'
 
 const KEY = 'pdn.camposBusqueda'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
   container: {
     margin: '1% 0%',
     width: '100%'
@@ -127,7 +127,7 @@ const useStyles = makeStyles((theme) => ({
     }
 
   }
-}))
+}));
 
 function getSteps () {
   return ['Tipo de Búsqueda', 'Filtros de Búsqueda', 'Resultados de Búsqueda']
@@ -155,7 +155,7 @@ function FiltrosBusqueda (props) {
 }
 
 const LinaerStepper = ({ stateChanger }) => {
-  const classes = useStyles()
+  const { classes } = useStyles()
   const methods = useForm({
     defaultValues
   })
@@ -231,9 +231,11 @@ const LinaerStepper = ({ stateChanger }) => {
                   <Card className={classes.card} {...field} style={{ width: '100%', display: 'flex', justifyContent: 'space-between', flexDirection: 'row', borderBottom: '0.3rem solid ' + opcion.color }}>
                     <Tooltip
                       title={opcion.detalle}
-                      TransitionComponent={Zoom}
                       classes={{ tooltip: classes.Tooltip }}
                       placement='top'
+                      slots={{
+                        transition: Zoom
+                      }}
                     >
                       <CardActionArea
                         value={opcion.value}
@@ -428,7 +430,11 @@ const LinaerStepper = ({ stateChanger }) => {
                   }
                   }}
                 >
-                  <StepLabel StepIconComponent={ColorlibStepIcon} {...labelProps}>
+                  <StepLabel
+                    {...labelProps}
+                    slots={{
+                      stepIcon: ColorlibStepIcon
+                    }}>
                     <Typography
                       variant='caption'
                       align='center'
@@ -438,7 +444,7 @@ const LinaerStepper = ({ stateChanger }) => {
 
                   </StepLabel>
                 </Step>
-              )
+              );
             })}
           </Stepper>
         </Grid>

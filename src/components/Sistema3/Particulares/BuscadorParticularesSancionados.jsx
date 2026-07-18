@@ -1,5 +1,5 @@
 import { Grid, Typography, Box, Paper } from '@mui/material'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import BusquedaParticular from './BusquedaParticular'
 import Descarga from '../../Compartidos/Descarga'
 /* import classNames from "classnames"; */
@@ -107,4 +107,4 @@ function BuscadorParticularesSancionados ({ classes }) {
   );
 }
 
-export default withStyles(styles)(BuscadorParticularesSancionados)
+export default withStyles(BuscadorParticularesSancionados, styles);

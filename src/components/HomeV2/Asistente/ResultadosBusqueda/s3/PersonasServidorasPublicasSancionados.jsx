@@ -1,11 +1,11 @@
 import React from 'react'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import { Grid, Modal, CircularProgress } from '@mui/material'
 import MensajeErrorDatos from '../../../../Mensajes/MensajeError'
 import Previos from '../Previos'
 import TablaServidoresSancionados from '../../../../Sistema3/Servidores/TablaServidoresSancionados'
 import DetalleServidorSancionado from '../../../../Sistema3/Servidores/DetalleServidorSancionado'
-import { makeStyles } from '@mui/styles'
+import { makeStyles } from 'tss-react/mui';
 import ReactGA from 'react-ga4'
 import Chips from '../Chips'
 
@@ -14,7 +14,7 @@ import ThemeV2 from '../../../../../ThemeV2'
 
 import axios from 'axios'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles()(theme => ({
   formControl: {
     width: '100%'
   },
@@ -48,7 +48,7 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(1),
     fontWeight: 'bold'
   }
-}))
+}));
 
 const initialPagination = {
   page: 1,
@@ -64,7 +64,7 @@ const initialSort = {
 export function ResultadosS3s (props) {
   const dataProps = JSON.parse(props.data)
   const data = dataProps['psp-sancionados']
-  const classes = useStyles()
+  const { classes } = useStyles()
   /*
   1.- Servidores publicos sancionados
   - Nombre
@@ -314,6 +314,4 @@ export function ResultadosS3s (props) {
   );
 }
 
-export default withStyles(useStyles, { withTheme: false })(
-  ResultadosS3s
-)
+export default withStyles(ResultadosS3s, useStyles);

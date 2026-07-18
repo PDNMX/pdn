@@ -1,4 +1,4 @@
-import makeStyles from '@mui/styles/makeStyles'
+import { makeStyles } from 'tss-react/mui';
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 
@@ -13,12 +13,16 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
 import AclaracionesObservacions from '../common/AclaracionesObservaciones'
 
-const useStyles = makeStyles(styleSecciones)
+const useStyles = makeStyles()(styleSecciones);
 
 function Participacion(props) {
-  const classes = useStyles()
-  const exp = expansion()
-  const sum = sumary()
+  const { classes } = useStyles()
+  const {
+    classes: exp
+  } = expansion()
+  const {
+    classes: sum
+  } = sumary()
   const { participaciones } = props
   return (
     <>
@@ -115,7 +119,7 @@ function Participacion(props) {
 }
 
 const TomaDecisiones = props => {
-  const classes = useStyles()
+  const { classes } = useStyles()
   const { data } = props
 
   // const participaciones = data.participacion.filter((i) => i.tipoRelacion === 'DECLARANTE')

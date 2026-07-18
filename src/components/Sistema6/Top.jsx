@@ -1,5 +1,5 @@
 import React from 'react'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import Typography from '@mui/material/Typography'
 import NivoBar from './Charts/NivoBar'
 import NivoBarSuppliers from './Charts/NivoBarSuppliers'
@@ -10,13 +10,13 @@ const styles = () => ({
   root: {
     flexGrow: 1
   }
-})
+});
 
-const CustomTypography = withStyles(theme => ({
+const CustomTypography = withStyles(Typography, theme => ({
   root: {
     color: theme.palette.text.primary
   }
-}))(Typography)
+}));
 
 const Top = props => {
   const { classes, dataSupplier } = props
@@ -99,4 +99,4 @@ const Top = props => {
   );
 }
 
-export default withStyles(styles)(Top)
+export default withStyles(Top, styles);

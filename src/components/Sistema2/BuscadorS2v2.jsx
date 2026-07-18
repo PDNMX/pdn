@@ -1,5 +1,5 @@
 import React from 'react'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import { Table, TableBody, TableCell, TablePagination, TableRow, TableFooter, Button, Paper, Box, Typography, Modal } from '@mui/material'
 import CircularProgress from '@mui/material/CircularProgress'
 import axios from 'axios'
@@ -62,7 +62,7 @@ const styles = theme => ({
   tableBody: {
     background: theme.palette.background.default
   }
-})
+});
 
 function getSorting (order, orderBy) {
   return order === 'desc'
@@ -578,4 +578,4 @@ const BuscadorS2 = props => {
   );
 }
 
-export default withStyles(styles)(BuscadorS2)
+export default withStyles(BuscadorS2, styles);

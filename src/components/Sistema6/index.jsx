@@ -1,5 +1,5 @@
 import React from 'react'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import Busqueda from './BusquedaV2'
 import Cifras from './Cifras'
 // import Perspectivas from "./Perspectivas";
@@ -141,4 +141,4 @@ const Index = props => {
   );
 }
 
-export default withStyles(styles)(Index)
+export default withStyles(Index, styles);

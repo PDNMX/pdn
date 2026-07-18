@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import Divider from '@mui/material/Divider'
 import Grid from '@mui/material/Grid'
 import DescripcionEstandar from './DescripcionEstandar'
@@ -77,4 +77,4 @@ Declaraciones.propTypes = {
   classes: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(Declaraciones)
+export default withStyles(Declaraciones, styles);

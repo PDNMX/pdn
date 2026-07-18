@@ -1,5 +1,5 @@
 import React from 'react'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import { Grid, Typography } from '@mui/material'
 import BuscadorS2 from './BuscadorS2v2'
 import HeaderV2 from '../HomeV2/HeaderV2'
@@ -135,4 +135,4 @@ const Index = props => {
   );
 }
 
-export default withStyles(styles)(Index)
+export default withStyles(Index, styles);

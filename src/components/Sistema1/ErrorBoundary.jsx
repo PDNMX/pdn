@@ -1,6 +1,6 @@
 import React from 'react'
 import { Grid, Typography } from '@mui/material'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 
 import styleSecciones from './styleSecciones'
 
@@ -47,4 +47,4 @@ class ErrorBoundary extends React.Component {
   }
 }
 
-export default withStyles(styleSecciones)(ErrorBoundary)
+export default withStyles(ErrorBoundary, styleSecciones);

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import Grid from '@mui/material/Grid'
 import { Paper, Typography } from '@mui/material'
 import Button from '@mui/material/Button'
@@ -52,7 +52,7 @@ const styles = theme => ({
     maxWidth: '1200px',
     margin: '0 auto'
   }
-})
+});
 
 function DetalleServidorSancionado ({ classes, handleChangeDetail, servidor }) {
   return (
@@ -242,4 +242,4 @@ DetalleServidorSancionado.propTypes = {
   classes: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(DetalleServidorSancionado)
+export default withStyles(DetalleServidorSancionado, styles);

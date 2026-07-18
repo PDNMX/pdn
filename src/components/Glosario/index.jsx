@@ -1,5 +1,5 @@
 import React from 'react'
-import makeStyles from '@mui/styles/makeStyles'
+import { makeStyles } from 'tss-react/mui';
 import Drawer from '@mui/material/Drawer'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
@@ -8,7 +8,7 @@ import MenuBookTwoToneIcon from '@mui/icons-material/MenuBookTwoTone'
 
 import Busqueda from './busqueda'
 import ReactGA from 'react-ga4'
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
   drawerPaper: {
     width: '25%',
     padding: 15,
@@ -28,10 +28,10 @@ const useStyles = makeStyles((theme) => ({
     background: '#815374',
     zIndex: 10
   }
-}))
+}));
 
 export default function TemporaryDrawer () {
-  const classes = useStyles()
+  const { classes } = useStyles()
   const [state, setState] = React.useState(false)
 
   const toggleDrawer = (open) => (event) => {

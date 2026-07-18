@@ -2,7 +2,7 @@ import React from 'react'
 import {
   Grid, MenuItem, FormControl, Typography, ListItemText, TextField, Button, Checkbox, Modal, CircularProgress
 } from '@mui/material'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import PropTypes from 'prop-types'
 import Previos from '../../Compartidos/Previos'
 import ExpandLessIcon from '@mui/icons-material/ExpandLess'
@@ -54,7 +54,7 @@ const styles = theme => ({
     padding: theme.spacing(1),
     fontWeight: 'bold'
   }
-})
+});
 
 const tiposSancion = [
   { label: 'Inhabilitado', value: 'I' },
@@ -367,11 +367,13 @@ function BusquedaParticular ({ classes }) {
             <FormControl className={classes.formControl}>
               <TextField
                 style={{ background: '#f2f0f2' }} id='tipoSancion' name='tipoSancion-select' margin='normal' select label='Tipo sanción'
-                SelectProps={{
-                  multiple: true,
-                  renderValue: selected => selected.map(element => element.label).join(', '),
-                  onChange: e => setFilter({ ...filter, tipoSancion: e.target.value }),
-                  value: filter.tipoSancion
+                slotProps={{
+                  select: {
+                    multiple: true,
+                    renderValue: selected => selected.map(element => element.label).join(', '),
+                    onChange: e => setFilter({ ...filter, tipoSancion: e.target.value }),
+                    value: filter.tipoSancion
+                  }
                 }}
               >
                 {tiposSancion.map(tipo => (
@@ -584,4 +586,4 @@ BusquedaParticular.propTypes = {
   classes: PropTypes.object.isRequired
 }
 
-export default withStyles(styles, { withTheme: true })(BusquedaParticular)
+export default withStyles(BusquedaParticular, styles);

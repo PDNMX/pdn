@@ -1,5 +1,5 @@
 import React from 'react'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import PropTypes from 'prop-types'
 import { Typography } from '@mui/material'
 import Grid from '@mui/material/Grid'
@@ -37,7 +37,7 @@ const styles = theme => ({
   title: {
     color: theme.palette.primary.main
   }
-})
+});
 
 class Recomendaciones extends React.Component {
   render () {
@@ -104,4 +104,4 @@ Recomendaciones.propTypes = {
   classes: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(Recomendaciones)
+export default withStyles(Recomendaciones, styles);

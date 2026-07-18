@@ -1,5 +1,5 @@
 import Paper from '@mui/material/Paper'
-import makeStyles from '@mui/styles/makeStyles'
+import { makeStyles } from 'tss-react/mui';
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 
@@ -13,12 +13,16 @@ import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../commo
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import AclaracionesObservacions from '../common/AclaracionesObservaciones'
 
-const useStyles = makeStyles(styleSecciones)
+const useStyles = makeStyles()(styleSecciones);
 
 const ActividadIndustrial = props => {
-  const classes = useStyles()
-  const exp = expansion()
-  const sum = sumary()
+  const { classes } = useStyles()
+  const {
+    classes: exp
+  } = expansion()
+  const {
+    classes: sum
+  } = sumary()
 
   const { actividadIndustrialComercialEmpresarial } = props
 
@@ -108,9 +112,13 @@ const ActividadIndustrial = props => {
 }
 
 const ActividadFinanciera = props => {
-  const classes = useStyles()
-  const exp = expansion()
-  const sum = sumary()
+  const { classes } = useStyles()
+  const {
+    classes: exp
+  } = expansion()
+  const {
+    classes: sum
+  } = sumary()
 
   const { actividadFinanciera } = props
 
@@ -185,9 +193,13 @@ const ActividadFinanciera = props => {
 }
 
 const ServiciosProfesionales = props => {
-  const classes = useStyles()
-  const exp = expansion()
-  const sum = sumary()
+  const { classes } = useStyles()
+  const {
+    classes: exp
+  } = expansion()
+  const {
+    classes: sum
+  } = sumary()
 
   const { serviciosProfesionales } = props
 
@@ -262,9 +274,13 @@ const ServiciosProfesionales = props => {
 }
 
 const EnajenacionBienes = props => {
-  const classes = useStyles()
-  const exp = expansion()
-  const sum = sumary()
+  const { classes } = useStyles()
+  const {
+    classes: exp
+  } = expansion()
+  const {
+    classes: sum
+  } = sumary()
 
   const { enajenacionBienes } = props
 
@@ -339,9 +355,13 @@ const EnajenacionBienes = props => {
 }
 
 const OtrosIngresos = props => {
-  const classes = useStyles()
-  const exp = expansion()
-  const sum = sumary()
+  const { classes } = useStyles()
+  const {
+    classes: exp
+  } = expansion()
+  const {
+    classes: sum
+  } = sumary()
 
   const { otrosIngresos } = props
 
@@ -416,7 +436,7 @@ const OtrosIngresos = props => {
 }
 
 const ServidorPublicoAnioAnterior = ({ data: info, titulo }) => {
-  const classes = useStyles()
+  const { classes } = useStyles()
 
   const data = {
     ...basicInicial.actividadAnualAnterior,

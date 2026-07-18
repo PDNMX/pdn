@@ -1,6 +1,6 @@
 import { Link, Typography } from '@mui/material'
 import React from 'react'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import ButtonPDN from '../../Compartidos/ButtonPDN'
 
 const styles = theme => ({
@@ -32,7 +32,7 @@ const styles = theme => ({
   title: {
     color: theme.palette.primary.main
   }
-})
+});
 
 class EspecificacionesTecnicas extends React.Component {
   render () {
@@ -120,4 +120,4 @@ class EspecificacionesTecnicas extends React.Component {
   }
 }
 
-export default withStyles(styles)(EspecificacionesTecnicas)
+export default withStyles(EspecificacionesTecnicas, styles);

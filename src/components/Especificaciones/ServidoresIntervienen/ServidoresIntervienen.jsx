@@ -1,4 +1,4 @@
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import { Divider, Grid, Typography, Box, Paper } from '@mui/material'
 import Estandar from './DescripcionEstandar'
 import Licencia from '../Licencia'
@@ -73,7 +73,7 @@ const styles = theme => ({
   title: {
     color: theme.palette.primary.main
   }
-})
+});
 
 const ServidoresIntervienen = props => {
   const { classes } = props
@@ -188,4 +188,4 @@ const ServidoresIntervienen = props => {
   );
 }
 
-export default withStyles(styles)(ServidoresIntervienen)
+export default withStyles(ServidoresIntervienen, styles);

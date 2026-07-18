@@ -1,10 +1,10 @@
 import { Link, Typography } from '@mui/material';
 import MuiLink from '@mui/material/Link';
 
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import ButtonPDN from '../Compartidos/ButtonPDN';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles()(theme => ({
   link: {
     textDecoration: 'none',
     color: theme.palette.text.linkColor,
@@ -45,7 +45,7 @@ const planesPrueba = [
 ];
 
 export default function ProtocoloConexion() {
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   return (
     <div>

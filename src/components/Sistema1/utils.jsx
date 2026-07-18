@@ -2,8 +2,8 @@ import { Grid, LinearProgress, Paper, TextField, FormControl, MenuItem } from '@
 import Typography from '@mui/material/Typography'
 
 import { lighten } from '@mui/material/styles'
-import makeStyles from '@mui/styles/makeStyles'
-import withStyles from '@mui/styles/withStyles'
+import { makeStyles } from 'tss-react/mui';
+import { withStyles } from 'tss-react/mui';
 import style from './styleSecciones'
 
 import log from 'loglevel'
@@ -31,9 +31,9 @@ export const info = msg => {
   log.info(msg)
 }
 
-const useStyles = makeStyles(style)
+const useStyles = makeStyles()(style);
 
-const BorderLinearProgress = withStyles({
+const BorderLinearProgress = withStyles(LinearProgress, {
   root: {
     height: 10,
     backgroundColor: lighten('#856404', 0.5)
@@ -42,7 +42,7 @@ const BorderLinearProgress = withStyles({
     borderRadius: 20,
     backgroundColor: '#004085'
   }
-})(LinearProgress)
+});
 
 export const getMoneda = valor => {
   console.log("valor: ", valor);
@@ -81,14 +81,14 @@ export const getMorales = elements => {
 
 /************** CSS *******************/
 /************** Expansion *******************/
-export const sumary = makeStyles(() => ({
+export const sumary = makeStyles()(() => ({
   root: {
     backgroundColor: '#83dfff',
     textTransform: 'uppercase'
   }
-}))
+}));
 
-export const expansion = makeStyles(theme => ({
+export const expansion = makeStyles()(theme => ({
   root: {
     width: '100%'
   },
@@ -102,10 +102,10 @@ export const expansion = makeStyles(theme => ({
     fontWeight: theme.typography.fontWeightRegular,
     color: theme.palette.text.primary
   }
-}))
+}));
 /************** Expansion *******************/
 export function Ubicacion(props) {
-  const classes = useStyles()
+  const { classes } = useStyles()
   // const { pais, entidadFederativa } = props.ubicacion
 
   const pais = typeof props.ubicacion === 'undefined' ? undefined : props.ubicacion.pais
@@ -151,7 +151,7 @@ export function Ubicacion(props) {
 }
 
 export function Porcentaje(props) {
-  const classes = useStyles()
+  const { classes } = useStyles()
   const { porcentaje, titulo } = props
 
   return (
@@ -182,7 +182,7 @@ export function DomicilioReservado() {
 }
 
 export function Disclaimer() {
-  const sel = useStyles()
+  const { classes: sel } = useStyles()
   return (
     <Paper className={sel.rootPrincipal}>
       <Grid container spacing={2}>
@@ -215,7 +215,7 @@ export function Disclaimer() {
 }
 
 export function CompDomicilio(props) {
-  const classes = useStyles()
+  const { classes } = useStyles()
   const { domicilioMexico, domicilioExtranjero } = props
 
   return (

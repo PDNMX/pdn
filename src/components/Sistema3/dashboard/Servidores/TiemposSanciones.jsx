@@ -1,5 +1,5 @@
 import React from 'react'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import { Typography, Alert } from '@mui/material'
 import axios from 'axios'
 import { ResponsiveBar } from '@nivo/bar'
@@ -73,7 +73,7 @@ const themeBar = {
     }
   }
 
-  
+
 const styles = theme => ({
   frameChart: {
     marginTop: theme.spacing(1),
@@ -90,7 +90,7 @@ const styles = theme => ({
     paddingRight: theme.spacing(1),
     marginBottom: theme.spacing(3)
   }
-})
+});
 
 const aux = () => axios({
   url: process.env.REACT_APP_S3S_BACKEND + '/charts/getTemporalidadSanciones',
@@ -227,4 +227,4 @@ const TiemposSanciones = props => {
   );
 }
 
-export default withStyles(styles)(TiemposSanciones)
+export default withStyles(TiemposSanciones, styles);

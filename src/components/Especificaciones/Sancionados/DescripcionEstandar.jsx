@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import ButtonPDN from "../../Compartidos/ButtonPDN";
-import withStyles from "@mui/styles/withStyles";
+import { withStyles } from 'tss-react/mui';
 import { Table, TableBody, TableRow, TableCell, Link } from "@mui/material";
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import FolderOpenIcon from '@mui/icons-material/FolderOpen';
@@ -10,20 +10,20 @@ import MuiExpansionPanelDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import React from 'react';
 
-const Accordion = withStyles(theme => ({
+const Accordion = withStyles(MuiExpansionPanel, theme => ({
   root: {
     border: '1px solid' + theme.palette.background.opaque,
     boxShadow: 'none'
   },
   expanded: {}
-}))(MuiExpansionPanel);
+}));
 
-const AccordionSummary = withStyles(theme => ({
+const AccordionSummary = withStyles(MuiExpansionPanelSummary, (theme, _params, classes) => ({
   root: {
     backgroundColor: theme.palette.background.opaque,
     minHeight: 56,
     position: 'relative',
-    '&$expanded': {
+    [`&.${classes.expanded}`]: {
       minHeight: 56
     },
     color: theme.palette.primary.main,
@@ -38,7 +38,7 @@ const AccordionSummary = withStyles(theme => ({
       opacity: 0.3,
       transition: 'opacity 0.3s ease-in-out'
     },
-    '&$expanded:after': {
+    [`&.${classes.expanded}:after`]: {
       opacity: 1
     }
   },
@@ -46,15 +46,15 @@ const AccordionSummary = withStyles(theme => ({
     color: theme.palette.secondary.main
   },
   expanded: {}
-}))(MuiExpansionPanelSummary);
+}));
 
-const AccordionDetails = withStyles(theme => ({
+const AccordionDetails = withStyles(MuiExpansionPanelDetails, theme => ({
   root: {
     padding: theme.spacing(2),
     color: theme.palette.text.primary,
     backgroundColor: theme.palette.background.opaque,
   }
-}))(MuiExpansionPanelDetails);
+}));
 
 const styles = (theme) => ({
   root: {
@@ -378,4 +378,4 @@ const DescripcionEstandar = (props) => {
   );
 };
 
-export default withStyles(styles)(DescripcionEstandar);
+export default withStyles(DescripcionEstandar, styles);

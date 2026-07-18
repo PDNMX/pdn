@@ -1,5 +1,5 @@
 import { Typography, Grid, Paper, Box } from '@mui/material';
-import withStyles from '@mui/styles/withStyles';
+import { withStyles } from 'tss-react/mui';
 import Link from '@mui/material/Link';
 import HeaderV2 from '../HomeV2/HeaderV2';
 import pdnRoutes from '../../routes';
@@ -681,4 +681,4 @@ const Terminos = props => {
   );
 };
 
-export default withStyles(styles)(Terminos);
+export default withStyles(Terminos, styles);

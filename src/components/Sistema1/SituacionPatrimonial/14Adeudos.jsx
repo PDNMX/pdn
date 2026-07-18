@@ -1,4 +1,4 @@
-import { makeStyles } from '@mui/styles'
+import { makeStyles } from 'tss-react/mui';
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 
@@ -13,12 +13,16 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
 import AclaracionesObservacions from '../common/AclaracionesObservaciones'
 
-const useStyles = makeStyles(styleSecciones)
+const useStyles = makeStyles()(styleSecciones);
 
 function Adeudos({ adeudos, tipo }) {
-  const classes = useStyles()
-  const exp = expansion()
-  const sum = sumary()
+  const { classes } = useStyles()
+  const {
+    classes: exp
+  } = expansion()
+  const {
+    classes: sum
+  } = sumary()
   return (
     <>
       {adeudos.map((obj, idx) => {
@@ -272,7 +276,7 @@ function Adeudos({ adeudos, tipo }) {
 }
 
 const Adeudo = ({ data, tipo, titulo }) => {
-  const classes = useStyles()
+  const { classes } = useStyles()
 
   let adeudos
 

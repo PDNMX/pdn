@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useMemo, memo } from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from "@mui/styles";
+import { withStyles } from 'tss-react/mui';
 import { Typography, Paper, CircularProgress } from "@mui/material";
 import { ResponsiveLine } from '@nivo/line';
 import { searchInProvider } from '../../utils/api';
@@ -368,4 +368,4 @@ SancionesResueltas.propTypes = {
     providers: PropTypes.array.isRequired
 };
 
-export default withStyles(styles)(SancionesResueltas);
+export default withStyles(SancionesResueltas, styles);

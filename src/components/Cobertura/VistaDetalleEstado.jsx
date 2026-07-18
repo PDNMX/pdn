@@ -1,5 +1,5 @@
 import { Typography, Grid, Paper, Box } from '@mui/material'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import { useParams } from 'react-router-dom'
 import HeaderV2 from '../HomeV2/HeaderV2'
 import pdnRoutes from '../../routes'
@@ -48,7 +48,7 @@ const styles = theme => ({
     flexGrow: 1,
     background: theme.palette.background.default,
   }
-})
+});
 
 const percentage = (a, b) => {
   if (a === 0 || b === 0) {
@@ -450,4 +450,4 @@ const VistaDetalleEstado = props => {
   );
 }
 
-export default withStyles(styles)(VistaDetalleEstado)
+export default withStyles(VistaDetalleEstado, styles);

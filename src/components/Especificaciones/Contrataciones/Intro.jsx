@@ -1,7 +1,7 @@
 import {
   Typography, Divider, List, ListItem, ListItemAvatar, Avatar, ListItemText
 } from '@mui/material'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import AccountTreeIcon from '@mui/icons-material/AccountTree'
 import BarChartIcon from '@mui/icons-material/BarChart'
 import DescriptionIcon from '@mui/icons-material/Description'
@@ -42,7 +42,7 @@ const styles = theme => ({
     marginTop: theme.spacing(4),
     marginBottom: theme.spacing(4)
   }
-})
+});
 
 const etapas = [
   {
@@ -379,4 +379,4 @@ const Intro = props => {
   );
 }
 
-export default withStyles(styles)(Intro)
+export default withStyles(Intro, styles);

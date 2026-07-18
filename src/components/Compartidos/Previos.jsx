@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
@@ -49,7 +49,7 @@ const styles = theme => ({
   },
   tableBody: { backgroundColor: '#fff' },
   tableHead: { backgroundColor: '#7c3e7c' }
-})
+});
 
 function Previos ({ data, classes, handleChangeSujetoObligado }) {
   const [page, setPage] = React.useState(0)
@@ -169,4 +169,4 @@ Previos.propTypes = {
   handleChangeSujetoObligado: PropTypes.func.isRequired
 }
 
-export default withStyles(styles)(Previos)
+export default withStyles(Previos, styles);

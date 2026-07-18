@@ -10,7 +10,7 @@ import pdnRoutes from '../../routes'
 import { Typography, Grid, Paper, Box } from '@mui/material'
 import UploadForm from './UploadForm'
 
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import PropTypes from 'prop-types'
 
 const styles = theme => ({
@@ -44,7 +44,7 @@ const styles = theme => ({
     color: theme.palette.text.main,
     borderBottomColor: theme.palette.secondary.main
   }
-})
+});
 
 class Validador extends Component {
   state = {
@@ -150,4 +150,4 @@ Validador.propTypes = {
   classes: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(Validador)
+export default withStyles(Validador, styles);
