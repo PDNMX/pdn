@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { Route, Routes } from 'react-router-dom'
 import { Grid, Typography } from '@mui/material'
 import img from '../../assets/rediseno/svg_iconos_azul/SVG/s1_01.svg'
 import QueryStatsIcon from '@mui/icons-material/QueryStats'
@@ -86,12 +85,7 @@ class Declaraciones extends React.Component {
         }}>
           <Grid className={classes.contentsSection} size={12}>
             {activeTab === 'busqueda' && (
-              <Routes>
-                <Route path='/declaraciones' element={<Busqueda />} />
-
-                {/* <Route path="/declaraciones/perfil/:id?" component={PerfilMaterialUI} />
-								<Route path="/declaraciones/estadisticas" component={Stats} /> */}
-              </Routes>
+              <Busqueda />
             )}
             {activeTab === 'evolucion' && <EvolucionPatrimonial />}
           </Grid>
