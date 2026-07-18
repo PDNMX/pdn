@@ -1,5 +1,6 @@
-import { useMemo, useState } from 'react'
-import { Box, Button, IconButton, Paper, Typography } from '@mui/material'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { keyframes } from '@emotion/react'
+import { Box, Paper, Typography } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
 import ReactGA from 'react-ga4'
 
@@ -13,6 +14,16 @@ const colors = {
   text: '#4a4a4a'
 }
 
+const scaleIn = keyframes`
+  to { transform: scale(1); }
+`
+
+const getBubbleRadius = (user, first, last) => {
+  if (!first && !last) return user ? '18px 0 0 18px' : '0 18px 18px 0'
+  if (!first && last) return user ? '18px 0 18px 18px' : '0 18px 18px 18px'
+  return user ? '18px 18px 0 18px' : '18px 18px 18px 0'
+}
+
 const ChatBotPDN = () => {
   const stepById = useMemo(() => new Map(steps.map(step => [step.id, step])), [])
   const initialStep = stepById.get('msjInicial')
@@ -21,13 +32,19 @@ const ChatBotPDN = () => {
   const [messages, setMessages] = useState([
     { id: initialStep.id, author: 'bot', text: initialStep.message }
   ])
+  const messagesRef = useRef(null)
+
+  useEffect(() => {
+    if (!opened || !messagesRef.current) return
+
+    messagesRef.current.scrollTop = messagesRef.current.scrollHeight
+  }, [messages, opened])
 
   const toggleFloating = () => {
-    setOpened(value => {
-      const nextValue = !value
-      if (nextValue) ReactGA.event({ category: 'chatbot', action: 'click' })
-      return nextValue
-    })
+    const nextValue = !opened
+    setOpened(nextValue)
+
+    if (nextValue) ReactGA.event({ category: 'chatbot', action: 'click' })
   }
 
   const advance = (stepId, previousValue, history) => {
@@ -67,75 +84,238 @@ const ChatBotPDN = () => {
   const currentStep = currentStepId ? stepById.get(currentStepId) : null
 
   return (
-    <Box sx={{ position: 'fixed', right: 24, bottom: 24, zIndex: theme => theme.zIndex.modal }}>
-      {opened && (
-        <Paper
-          className='chatbot'
-          elevation={12}
+    <Box className='chatbot'>
+      <Paper
+        elevation={0}
+        role='dialog'
+        aria-label='Chat PDN'
+        aria-hidden={!opened}
+        sx={{
+          position: 'fixed',
+          right: 32,
+          bottom: 32,
+          width: 350,
+          height: 520,
+          display: 'flex',
+          flexDirection: 'column',
+          overflow: 'hidden',
+          borderRadius: '10px',
+          backgroundColor: colors.background,
+          boxShadow: '0 12px 24px 0 rgba(0, 0, 0, 0.15)',
+          transform: opened ? 'scale(1)' : 'scale(0)',
+          transformOrigin: 'bottom right',
+          transition: 'transform 0.3s ease, visibility 0s linear 0.3s',
+          visibility: opened ? 'visible' : 'hidden',
+          pointerEvents: opened ? 'auto' : 'none',
+          zIndex: 999,
+          ...(opened && { transition: 'transform 0.3s ease' }),
+          '@media screen and (max-width: 568px)': {
+            right: '0 !important',
+            bottom: '0 !important',
+            width: '100%',
+            height: '100%',
+            borderRadius: 0
+          }
+        }}
+      >
+        <Box
           sx={{
-            width: { xs: 'calc(100vw - 32px)', sm: 350 },
-            maxHeight: 'min(520px, calc(100vh - 120px))',
-            mb: 1.5,
-            overflow: 'hidden',
-            borderRadius: 2,
-            backgroundColor: colors.background
+            minHeight: 56,
+            height: 56,
+            px: '10px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            color: '#fff',
+            fill: '#fff',
+            backgroundColor: colors.primary
           }}
         >
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, px: 2, py: 1.25, color: '#fff', backgroundColor: colors.primary }}>
-            <Box component='img' src={IconErizo} alt='' sx={{ width: 34, height: 34 }} />
-            <Typography sx={{ flexGrow: 1, fontSize: 15, fontWeight: 600 }}>Chat PDN</Typography>
-            <IconButton aria-label='Cerrar Chat PDN' onClick={toggleFloating} size='small' sx={{ color: '#fff' }}>
-              <CloseIcon />
-            </IconButton>
+          <Typography
+            component='h2'
+            sx={{
+              m: 0,
+              color: '#fff',
+              fontSize: '15px',
+              fontWeight: 700,
+              lineHeight: 'normal'
+            }}
+          >
+            Chat PDN
+          </Typography>
+          <Box
+            component='button'
+            type='button'
+            aria-label='Cerrar Chat PDN'
+            onClick={toggleFloating}
+            sx={{
+              width: 24,
+              height: 24,
+              p: 0,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              border: 0,
+              color: '#fff',
+              background: 'transparent',
+              cursor: 'pointer'
+            }}
+          >
+            <CloseIcon sx={{ width: 24, height: 24 }} />
           </Box>
+        </Box>
 
-          <Box aria-live='polite' sx={{ display: 'flex', flexDirection: 'column', gap: 1.25, p: 2, maxHeight: 420, overflowY: 'auto' }}>
-            {messages.map(message => (
+        <Box
+          ref={messagesRef}
+          aria-live='polite'
+          sx={{
+            height: 'calc(100% - 56px)',
+            mt: '2px',
+            pt: '6px',
+            overflowY: 'scroll'
+          }}
+        >
+          {messages.map((message, index) => {
+            const user = message.author === 'user'
+            const first = index === 0 || messages[index - 1].author !== message.author
+            const last = index === messages.length - 1 || messages[index + 1].author !== message.author
+            const showAvatar = !user
+
+            return (
               <Box
                 key={message.id}
                 sx={{
-                  alignSelf: message.author === 'user' ? 'flex-end' : 'flex-start',
-                  maxWidth: '82%',
-                  px: 1.5,
-                  py: 1,
-                  borderRadius: 2,
-                  color: message.author === 'user' ? colors.text : '#fff',
-                  backgroundColor: message.author === 'user' ? '#fff' : colors.primary
+                  display: 'flex',
+                  alignItems: 'flex-end',
+                  justifyContent: user ? 'flex-end' : 'flex-start'
                 }}
               >
-                <Typography variant='body2'>{message.text}</Typography>
+                <Box
+                  sx={{
+                    display: 'inline-block',
+                    order: user ? 1 : 0,
+                    p: '6px'
+                  }}
+                >
+                  {first && showAvatar && (
+                    <Box
+                      component='img'
+                      src={IconErizo}
+                      alt='avatar'
+                      sx={{
+                        display: 'block',
+                        width: 40,
+                        minWidth: 40,
+                        height: 40,
+                        p: '3px',
+                        borderRadius: '50% 50% 0 50%',
+                        boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.15)'
+                      }}
+                    />
+                  )}
+                </Box>
+                <Box
+                  sx={{
+                    maxWidth: '50%',
+                    position: 'relative',
+                    display: 'inline-block',
+                    p: '12px',
+                    mb: '10px',
+                    ml: !first && showAvatar ? '46px' : 0,
+                    mt: first ? 0 : '-8px',
+                    overflow: 'hidden',
+                    borderRadius: getBubbleRadius(user, first, last),
+                    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.15)',
+                    color: user ? colors.text : '#fff',
+                    backgroundColor: user ? '#fff' : colors.primary,
+                    fontSize: '14px',
+                    lineHeight: 'normal',
+                    transform: 'scale(0)',
+                    transformOrigin: user
+                      ? (first ? 'bottom right' : 'top right')
+                      : (first ? 'bottom left' : 'top left'),
+                    animation: `${scaleIn} 0.3s ease forwards`
+                  }}
+                >
+                  {message.text}
+                </Box>
               </Box>
-            ))}
+            )
+          })}
 
-            {currentStep?.options?.map(option => (
-              <Button
-                key={`${currentStep.id}-${option.value}`}
-                variant='outlined'
-                onClick={() => selectOption(option)}
-                sx={{ justifyContent: 'flex-start', textAlign: 'left', color: colors.primary, borderColor: colors.primary }}
-              >
-                {option.label}
-              </Button>
-            ))}
-          </Box>
-        </Paper>
-      )}
+          {currentStep?.options && (
+            <Box component='ul' sx={{ m: '2px 0 12px', p: '0 6px', listStyle: 'none' }}>
+              {currentStep.options.map(option => (
+                <Box
+                  component='li'
+                  key={`${currentStep.id}-${option.value}`}
+                  sx={{
+                    display: 'inline-block',
+                    m: '2px',
+                    transform: 'scale(0)',
+                    animation: `${scaleIn} 0.3s ease forwards`
+                  }}
+                >
+                  <Box
+                    component='button'
+                    type='button'
+                    onClick={() => selectOption(option)}
+                    sx={{
+                      display: 'inline-block',
+                      p: '12px',
+                      border: 0,
+                      borderRadius: '22px',
+                      boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.15)',
+                      color: '#fff',
+                      backgroundColor: colors.primary,
+                      fontFamily: 'inherit',
+                      fontSize: '14px',
+                      cursor: 'pointer',
+                      '&:hover': { opacity: 0.7 }
+                    }}
+                  >
+                    {option.label}
+                  </Box>
+                </Box>
+              ))}
+            </Box>
+          )}
+        </Box>
+      </Paper>
 
-      <IconButton
-        aria-label={opened ? 'Cerrar Chat PDN' : 'Abrir Chat PDN'}
+      <Box
+        component='button'
+        type='button'
+        aria-label='Abrir Chat PDN'
+        aria-expanded={opened}
+        aria-hidden={opened}
+        tabIndex={opened ? -1 : 0}
         onClick={toggleFloating}
         sx={{
-          float: 'right',
-          width: 60,
-          height: 60,
+          position: 'fixed',
+          right: 32,
+          bottom: 32,
+          width: 56,
+          height: 56,
           p: 0,
-          boxShadow: 6,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          border: 0,
+          borderRadius: '100%',
+          boxShadow: '0 12px 24px 0 rgba(0, 0, 0, 0.15)',
+          color: '#fff',
+          fill: '#fff',
           backgroundColor: colors.primary,
-          '&:hover': { backgroundColor: colors.primary }
+          transform: opened ? 'scale(0)' : 'scale(1)',
+          transition: 'transform 0.3s ease',
+          cursor: 'pointer',
+          zIndex: 999,
+          '&:hover': { backgroundColor: '#552a4f' }
         }}
       >
-        <Box component='img' src={IconChat} alt='' sx={{ width: 60, height: 60 }} />
-      </IconButton>
+        <Box component='img' src={IconChat} alt='' sx={{ width: 24, height: 24 }} />
+      </Box>
     </Box>
   )
 }
