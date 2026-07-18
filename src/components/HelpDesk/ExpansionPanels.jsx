@@ -26,7 +26,7 @@ const AccordionSummary = withStyles(MuiExpansionPanelSummary, theme => ({
     /* borderBottom: '1px solid rgba(0, 0, 0, .125)', */
     /* marginBottom: -1, */
     minHeight: 56,
-    '&$expanded': {
+    '&.Mui-expanded': {
       minHeight: 56
     },
     color: theme.palette.primary.main
