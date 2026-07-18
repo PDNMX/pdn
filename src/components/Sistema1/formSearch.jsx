@@ -58,17 +58,17 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
           </CustomTypography>
           <ul className={classes.ul}>
             <li className={classes.li}>
-              <CustomTypography color='textPrimary' display='inline'>
+              <CustomTypography color='textPrimary' sx={{ display: 'inline' }}>
                 Las declaraciones patrimoniales de las y los servidores públicos.
               </CustomTypography>
             </li>
             <li className={classes.li}>
-              <CustomTypography color='textPrimary' display='inline'>
+              <CustomTypography color='textPrimary' sx={{ display: 'inline' }}>
                 La trayectoria laboral de las y los servidores públicos.
               </CustomTypography>
             </li>
             <li className={classes.li}>
-              <CustomTypography color='textPrimary' display='inline'>
+              <CustomTypography color='textPrimary' sx={{ display: 'inline' }}>
                 Las declaraciones sobre posibles conflictos de interés de las personas servidoras públicas.
               </CustomTypography>
             </li>

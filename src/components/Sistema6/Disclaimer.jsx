@@ -47,13 +47,13 @@ const Disclaimer = props => {
 
       <ul className={classes.ul}>
         <li className={classes.li}>
-          <CustomTypography color='textPrimary' display='inline'>Cuánto gasta el gobierno federal</CustomTypography>
+          <CustomTypography color='textPrimary' sx={{ display: 'inline' }}>Cuánto gasta el gobierno federal</CustomTypography>
         </li>
         <li className={classes.li}>
-          <CustomTypography color='textPrimary' display='inline'>Qué tipos de procedimientos</CustomTypography>
+          <CustomTypography color='textPrimary' sx={{ display: 'inline' }}>Qué tipos de procedimientos</CustomTypography>
         </li>
         <li className={classes.li}>
-          <CustomTypography color='textPrimary' display='inline'>Información sobre los proveedores que participan</CustomTypography>
+          <CustomTypography color='textPrimary' sx={{ display: 'inline' }}>Información sobre los proveedores que participan</CustomTypography>
         </li>
       </ul>
 

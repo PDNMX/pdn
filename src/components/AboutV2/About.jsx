@@ -103,7 +103,7 @@ const About = props => {
                   color: 'S1.color',
                   display: 'inline'
                 }}>Sistema 1 | </Typography>
-              <CustomTypography display='inline'>
+              <CustomTypography sx={{ display: 'inline' }}>
                 Evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal (S1).
               </CustomTypography>
               <br />
@@ -112,7 +112,7 @@ const About = props => {
                   color: 'S2.color',
                   display: 'inline'
                 }}>Sistema 2 | </Typography>
-              <CustomTypography display='inline'>
+              <CustomTypography sx={{ display: 'inline' }}>
                 Servidores públicos que intervengan en procedimientos de contrataciones públicas (S2).
               </CustomTypography>
               <br />
@@ -121,7 +121,7 @@ const About = props => {
                   color: 'S3.color',
                   display: 'inline'
                 }}>Sistema 3 | </Typography>
-              <CustomTypography display='inline'>
+              <CustomTypography sx={{ display: 'inline' }}>
                 Servidores públicos y particulares sancionados (S3).
               </CustomTypography>
               <br />
@@ -130,7 +130,7 @@ const About = props => {
                   color: 'S4.color',
                   display: 'inline'
                 }}>Sistema 4 | </Typography>
-              <CustomTypography display='inline'>
+              <CustomTypography sx={{ display: 'inline' }}>
                 Información y comunicación del Sistema Nacional Anticorrupción y del Sistema Nacional de Fiscalización (S4).
               </CustomTypography>
               <br />
@@ -139,7 +139,7 @@ const About = props => {
                   color: 'S5.color',
                   display: 'inline'
                 }}>Sistema 5 | </Typography>
-              <CustomTypography display='inline'>
+              <CustomTypography sx={{ display: 'inline' }}>
                 Denuncias públicas de  faltas administrativas y hechos de corrupción (S5).
               </CustomTypography>
               <br />
@@ -148,7 +148,7 @@ const About = props => {
                   color: 'S6.color',
                   display: 'inline'
                 }}>Sistema 6 | </Typography>
-              <CustomTypography display='inline'>
+              <CustomTypography sx={{ display: 'inline' }}>
                 Información Pública de Contrataciones (S6).
               </CustomTypography>
 
