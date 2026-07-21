@@ -1,4 +1,4 @@
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import ExpansionPanels from './ExpansionPanels'
 import Disclaimer from './Disclaimer'
 import HeaderV2 from '../HomeV2/HeaderV2'
@@ -43,7 +43,7 @@ const styles = (theme) => ({
     paddingTop: '50px',
     paddingBottom: '50px'
   }
-})
+});
 
 const HelpDesk = (props) => {
   const { classes } = props
@@ -51,8 +51,15 @@ const HelpDesk = (props) => {
   return (
     <>
       <HeaderV2 section={section} />
-      <Grid container mt={7} mb={7} justifyContent='center' spacing={0}>
-        <Grid item xs={12} className={classes.rootItem}>
+      <Grid
+        container
+        spacing={0}
+        sx={{
+          mt: 7,
+          mb: 7,
+          justifyContent: 'center'
+        }}>
+        <Grid className={classes.rootItem} size={12}>
           <Paper className={classes.paper} elevation={15}>
             <Box className={classes.box}>
               <Disclaimer />
@@ -62,7 +69,7 @@ const HelpDesk = (props) => {
         </Grid>
       </Grid>
     </>
-  )
+  );
 }
 
-export default withStyles(styles)(HelpDesk)
+export default withStyles(HelpDesk, styles);

@@ -1,4 +1,4 @@
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import { Paper, Grid } from '@mui/material'
 /* import Ejercicio from './Ejercicio';
 import Agrupaciones from './Agrupaciones';
@@ -36,7 +36,7 @@ const styles = theme => ({
     color: '#89d4f2', // theme.palette.text.linkColor,
     wordBreak: 'break-word'
   }
-})
+});
 
 const Dashboard = props => {
   const { classes } = props
@@ -45,22 +45,22 @@ const Dashboard = props => {
     <div className={classes.root} id='s2sgraf'>
       <Paper className={classes.paper} elevation={1}>
         <Grid container spacing={3}>
-          <Grid item xs={4}>
+          <Grid size={4}>
             <TotalRows />
           </Grid>
-          <Grid item xs={4}>
+          <Grid size={4}>
             <TotalInstituciones />
           </Grid>
-          <Grid item xs={4}>
+          <Grid size={4}>
             <TotalRamos />
           </Grid>
           {/* <Grid item xs={6}>
             <Ejercicio />
           </Grid> */}
-          <Grid item xs={12}>
+          <Grid size={12}>
             <TotalEjercicio />
           </Grid>
-          <Grid item xs={12}>
+          <Grid size={12}>
             <Procedimientos />
           </Grid>
 
@@ -79,17 +79,17 @@ const Dashboard = props => {
           <Grid item xs={12}>
             <Tops />
           </Grid> */}
-          <Grid item xs={12}>
+          <Grid size={12}>
             <FooterPage dataSet='Registro de servidores públicos que intervienen en contrataciones públicas' provider='Secretaría de la Función Pública' referenceDate='17/05/2022' />
           </Grid>
         </Grid>
       </Paper>
     </div>
-  )
+  );
 }
 
 Dashboard.propTypes = {
   classes: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(Dashboard)
+export default withStyles(Dashboard, styles);

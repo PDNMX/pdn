@@ -22,8 +22,12 @@ export default function CustomizedProgressBar (props) {
   console.log(color)
 
   return (
-    <Box sx={{ flexGrow: 1 }} p={1}>
+    <Box
+      sx={{
+        p: 1,
+        flexGrow: 1
+      }}>
       <BorderLinearProgress variant='determinate' value={value} bgcolor={color} />
     </Box>
-  )
+  );
 }

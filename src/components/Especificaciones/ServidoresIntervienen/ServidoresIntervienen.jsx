@@ -1,4 +1,4 @@
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import { Divider, Grid, Typography, Box, Paper } from '@mui/material'
 import Estandar from './DescripcionEstandar'
 import Licencia from '../Licencia'
@@ -73,7 +73,7 @@ const styles = theme => ({
   title: {
     color: theme.palette.primary.main
   }
-})
+});
 
 const ServidoresIntervienen = props => {
   const { classes } = props
@@ -82,8 +82,10 @@ const ServidoresIntervienen = props => {
   return (
     <div className={classes.root}>
       <HeaderV2 section={section} />
-      <Grid container spacing={0} justifyContent='center'>
-        <Grid item xs={12} className={classes.item}>
+      <Grid container spacing={0} sx={{
+        justifyContent: 'center'
+      }}>
+        <Grid className={classes.item} size={12}>
           <Paper className={classes.paper}>
             <Box className={classes.box}>
 
@@ -95,15 +97,21 @@ const ServidoresIntervienen = props => {
 
               <Divider className={classes.divider} />
 
-              <Typography variant='h5' className={classes.title} paragraph>
+              <Typography variant='h5' className={classes.title} sx={{
+                marginBottom: "16px"
+              }}>
                 Especificaciones técnicas
               </Typography>
 
-              <Typography variant='h5' className={classes.text} paragraph>
+              <Typography variant='h5' className={classes.text} sx={{
+                marginBottom: "16px"
+              }}>
                 Diccionario de datos
               </Typography>
 
-              <Typography className={classes.text} paragraph>
+              <Typography className={classes.text} sx={{
+                marginBottom: "16px"
+              }}>
                 <ButtonPDN
                   href='https://docs.google.com/spreadsheets/d/1fRhDfHtrBPYyR36zxpenXWind9FP1pLAQJOVS69QwUM/edit?usp=sharing'
                   target='_blank'
@@ -112,11 +120,15 @@ const ServidoresIntervienen = props => {
                 </ButtonPDN>
               </Typography>
 
-              <Typography variant='h5' className={classes.text} paragraph>
+              <Typography variant='h5' className={classes.text} sx={{
+                marginBottom: "16px"
+              }}>
                 Catálogos de claves y valores
               </Typography>
 
-              <Typography className={classes.text} paragraph>
+              <Typography className={classes.text} sx={{
+                marginBottom: "16px"
+              }}>
                 <ButtonPDN
                   href='https://github.com/PDNMX/catalogos/tree/master/S2%20-%20Servidores%20p%C3%BAblicos%20en%20contrataciones'
                   target='_blank'
@@ -125,11 +137,15 @@ const ServidoresIntervienen = props => {
                 </ButtonPDN>
               </Typography>
 
-              <Typography variant='h5' className={classes.text} paragraph>
+              <Typography variant='h5' className={classes.text} sx={{
+                marginBottom: "16px"
+              }}>
                 Especificaciones en formato Open API Specification
               </Typography>
 
-              <Typography className={classes.text} paragraph>
+              <Typography className={classes.text} sx={{
+                marginBottom: "16px"
+              }}>
                 <ButtonPDN
                   href='/oas/ui/?urls.primaryName=S2'
                   target='_blank'
@@ -138,10 +154,14 @@ const ServidoresIntervienen = props => {
                 </ButtonPDN>
               </Typography>
 
-              <Typography paragraph className={classes.text} variant='h5'>
+              <Typography className={classes.text} variant='h5' sx={{
+                marginBottom: "16px"
+              }}>
                 Seguridad
               </Typography>
-              <Typography paragraph>
+              <Typography sx={{
+                marginBottom: "16px"
+              }}>
                 <ButtonPDN target='_blank' href='https://drive.google.com/file/d/1-IvF3KYa5rups73BmVV4W8glT9csVGY9/view'>
                   Más información
                   </ButtonPDN>
@@ -165,7 +185,7 @@ const ServidoresIntervienen = props => {
         </Grid>
       </Grid>
     </div>
-  )
+  );
 }
 
-export default withStyles(styles)(ServidoresIntervienen)
+export default withStyles(ServidoresIntervienen, styles);

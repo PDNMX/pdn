@@ -54,7 +54,6 @@ const SurveyFloatingBanner = () => {
   return (
     <>
       <style>{pulseKeyframes}</style>
-
       <div
         style={{
           position: 'fixed',
@@ -104,7 +103,9 @@ const SurveyFloatingBanner = () => {
               <Typography variant='subtitle2' style={{ lineHeight: 1.3 }}>
                 Encuesta de experiencia de personas usuarias
               </Typography>
-              <Typography variant='body2' color='text.secondary' style={{ marginTop: '4px' }}>
+              <Typography variant='body2' style={{ marginTop: '4px' }} sx={{
+                color: 'text.secondary'
+              }}>
                 Ya está disponible la encuesta de la PDN. Participa y ayúdanos a mejorar la plataforma.
               </Typography>
             </div>
@@ -155,7 +156,7 @@ const SurveyFloatingBanner = () => {
         </div>
       </div>
     </>
-  )
+  );
 }
 
 export default SurveyFloatingBanner

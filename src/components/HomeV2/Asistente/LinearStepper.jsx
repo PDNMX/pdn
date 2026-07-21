@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { Typography, Step, Stepper, StepLabel, CardActionArea } from '@mui/material/'
-import { makeStyles } from '@mui/styles'
+import { Typography, Step, Stepper, StepLabel, CardActionArea } from '@mui/material'
+import { makeStyles } from 'tss-react/mui';
 import { useForm, Controller, FormProvider, useFormContext } from 'react-hook-form'
 
 // INPUTS PARA EL FORM
@@ -44,15 +44,17 @@ import ButtonPDN from '../../Compartidos/ButtonPDN'
 
 const KEY = 'pdn.camposBusqueda'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
   container: {
     margin: '1% 0%',
     width: '100%'
     /* backgroundColor: 'rgba(29, 80, 109, 0.95)', */
   },
   cardMedia: {
+    display: 'block',
     width: '30%',
-    margin: '3% 0%'
+    margin: '3% auto',
+    objectFit: 'contain'
     /* [theme.breakpoints.down('sm')]: {
       display: "none",
     }, */
@@ -127,7 +129,7 @@ const useStyles = makeStyles((theme) => ({
     }
 
   }
-}))
+}));
 
 function getSteps () {
   return ['Tipo de Búsqueda', 'Filtros de Búsqueda', 'Resultados de Búsqueda']
@@ -155,7 +157,7 @@ function FiltrosBusqueda (props) {
 }
 
 const LinaerStepper = ({ stateChanger }) => {
-  const classes = useStyles()
+  const { classes } = useStyles()
   const methods = useForm({
     defaultValues
   })
@@ -214,18 +216,28 @@ const LinaerStepper = ({ stateChanger }) => {
               container
               spacing={0}
               direction='row'
-              alignItems='stretch'
-              justifyContent='center'
               className={classes.container}
-            >
+              sx={{
+                alignItems: 'stretch',
+                justifyContent: 'center'
+              }}>
               {opciones.map((opcion, index) => (
-                <Grid key={index} item md={4} xs={6} sm={4} style={{ display: 'flex' }}>
+                <Grid
+                  key={index}
+                  style={{ display: 'flex' }}
+                  size={{
+                    md: 4,
+                    xs: 6,
+                    sm: 4
+                  }}>
                   <Card className={classes.card} {...field} style={{ width: '100%', display: 'flex', justifyContent: 'space-between', flexDirection: 'row', borderBottom: '0.3rem solid ' + opcion.color }}>
                     <Tooltip
                       title={opcion.detalle}
-                      TransitionComponent={Zoom}
                       classes={{ tooltip: classes.Tooltip }}
                       placement='top'
+                      slots={{
+                        transition: Zoom
+                      }}
                     >
                       <CardActionArea
                         value={opcion.value}
@@ -256,7 +268,7 @@ const LinaerStepper = ({ stateChanger }) => {
           )}
         />
       </>
-    )
+    );
   }
 
   const isStepOptional = (step) => {
@@ -370,8 +382,17 @@ const LinaerStepper = ({ stateChanger }) => {
       <Typography className={classes.subTitle} variant='body1'>
         Este <b>buscador</b>, tiene el objetivo de facilitar la búsqueda de datos anticorrupción en la Plataforma Digital Nacional.
       </Typography>
-      <Grid container justifyContent='center' alignItems='center'>
-        <Grid item xs={12} md={8}>
+      <Grid
+        container
+        sx={{
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 8
+          }}>
           <Stepper
             alternativeLabel
             activeStep={activeStep}
@@ -411,7 +432,11 @@ const LinaerStepper = ({ stateChanger }) => {
                   }
                   }}
                 >
-                  <StepLabel StepIconComponent={ColorlibStepIcon} {...labelProps}>
+                  <StepLabel
+                    {...labelProps}
+                    slots={{
+                      stepIcon: ColorlibStepIcon
+                    }}>
                     <Typography
                       variant='caption'
                       align='center'
@@ -421,12 +446,11 @@ const LinaerStepper = ({ stateChanger }) => {
 
                   </StepLabel>
                 </Step>
-              )
+              );
             })}
           </Stepper>
         </Grid>
       </Grid>
-
       {activeStep >= steps.length - 1 ? (
         <>
           <ResultadosBusqueda className={classes.container} />
@@ -495,7 +519,7 @@ const LinaerStepper = ({ stateChanger }) => {
         </>
       )}
     </>
-  )
+  );
 }
 
 export default LinaerStepper

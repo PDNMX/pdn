@@ -1,6 +1,6 @@
 // PANTALLA DE BUSQUEDASERVIDOR, CON SELECT PARA SORT
 import { useEffect, useState } from 'react'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import PropTypes from 'prop-types'
 import { Typography, Grid, Modal, CircularProgress } from '@mui/material'
 import MensajeErrorDatos from '../../Mensajes/MensajeErrorDatos'
@@ -50,7 +50,7 @@ const styles = theme => ({
     padding: theme.spacing(1),
     fontWeight: 'bold'
   }
-})
+});
 
 const initialQuery = {
   nombres: '',
@@ -317,26 +317,37 @@ function BusquedaServidor ({ classes }) {
     <>
       {/* Buscador */}
       <Grid container spacing={4}>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Typography>
             <b>Busca un servidor público sancionado</b>
           </Typography>
         </Grid>
         <FormServidoresSancionados handleForm={handleForm} handleOrder={handleOrder} query={query} order={order} providersList={providersList} institutionsList={institutionsList} />
 
-        <Grid item md={9.5} />
+        <Grid
+          size={{
+            md: 9.5
+          }} />
 
-        <Grid item xs={12} md={1}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 1
+          }}>
           <ButtonPDN variant='contained' disabled={!activeClean} onClick={() => handleCleanAll()}>
             Limpiar
           </ButtonPDN>
         </Grid>
-        <Grid item xs={12} md={1}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 1
+          }}>
           <ButtonPDN variant='contained' disabled={!activeSearch} onClick={() => handleSearchPrevios()}>
             Buscar
           </ButtonPDN>
         </Grid>
-        <Grid item xs={12}>
+        <Grid size={12}>
           {loading && (
             <Modal open={loading} disableAutoFocus>
               <CircularProgress className={classes.progress} id='spinnerLoading' size={200} />
@@ -348,7 +359,7 @@ function BusquedaServidor ({ classes }) {
       {/* PREVIOS */}
       {view === 1 && previos.length > 0 && (
         <Grid container>
-          <Grid item xs={12} className={classes.section}>
+          <Grid className={classes.section} size={12}>
             <Previos data={previos} handleChangeSujetoObligado={handleChangeAPI} />
           </Grid>
         </Grid>
@@ -356,18 +367,18 @@ function BusquedaServidor ({ classes }) {
       {/* TABLA */}
       {view === 2 && Object.keys(filterData).length > 0 && (
         <Grid container>
-          <Grid item xs={12}>
+          <Grid size={12}>
             <TablaServidoresSancionados info={filterData} handleChangePage={handleChangePage} handleChangeRowsPerPage={handleChangeRowsPerPage} verDetalle={verDetalle} returnToPrevios={returnToPrevios} />
           </Grid>
         </Grid>
       )}
       {view === 3 && selectedItem !== null && <DetalleServidorSancionado handleChangeDetail={handleChangeDetail} servidor={selectedItem} />}
     </>
-  )
+  );
 }
 
 BusquedaServidor.propTypes = {
   classes: PropTypes.object.isRequired
 }
 
-export default withStyles(styles, { withTheme: true })(BusquedaServidor)
+export default withStyles(BusquedaServidor, styles);

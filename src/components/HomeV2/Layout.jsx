@@ -7,11 +7,11 @@ import AsistenteBusqueda from './Asistente/BotonFlotante'
 import SurveyFloatingBanner from '../Compartidos/SurveyFloatingBanner'
 
 import style from '../style'
-import { makeStyles } from '@mui/styles'
-const useStyles = makeStyles(style)
+import { makeStyles } from 'tss-react/mui';
+const useStyles = makeStyles()(style);
 
 const Layout = ({ children }) => {
-  const classes = useStyles()
+  const { classes } = useStyles()
   return (
     <>
       <div className={classes.backgroundCruces}>

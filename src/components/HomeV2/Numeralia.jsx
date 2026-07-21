@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import { Paper, Typography, Grid } from '@mui/material'
 import CountUp from 'react-countup'
 
@@ -33,7 +33,7 @@ const styles = theme => ({
     margin: '5px'
   }
 
-})
+});
 
 const Numeralia = props => {
   const { classes } = props
@@ -52,7 +52,7 @@ const Numeralia = props => {
       } else {
         setError('Hubo un error al obtener la información')
       }
-    } catch (error) {
+    } catch {
       setError('No pudimos hacer la solicitud para obtener la información')
     }
   }
@@ -65,107 +65,215 @@ const Numeralia = props => {
     return (
       <>
         <Paper>
-          <Grid container direction='row' alignItems='flex-start' justifyContent='center' className={classes.container}>
-            <Grid item md={12} sm={12} xs={12} align='center'>
-              <Typography className={classes.headingText} paragraph>
+          <Grid
+            container
+            direction='row'
+            className={classes.container}
+            sx={{
+              alignItems: 'flex-start',
+              justifyContent: 'center'
+            }}>
+            <Grid
+              sx={{ textAlign: 'center' }}
+              size={{
+                md: 12,
+                sm: 12,
+                xs: 12
+              }}>
+              <Typography className={classes.headingText} sx={{
+                marginBottom: "16px"
+              }}>
                 Cargando Información...
               </Typography>
             </Grid>
           </Grid>
         </Paper>
       </>
-    )
+    );
   }
   if (error) {
     return (
       <>
         <Paper className={classes.bg}>
-          <Grid container direction='row' alignItems='flex-start' justifyContent='center' className={classes.container}>
-            <Grid item md={12} sm={12} xs={12} align='center'>
-              <Typography className={classes.headingText} paragraph>
+          <Grid
+            container
+            direction='row'
+            className={classes.container}
+            sx={{
+              alignItems: 'flex-start',
+              justifyContent: 'center'
+            }}>
+            <Grid
+              sx={{ textAlign: 'center' }}
+              size={{
+                md: 12,
+                sm: 12,
+                xs: 12
+              }}>
+              <Typography className={classes.headingText} sx={{
+                marginBottom: "16px"
+              }}>
                 {error}
               </Typography>
             </Grid>
           </Grid>
         </Paper>
       </>
-    )
+    );
   }
 
   return (
     <>
       <Paper className={classes.bg}>
-        <Grid container direction='row' alignItems='flex-start' justifyContent='center' className={classes.container}>
-          <Grid item xl={2} md={4} sm={6} xs={12} align='center'>
-            <Typography className={classes.headingText} paragraph>
+        <Grid
+          container
+          direction='row'
+          className={classes.container}
+          sx={{
+            alignItems: 'flex-start',
+            justifyContent: 'center'
+          }}>
+          <Grid
+            sx={{ textAlign: 'center' }}
+            size={{
+              xl: 2,
+              md: 4,
+              sm: 6,
+              xs: 12
+            }}>
+            <Typography className={classes.headingText} sx={{
+              marginBottom: "16px"
+            }}>
               <CountUp separator=',' end={numeralia.values[0][1]} duration={3} delay={0}>
                 {({ countUpRef }) => (
                   <span ref={countUpRef} />
                 )}
               </CountUp>
             </Typography>
-            <Typography className={classes.text} paragraph>
+            <Typography className={classes.text} sx={{
+              marginBottom: "16px"
+            }}>
               Entes conectados
             </Typography>
           </Grid>
-          <Grid item xl={2} md={4} sm={6} xs={12} align='center'>
-            <Typography className={classes.headingText} paragraph>
+          <Grid
+            sx={{ textAlign: 'center' }}
+            size={{
+              xl: 2,
+              md: 4,
+              sm: 6,
+              xs: 12
+            }}>
+            <Typography className={classes.headingText} sx={{
+              marginBottom: "16px"
+            }}>
               <CountUp separator=',' end={(numeralia.values[1][1])} duration={3} delay={0}>
                 {({ countUpRef }) => (
                   <span ref={countUpRef} />
                 )}
               </CountUp>
             </Typography>
-            <Typography className={classes.text} paragraph>
+            <Typography className={classes.text} sx={{
+              marginBottom: "16px"
+            }}>
               Declaraciones
             </Typography>
           </Grid>
-          <Grid item xl={2} md={4} sm={6} xs={12} align='center'>
-            <Typography className={classes.headingText} paragraph>
+          <Grid
+            sx={{ textAlign: 'center' }}
+            size={{
+              xl: 2,
+              md: 4,
+              sm: 6,
+              xs: 12
+            }}>
+            <Typography className={classes.headingText} sx={{
+              marginBottom: "16px"
+            }}>
               <CountUp separator=',' end={numeralia.values[2][1]} duration={3} delay={0}>
                 {({ countUpRef }) => (
                   <span ref={countUpRef} />
                 )}
               </CountUp>
             </Typography>
-            <Typography className={classes.text} paragraph>
+            <Typography className={classes.text} sx={{
+              marginBottom: "16px"
+            }}>
               Procedimientos de contratación
             </Typography>
           </Grid>
-          <Grid item xl={2} md={4} sm={6} xs={12} align='center'>
-            <Typography className={classes.headingText} paragraph>
+          <Grid
+            sx={{ textAlign: 'center' }}
+            size={{
+              xl: 2,
+              md: 4,
+              sm: 6,
+              xs: 12
+            }}>
+            <Typography className={classes.headingText} sx={{
+              marginBottom: "16px"
+            }}>
               <CountUp separator=',' end={numeralia.values[3][1]} duration={3} delay={0}>
                 {({ countUpRef }) => (
                   <span ref={countUpRef} />
                 )}
               </CountUp>
             </Typography>
-            <Typography className={classes.text} paragraph>
+            <Typography className={classes.text} sx={{
+              marginBottom: "16px"
+            }}>
               Sanciones
             </Typography>
           </Grid>
-          <Grid item xl={2} md={4} sm={6} xs={12} align='center'>
-            <Typography className={classes.headingText} paragraph>
+          <Grid
+            sx={{ textAlign: 'center' }}
+            size={{
+              xl: 2,
+              md: 4,
+              sm: 6,
+              xs: 12
+            }}>
+            <Typography className={classes.headingText} sx={{
+              marginBottom: "16px"
+            }}>
               <CountUp separator=',' end={numeralia.values[4][1]} duration={3} delay={0}>
                 {({ countUpRef }) => (
                   <span ref={countUpRef} />
                 )}
               </CountUp>
             </Typography>
-            <Typography className={classes.text} paragraph>
+            <Typography className={classes.text} sx={{
+              marginBottom: "16px"
+            }}>
               Herramientas en el MDA
             </Typography>
           </Grid>
         </Grid>
       </Paper>
-      <Grid container direction='row' alignItems='flex-end' justifyContent='flex-end' className={classes.containerFoot}>
-        <Grid item md={10} sm={10} xs={12} align='right' className={classes.Foot}>
-          <Typography className={classes.textFoot} paragraph>
+      <Grid
+        container
+        direction='row'
+        className={classes.containerFoot}
+        sx={{
+          alignItems: 'flex-end',
+          justifyContent: 'flex-end'
+        }}>
+        <Grid
+          sx={{ textAlign: 'right' }}
+          className={classes.Foot}
+          size={{
+            md: 10,
+            sm: 10,
+            xs: 12
+          }}>
+          <Typography className={classes.textFoot} sx={{
+            marginBottom: "16px"
+          }}>
             Estadística actualizada al {numeralia.values[5][1]}
           </Typography>
         </Grid>
       </Grid>
     </>
-  )
+  );
 }
-export default withStyles(styles)(Numeralia)
+export default withStyles(Numeralia, styles);

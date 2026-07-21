@@ -1,5 +1,5 @@
 import React from 'react'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import { Typography, List, ListItem, ListItemText, Alert } from '@mui/material'
 import axios from 'axios'
 import { ResponsiveBar } from '@nivo/bar'
@@ -88,7 +88,7 @@ const styles = theme => ({
     paddingRight: theme.spacing(1),
     marginBottom: theme.spacing(3)
   }
-})
+});
 
 const BarTotalsLayer = (props) => {
   const labelOffset = 2
@@ -171,7 +171,9 @@ const Procedimiento = props => {
   return (
     <div>
       <ModalInfo open={open} setOpen={setOpen}>
-        <Typography variant='h6' className={classes.titulo} paragraph>
+        <Typography variant='h6' className={classes.titulo} sx={{
+          marginBottom: "16px"
+        }}>
           Tipos de procesos
         </Typography>
         <Typography variant='body1'>
@@ -270,7 +272,7 @@ const Procedimiento = props => {
                 }
       </ContainerChart>
     </div>
-  )
+  );
 }
 
-export default withStyles(styles)(Procedimiento)
+export default withStyles(Procedimiento, styles);

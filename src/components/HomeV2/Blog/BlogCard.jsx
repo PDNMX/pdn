@@ -1,5 +1,5 @@
 import { Grid, Link, Typography, Stack } from "@mui/material";
-import { withStyles } from "@mui/styles";
+import { withStyles } from 'tss-react/mui';
 import ReactGA from "react-ga4";
 
 import Card from "@mui/material/Card";
@@ -37,19 +37,23 @@ const BlogCard = (props) => {
   // const isXsUp = useIsWidthUp("lg");
   return (
     <Grid
-      item
-      md={6}
-      xs={6}
       to={post.url}
       component={Link}
       href={post.url}
-      onClick={() => ReactGA.pageview("/blog")}
-      p={1}
+      onClick={() => ReactGA.send({ hitType: 'pageview', page: '/blog' })}
       className={classes.root}
-    >
+      size={{
+        md: 6,
+        xs: 6
+      }}
+      sx={{
+        p: 1
+      }}>
       <Card sx={{ display: "flex", height: "100%" }} className={classes.card}>
         <CardContent sx={{ height: "100%", minWidth: "5rem" }}>
-          <Typography variant="title1" color="text.secondary">
+          <Typography variant="title1" sx={{
+            color: "text.secondary"
+          }}>
             {post.title}
             <br />
             <br />
@@ -58,7 +62,9 @@ const BlogCard = (props) => {
             {post.excerpt.slice(0, 150) + "..."}
           </Typography>
         </CardContent>
-        <Stack direction="row" justifyContent="end">
+        <Stack direction="row" sx={{
+          justifyContent: "end"
+        }}>
           {/* justifyContent={isXsUp ? "space-between" : "space-evenly"} */}
           <CardMedia
             component="img"
@@ -81,4 +87,4 @@ const BlogCard = (props) => {
   );
 };
 
-export default withStyles(styles)(BlogCard);
+export default withStyles(BlogCard, styles);

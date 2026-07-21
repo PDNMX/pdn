@@ -1,6 +1,6 @@
 import React from 'react'
 import { Stack, Grid, Typography } from '@mui/material'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import BlogCard from './BlogCard'
 import axios from 'axios'
 import ButtonPDN from '../../Compartidos/ButtonPDN'
@@ -19,7 +19,7 @@ const styles = () => ({
   root: {
     background: '#f2f0f2'
   }
-})
+});
 
 const BlogComponent = (props) => {
   const { classes } = props
@@ -51,13 +51,23 @@ const BlogComponent = (props) => {
       <Grid
         container
         direction='row'
-        justifyContent='center'
-        alignItems='stretch'
         className={classes.container}
-      >
-        <Grid item md={12} xs={12} pl={{ xs: 1, xl: 0 }}>
+        sx={{
+          justifyContent: 'center',
+          alignItems: 'stretch'
+        }}>
+        <Grid
+          size={{
+            md: 12,
+            xs: 12
+          }}
+          sx={{
+            pl: { xs: 1, xl: 0 }
+          }}>
           <Typography variant='h4'>Blog</Typography>
-          <Typography variant='h6' paragraph>
+          <Typography variant='h6' sx={{
+            marginBottom: "16px"
+          }}>
             Descubre nuestras últimas publicaciones
           </Typography>
         </Grid>
@@ -66,12 +76,22 @@ const BlogComponent = (props) => {
           return <BlogCard key={i} post={p} />
         })}
 
-        <Grid item md={12} sm={12} mt={5} pr={{ xs: 0, md: 1 }}>
-          <Stack direction='row' justifyContent={{ xs: 'center', md: 'end' }}>
+        <Grid
+          size={{
+            md: 12,
+            sm: 12
+          }}
+          sx={{
+            mt: 5,
+            pr: { xs: 0, md: 1 }
+          }}>
+          <Stack direction='row' sx={{
+            justifyContent: { xs: 'center', md: 'end' }
+          }}>
             <ScrollAnimation>
             <ButtonPDN
               href='/blog'
-              onClick={() => ReactGA.pageview('/blog')}
+              onClick={() => ReactGA.send({ hitType: 'pageview', page: '/blog' })}
               style={{ color: 'white' }}
             >
               CONOCE MÁS
@@ -81,7 +101,7 @@ const BlogComponent = (props) => {
         </Grid>
       </Grid>
     </div>
-  )
+  );
 }
 
-export default withStyles(styles)(BlogComponent)
+export default withStyles(BlogComponent, styles);

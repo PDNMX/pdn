@@ -1,6 +1,6 @@
 import React from 'react'
-import { withStyles } from '@mui/styles'
-import { Typography, List, ListItem, ListItemText, Alert } from '@mui/material'
+import { withStyles } from 'tss-react/mui';
+import { Typography, Alert } from '@mui/material'
 import axios from 'axios'
 import { ResponsiveBar } from '@nivo/bar'
 import ModalInfo from '../../../Compartidos/Dashboards/ModalInfo'
@@ -73,7 +73,7 @@ const themeBar = {
     }
   }
 
-  
+
 const styles = theme => ({
   frameChart: {
     marginTop: theme.spacing(1),
@@ -90,7 +90,7 @@ const styles = theme => ({
     paddingRight: theme.spacing(1),
     marginBottom: theme.spacing(3)
   }
-})
+});
 
 const aux = () => axios({
   url: process.env.REACT_APP_S3S_BACKEND + '/charts/getTemporalidadSanciones',
@@ -140,7 +140,9 @@ const TiemposSanciones = props => {
   return (
     <div style={{ height: '500px' }}>
       <ModalInfo open={open} setOpen={setOpen}>
-        <Typography variant='h6' className={classes.titulo} paragraph>
+        <Typography variant='h6' className={classes.titulo} sx={{
+          marginBottom: "16px"
+        }}>
           Duración de las sanciones en años.
         </Typography>
         <Typography variant='body1'>
@@ -222,7 +224,7 @@ const TiemposSanciones = props => {
         }
       </ContainerChart>
     </div>
-  )
+  );
 }
 
-export default withStyles(styles)(TiemposSanciones)
+export default withStyles(TiemposSanciones, styles);

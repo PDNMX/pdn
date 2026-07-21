@@ -1,5 +1,5 @@
 import { TableHead, TableRow, TableCell, Typography } from '@mui/material'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 
 const styles = theme => ({
   root: {
@@ -8,7 +8,7 @@ const styles = theme => ({
   tableHead: {
     color: theme.palette.text.main
   }
-})
+});
 
 const EnhancedTableHead = props => {
   const { classes, columnData } = props
@@ -37,4 +37,4 @@ const EnhancedTableHead = props => {
   )
 }
 
-export default withStyles(styles)(EnhancedTableHead)
+export default withStyles(EnhancedTableHead, styles);

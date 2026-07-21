@@ -32,8 +32,21 @@ const DialogoNoConectado = (props) => {
                     {"Cobertura"}
                 </DialogTitle> */}
         <DialogContent style={{ background: bgColor }}>
-          <Box display='flex' flexWrap='wrap' justifyContent='center' alignContent='center' alignItems='stretch'>
-            <Box p={1} m={1} flexGrow={1} alignSelf='center'>
+          <Box
+            sx={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              justifyContent: 'center',
+              alignContent: 'center',
+              alignItems: 'stretch'
+            }}>
+            <Box
+              sx={{
+                p: 1,
+                m: 1,
+                flexGrow: 1,
+                alignSelf: 'center'
+              }}>
               <WarningIcon
                 aria-label='delete'
                 sx={{
@@ -42,8 +55,19 @@ const DialogoNoConectado = (props) => {
                 }}
               />
             </Box>
-            <Box p={1} m={1} flexGrow={1} display='flex' alignItems='stretch'>
-              <Typography color='#55575A' alignSelf='center'>
+            <Box
+              sx={{
+                p: 1,
+                m: 1,
+                flexGrow: 1,
+                display: 'flex',
+                alignItems: 'stretch'
+              }}>
+              <Typography
+                sx={{
+                  color: '#55575A',
+                  alignSelf: 'center'
+                }}>
                 La Entidad no ha reportado información a la PDN
               </Typography>
             </Box>
@@ -57,7 +81,7 @@ const DialogoNoConectado = (props) => {
         </DialogActions>
       </Dialog>
     </div>
-  )
+  );
 }
 
 export default DialogoNoConectado

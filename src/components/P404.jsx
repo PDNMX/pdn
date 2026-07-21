@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Typography, Grid, Box, Paper } from '@mui/material'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import ButtonPDN from '../components/Compartidos/ButtonPDN'
 import HeaderV2 from './HomeV2/HeaderV2'
 
@@ -36,7 +36,7 @@ const styles = theme => ({
   box: {
     maxWidth: '900px', paddingTop: '50px', paddingBottom: '50px'
   }
-})
+});
 
 const P404 = props => {
   const { classes } = props
@@ -49,15 +49,20 @@ const P404 = props => {
         color: '#f2f2f2'
       }}
       />
-
-      <Grid container spacing={0} justifyContent='center'>
-        <Grid item xs={12} className={classes.item}>
+      <Grid container spacing={0} sx={{
+        justifyContent: 'center'
+      }}>
+        <Grid className={classes.item} size={12}>
           <Paper className={classes.paper} elevation={15}>
             <Box className={classes.box}>
-              <Typography variant='h1' paragraph>
+              <Typography variant='h1' sx={{
+                marginBottom: "16px"
+              }}>
                 Error 404
               </Typography>
-              <Typography variant='h4' paragraph>
+              <Typography variant='h4' sx={{
+                marginBottom: "16px"
+              }}>
                 La URL solicitada no existe en este servidor.
               </Typography>
               <ButtonPDN
@@ -71,7 +76,7 @@ const P404 = props => {
         </Grid>
       </Grid>
     </div>
-  )
+  );
 }
 
-export default withStyles(styles)(P404)
+export default withStyles(P404, styles);

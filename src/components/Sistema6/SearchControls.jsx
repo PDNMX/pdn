@@ -1,4 +1,4 @@
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import FormControl from '@mui/material/FormControl'
 import InputLabel from '@mui/material/InputLabel'
 // import NativeSelect from "@mui/material/NativeSelect";
@@ -23,7 +23,7 @@ const styles = theme => ({
   fondo: {
     background: theme.palette.background.noSelect
   }
-})
+});
 
 const SearchControls = props => {
   const { classes, buyers, buyer_id, procurementMethod, cycle, cycles, inputText, supplierName } = props
@@ -58,7 +58,15 @@ const SearchControls = props => {
   return (
     <div className={classes.root}>
       <Grid container spacing={0}>
-        <Grid item xs={12} sm={12} md={4} lg={6} xl={6} className={classes.item}>
+        <Grid
+          className={classes.item}
+          size={{
+            xs: 12,
+            sm: 12,
+            md: 4,
+            lg: 6,
+            xl: 6
+          }}>
 
           <form className={classes.root} autoComplete='off'>
             {/* <FormControl className={classes.margin}>
@@ -89,7 +97,15 @@ const SearchControls = props => {
 
         </Grid>
 
-        <Grid item xs={12} sm={12} md={4} lg={3} xl={3} className={classes.item}>
+        <Grid
+          className={classes.item}
+          size={{
+            xs: 12,
+            sm: 12,
+            md: 4,
+            lg: 3,
+            xl: 3
+          }}>
           <form className={classes.root}>
             <FormControl fullWidth>
               <InputLabel htmlFor='age-customized-select'>Tipo de contratación</InputLabel>
@@ -111,7 +127,15 @@ const SearchControls = props => {
           </form>
         </Grid>
 
-        <Grid item xs={12} sm={12} md={4} lg={3} xl={3} className={classes.item}>
+        <Grid
+          className={classes.item}
+          size={{
+            xs: 12,
+            sm: 12,
+            md: 4,
+            lg: 3,
+            xl: 3
+          }}>
 
           <form className={classes.root}>
             <FormControl fullWidth>
@@ -135,7 +159,7 @@ const SearchControls = props => {
 
         </Grid>
 
-        <Grid item xs={12} className={classes.item}>
+        <Grid className={classes.item} size={12}>
           <TextField
             id='outlined-full-width1'
             label='Proveedor'
@@ -145,17 +169,19 @@ const SearchControls = props => {
             fullWidth
             margin='normal'
                         // variant="outlined"
-            InputLabelProps={{
-              shrink: true
-            }}
             onChange={handleChangeSupplierName}
             onKeyDown={handleSearch}
             value={supplierName}
             className={classes.fondo}
+            slotProps={{
+              inputLabel: {
+                shrink: true
+              }
+            }}
           />
         </Grid>
 
-        <Grid item xs={12} className={classes.item}>
+        <Grid className={classes.item} size={12}>
           <TextField
             id='outlined-full-width2'
             label='Frase de búsqueda'
@@ -165,13 +191,15 @@ const SearchControls = props => {
             fullWidth
             margin='normal'
                         // variant="outlined"
-            InputLabelProps={{
-              shrink: true
-            }}
             onChange={handleSetInputText}
             onKeyDown={handleSearch}
             value={inputText}
             className={classes.fondo}
+            slotProps={{
+              inputLabel: {
+                shrink: true
+              }
+            }}
           />
         </Grid>
         {/*
@@ -196,8 +224,13 @@ const SearchControls = props => {
                         </form>
                     </Grid> */}
 
-        <Grid item xs={12} className={classes.item}>
-          <Box m={0} sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <Grid className={classes.item} size={12}>
+          <Box
+            sx={{
+              m: 0,
+              display: 'flex',
+              justifyContent: 'flex-end'
+            }}>
             <ButtonPDN variant='contained' onClick={props.cleanup}>
               Limpiar
             </ButtonPDN>
@@ -216,7 +249,7 @@ const SearchControls = props => {
         </Grid>
       </Grid>
     </div>
-  )
+  );
 }
 
-export default withStyles(styles)(SearchControls)
+export default withStyles(SearchControls, styles);

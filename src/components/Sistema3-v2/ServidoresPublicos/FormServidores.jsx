@@ -1,5 +1,5 @@
-import React, { useState /* useEffect */ } from 'react';
-import { withStyles } from '@mui/styles';
+import { useState /* useEffect */ } from 'react';
+import { withStyles } from 'tss-react/mui';
 import DetailDialog from '../components/DetailDialog';
 import PaginationControls from '../components/PaginationControls';
 import ProviderAccordion from '../components/ProviderAccordion';
@@ -293,11 +293,14 @@ const FormServidores = ({ classes, providers }) => {
           <FormControlLabel value="noGrave" control={<Radio color="primary" />} label="Faltas No Graves" />
         </RadioGroup>
       </Box>
-
       <Grid container spacing={3}>
         {tipoFalta === 'grave' && (
           <>
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <TextField
                 className={classes.formControl}
                 label="Nombre(s)"
@@ -309,7 +312,11 @@ const FormServidores = ({ classes, providers }) => {
                 fullWidth
               />
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <TextField
                 className={classes.formControl}
                 label="Primer Apellido"
@@ -321,7 +328,11 @@ const FormServidores = ({ classes, providers }) => {
                 fullWidth
               />
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <TextField
                 className={classes.formControl}
                 label="Segundo Apellido"
@@ -336,7 +347,11 @@ const FormServidores = ({ classes, providers }) => {
           </>
         )}
 
-        <Grid item xs={12} md={12}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 12
+          }}>
           <TextField
             className={classes.formControl}
             label="Ente Público"
@@ -349,7 +364,11 @@ const FormServidores = ({ classes, providers }) => {
           />
         </Grid>
 
-        <Grid item xs={12} md={12}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 12
+          }}>
           <FormControl variant="outlined" className={classes.formControl} size="small" fullWidth>
             <InputLabel shrink id="entidad-federativa-label">
               Entidad Federativa
@@ -391,7 +410,11 @@ const FormServidores = ({ classes, providers }) => {
           </FormControl>
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 6
+          }}>
           <FormControl variant="outlined" className={classes.formControl} size="small" fullWidth>
             <InputLabel shrink id="orden-gobierno-label">
               Nivel u Orden de Gobierno
@@ -420,7 +443,11 @@ const FormServidores = ({ classes, providers }) => {
           </FormControl>
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 6
+          }}>
           <FormControl variant="outlined" className={classes.formControl} size="small" fullWidth>
             <InputLabel shrink id="ambito-label">
               Ámbito Público
@@ -450,15 +477,22 @@ const FormServidores = ({ classes, providers }) => {
           </FormControl>
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 6
+          }}>
           {renderFaltaSelect()}
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 6
+          }}>
           {renderSancionSelect()}
         </Grid>
       </Grid>
-
       <Box className={classes.buttonContainer}>
         <Button variant="outlined" className={classes.clearButton} onClick={handleClear}>
           Limpiar
@@ -467,13 +501,11 @@ const FormServidores = ({ classes, providers }) => {
           {loading ? 'Buscando...' : 'Buscar'}
         </Button>
       </Box>
-
       {error && (
         <Box className={classes.errorMessage}>
           <Typography>{error}</Typography>
         </Box>
       )}
-
       {loading ? (
         <Box className={classes.loading}>
           <CircularProgress />
@@ -502,4 +534,4 @@ FormServidores.propTypes = {
   ).isRequired,
 };
 
-export default withStyles(styles)(FormServidores);
+export default withStyles(FormServidores, styles);

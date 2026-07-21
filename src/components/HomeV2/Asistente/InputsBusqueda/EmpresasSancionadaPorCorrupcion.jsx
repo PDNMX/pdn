@@ -1,5 +1,5 @@
 import React from 'react'
-import { TextField } from '@mui/material/'
+import { TextField } from '@mui/material'
 import { Controller, useFormContext } from 'react-hook-form'
 import { ThemeProvider } from '@mui/material/styles'
 import ThemeV2 from '../../../../ThemeV2'
@@ -151,18 +151,22 @@ export function EmpresasSancionadaPorCorrupcion () {
                     label='Institución donde presto el servicio'
                     placeholder='Ingresa la institución donde presto el servicio'
                     fullWidth
-                    InputProps={{
-                      ...params.InputProps,
-                      endAdornment: (
-                        <>
-                          {loading
-                            ? (
-                              <CircularProgress color='inherit' size={20} />
-                              )
-                            : null}
-                          {params.InputProps.endAdornment}
-                        </>
-                      )
+                    slotProps={{
+                      ...params.slotProps,
+
+                      input: {
+                        ...params.slotProps.input,
+                        endAdornment: (
+                          <>
+                            {loading
+                              ? (
+                                <CircularProgress color='inherit' size={20} />
+                                )
+                              : null}
+                            {params.slotProps.input.endAdornment}
+                          </>
+                        )
+                      }
                     }}
                   />
                 )}
@@ -205,5 +209,5 @@ export function EmpresasSancionadaPorCorrupcion () {
         </ThemeProvider>
       </div>
     </Fade>
-  )
+  );
 }

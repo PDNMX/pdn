@@ -1,5 +1,4 @@
-import React from 'react';
-import withStyles from '@mui/styles/withStyles';
+import { withStyles } from 'tss-react/mui';
 import HeaderV2 from '../HomeV2/HeaderV2';
 import pdnRoutes from '../../routes';
 import { Grid, Paper, Box } from '@mui/material';
@@ -47,8 +46,10 @@ const Protocolo = props => {
   return (
     <div className={classes.root}>
       <HeaderV2 section={section} />
-      <Grid container justifyContent='center' spacing={0}>
-        <Grid item xs={12} className={classes.rootItem}>
+      <Grid container spacing={0} sx={{
+        justifyContent: 'center'
+      }}>
+        <Grid className={classes.rootItem} size={12}>
           <Paper className={classes.paper} elevation={15}>
             <Box className={classes.box}>
               <ProtocoloConexion />
@@ -60,4 +61,4 @@ const Protocolo = props => {
   );
 };
 
-export default withStyles(styles)(Protocolo);
+export default withStyles(Protocolo, styles);

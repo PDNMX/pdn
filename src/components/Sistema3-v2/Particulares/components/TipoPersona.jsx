@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { 
   Grid, 
@@ -7,7 +7,7 @@ import {
   Paper,
   Typography
 } from '@mui/material';
-import { withStyles } from '@mui/styles';
+import { withStyles } from 'tss-react/mui';
 import { Person, Business } from '@mui/icons-material';
 import { searchInProvider } from '../../utils/api';
 import { buildSearchQuery } from '../../utils/search';
@@ -49,16 +49,15 @@ const StatsCard = ({ title, total, subtitle, icon: Icon, gradient, color }) => (
       <Icon sx={{ fontSize: 150 }} />
     </Box>
 
-    <Box 
-      display="flex" 
-      flexDirection="column" 
-      alignItems="flex-start"
-      sx={{ 
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-start",
         p: 3,
         position: 'relative',
         zIndex: 1
-      }}
-    >
+      }}>
       <Typography 
         variant="body2" 
         color="textSecondary"
@@ -214,7 +213,11 @@ const TipoPersona = ({ classes, providers, onDataUpdate }) => {
 
   return (
     <Grid container spacing={3} className={classes.root}>
-      <Grid item xs={12} md={6}>
+      <Grid
+        size={{
+          xs: 12,
+          md: 6
+        }}>
         <StatsCard
           title="Personas Físicas Sancionadas"
           total={data.fisica.total}
@@ -224,8 +227,11 @@ const TipoPersona = ({ classes, providers, onDataUpdate }) => {
           color="#1976d2"
         />
       </Grid>
-
-      <Grid item xs={12} md={6}>
+      <Grid
+        size={{
+          xs: 12,
+          md: 6
+        }}>
         <StatsCard
           title="Personas Morales Sancionadas" 
           total={data.moral.total}
@@ -245,4 +251,4 @@ TipoPersona.propTypes = {
   onDataUpdate: PropTypes.func.isRequired
 };
 
-export default withStyles(styles)(TipoPersona);
+export default withStyles(TipoPersona, styles);

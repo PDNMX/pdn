@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Grid } from '@mui/material';
 
@@ -50,25 +50,45 @@ const DashboardServidores = ({ providers }) => {
 
   return (
     <Grid container spacing={3} sx={{ p: 3 }}>
-      <Grid item xs={12} sm={12} md={4}>
+      <Grid
+        size={{
+          xs: 12,
+          sm: 12,
+          md: 4
+        }}>
         <TotalRows totalCases={totals.totalCases} />
       </Grid>
-      <Grid item xs={12} sm={12} md={4}>
+      <Grid
+        size={{
+          xs: 12,
+          sm: 12,
+          md: 4
+        }}>
         <TotalInstituciones totalInstitutions={totals.uniqueInstitutions} />
       </Grid>
-      <Grid item xs={12} sm={12} md={4}>
+      <Grid
+        size={{
+          xs: 12,
+          sm: 12,
+          md: 4
+        }}>
         <TotalRamos key={`total-ramos-${providers.length}`} providers={providers} />
       </Grid>
-      <Grid item xs={12} sm={12} md={12}>
+      <Grid
+        size={{
+          xs: 12,
+          sm: 12,
+          md: 12
+        }}>
         <Ejercicio
           providers={providers}
           onDataUpdate={handleDataUpdate}
         />
       </Grid>
-      <Grid item xs={12}>
+      <Grid size={12}>
         <SancionesResueltas providers={providers} />
       </Grid>
-      <Grid item xs={12}>
+      <Grid size={12}>
         <FooterPage
           dataSet="Sistema nacional de servidores públicos y particulares sancionados"
           provider="Plataforma Digital Nacional"

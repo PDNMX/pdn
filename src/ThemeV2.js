@@ -33,6 +33,7 @@ export default createTheme(
   {
     ...BaseTheme2023,
     components: {
+      ...BaseTheme2023.components,
       MuiInputLabel: {
         styleOverrides: {
           shrink: {
@@ -91,10 +92,13 @@ export default createTheme(
             }
           },
           icon: {
-            color: '#E1E8EB'
-          },
-          iconDirectionDesc: {
-            color: '#E1E8EB'
+            color: '#E1E8EB',
+            variants: [
+              {
+                props: { direction: 'desc' },
+                style: { color: '#E1E8EB' }
+              }
+            ]
           }
         }
       },

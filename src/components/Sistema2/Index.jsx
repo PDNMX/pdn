@@ -1,5 +1,5 @@
 import React from 'react'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import { Grid, Typography } from '@mui/material'
 import BuscadorS2 from './BuscadorS2v2'
 import HeaderV2 from '../HomeV2/HeaderV2'
@@ -13,72 +13,7 @@ import pdnRoutes from '../../routes/index'
 import { ThemeProvider } from '@mui/material/styles'
 import ThemeV2 from '../../ThemeV2'
 import styles from '../style'
-//import ReactGA from 'react-ga4'
-
-const styles2 = theme => ({
-  container: {
-    paddingTop: 90
-    // paddingBottom: 90
-  },
-  tabText: {
-    // color: theme.palette.secondary.contrastText
-  },
-  section: {
-    maxWidth: '1200px',
-    marginTop: theme.spacing(8)
-  },
-  contentsSection: {
-    color: theme.palette.secondary.contrastText,
-    maxWidth: '1200px'
-  },
-  image: {
-    width: '60px',
-    display: 'flex'
-  },
-  card: {
-    backgroundColor: theme.palette.background.noSelect,
-    paddingLeft: theme.spacing(1),
-    paddingRight: theme.spacing(1),
-    paddingTop: theme.spacing(1),
-    paddingBottom: theme.spacing(1),
-    margin: 0,
-    '&:hover': {
-      cursor: 'pointer',
-      borderColor: theme.palette.background.border,
-      transition: 'background 0.3s ease',
-      opacity: 0.7
-    },
-    display: 'flex',
-    float: 'left',
-    padding: 0,
-    borderStyle: 'solid',
-    borderColor: theme.palette.background.opaque,
-    borderBottomStyle: 'none',
-    borderRadius: '10px 10px 0px 0px',
-    marginRight: 10
-  },
-  cardSeleccionada: {
-    backgroundColor: theme.palette.background.select,
-    borderColor: theme.palette.background.border,
-    paddingLeft: theme.spacing(1),
-    paddingRight: theme.spacing(1),
-    paddingTop: theme.spacing(1),
-    paddingBottom: theme.spacing(1),
-    margin: 0,
-    borderStyle: 'solid',
-
-    borderBottomStyle: 'none',
-    borderRadius: '10px 10px 0px 0px',
-    display: 'flex',
-    float: 'left',
-    marginRight: 10,
-  },
-  labelCard: {
-    color: theme.palette.text.clear,
-    marginLeft: theme.spacing(1),
-    paddingTop: theme.spacing(1)
-  }
-})
+import ReactGA from 'react-ga4'
 
 const TabContents = props => {
   const { index } = props
@@ -104,14 +39,22 @@ const Index = props => {
   return (
     <div className={classes.root}>
       <HeaderV2 section={system} />
-
       {/* TABS */}
-      <Grid container justifyContent='center' alignItems='center'>
-        <Grid item xs={12} className={classes.section}>
+      <Grid
+        container
+        sx={{
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+        <Grid className={classes.section} size={12}>
           <Grid container>
-            <Grid item md={4} xs={12}
+            <Grid
               style={{ display: 'flex', alignItems: 'stretch' }}
-              onClick={() => handleContentId(1)}>
+              onClick={() => handleContentId(1)}
+              size={{
+                md: 4,
+                xs: 12
+              }}>
 
               <figure className={isContentId(1) ? classes.selectedTab : classes.card}>
                 <img src={img1} alt='Servidores que intervinen en procesos de contratacion' className={classes.logo}/>
@@ -135,11 +78,15 @@ const Index = props => {
               </figure>
             </Grid> */}
 
-            <Grid item md={4} xs={12}
+            <Grid
               style={{ display: 'flex', alignItems: 'stretch' }}
               onClick={() => {
                 setContentId(3);
                 ReactGA.event({ category: 'visor-s2', action: 'click' });
+              }}
+              size={{
+                md: 4,
+                xs: 12
               }}>
 
               <figure className={isContentId(3) ? classes.selectedTab : classes.card}>
@@ -174,17 +121,18 @@ const Index = props => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid container justifyContent='center'>
-        <Grid item xs={12} className={classes.contentsSection}>
+      <Grid container sx={{
+        justifyContent: 'center'
+      }}>
+        <Grid className={classes.contentsSection} size={12}>
           <ThemeProvider theme={ThemeV2}>
             <TabContents index={contentId} />
           </ThemeProvider>
         </Grid>
       </Grid>
       <br></br>
-
     </div>
-  )
+  );
 }
 
-export default withStyles(styles)(Index)
+export default withStyles(Index, styles);

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { ResponsiveLine } from '@nivo/line';
 import axios from 'axios';
-import { Typography, List, ListItem, ListItemText, Alert } from '@mui/material'
-import { withStyles } from '@mui/styles'
+import { Typography, Alert } from '@mui/material'
+import { withStyles } from 'tss-react/mui';
 import ModalInfo from '../../../Compartidos/Dashboards/ModalInfo'
 import ContainerChart from '../../../Compartidos/Dashboards/ContainerChart';
 
@@ -90,7 +90,7 @@ const styles = theme => ({
     paddingRight: theme.spacing(1),
     marginBottom: theme.spacing(3)
   }
-})
+});
 
 const AnioDuracionSanciones = props => {
   const [state, setData] = useState([]);
@@ -126,7 +126,9 @@ const AnioDuracionSanciones = props => {
   return (
     <div style={{ height: '500px' }}>
       <ModalInfo open={open} setOpen={setOpen}>
-        <Typography variant='h6' className={classes.titulo} paragraph>
+        <Typography variant='h6' className={classes.titulo} sx={{
+          marginBottom: "16px"
+        }}>
           Cantidad de sanciones resueltas por año
         </Typography>
         <Typography  variant='body1'>
@@ -214,4 +216,4 @@ const AnioDuracionSanciones = props => {
   );
 };
 
-export default withStyles(styles)(AnioDuracionSanciones)
+export default withStyles(AnioDuracionSanciones, styles);

@@ -1,5 +1,5 @@
 import { Grid, Box, Paper, Typography } from '@mui/material'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import HeaderV2 from '../HomeV2/HeaderV2'
 import pdnRoutes from '../../routes'
 import Link from '@mui/material/Link'
@@ -63,13 +63,13 @@ const styles = theme => ({
     color: theme.palette.text.linkColor,
     wordBreak: 'break-word'
   }
-})
+});
 
-const CustomTypography = withStyles(theme => ({
+const CustomTypography = withStyles(Typography, theme => ({
   root: {
     color: theme.palette.text.primary
   }
-}))(Typography)
+}));
 
 const Faq = props => {
   const { classes } = props
@@ -78,8 +78,12 @@ const Faq = props => {
   return (
     <div className={classes.root}>
       <HeaderV2 section={section} />
-      <Grid container spacing={0} justifyContent='center' className={classes.container}>
-        <Grid item xs={12} justifyContent='center' className={classes.item}>
+      <Grid container spacing={0} className={classes.container} sx={{
+        justifyContent: 'center'
+      }}>
+        <Grid className={classes.item} size={12} sx={{
+          justifyContent: 'center'
+        }}>
 
           <Paper className={classes.paper} elevation={15}>
             <Box className={classes.box}>
@@ -106,7 +110,7 @@ const Faq = props => {
                   <Typography className={classes.question}>
                       <b>¿Cómo se va a trabajar en la seguridad e integridad de los datos?</b><br />
                     </Typography>
-                  <CustomTypography className={classes.sublist} whiteSpace='nowrap'>
+                  <CustomTypography className={classes.sublist} sx={{ whiteSpace: 'nowrap' }}>
                       Para conocer más detalles sobre la seguridad de la información de la PDN, visita el <Link href='https://drive.google.com/file/d/1-IvF3KYa5rups73BmVV4W8glT9csVGY9/view?usp=sharing' target='_blank' className={classes.link} rel='noreferrer'>documento de Seguridad Informática.</Link>
                     </CustomTypography>
                 </li>
@@ -144,7 +148,7 @@ const Faq = props => {
         </Grid>
       </Grid>
     </div>
-  )
+  );
 }
 
-export default withStyles(styles)(Faq)
+export default withStyles(Faq, styles);

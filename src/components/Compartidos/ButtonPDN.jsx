@@ -1,7 +1,7 @@
 import { Button } from '@mui/material'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 
-const StyledButton = withStyles((theme) => ({
+const StyledButton = withStyles(Button, (theme) => ({
   root: {
     margin: theme.spacing(1),
     background: '#7a3e7c',
@@ -12,7 +12,7 @@ const StyledButton = withStyles((theme) => ({
       backgroundColor: '#b25fac'
     }
   }
-}))(Button)
+}));
 
 const ButtonPDN = (props) => {
   return (

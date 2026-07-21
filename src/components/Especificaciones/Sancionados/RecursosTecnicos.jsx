@@ -1,4 +1,3 @@
-import React from "react";
 import { Grid, Card, CardContent, Typography, Box } from "@mui/material";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import GitHubIcon from "@mui/icons-material/GitHub"; // Cambiado el ícono
@@ -6,7 +5,7 @@ import CodeIcon from "@mui/icons-material/Code";
 import SecurityIcon from "@mui/icons-material/Security";
 import ButtonPDN from "../../Compartidos/ButtonPDN";
 import PropTypes from "prop-types";
-import { withStyles } from "@mui/styles";
+import { withStyles } from 'tss-react/mui';
 
 const styles = (theme) => ({
   cardContainer: {
@@ -117,10 +116,14 @@ const RecursosTecnicos = ({ classes }) => {
       <Typography variant="h5" className={classes.sectionTitle}>
         Recursos Técnicos para Implementación
       </Typography>
-
       <Grid container spacing={3}>
         {recursos.map((recurso, index) => (
-          <Grid item xs={12} sm={6} key={index}>
+          <Grid
+            key={index}
+            size={{
+              xs: 12,
+              sm: 6
+            }}>
             <ResourceCard
               {...recurso}
               buttonComponent={
@@ -140,4 +143,4 @@ RecursosTecnicos.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(RecursosTecnicos);
+export default withStyles(RecursosTecnicos, styles);

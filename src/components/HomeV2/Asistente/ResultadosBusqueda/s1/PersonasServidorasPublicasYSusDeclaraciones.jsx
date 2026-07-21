@@ -425,8 +425,10 @@ export class ResultadosS1 extends React.Component {
         <Chips criterios={JSON.stringify(data)} />
         {!this.state.dataSelect && (
           <>
-            <Grid container margin='normal' style={{ margin: '2% 0%' }}>
-              <Grid item xs={12}>
+            <Grid container style={{ margin: '2% 0%' }} sx={{
+              margin: 'normal'
+            }}>
+              <Grid size={12}>
                 {this.state.prov
                   .filter((p) => p.status === 'ACTIVE')
                   .map((p, i) => {
@@ -479,6 +481,6 @@ export class ResultadosS1 extends React.Component {
           </Modal>
         )}
       </>
-    )
+    );
   }
 }

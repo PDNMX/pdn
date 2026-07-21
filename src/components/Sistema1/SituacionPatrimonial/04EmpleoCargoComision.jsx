@@ -1,5 +1,5 @@
 import Paper from '@mui/material/Paper'
-import makeStyles from '@mui/styles/makeStyles'
+import { makeStyles } from 'tss-react/mui';
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 
@@ -10,76 +10,115 @@ import { BoxAccordion, BoxAccordionSummary, BoxAccordionDetails } from '../commo
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import AclaracionesObservacions from '../common/AclaracionesObservaciones'
 
-const useStyles = makeStyles(style)
+const useStyles = makeStyles()(style);
 
 function Empleo({ data }) {
-  const classes = useStyles()
+  const { classes } = useStyles()
 
   return (
     <>
-      <Grid item xs={12} md={4}>
+      <Grid
+        size={{
+          xs: 12,
+          md: 4
+        }}>
         <Typography className={classes.cardTitle}>NIVEL/ORDEN DE GOBIERNO</Typography>
         <Typography className={classes.card}>{data.nivelOrdenGobierno}</Typography>
       </Grid>
-      <Grid item xs={12} md={4}>
+      <Grid
+        size={{
+          xs: 12,
+          md: 4
+        }}>
         <Typography className={classes.cardTitle}>ÁMBITO PÚBLICO</Typography>
         <Typography className={classes.card}>{data.ambitoPublico}</Typography>
       </Grid>
-      <Grid item xs={12} md={4}>
+      <Grid
+        size={{
+          xs: 12,
+          md: 4
+        }}>
         <Typography className={classes.cardTitle}>NOMBRE DEL ENTE PÚBLICO</Typography>
         <Typography className={classes.card}>{data.nombreEntePublico}</Typography>
       </Grid>
-      <Grid item xs={12} md={4}>
+      <Grid
+        size={{
+          xs: 12,
+          md: 4
+        }}>
         <Typography className={classes.cardTitle}>ÁREA DE ADSCRIPCIÓN</Typography>
         <Typography className={classes.card}>{data.areaAdscripcion}</Typography>
       </Grid>
-      <Grid item xs={12} md={4}>
+      <Grid
+        size={{
+          xs: 12,
+          md: 4
+        }}>
         <Typography className={classes.cardTitle}>EMPLEO, CARGO O COMISIÓN </Typography>
         <Typography className={classes.card}>{data.empleoCargoComision}</Typography>
       </Grid>
-      <Grid item xs={12} md={4}>
+      <Grid
+        size={{
+          xs: 12,
+          md: 4
+        }}>
         <Typography className={classes.cardTitle}>¿ESTÁ CONTRATADO POR HONORARIOS?</Typography>
         <Typography className={classes.card} align='center'>
           {data.contratadoPorHonorarios ? 'SÍ' : 'NO'}
         </Typography>
       </Grid>
-      <Grid item xs={12} md={4}>
+      <Grid
+        size={{
+          xs: 12,
+          md: 4
+        }}>
         <Typography className={classes.cardTitle}>NIVEL DEL EMPLEO, CARGO O COMISIÓN</Typography>
         <Typography className={classes.card}>{data.nivelEmpleoCargoComision}</Typography>
       </Grid>
-      <Grid item xs={12} md={4}>
+      <Grid
+        size={{
+          xs: 12,
+          md: 4
+        }}>
         <Typography className={classes.cardTitle}>ESPECIFIQUE FUNCIÓN PRINCIPAL</Typography>
         <Typography className={classes.card}>{data.funcionPrincipal}</Typography>
       </Grid>
-      <Grid item xs={12} md={4}>
+      <Grid
+        size={{
+          xs: 12,
+          md: 4
+        }}>
         <Typography className={classes.cardTitle}>TELÉFONO DE OFICINA Y EXTENSIÓN</Typography>
         <Typography className={classes.card}>
           {data.telefonoOficina && data.telefonoOficina.telefono}
           {data.telefonoOficina && data.telefonoOficina.extension && ' Extensión ' + data.telefonoOficina.extension}
         </Typography>
       </Grid>
-      <Grid item xs={12} md={4}>
+      <Grid
+        size={{
+          xs: 12,
+          md: 4
+        }}>
         <Typography className={classes.cardTitle}>FECHA DE TOMA DE POSESIÓN DEL EMPLEO, CARGO O COMISIÓN</Typography>
         <Typography className={classes.card}>{data.fechaTomaPosesion}</Typography>
       </Grid>
-
       <Divider />
       <CompDomicilio domicilioMexico={data.domicilioMexico} domicilioExtranjero={data.domicilioExtranjero} />
     </>
-  )
+  );
 }
 
 const EmpleoCargoComision = ({ data, titulo }) => {
-  const classes = useStyles()
+  const { classes } = useStyles()
 
   return (
     <Grid container spacing={2} className={classes.rootPrincipal}>
-      <Grid item xs={12}>
+      <Grid size={12}>
         <Typography className={classes.tituloSeccion} align='center'>
           {titulo}
         </Typography>
       </Grid>
-      <Grid item xs={12}>
+      <Grid size={12}>
         <Paper className={classes.paper}>
           <Grid container spacing={1}>
             <Empleo data={data} />
@@ -89,7 +128,7 @@ const EmpleoCargoComision = ({ data, titulo }) => {
                   <BoxAccordion key={'e-' + i}>
                     <BoxAccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header' className={classes.resultadosTitulo}>
                       <Grid container spacing={0}>
-                        <Grid item xs={8}>
+                        <Grid size={8}>
                           OTRO EMPLEO, CARGO O COMISIÓN EN EL SERVICIO PÚBLICO
                         </Grid>
                       </Grid>
@@ -100,13 +139,13 @@ const EmpleoCargoComision = ({ data, titulo }) => {
                       </Grid>
                     </BoxAccordionDetails>
                   </BoxAccordion>
-                )
+                );
               })}
           </Grid>
         </Paper>
         <AclaracionesObservacions />
       </Grid>
     </Grid>
-  )
+  );
 }
 export default EmpleoCargoComision

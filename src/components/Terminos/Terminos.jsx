@@ -1,5 +1,5 @@
 import { Typography, Grid, Paper, Box } from '@mui/material';
-import withStyles from '@mui/styles/withStyles';
+import { withStyles } from 'tss-react/mui';
 import Link from '@mui/material/Link';
 import HeaderV2 from '../HomeV2/HeaderV2';
 import pdnRoutes from '../../routes';
@@ -61,21 +61,29 @@ const Terminos = props => {
   return (
     <div className={classes.root}>
       <HeaderV2 section={section} />
-      <Grid container spacing={0} justifyContent="center">
-        <Grid item xs={12} className={classes.section}>
+      <Grid container spacing={0} sx={{
+        justifyContent: "center"
+      }}>
+        <Grid className={classes.section} size={12}>
           <Paper className={classes.paper} elevation={15}>
             <Box className={classes.box}>
-              <Typography variant="h5" paragraph>
+              <Typography variant="h5" sx={{
+                marginBottom: "16px"
+              }}>
                 TÉRMINOS Y CONDICIONES DE USO DE LA PLATAFORMA DIGITAL NACIONAL
               </Typography>
 
-              <Typography paragraph>
+              <Typography sx={{
+                marginBottom: "16px"
+              }}>
                 La Plataforma Digital Nacional (PDN) se desarrolla de conformidad con la normatividad vigente:
               </Typography>
 
               <ul className={classes.ul}>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     <Link
                       target="_blank"
                       href="https://www.diputados.gob.mx/LeyesBiblio/ref/lgsna.htm"
@@ -87,7 +95,9 @@ const Terminos = props => {
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     <Link target="_blank" href="https://www.diputados.gob.mx/LeyesBiblio/ref/lgra.htm" rel="noreferrer">
                       Ley General de Responsabilidades Administrativas
                     </Link>
@@ -95,7 +105,9 @@ const Terminos = props => {
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     <Link
                       target="_blank"
                       href="https://www.dof.gob.mx/nota_detalle.php?codigo=5541802&fecha=23/10/2018"
@@ -107,7 +119,9 @@ const Terminos = props => {
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     <Link target="_blank" href="https://www.dof.gob.mx/nota_detalle.php?codigo=5678528&fecha=01/02/2023#gsc.tab=0" rel="noreferrer">
                       Estatuto Orgánico de la Secretaría Ejecutiva del Sistema Nacional Anticorrupción
                     </Link>
@@ -116,7 +130,9 @@ const Terminos = props => {
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     <Link target="_blank" href="https://www.dof.gob.mx/nota_detalle.php?codigo=5718117&fecha=27/02/2024#gsc.tab=0" rel="noreferrer">
                       Lineamientos para la incorporación de la información al sistema de evolución patrimonial, de
                       declaración de intereses y constancia de presentación de declaración fiscal de la Plataforma
@@ -127,7 +143,9 @@ const Terminos = props => {
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     <Link target="_blank" href="https://www.dof.gob.mx/nota_detalle.php?codigo=5729579&fecha=05/06/2024#gsc.tab=0" rel="noreferrer">
                       Declaratoria de inicio de funciones del Sistema de evolución patrimonial, de declaración de
                       intereses y constancia de presentación de declaración fiscal de la Plataforma Digital Nacional
@@ -138,7 +156,9 @@ const Terminos = props => {
                 </li>
               </ul>
 
-              <Typography paragraph>
+              <Typography sx={{
+                marginBottom: "16px"
+              }}>
                 La PDN está conceptualizada como una Plataforma de interoperabilidad, que integrará y conectará los
                 diversos sistemas<sup>i</sup> que posean datos e información para las autoridades encargadas en la lucha
                 contra la corrupción. Por lo anterior, los datos e información presentados en la PDN{' '}
@@ -148,7 +168,9 @@ const Terminos = props => {
                 la SESNA, de acuerdo con la normatividad vigente.
               </Typography>
 
-              <Typography paragraph>
+              <Typography sx={{
+                marginBottom: "16px"
+              }}>
                 Para el manejo de los datos, la Plataforma seguirá las disposiciones aplicables en materia de
                 transparencia, acceso a la información, datos abiertos y protección de datos personales.
               </Typography>
@@ -159,25 +181,33 @@ const Terminos = props => {
 
               <ul className={classes.ul}>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     Los enlaces de sitios web presentes en la PDN son proporcionados sólo con fines informativos, por lo
                     que los contenidos o recursos son ajenos a la PDN y no serán responsabilidad de esta.
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     Este sitio contiene medidas de seguridad para proteger la información de cualquier alteración
                     realizada por terceros.
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     La SESNA se deslinda de cualquier responsabilidad, perjuicio o daño que pueda generar el usuario por
                     el uso inadecuado del portal o la información contenida en plataformadigitalnacional.org
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     Se exime a la SESNA de la responsabilidad por los daños que el uso del sitio le pudieran ocasionar
                     en forma incidental o consecuente con su equipo, información, patrimonio o persona, así como de la
                     responsabilidad por la alteración o manipulación de los datos una vez publicados en él.
@@ -196,62 +226,82 @@ const Terminos = props => {
 
               <ul className={classes.ul}>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     No dañar, inutilizar o deteriorar los sistemas informáticos que puedan ser incorporados en este
                     sitio, incluido el portal plataformadigitalnacional.org.
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     No modificar los sistemas informáticos que puedan ser incorporados a la PDN.
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     No utilizar versiones de sistemas modificados con el fin de obtener acceso no autorizado a cualquier
                     sistema de información, contenido y/o servicios del portal.
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     No interferir ni interrumpir el acceso, funcionalidad y utilización del portal, servidores o redes
                     conectadas al mismo.
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     Se obliga a hacer buen uso del sitio, respetando la Ley General del Sistema Nacional Anticorrupción,
                     la Ley Federal de Derechos de Autor y demás normatividad aplicable.
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     Debe contar con un equipo que cumpla con las características mínimas necesarias para navegar en el
                     sitio. Se recomienda la navegación con las últimas versiones de los navegadores Google Chrome,
                     Mozilla Firefox y Safari para obtener la mejor experiencia.
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     Exime a la SESNA de toda responsabilidad por los daños que el uso del sitio le pudiera ocasionar en
                     forma incidental o consecuente con su equipo, información, patrimonio o persona, así como ninguna
                     responsabilidad por la alteración o manipulación de los datos una vez publicados en él.
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     Acepta y se obliga a utilizar el sitio para fines lícitos y con apego a las disposiciones legales
                     aplicables.
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     Usar adecuadamente la información conforme a los objetivos y normatividad del Sistema Nacional
                     Anticorrupción y la legislación aplicable.
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     El destino y tratamiento de los datos que se obtengan de la plataforma, son responsabilidad
                     exclusivamente del usuario, y de ninguna manera señalarán el posicionamiento de ningún Ente Público
                     <sup>ii</sup>, salvo que expresamente se refiera.
@@ -265,52 +315,72 @@ const Terminos = props => {
 
               <ul className={classes.ul}>
                 <li className={classes.li}>
-                  <Typography display="inline">Resguardar la información que le sea suministrada.</Typography>
+                  <Typography sx={{
+                    display: "inline"
+                  }}>Resguardar la información que le sea suministrada.</Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     Implementar criterios y mecanismos de seguridad de la información.
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">Garantizar la protección de los datos personales.</Typography>
+                  <Typography sx={{
+                    display: "inline"
+                  }}>Garantizar la protección de los datos personales.</Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     Administrar, en el ámbito de su competencia, la información que se incorporará a la PDN.
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     Mantener actualizada la información, de conformidad con la normatividad aplicable.
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     Mantener disponible la información, con excepción de los períodos para los servicios de
                     mantenimiento de sus sistemas informáticos.
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     Cumplir con la normatividad, especificaciones técnicas y protocolos que señale la SESNA.
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     Los encargados, según corresponda, tendrán la obligación de actualizar y administrar los subsistemas
                     <sup>vi</sup>, y de cumplir la normatividad que corresponda para garantizar la estandarización,
                     integridad e interoperabilidad de la información de los sistemas de la Plataforma.
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     Los concentradores tendrán la obligación de agrupar la información proporcionada por los proveedores
                     en los conjuntos de datos, para que sea ingresada a los sistemas o subsistemas, según corresponda.
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     Será obligación de los encargados y los concentradores vigilar la homologación, actualización y
                     disponibilidad de la información que sea transferida de los subsistemas y conjuntos de datos a los
                     sistemas, de conformidad con la normatividad aplicable, y verificar de manera permanente el correcto
@@ -320,7 +390,9 @@ const Terminos = props => {
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     Los proveedores de datos deberán proporcionar los datos e información, en tiempo y forma, de
                     conformidad con la legislación aplicable.
                   </Typography>
@@ -333,31 +405,41 @@ const Terminos = props => {
 
               <ul className={classes.ul}>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     Solicitar, en el ámbito de su competencia, los datos de sus respectivos concentradores y encargados
                     para su incorporación a sus Plataformas o Sistemas estatales, y posteriormente interconectarse a la
                     PDN.
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     Informar a sus concentradores que los datos se deberán integrar de conformidad con las
                     especificaciones técnicas.
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     Disponer de los elementos técnicos y capacidades necesarias que permitan la continua actualización
                     de la información para su incorporación a la PDN.
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     Coadyuvar con la SESNA en las acciones necesarias para la implementación de los sistemas.
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     Mantener disponible la información, con excepción de los periodos para servicios de mantenimiento de
                     sus sistemas informáticos.
                   </Typography>
@@ -370,10 +452,14 @@ const Terminos = props => {
 
               <ul className={classes.ul}>
                 <li className={classes.li}>
-                  <Typography display="inline">Administrar la PDN.</Typography>
+                  <Typography sx={{
+                    display: "inline"
+                  }}>Administrar la PDN.</Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     Emitir los protocolos, estándares, reglamentos, especificaciones técnicas y cualquier normatividad
                     necesaria para la colaboración, provisión de datos y acciones para cumplir con las Bases, los cuales
                     serán obligatorios para todos los proveedores, concentradores y encargados a nivel federal, estatal
@@ -381,13 +467,17 @@ const Terminos = props => {
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     Verificar de manera permanente el correcto funcionamiento de los componentes de la PDN, con la
                     finalidad de prevenir fallas y, en caso de diagnosticarlas, dar pronta atención a las mismas.
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     En caso de que la Plataforma o alguno de sus sistemas presente una falla técnica, la SESNA deberá
                     hacer del conocimiento de los usuarios la magnitud de la falla y el tiempo de recuperación, para que
                     éstos estén en posibilidad de implementar las medidas necesarias para el cumplimiento de sus
@@ -395,7 +485,9 @@ const Terminos = props => {
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     En caso de que algún subsistema o conjunto de datos presente una falla técnica, el encargado o
                     concentrador correspondiente deberá informar a la SESNA sobre la magnitud de la falla y el tiempo de
                     recuperación, para que la SESNA esté en posibilidad de implementar las medidas necesarias para
@@ -403,33 +495,43 @@ const Terminos = props => {
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     Informar a los integrantes del Comité Coordinador sobre el funcionamiento de la Plataforma,
                     recomendaciones para mejorarlo, y sobre las fallas que esta o cualquiera de sus componentes puedan
                     haber presentado, y las medidas que se tomarán para solucionarlas.
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     La SESNA se coordinará con las Secretarías Ejecutivas de los Sistemas Locales Anticorrupción, con el
                     fin de determinar su participación en la construcción de los sistemas de la Plataforma y la forma de
                     interconexión que tendrán con cada uno de los sistemas a nivel local.
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     Solicitar los datos a sus respectivos concentradores, encargados y a las Secretarías Ejecutivas de
                     los Sistemas Locales Anticorrupción para integrarlos a la PDN.
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     Aprobar, conforme a las especificaciones técnicas, la integración, conexión con la PDN, así como su
                     respectiva baja.
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     Mantener disponible la PDN, con excepción de los periodos para los servicios de mantenimiento.
                   </Typography>
                 </li>
@@ -439,35 +541,49 @@ const Terminos = props => {
                 CONDICIONES DE USO DE LOS DATOS PÚBLICOS DE LA PLATAFORMA DIGITAL NACIONAL
               </Typography>
 
-              <Typography paragraph>
+              <Typography sx={{
+                marginBottom: "16px"
+              }}>
                 El tratamiento de los datos personales contenidos en la PDN podrá ser consultado en el Aviso de
                 Privacidad de cada uno de los sistemas.
               </Typography>
 
-              <Typography paragraph>
+              <Typography sx={{
+                marginBottom: "16px"
+              }}>
                 Para citar a la Plataforma Digital Nacional como fuente de los datos se debe mencionar:
               </Typography>
 
               <ul className={classes.ul}>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     Nombre del sistema o sección de la PDN en el que se consultaron los datos;
                   </Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">Plataforma Digital Nacional;</Typography>
+                  <Typography sx={{
+                    display: "inline"
+                  }}>Plataforma Digital Nacional;</Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">Fecha de consulta;</Typography>
+                  <Typography sx={{
+                    display: "inline"
+                  }}>Fecha de consulta;</Typography>
                 </li>
                 <li className={classes.li}>
-                  <Typography display="inline">
+                  <Typography sx={{
+                    display: "inline"
+                  }}>
                     Liga de internet para acceder a los datos a través de la PDN.
                   </Typography>
                 </li>
               </ul>
 
-              <Typography paragraph>
+              <Typography sx={{
+                marginBottom: "16px"
+              }}>
                 Ejemplo: Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de
                 declaración fiscal; Plataforma Digital Nacional. Recuperado el 25 de junio de 2024, mediante el enlace:{' '}
                 <Link href="https://www.plataformadigitalnacional.org/declaraciones" target="_blank" rel="noreferrer">
@@ -479,12 +595,16 @@ const Terminos = props => {
                 Queda prohibido:
               </Typography>
 
-              <Typography paragraph>
+              <Typography sx={{
+                marginBottom: "16px"
+              }}>
                 Utilizar la información con el objeto de engañar o confundir a la población alterando el sentido
                 original de la información y su veracidad.
               </Typography>
 
-              <Typography paragraph>
+              <Typography sx={{
+                marginBottom: "16px"
+              }}>
                 Aparentar que el uso que se haga de los datos representa una postura oficial de algún Ente Público del
                 Estado Mexicano o que el mismo está avalado por la fuente de origen.
               </Typography>
@@ -493,7 +613,9 @@ const Terminos = props => {
                 Propiedad intelectual:
               </Typography>
 
-              <Typography paragraph>
+              <Typography sx={{
+                marginBottom: "16px"
+              }}>
                 La información del portal plataformadigitalnacional.org es pública a menos que se indique lo contrario,
                 en cuyo caso antes de reproducirla, se deberá observar si tiene derechos reservados y respetarlos en
                 términos de las normas relativas a derechos de autor y propiedad industrial.
@@ -503,14 +625,18 @@ const Terminos = props => {
                 Actualización de los términos y condiciones:
               </Typography>
 
-              <Typography paragraph>
+              <Typography sx={{
+                marginBottom: "16px"
+              }}>
                 La SESNA podrá modificar los presentes Términos y Condiciones en cualquier momento con el fin de mejorar
                 la experiencia en la utilización de la PDN. Por lo anterior, sugerimos revisar constantemente el portal.
               </Typography>
 
-              <Typography paragraph>
+              <Typography sx={{
+                marginBottom: "16px"
+              }}>
                 El uso del portal plataformadigitalnacional.org o de cualquiera de sus componentes, implica la
-                aceptación expresa de los presentes "Términos y Condiciones".
+                aceptación expresa de los presentes &quot;Términos y Condiciones&quot;.
               </Typography>
 
               <hr />
@@ -555,4 +681,4 @@ const Terminos = props => {
   );
 };
 
-export default withStyles(styles)(Terminos);
+export default withStyles(Terminos, styles);

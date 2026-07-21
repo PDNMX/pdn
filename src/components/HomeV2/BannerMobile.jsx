@@ -1,8 +1,8 @@
 import React from 'react'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import {
   AppBar, Box, Typography, IconButton, Menu, MenuItem,
-  Button, List, ListItemButton, Collapse, Toolbar
+  List, ListItemButton, Collapse, Toolbar
 } from '@mui/material'
 import { Link as RouterLink } from 'react-router-dom'
 import { MoreHoriz as MoreHorizIcon } from '@mui/icons-material'
@@ -71,7 +71,7 @@ const styles = theme => ({
   iconSesion: {
     width: theme.spacing(5)
   }
-})
+});
 
 const BannerMobile = props => {
   const { classes, setOpenLoginDialog } = props
@@ -107,7 +107,7 @@ const BannerMobile = props => {
   }
 
   const handleMDAClick = () => {
-    ReactGA.pageview('/mda')
+    ReactGA.send({ hitType: 'pageview', page: '/mda' })
     window.location.href = process.env.REACT_APP_LINK_MDA
   }
 
@@ -166,7 +166,7 @@ const BannerMobile = props => {
                       className={classes.nested}
                     >
                       <img src={system.icon} alt={system.name} className={classes.iconSistemas} />
-                      <Typography color={system.color}>{system.name}</Typography>
+                      <Typography sx={{ color: system.color }}>{system.name}</Typography>
                     </ListItemButton>
                   )
                 })}
@@ -188,29 +188,37 @@ const BannerMobile = props => {
               
                 <ListItemButton
                   href='/mapa-sla/' key='legislacion'
-                  className={classes.nested} onClick={() => ReactGA.pageview('/mapa-sla')}
+                  className={classes.nested} onClick={() => ReactGA.send({ hitType: 'pageview', page: '/mapa-sla' })}
                 >
                   <img src={legislacion_icono} alt='Legislación' className={classes.iconSistemas} />
-                  <Typography color='#4a2f4b'>Legislación</Typography>
+                  <Typography sx={{
+                    color: '#4a2f4b'
+                  }}>Legislación</Typography>
                 </ListItemButton>
                 <ListItemButton
                   href='/mapa-avance/' key='mapa'
-                  className={classes.nested} onClick={() => ReactGA.pageview('/mapa-avance')}
+                  className={classes.nested} onClick={() => ReactGA.send({ hitType: 'pageview', page: '/mapa-avance' })}
                 >
                   <img src={mapa_s2s3_icono} alt='Avance' className={classes.iconSistemas} />
-                  <Typography color='#4a2f4b'>Sistemas 1, 2, 3 y 6</Typography>
+                  <Typography sx={{
+                    color: '#4a2f4b'
+                  }}>Sistemas 1, 2, 3 y 6</Typography>
                 </ListItemButton>
 
                 <ListItemButton component={RouterLink} to='/cobertura' key='cobertura' className={classes.nested}>
                   <img src={icon_cobertura} alt='' className={classes.iconSistemas} />
-                  <Typography color='#4a2f4b'>Cobertura</Typography>
+                  <Typography sx={{
+                    color: '#4a2f4b'
+                  }}>Cobertura</Typography>
                 </ListItemButton>
                 <ListItemButton
                   href='https://cobertura.plataformadigitalnacional.org' key='tablero'
-                  className={classes.nested} onClick={() => ReactGA.pageview('/tablero-cobertura')}
+                  className={classes.nested} onClick={() => ReactGA.send({ hitType: 'pageview', page: '/tablero-cobertura' })}
                 >
                   <img src={tablero_interconexion} alt='Tablero' className={classes.iconSistemas} />
-                  <Typography color='#4a2f4b'>Tablero Estadístico de Interconexión Nacional</Typography>
+                  <Typography sx={{
+                    color: '#4a2f4b'
+                  }}>Tablero Estadístico de Interconexión Nacional</Typography>
                 </ListItemButton>
               </List>
             </Collapse>
@@ -254,6 +262,6 @@ const BannerMobile = props => {
         </Toolbar>
       </AppBar>
     </Box>
-  )
+  );
 }
-export default withStyles(styles)(BannerMobile)
+export default withStyles(BannerMobile, styles);

@@ -1,5 +1,5 @@
 import React from 'react'
-import makeStyles from '@mui/styles/makeStyles'
+import { makeStyles } from 'tss-react/mui';
 import Drawer from '@mui/material/Drawer'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
@@ -8,7 +8,7 @@ import MenuBookTwoToneIcon from '@mui/icons-material/MenuBookTwoTone'
 
 import Busqueda from './busqueda'
 import ReactGA from 'react-ga4'
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
   drawerPaper: {
     width: '25%',
     padding: 15,
@@ -28,10 +28,10 @@ const useStyles = makeStyles((theme) => ({
     background: '#815374',
     zIndex: 10
   }
-}))
+}));
 
 export default function TemporaryDrawer () {
-  const classes = useStyles()
+  const { classes } = useStyles()
   const [state, setState] = React.useState(false)
 
   const toggleDrawer = (open) => (event) => {
@@ -52,14 +52,14 @@ export default function TemporaryDrawer () {
       </Fab>
       <Drawer classes={{ paper: classes.drawerPaper }} variant='temporary' anchor='right' open={state} onClose={toggleDrawer(false)}>
         <Grid container>
-          <Grid item xs={12}>
+          <Grid size={12}>
             <Typography style={{ color: '#55575a' }} variant='h4' gutterBottom> Glosario </Typography>
           </Grid>
-          <Grid style={{ height: '100%' }} item xs={12}>
+          <Grid style={{ height: '100%' }} size={12}>
             <Busqueda />
           </Grid>
         </Grid>
       </Drawer>
     </React.Fragment>
-  )
+  );
 }

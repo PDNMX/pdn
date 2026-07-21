@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import Grid from '@mui/material/Grid'
 import { Paper, Typography } from '@mui/material'
 import Button from '@mui/material/Button'
@@ -52,31 +52,39 @@ const styles = theme => ({
     maxWidth: '1200px',
     margin: '0 auto'
   }
-})
+});
 
 function DetalleParticularSancionado ({ classes, hideDetalle, particular }) {
   return (
     <Paper className={classes.paper} elevation={3}>
       <Grid container spacing={2}>
-        <Grid item xs={6}>
+        <Grid size={6}>
           <Typography style={{ textAlign: 'left' }}>
             <span className={classes.cuadroActualizacion}>
               Actualización:{' '}{particular.fechaCaptura}
             </span>
           </Typography>
         </Grid>
-        <Grid item xs={6} style={{ textAlign: 'right' }}>
+        <Grid style={{ textAlign: 'right' }} size={6}>
           <Button
             variant='text' className={classes.btnBack} onClick={() => hideDetalle()}
             startIcon={<CloseIcon />}
           />
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 6
+          }}>
           <Typography variant='h6'>
             {particular.particularSancionado.nombreRazonSocial}
           </Typography>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 6
+          }}>
           <Typography className={classes.tituloCard}>
             Dependencia
           </Typography>
@@ -84,15 +92,19 @@ function DetalleParticularSancionado ({ classes, hideDetalle, particular }) {
             {particular.institucionDependencia.nombre}{particular.institucionDependencia.siglas ? '(' + particular.institucionDependencia.siglas + ')' : ''}
           </Typography>
         </Grid>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Divider className={classes.divider} variant='middle' />
         </Grid>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Typography className={classes.titulo} align='center'>
             Información general
           </Typography>
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 4
+          }}>
           <Typography className={classes.tituloCard}>
             Expediente
           </Typography>
@@ -100,7 +112,11 @@ function DetalleParticularSancionado ({ classes, hideDetalle, particular }) {
             {particular.expediente}
           </Typography>
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 4
+          }}>
           <Typography className={classes.tituloCard}>
             Tipo persona
           </Typography>
@@ -109,7 +125,11 @@ function DetalleParticularSancionado ({ classes, hideDetalle, particular }) {
           </Typography>
         </Grid>
 
-        <Grid item xs={12} md={4}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 4
+          }}>
           <Typography className={classes.tituloCard}>
             Objeto contrato
           </Typography>
@@ -118,7 +138,11 @@ function DetalleParticularSancionado ({ classes, hideDetalle, particular }) {
           </Typography>
         </Grid>
 
-        <Grid item xs={12} md={4}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 4
+          }}>
           <Typography className={classes.tituloCard}>
             Tipo falta
           </Typography>
@@ -126,7 +150,11 @@ function DetalleParticularSancionado ({ classes, hideDetalle, particular }) {
             {particular.tipoFalta}
           </Typography>
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 4
+          }}>
           <Typography className={classes.tituloCard}>
             Acto
           </Typography>
@@ -134,7 +162,11 @@ function DetalleParticularSancionado ({ classes, hideDetalle, particular }) {
             {particular.acto}
           </Typography>
         </Grid>
-        <Grid item xs={12} md={particular.particularSancionado.objetoSocial.length < 86 ? 4 : 12}>
+        <Grid
+          size={{
+            xs: 12,
+            md: particular.particularSancionado.objetoSocial.length < 86 ? 4 : 12
+          }}>
           <Typography className={classes.tituloCard}>
             Objeto social
           </Typography>
@@ -142,7 +174,11 @@ function DetalleParticularSancionado ({ classes, hideDetalle, particular }) {
             {particular.particularSancionado.objetoSocial}
           </Typography>
         </Grid>
-        <Grid item xs={12} md={12}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 12
+          }}>
           <Typography className={classes.tituloCard}>
             Causa, motivo o hechos
           </Typography>
@@ -151,13 +187,17 @@ function DetalleParticularSancionado ({ classes, hideDetalle, particular }) {
           </Typography>
         </Grid>
 
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Typography className={classes.titulo} align='center'>
             Información de la sanción
           </Typography>
         </Grid>
 
-        <Grid item xs={12} md={4}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 4
+          }}>
           <Typography className={classes.tituloCard}>
             Autoridad sancionadora
           </Typography>
@@ -165,7 +205,11 @@ function DetalleParticularSancionado ({ classes, hideDetalle, particular }) {
             {particular.autoridadSancionadora}
           </Typography>
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 4
+          }}>
           <Typography className={classes.tituloCard}>
             Fecha notificación
           </Typography>
@@ -173,7 +217,11 @@ function DetalleParticularSancionado ({ classes, hideDetalle, particular }) {
             {particular.resolucion.fechaNotificacion}
           </Typography>
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 4
+          }}>
           <Typography className={classes.tituloCard}>
             Tipo sanción
           </Typography>
@@ -181,7 +229,11 @@ function DetalleParticularSancionado ({ classes, hideDetalle, particular }) {
             {particular.tipoSancion.map(e => e.valor).join(', ')}
           </Typography>
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 4
+          }}>
           <Typography className={classes.tituloCard}>
             Multa
           </Typography>
@@ -189,7 +241,11 @@ function DetalleParticularSancionado ({ classes, hideDetalle, particular }) {
             {particular.multa.monto} {particular.multa.moneda.clave}
           </Typography>
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 4
+          }}>
           <Typography className={classes.tituloCard}>
             Inhabilitación plazo
           </Typography>
@@ -197,7 +253,11 @@ function DetalleParticularSancionado ({ classes, hideDetalle, particular }) {
             {particular.inhabilitacion ? particular.inhabilitacion.plazo : '-'}
           </Typography>
         </Grid>
-        <Grid item xs={12} md={3}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 3
+          }}>
           <Typography className={classes.tituloCard}>
             Inhabilitación periodo
           </Typography>
@@ -206,7 +266,7 @@ function DetalleParticularSancionado ({ classes, hideDetalle, particular }) {
           </Typography>
         </Grid>
 
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Typography className={classes.tituloCard}>
             Observaciones
           </Typography>
@@ -214,12 +274,14 @@ function DetalleParticularSancionado ({ classes, hideDetalle, particular }) {
             {particular.observaciones}
           </Typography>
         </Grid>
-        <Grid item xs={12} textAlign='center'>
+        <Grid size={12} sx={{
+          textAlign: 'center'
+        }}>
           <DownloadItem item={particular} />
         </Grid>
       </Grid>
     </Paper>
-  )
+  );
 }
 
 DetalleParticularSancionado.propTypes = {
@@ -228,4 +290,4 @@ DetalleParticularSancionado.propTypes = {
   particular: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(DetalleParticularSancionado)
+export default withStyles(DetalleParticularSancionado, styles);

@@ -1,4 +1,4 @@
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
@@ -57,7 +57,7 @@ const styles = theme => ({
     fontWeight: 'bold',
     marginBottom: theme.spacing(1)
   }
-})
+});
 
 function TablaServidoresSancionados ({ classes, info, verDetalle, handleChangeRowsPerPage, handleChangePage, returnToPrevios }) {
   const {
@@ -67,21 +67,27 @@ function TablaServidoresSancionados ({ classes, info, verDetalle, handleChangeRo
 
   return (
     <div>
-      <Grid container justifyContent='center' spacing={0} className={classes.gridTable} id='containerTest'>
-        <Grid item xs={12}>
+      <Grid container spacing={0} className={classes.gridTable} id='containerTest' sx={{
+        justifyContent: 'center'
+      }}>
+        <Grid size={12}>
           {data && data.length > 0 && (
-            <Typography variant='h6' color='primary.main'>
+            <Typography variant='h6' sx={{
+              color: 'primary.main'
+            }}>
               Pulsa sobre el registro para ver su detalle
               <br />
             </Typography>
           )}
         </Grid>
-        <Grid item xs={12} textAlign='right'>
+        <Grid size={12} sx={{
+          textAlign: 'right'
+        }}>
           <Button startIcon={<ArrowBackIcon />} onClick={() => returnToPrevios()} color='primary' className={classes.buttonBack}>
             Regresar
           </Button>
         </Grid>
-        <Grid item xs={12} className={classes.container1} id='hack1'>
+        <Grid className={classes.container1} id='hack1' size={12}>
           <div className={classes.container2} id='hack2'>
             {data && data.length > 0 && (
               <Table>
@@ -90,11 +96,13 @@ function TablaServidoresSancionados ({ classes, info, verDetalle, handleChangeRo
                     {columnData.map(column => {
                       return (
                         <TableCell key={column.id}>
-                          <Typography color='primary.contrastText' variant='body1'>
+                          <Typography variant='body1' sx={{
+                            color: 'primary.contrastText'
+                          }}>
                             {column.label}
                           </Typography>
                         </TableCell>
-                      )
+                      );
                     })}
                   </TableRow>
                 </TableHead>
@@ -141,7 +149,7 @@ function TablaServidoresSancionados ({ classes, info, verDetalle, handleChangeRo
         </Grid>
       </Grid>
     </div>
-  )
+  );
 }
 
-export default withStyles(styles)(TablaServidoresSancionados)
+export default withStyles(TablaServidoresSancionados, styles);

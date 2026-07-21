@@ -10,12 +10,12 @@ import FichaDetalle from '../../../../Sistema2/FichaDetalle'
 import columnData from '../../../../Sistema2/column_data'
 import Previos from '../Previos'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
-import { makeStyles } from '@mui/styles'
+import { makeStyles } from 'tss-react/mui';
 
 import ReactGA from 'react-ga4'
 import Chips from '../Chips'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
   container: {
     marginTop: '30px',
     marginBottom: '30px',
@@ -75,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: '#56a3bf'
     }
   }
-}))
+}));
 
 function getSorting (order, orderBy) {
   return order === 'desc'
@@ -95,7 +95,7 @@ export function ResultadosS2 (props) {
     - Tipo de procedimiento (select)
 */
 
-  const classes = useStyles()
+  const { classes } = useStyles()
 
   const [state, setState] = React.useState({
     order: 'asc',
@@ -344,7 +344,9 @@ export function ResultadosS2 (props) {
     <>
       {/* Resumen de resultados */}
       {showSummaryPanel && state.summaryData && state.summaryData.length > 0 &&
-        <Box p={1}>
+        <Box sx={{
+          p: 1
+        }}>
           <div className={classes.container}>
             <Chips criterios={JSON.stringify(data)} />
             <Previos data={state.summaryData} handleChangeSujetoObligado={handleSearchSupplier} />
@@ -352,13 +354,16 @@ export function ResultadosS2 (props) {
             {/* <TablaResumen summaryData={state.summaryData} handleSearchSupplier={handleSearchSupplier}/> */}
           </div>
         </Box>}
-      <Box p={1}>
+      <Box sx={{
+        p: 1
+      }}>
         <AlertaError open={error} setOpen={open => { setError(open) }} />
       </Box>
-
       {/* Desplegar resultados de la búsqueda */}
       {showResultsTable && state.results && state.results.length > 0 &&
-        <Box p={1}>
+        <Box sx={{
+          p: 1
+        }}>
 
           <Box sx={{ display: 'flex', flexDirection: 'row' }}>
             <Box sx={{ flexGrow: 1 }}>
@@ -446,19 +451,16 @@ export function ResultadosS2 (props) {
             </Table>
           </div>
         </Box>}
-
       {
                 dialog.open &&
                   <FichaDetalle servidorPublico={dialog.elementoSeleccionado} closeDialog={closeDialog} />
             }
-
       {state.loading &&
         <Modal open={state.loading} disableAutoFocus>
           <CircularProgress className={classes.progress} id='spinnerLoading' size={200} />
         </Modal>}
-
     </>
-  )
+  );
 }
 
 // export default ResultadosS2;

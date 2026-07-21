@@ -11,7 +11,7 @@ import HandshakeIcon from '@mui/icons-material/Handshake'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import SentimentNeutralIcon from '@mui/icons-material/SentimentNeutral'
 
-import { Typography } from '@mui/material/'
+import { Typography } from '@mui/material'
 
 import { nanoid } from 'nanoid'
 

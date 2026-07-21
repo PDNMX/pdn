@@ -6,25 +6,25 @@ import { SelectElement } from './utils'
 import ExpandLessIcon from '@mui/icons-material/ExpandLess'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
-import makeStyles from '@mui/styles/makeStyles'
+import { makeStyles } from 'tss-react/mui';
 import Ordenamiento from './Ordenamiento'
 import style from '../style'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import ReactGA from 'react-ga4'
 import ButtonPDN from '../Compartidos/ButtonPDN'
-const useStyles = makeStyles(style)
+const useStyles = makeStyles()(style);
 
-const CustomTypography = withStyles(theme => ({
+const CustomTypography = withStyles(Typography, theme => ({
   root: {
     color: theme.palette.text.primary
   },
   background: {
     backgroundColor: theme.palette.background.noSelect
   }
-}))(Typography)
+}));
 
 const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdquisicion, catEntidadesFederativas, catMunicipios, btnSearch, handlerFind, cleanForm, handleOrdenamiento, ordenamiento }) => {
-  const classes = useStyles()
+  const { classes } = useStyles()
   const {
     nombres,
     primerApellido,
@@ -52,23 +52,23 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
   return (
     <>
       <Grid container spacing={0} className={classes.infoBusqueda}>
-        <Grid item xs={12}>
-          <CustomTypography paragraph>
+        <Grid size={12}>
+          <CustomTypography sx={{ marginBottom: '16px' }}>
             <b>Aquí puedes consultar:</b>
           </CustomTypography>
           <ul className={classes.ul}>
             <li className={classes.li}>
-              <CustomTypography color='textPrimary' display='inline'>
+              <CustomTypography color='textPrimary' sx={{ display: 'inline' }}>
                 Las declaraciones patrimoniales de las y los servidores públicos.
               </CustomTypography>
             </li>
             <li className={classes.li}>
-              <CustomTypography color='textPrimary' display='inline'>
+              <CustomTypography color='textPrimary' sx={{ display: 'inline' }}>
                 La trayectoria laboral de las y los servidores públicos.
               </CustomTypography>
             </li>
             <li className={classes.li}>
-              <CustomTypography color='textPrimary' display='inline'>
+              <CustomTypography color='textPrimary' sx={{ display: 'inline' }}>
                 Las declaraciones sobre posibles conflictos de interés de las personas servidoras públicas.
               </CustomTypography>
             </li>
@@ -82,44 +82,76 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
           </CustomTypography>
         </Grid> */}
         {/* <Divider /> */}
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Grid container spacing={1}>
-            <Grid item xs={12} md={3}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 3
+              }}>
               <FormControl className={classes.formControl}>
                 <TextField style={{ background: '#f2f0f2' }} id='mui-name' label='Nombre(s)' color='primary' value={nombres} name='nombres' onChange={handleInputChange} margin='normal' fullWidth />
               </FormControl>
             </Grid>
-            <Grid item xs={12} md={3}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 3
+              }}>
               <FormControl className={classes.formControl}>
                 <TextField style={{ background: '#f2f0f2' }} id='primerApellido' name='primerApellido' value={primerApellido} onChange={handleInputChange} label='Primer Apellido' margin='normal' fullWidth />
               </FormControl>
             </Grid>
-            <Grid item xs={12} md={3}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 3
+              }}>
               <FormControl className={classes.formControl}>
                 <TextField style={{ background: '#f2f0f2' }} id='segundoApellido' name='segundoApellido' value={segundoApellido} onChange={handleInputChange} label='Segundo Apellido' margin='normal' fullWidth />
               </FormControl>
             </Grid>
-            <Grid item xs={12} md={3}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 3
+              }}>
               <SelectElement formControl={classes.formControl} value={escolaridadNivel} handle={handleInputChange} data={catEscolaridadNivel} label='Nivel escolar' name='escolaridadNivel' />
             </Grid>
 
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <FormControl className={classes.formControl}>
                 <TextField style={{ background: '#f2f0f2' }} id='nombreEntePublico' label='Nombre del Ente Público' value={nombreEntePublico} name='nombreEntePublico' onChange={handleInputChange} margin='normal' fullWidth />
               </FormControl>
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <FormControl className={classes.formControl}>
                 <TextField style={{ background: '#f2f0f2' }} id='empleoCargoComision' label='Empleo, Cargo o Comisión' value={empleoCargoComision} name='empleoCargoComision' onChange={handleInputChange} margin='normal' fullWidth />
               </FormControl>
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <FormControl className={classes.formControl}>
                 <TextField style={{ background: '#f2f0f2' }} id='nivelEmpleoCargoComision' label='Nivel del Empleo, Cargo o Comisión' value={nivelEmpleoCargoComision} name='nivelEmpleoCargoComision' onChange={handleInputChange} margin='normal' fullWidth />
               </FormControl>
             </Grid>
 
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <FormControl className={classes.formControl}>
                 <TextField style={{ background: '#f2f0f2' }} id='entidadFederativa' name='entidadFederativa' margin='normal' select label='Entidad Federativa' value={entidadFederativa} onChange={handleInputChange}>
                   {catEntidadesFederativas.map(q => {
@@ -132,7 +164,11 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                 </TextField>
               </FormControl>
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <FormControl className={classes.formControl}>
                 <TextField style={{ background: '#f2f0f2' }} id='municipioAlcaldia' name='municipioAlcaldia' margin='normal' select label='Municipio/Alcaldía' value={municipioAlcaldia} onChange={handleInputChange}>
                   {catMunicipios.map(q => {
@@ -164,15 +200,23 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                 </Select>
               </FormControl>
             </Grid> */}
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <SelectElement formControl={classes.formControl} value={formaAdquisicion} handle={handleInputChange} data={catFormaAdquisicion} label='Forma de adquisición' name='formaAdquisicion' />
             </Grid>
 
-            <Grid item xs={12} md={3}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 3
+              }}>
               <FormControl component='fieldset' className={classes.formControl}>
                 <FormLabel component='legend'>Superficie de construcción</FormLabel>
                 <Grid container spacing={1}>
-                  <Grid item xs={6}>
+                  <Grid size={6}>
                     <TextField
                       style={{ background: '#f2f0f2' }}
                       id='superficieConstruccionMin'
@@ -182,13 +226,15 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                       onChange={handleInputChange}
                       margin='normal'
                       fullWidth
-                      InputLabelProps={{
-                        className: classes.inputShrink,
-                        shrink: true
+                      slotProps={{
+                        inputLabel: {
+                          className: classes.inputShrink,
+                          shrink: true
+                        }
                       }}
                     />
                   </Grid>
-                  <Grid item xs={6}>
+                  <Grid size={6}>
                     <TextField
                       style={{ background: '#f2f0f2' }}
                       id='superficieConstruccionMax'
@@ -198,9 +244,11 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                       onChange={handleInputChange}
                       margin='normal'
                       fullWidth
-                      InputLabelProps={{
-                        className: classes.inputShrink,
-                        shrink: true
+                      slotProps={{
+                        inputLabel: {
+                          className: classes.inputShrink,
+                          shrink: true
+                        }
                       }}
                     />
                   </Grid>
@@ -208,11 +256,15 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
               </FormControl>
             </Grid>
 
-            <Grid item xs={12} md={3}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 3
+              }}>
               <FormControl component='fieldset' className={classes.formControl}>
                 <FormLabel component='legend'>Superficie de terreno</FormLabel>
                 <Grid container spacing={1}>
-                  <Grid item xs={6}>
+                  <Grid size={6}>
                     <TextField
                       style={{ background: '#f2f0f2' }}
                       id='superficieTerrenoMin'
@@ -222,13 +274,15 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                       onChange={handleInputChange}
                       margin='normal'
                       fullWidth
-                      InputLabelProps={{
-                        className: classes.inputShrink,
-                        shrink: true
+                      slotProps={{
+                        inputLabel: {
+                          className: classes.inputShrink,
+                          shrink: true
+                        }
                       }}
                     />
                   </Grid>
-                  <Grid item xs={6}>
+                  <Grid size={6}>
                     <TextField
                       style={{ background: '#f2f0f2' }}
                       id='superficieTerrenoMax'
@@ -238,9 +292,11 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                       onChange={handleInputChange}
                       margin='normal'
                       fullWidth
-                      InputLabelProps={{
-                        className: classes.inputShrink,
-                        shrink: true
+                      slotProps={{
+                        inputLabel: {
+                          className: classes.inputShrink,
+                          shrink: true
+                        }
                       }}
                     />
                   </Grid>
@@ -248,11 +304,15 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
               </FormControl>
             </Grid>
 
-            <Grid item xs={12} md={3}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 3
+              }}>
               <FormControl component='fieldset' className={classes.formControl}>
                 <FormLabel component='legend'>Valor de adquisición</FormLabel>
                 <Grid container spacing={1}>
-                  <Grid item xs={6}>
+                  <Grid size={6}>
                     <TextField
                       style={{ background: '#f2f0f2' }}
                       id='valorAdquisicionMin'
@@ -262,13 +322,15 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                       onChange={handleInputChange}
                       margin='normal'
                       fullWidth
-                      InputLabelProps={{
-                        className: classes.inputShrink,
-                        shrink: true
+                      slotProps={{
+                        inputLabel: {
+                          className: classes.inputShrink,
+                          shrink: true
+                        }
                       }}
                     />
                   </Grid>
-                  <Grid item xs={6}>
+                  <Grid size={6}>
                     <TextField
                       style={{ background: '#f2f0f2' }}
                       id='valorAdquisicionMax'
@@ -278,9 +340,11 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                       onChange={handleInputChange}
                       margin='normal'
                       fullWidth
-                      InputLabelProps={{
-                        className: classes.inputShrink,
-                        shrink: true
+                      slotProps={{
+                        inputLabel: {
+                          className: classes.inputShrink,
+                          shrink: true
+                        }
                       }}
                     />
                   </Grid>
@@ -288,11 +352,15 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
               </FormControl>
             </Grid>
 
-            <Grid item xs={12} md={3}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 3
+              }}>
               <FormControl component='fieldset' className={classes.formControl}>
                 <FormLabel component='legend'>Total de Ingresos Netos</FormLabel>
                 <Grid container spacing={1}>
-                  <Grid item xs={6}>
+                  <Grid size={6}>
                     <TextField
                       style={{ background: '#f2f0f2' }}
                       id='totalIngresosNetosMin'
@@ -302,13 +370,15 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                       onChange={handleInputChange}
                       margin='normal'
                       fullWidth
-                      InputLabelProps={{
-                        className: classes.inputShrink,
-                        shrink: true
+                      slotProps={{
+                        inputLabel: {
+                          className: classes.inputShrink,
+                          shrink: true
+                        }
                       }}
                     />
                   </Grid>
-                  <Grid item xs={6}>
+                  <Grid size={6}>
                     <TextField
                       style={{ background: '#f2f0f2' }}
                       id='totalIngresosNetosMax'
@@ -318,16 +388,22 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                       onChange={handleInputChange}
                       margin='normal'
                       fullWidth
-                      InputLabelProps={{
-                        className: classes.inputShrink,
-                        shrink: true
+                      slotProps={{
+                        inputLabel: {
+                          className: classes.inputShrink,
+                          shrink: true
+                        }
                       }}
                     />
                   </Grid>
                 </Grid>
               </FormControl>
             </Grid>
-            <Grid item xs={12} md={12}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 12
+              }}>
               <FormControl component='fieldset' className={classes.formControl}>
                 <FormLabel component='legend'>Ámbito:</FormLabel>
                 <RadioGroup aria-label='nivelOrdenGobierno' name='nivelOrdenGobierno' className={classes.group} value={nivelOrdenGobierno} onChange={handleInputChange} row>
@@ -339,18 +415,18 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
               </FormControl>
             </Grid>
             {/* <Divider /> */}
-            <Grid item xs={12}>
+            <Grid size={12}>
               <Button onClick={() => setChecked(!checked)} startIcon={checked ? <ExpandLessIcon /> : <ExpandMoreIcon />}>
                 <CustomTypography>Ordenamiento</CustomTypography>
               </Button>
             </Grid>
             {checked && (
-              <Grid item xs={12}>
+              <Grid size={12}>
                 <Ordenamiento handleOrdenamiento={handleOrdenamiento} ordenamiento={ordenamiento} />
               </Grid>
             )}
 
-            <Grid item xs={12} style={{ textAlign: 'right' }}>
+            <Grid style={{ textAlign: 'right' }} size={12}>
               <ButtonPDN
                 type='reset'
                 variant='contained'
@@ -379,6 +455,6 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
         </Grid>
       </Grid>
     </>
-  )
+  );
 }
 export default FormSearch

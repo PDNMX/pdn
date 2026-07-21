@@ -16,28 +16,6 @@ const CssDeclaraciones = theme => ({
   bgContainer: {
     backgroundColor: theme.palette.S1.main
   },
-  card: {
-    // backgroundColor: "#34b3eb", //theme.palette.azul.color,
-    backgroundColor: theme.palette.S1.color,
-    paddingLeft: theme.spacing(1),
-    paddingRight: theme.spacing(1),
-    paddingTop: theme.spacing(2),
-    paddingBottom: theme.spacing(2),
-    margin: 0,
-    '&:hover': {
-      cursor: 'pointer',
-      backgroundColor: theme.palette.S1.dark,
-      transition: 'background 0.3s ease'
-    }
-  },
-  cardSeleccionada: {
-    backgroundColor: theme.palette.S1.dark,
-    paddingLeft: theme.spacing(1),
-    paddingRight: theme.spacing(1),
-    paddingTop: theme.spacing(2),
-    paddingBottom: theme.spacing(2),
-    margin: 0
-  },
   link: {
     textDecoration: 'none',
     color: 'inherit'
@@ -48,18 +26,6 @@ const CssDeclaraciones = theme => ({
     margin: 0,
     padding: 0,
     paddingRight: '8px'
-  },
-  image: {
-    width: '60px',
-    padding: 0,
-    margin: 0,
-    border: 0
-  },
-  sectionT: {
-    /* color: theme.palette.textGrey.color, */
-    marginTop: theme.spacing(7),
-    maxWidth: 1200
-    // margin: "0 auto",
   },
   whiteText: {
     /* color: theme.palette.textGrey.color, */

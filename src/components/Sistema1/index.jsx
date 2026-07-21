@@ -1,11 +1,10 @@
 import React from 'react'
 
-import { Route, Switch } from 'react-router-dom'
 import { Grid, Typography } from '@mui/material'
 import img from '../../assets/rediseno/svg_iconos_azul/SVG/s1_01.svg'
 import QueryStatsIcon from '@mui/icons-material/QueryStats'
 
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 
 import Busqueda from './Busqueda'
 import EvolucionPatrimonial from './EvolucionPatrimonial'
@@ -46,10 +45,15 @@ class Declaraciones extends React.Component {
     return (
       <div>
         <HeaderV2 section={system} />
-        <Grid container justifyContent='center' alignItems='center'>
-          <Grid item xs={12} className={classes.section}>
+        <Grid
+          container
+          sx={{
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}>
+          <Grid className={classes.section} size={12}>
             <Grid container spacing={0}>
-              <Grid item style={{ display: 'flex', alignItems: 'stretch' }}>
+              <Grid style={{ display: 'flex', alignItems: 'stretch' }}>
                 <figure
                   className={activeTab === 'busqueda' ? classes.selectedTab : classes.card}
                   onClick={() => this.handleTabChange('busqueda')}
@@ -61,7 +65,7 @@ class Declaraciones extends React.Component {
                   </Typography>
                 </figure>
               </Grid>
-              <Grid item style={{ display: 'flex', alignItems: 'stretch' }}>
+              <Grid style={{ display: 'flex', alignItems: 'stretch' }}>
                 <figure
                   className={activeTab === 'evolucion' ? classes.selectedTab : classes.card}
                   onClick={() => this.handleTabChange('evolucion')}
@@ -76,24 +80,20 @@ class Declaraciones extends React.Component {
             </Grid>
           </Grid>
         </Grid>
-
-        <Grid container justifyContent='center'>
-          <Grid item xs={12} className={classes.contentsSection}>
+        <Grid container sx={{
+          justifyContent: 'center'
+        }}>
+          <Grid className={classes.contentsSection} size={12}>
             {activeTab === 'busqueda' && (
-              <Switch>
-                <Route exact path='/declaraciones' component={Busqueda} />
-
-                {/* <Route path="/declaraciones/perfil/:id?" component={PerfilMaterialUI} />
-								<Route path="/declaraciones/estadisticas" component={Stats} /> */}
-              </Switch>
+              <Busqueda />
             )}
             {activeTab === 'evolucion' && <EvolucionPatrimonial />}
           </Grid>
         </Grid>
         <Disclaimer open={this.state.open} handleClose={this.handleClose} />
       </div>
-    )
+    );
   }
 }
 
-export default withStyles(styles)(Declaraciones)
+export default withStyles(Declaraciones, styles);

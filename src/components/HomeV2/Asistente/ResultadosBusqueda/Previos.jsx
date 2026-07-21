@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
@@ -75,9 +75,11 @@ function Previos ({ data, classes, handleChangeSujetoObligado }) {
     <div>
       <Grid
         container
-        justifyContent='center'
+        sx={{
+          justifyContent: 'center'
+        }}
       >
-        <Grid item xs={12}>
+        <Grid size={12}>
           {sumador > 0 ? (
             <>
               <div className={classes.container}>
@@ -130,7 +132,7 @@ function Previos ({ data, classes, handleChangeSujetoObligado }) {
         </Grid>
       </Grid>
     </div>
-  )
+  );
 }
 
 Previos.propTypes = {
@@ -139,4 +141,4 @@ Previos.propTypes = {
   handleChangeSujetoObligado: PropTypes.func.isRequired
 }
 
-export default withStyles(styles)(Previos)
+export default withStyles(Previos, styles);

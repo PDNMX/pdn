@@ -41,6 +41,17 @@ export default createTheme(
         lineHeight: '1.6'
       }
     },
+    components: {
+      MuiGrid: {
+        styleOverrides: {
+          root: {
+            '&.MuiGrid-container': {
+              width: '100%'
+            }
+          }
+        }
+      }
+    },
     palette: {
       mode: 'light',
       text: {

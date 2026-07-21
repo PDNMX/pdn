@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
@@ -49,7 +49,7 @@ const styles = theme => ({
   },
   tableBody: { backgroundColor: '#fff' },
   tableHead: { backgroundColor: '#7c3e7c' }
-})
+});
 
 function Previos ({ data, classes, handleChangeSujetoObligado }) {
   const [page, setPage] = React.useState(0)
@@ -65,15 +65,19 @@ function Previos ({ data, classes, handleChangeSujetoObligado }) {
 
   return (
     <div>
-      <Grid container justifyContent='center' spacing={0} className={classes.gridTable}>
-        <Grid item xs={12}>
+      <Grid container spacing={0} className={classes.gridTable} sx={{
+        justifyContent: 'center'
+      }}>
+        <Grid size={12}>
           {data && data.length > 0 &&
-            <Typography variant='body1' paragraph>
+            <Typography variant='body1' sx={{
+              marginBottom: "16px"
+            }}>
               La siguiente tabla muestra un resumen general de los resultados obtenidos al consultar cada proveedor de información disponible.
               Pulsa sobre un registro para ver más.
             </Typography>}
         </Grid>
-        <Grid item xs={12}>
+        <Grid size={12}>
           {data && data.length > 0 &&
             <div className={classes.container}>
               <Table className={classes.table}>
@@ -156,7 +160,7 @@ function Previos ({ data, classes, handleChangeSujetoObligado }) {
         </Grid>
       </Grid>
     </div>
-  )
+  );
 }
 
 Previos.propTypes = {
@@ -165,4 +169,4 @@ Previos.propTypes = {
   handleChangeSujetoObligado: PropTypes.func.isRequired
 }
 
-export default withStyles(styles)(Previos)
+export default withStyles(Previos, styles);

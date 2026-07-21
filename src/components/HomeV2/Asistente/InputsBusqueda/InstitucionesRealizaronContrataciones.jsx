@@ -5,7 +5,7 @@ import {
   TextField,
   MenuItem,
   Select
-} from '@mui/material/'
+} from '@mui/material'
 import { Controller, useFormContext } from 'react-hook-form'
 import { ThemeProvider } from '@mui/material/styles'
 import ThemeV2 from '../../../../ThemeV2'
@@ -175,18 +175,22 @@ export function InstitucionesRealizaronContrataciones () {
                     label='Institución contratante'
                     placeholder='Ingresa la institución contratante'
                     fullWidth
-                    InputProps={{
-                      ...params.InputProps,
-                      endAdornment: (
-                        <>
-                          {loading
-                            ? (
-                              <CircularProgress color='inherit' size={20} />
-                              )
-                            : null}
-                          {params.InputProps.endAdornment}
-                        </>
-                      )
+                    slotProps={{
+                      ...params.slotProps,
+
+                      input: {
+                        ...params.slotProps.input,
+                        endAdornment: (
+                          <>
+                            {loading
+                              ? (
+                                <CircularProgress color='inherit' size={20} />
+                                )
+                              : null}
+                            {params.slotProps.input.endAdornment}
+                          </>
+                        )
+                      }
                     }}
                   />
                 )}
@@ -237,5 +241,5 @@ export function InstitucionesRealizaronContrataciones () {
         </ThemeProvider>
       </div>
     </Fade>
-  )
+  );
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Grid, Typography } from '@mui/material'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 
 import styleSecciones from './styleSecciones'
 
@@ -36,15 +36,15 @@ class ErrorBoundary extends React.Component {
     const { classes } = this.props
     if (this.state.hasError) {
       return (
-        <Grid item xs={12} style={{ marginTop: 20 }}>
+        <Grid style={{ marginTop: 20 }} size={12}>
           <Typography className={classes.alertWarning} align='center'>
             Algo ha salido mal... espera unos segundos el navegador se refrescará en 3 segundos.
           </Typography>
         </Grid>
-      )
+      );
     }
     return this.props.children
   }
 }
 
-export default withStyles(styleSecciones)(ErrorBoundary)
+export default withStyles(ErrorBoundary, styleSecciones);

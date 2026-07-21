@@ -1,5 +1,5 @@
 import Typography from '@mui/material/Typography'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import Link from '@mui/material/Link'
 
 const styles = () => ({
@@ -28,37 +28,37 @@ const styles = () => ({
     color: '#7A3D71', // theme.palette.text.linkColor,
     wordBreak: 'break-word'
   }
-})
+});
 
-const CustomTypography = withStyles(theme => ({
+const CustomTypography = withStyles(Typography, theme => ({
   root: {
     color: theme.palette.text.primary
   }
-}))(Typography)
+}));
 
 const Disclaimer = props => {
   const { classes, dataSupplier } = props
 
   return (
     <div className={classes.root}>
-      <CustomTypography paragraph color='textPrimary'>
+      <CustomTypography color='textPrimary' sx={{ marginBottom: '16px' }}>
         Aquí encontrarás la siguiente información:
       </CustomTypography>
 
       <ul className={classes.ul}>
         <li className={classes.li}>
-          <CustomTypography color='textPrimary' display='inline'>Cuánto gasta el gobierno federal</CustomTypography>
+          <CustomTypography color='textPrimary' sx={{ display: 'inline' }}>Cuánto gasta el gobierno federal</CustomTypography>
         </li>
         <li className={classes.li}>
-          <CustomTypography color='textPrimary' display='inline'>Qué tipos de procedimientos</CustomTypography>
+          <CustomTypography color='textPrimary' sx={{ display: 'inline' }}>Qué tipos de procedimientos</CustomTypography>
         </li>
         <li className={classes.li}>
-          <CustomTypography color='textPrimary' display='inline'>Información sobre los proveedores que participan</CustomTypography>
+          <CustomTypography color='textPrimary' sx={{ display: 'inline' }}>Información sobre los proveedores que participan</CustomTypography>
         </li>
       </ul>
 
       {dataSupplier && dataSupplier === 'SHCP' &&
-        <CustomTypography paragraph color='textPrimary'>
+        <CustomTypography color='textPrimary' sx={{ marginBottom: '16px' }}>
           Los datos utilizados en esta sección fueron tomados del portal de datos abiertos
           del gobierno <Link
             className={classes.link}
@@ -71,4 +71,4 @@ const Disclaimer = props => {
   )
 }
 
-export default withStyles(styles)(Disclaimer)
+export default withStyles(Disclaimer, styles);

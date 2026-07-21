@@ -1,5 +1,5 @@
 import React from 'react'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 // import Donutchart from './Charts/SimpleRadialChart'
@@ -40,19 +40,19 @@ const styles = theme => ({
     paddingRight: theme.spacing(1),
     paddingLeft: theme.spacing(1)
   }
-})
+});
 
-const CustomTypography = withStyles(theme => ({
+const CustomTypography = withStyles(Typography, theme => ({
   root: {
     color: theme.palette.text.primary
   }
-}))(Typography)
+}));
 
-const CustomTitle = withStyles(theme => ({
+const CustomTitle = withStyles(Typography, theme => ({
   root: {
     color: theme.palette.background.select
   }
-}))(Typography)
+}));
 
 const Cifras = props => {
   const { classes, dataSupplier } = props
@@ -162,17 +162,25 @@ const Cifras = props => {
     <div className={classes.root}>
       {state.loading
         ? <Grid container spacing={0}>
-          <Grid item xs={12}>
+          <Grid size={12}>
             <LinearIndeterminate />
           </Grid>
         </Grid>
         : <Grid container spacing={0}>
-          <Grid item xs={12} md={12} lg={4} xl={4} align='center' className={classes.item}>
+          <Grid
+            sx={{ textAlign: 'center' }}
+            className={classes.item}
+            size={{
+              xs: 12,
+              md: 12,
+              lg: 4,
+              xl: 4
+            }}>
             <CustomTitle variant='h6'>
               Procesos de contratación
             </CustomTitle>
 
-            <CustomTypography variant='h5' paragraph color='textPrimary'>
+            <CustomTypography variant='h5' color='textPrimary' sx={{ marginBottom: '16px' }}>
               <b><CountUp separator=',' start={1} end={state.contrataciones} /></b>
             </CustomTypography>
 
@@ -180,13 +188,13 @@ const Cifras = props => {
               Instituciones
             </CustomTitle>
 
-            <CustomTypography variant='h5' paragraph color='textPrimary'>
+            <CustomTypography variant='h5' color='textPrimary' sx={{ marginBottom: '16px' }}>
               <b> <CountUp separator=',' start={1} end={state.instituciones} /></b>
             </CustomTypography>
 
             <CustomTitle variant='h6'>Gasto total</CustomTitle>
 
-            <CustomTypography variant='h5' paragraph color='textPrimary'>
+            <CustomTypography variant='h5' color='textPrimary' sx={{ marginBottom: '16px' }}>
               <b> <CountUp separator=',' decimals={2} prefix='$' start={1} end={state.gastoTotal} /></b>
             </CustomTypography>
 
@@ -195,17 +203,32 @@ const Cifras = props => {
                 Periodo
               </CustomTitle>
 
-              <CustomTypography variant='h5' paragraph color='textPrimary'>
+              <CustomTypography variant='h5' color='textPrimary' sx={{ marginBottom: '16px' }}>
                 <b>{state.periodo.start} - {state.periodo.end}</b>
               </CustomTypography>
             </div>}
 
           </Grid>
 
-          <Grid item xs={12} md={12} lg={8} xl={8} className={classes.item}>
+          <Grid
+            className={classes.item}
+            size={{
+              xs: 12,
+              md: 12,
+              lg: 8,
+              xl: 8
+            }}>
             <Grid container spacing={0}>
 
-              <Grid item xs={12} md={12} lg={12} xl={12} align='center' className={classes.item}>
+              <Grid
+                sx={{ textAlign: 'center' }}
+                className={classes.item}
+                size={{
+                  xs: 12,
+                  md: 12,
+                  lg: 12,
+                  xl: 12
+                }}>
                 <CustomizedSelect handleSelectDonutData={handleSelectDonutData} dataType={state.donutChartDataType} />
                 {/* <Donutchart data={state.donutChartData} dataType={state.donutChartDataType}/> */}
 
@@ -239,7 +262,7 @@ const Cifras = props => {
           </Grid>
         </Grid>}
     </div>
-  )
+  );
 }
 
-export default withStyles(styles)(Cifras)
+export default withStyles(Cifras, styles);

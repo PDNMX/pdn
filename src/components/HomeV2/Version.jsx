@@ -1,5 +1,5 @@
 import React from 'react'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import { Typography } from '@mui/material'
 import { UserContext } from '../Login/UserContext'
 
@@ -8,7 +8,7 @@ const styles = () => ({
     backgroundColor: '#ebe9f9',
     padding: '0px 12px'
   }
-})
+});
 
 function Version (props) {
   const { classes } = props
@@ -22,16 +22,20 @@ function Version (props) {
   return (
     <>
       <div className={classes.root}>
-        <Typography display='inline'><b>Versión 1.2</b>&nbsp;&nbsp;</Typography>
+        <Typography sx={{
+          display: 'inline'
+        }}><b>Versión 1.2</b>&nbsp;&nbsp;</Typography>
       </div>
       {user.loggedIn &&
         <div className={classes.bienvenida}>
-          <Typography display='inline'>
+          <Typography sx={{
+            display: 'inline'
+          }}>
             <b> Bienvenido {`${user.nombres} ${user.primerApellido}`} - {user.username}</b>
           </Typography>
         </div>}
     </>
-  )
+  );
 }
 
-export default withStyles(styles)(Version)
+export default withStyles(Version, styles);

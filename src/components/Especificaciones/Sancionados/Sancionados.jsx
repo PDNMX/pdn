@@ -1,10 +1,10 @@
 // Sancionados.jsx
 import PropTypes from "prop-types";
-import withStyles from "@mui/styles/withStyles";
+import { withStyles } from 'tss-react/mui';
 import Estandar from "./DescripcionEstandar";
 import Licencia from "../Licencia";
 import Implementacion from "./Implementacion";
-import { Typography, Paper, Box, Grid, Divider } from "@mui/material";
+import { Paper, Box, Grid, Divider } from "@mui/material";
 import Herramientas from "../Herramientas";
 import pdnRoutes from "../../../routes";
 import HeaderV2 from "../../HomeV2/HeaderV2";
@@ -106,8 +106,10 @@ const Sancionados = (props) => {
   return (
     <div className={classes.root}>
       <HeaderV2 section={section} />
-      <Grid container spacing={0} justifyContent="center">
-        <Grid item xs={12} className={classes.rootItem}>
+      <Grid container spacing={0} sx={{
+        justifyContent: "center"
+      }}>
+        <Grid className={classes.rootItem} size={12}>
           <Paper className={classes.paper} elevation={15}>
             <Box className={classes.box}>
               <Estandar />
@@ -145,4 +147,4 @@ Sancionados.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Sancionados);
+export default withStyles(Sancionados, styles);

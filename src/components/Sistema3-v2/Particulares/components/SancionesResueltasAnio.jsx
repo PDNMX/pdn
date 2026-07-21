@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef, useMemo, memo } from 'react';
+import { useState, useEffect, useRef, useMemo, memo } from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@mui/styles';
+import { makeStyles } from 'tss-react/mui';
 import { Typography, Paper, CircularProgress } from "@mui/material";
 import { ResponsiveLine } from '@nivo/line';
 import { searchInProvider } from '../../utils/api';
@@ -8,7 +8,7 @@ import { buildSearchQuery } from '../../utils/search';
 import { debounce } from 'lodash';
 
 // Definir estilos usando makeStyles
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
     root: {
         padding: theme.spacing(3),
         margin: theme.spacing(2),
@@ -83,7 +83,7 @@ const isValidYear = (year) => {
 const BATCH_SIZE = 3; // Número de providers a procesar simultáneamente
 
 const SancionesResueltasAnio = ({ providers }) => {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
     const isMounted = useRef(true);
@@ -104,12 +104,11 @@ const SancionesResueltasAnio = ({ providers }) => {
             const isParticular = () => {
                 return (
                     // Verificaciones para personas físicas
-                    (item.datosGenerales?.nombres || item.datosGenerales?.primerApellido) ||
+                    ((item.datosGenerales?.nombres || item.datosGenerales?.primerApellido) ||
                     // Verificaciones para personas morales
                     (item.datosGenerales?.nombreRazonSocial || item.datosGenerales?.rfc) ||
                     // Otras posibles verificaciones específicas
-                    (item.tipoPersona === 'particular') ||
-                    (item.datosGenerales?.tipoPersona === 'particular')
+                    (item.tipoPersona === 'particular') || (item.datosGenerales?.tipoPersona === 'particular'))
                 );
             };
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Grid, Paper } from '@mui/material'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 
 import axios from 'axios'
 
@@ -9,8 +9,6 @@ import styles from '../style'
 
 import FormSearch from './formSearch'
 import { error } from './utils'
-import scrollToComponent from 'react-scroll-to-component'
-
 import ActiveResultProv from './ActiveResultProv'
 import Descarga from '../Compartidos/Descarga'
 import MantenimentResultProv from './MantenimentResultProv'
@@ -183,7 +181,7 @@ class Busqueda extends React.Component {
         dataSelect: data
       }),
       () => {
-        scrollToComponent(this.perfil, { align: 'top' })
+        this.perfil?.scrollIntoView({ block: 'start' })
       }
     )
   }
@@ -595,14 +593,16 @@ class Busqueda extends React.Component {
           />
         )}
         {/* DESCARGA */}
-        <Grid container spacing={0} justifyContent='center'>
-          <Grid item xs={12} className={classes.itemD}>
+        <Grid container spacing={0} sx={{
+          justifyContent: 'center'
+        }}>
+          <Grid className={classes.itemD} size={12}>
             <Descarga url={process.env.REACT_APP_S1_BULK} tipoGA='bulk-s1' />
           </Grid>
         </Grid>
       </div>
-    )
+    );
   }
 }
 
-export default withStyles(styles)(Busqueda)
+export default withStyles(Busqueda, styles);

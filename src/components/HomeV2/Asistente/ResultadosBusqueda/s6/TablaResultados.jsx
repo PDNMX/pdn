@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { makeStyles } from '@mui/styles'
+import { makeStyles } from 'tss-react/mui';
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
@@ -66,7 +66,7 @@ EnhancedTableHead.propTypes = {
   // rowCount: PropTypes.number.isRequired,
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles()(theme => ({
   root: {
     width: '100%',
     marginTop: theme.spacing(3)
@@ -98,7 +98,7 @@ const useStyles = makeStyles(theme => ({
   tsl: {
     color: theme.palette.text.main
   }
-}))
+}));
 
 export default function EnhancedTable (props) {
   const getProcurementMethod = method => {
@@ -131,7 +131,7 @@ export default function EnhancedTable (props) {
       for (const c of d.contracts) {
         try {
           total += c.value.amount
-        } catch (e) {
+        } catch {
           // ignore exception
         }
       }
@@ -160,7 +160,7 @@ export default function EnhancedTable (props) {
     }
   })
 
-  const classes = useStyles()
+  const { classes } = useStyles()
   // const [order, setOrder] = React.useState('asc');
   // const [orderBy, setOrderBy] = React.useState('calories');
   const order = 'asc'

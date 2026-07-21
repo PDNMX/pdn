@@ -1,4 +1,4 @@
-import { makeStyles } from '@mui/styles'
+import { makeStyles } from 'tss-react/mui';
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 
@@ -13,12 +13,16 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
 import AclaracionesObservacions from '../common/AclaracionesObservaciones'
 
-const useStyles = makeStyles(styleSecciones)
+const useStyles = makeStyles()(styleSecciones);
 
 function Adeudos({ adeudos, tipo }) {
-  const classes = useStyles()
-  const exp = expansion()
-  const sum = sumary()
+  const { classes } = useStyles()
+  const {
+    classes: exp
+  } = expansion()
+  const {
+    classes: sum
+  } = sumary()
   return (
     <>
       {adeudos.map((obj, idx) => {
@@ -31,11 +35,19 @@ function Adeudos({ adeudos, tipo }) {
             </BoxAccordionSummary>
             <BoxAccordionDetails>
               <Grid container spacing={1}>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>TIPO DE ADEUDO:</Typography>
                   <Typography className={classes.card}>{obj.tipoAdeudo.valor}</Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>TITULAR DEL ADEUDO:</Typography>
                   <Typography className={classes.card}>
                     {obj.titular.map((tit, idx) => {
@@ -44,40 +56,72 @@ function Adeudos({ adeudos, tipo }) {
                   </Typography>
                 </Grid>
 
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>NÚMERO DE CUENTA O CONTRATO:</Typography>
                   <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>FECHA DE ADQUISICIÓN DEL ADEUDO/PASIVO</Typography>
                   <Typography className={classes.card}>{obj.fechaAdquision}</Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>MONTO ORIGINAL DEL ADEUDO/PASIVO</Typography>
                   <Typography className={classes.card}>{getMoneda(obj.montoOriginal.valor)}</Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>TIPO DE MONEDA</Typography>
                   <Typography className={classes.card}>{obj.montoOriginal.moneda}</Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>SALDO INSOLUTO (SITUACIÓN ACTUAL)</Typography>
                   <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
                 </Grid>
 
-                <Grid item xs={12} md={4}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 4
+                  }}>
                   <Typography className={classes.cardTitle}>¿DÓNDE SE LOCALIZA EL ADEUDO?</Typography>
                   <Typography className={classes.card}>{obj.localizacionAdeudo.pais === 'MX' ? 'EN MÉXICO' : 'EN EL EXTRANJERO'}</Typography>
                 </Grid>
 
                 {obj.localizacionAdeudo.pais !== 'MX' && (
-                  <Grid item xs={12} md={4}>
+                  <Grid
+                    size={{
+                      xs: 12,
+                      md: 4
+                    }}>
                     <Typography className={classes.cardTitle}>PAÍS DÓNDE SE LOCALIZA</Typography>
                     <Typography className={classes.card}>{obj.localizacionAdeudo.pais}</Typography>
                   </Grid>
                 )}
                 {tipo !== 'INICIAL' && (
-                  <Grid item xs={12} md={4}>
+                  <Grid
+                    size={{
+                      xs: 12,
+                      md: 4
+                    }}>
                     <Typography className={classes.cardTitle}>PORCENTAJES DE INCREMENTO O DECREMENTO</Typography>
                     <Typography className={classes.card}>{obj.porcentajeIncrementoDecremento}</Typography>
                   </Grid>
@@ -86,7 +130,7 @@ function Adeudos({ adeudos, tipo }) {
                 {typeof obj.tercero !== 'undefined' && (
                   <>
                     <Divider />
-                    <Grid item xs={12} style={{ textAlign: 'center' }}>
+                    <Grid style={{ textAlign: 'center' }} size={12}>
                       <Typography className={classes.tituloSubSeccion}>TERCERO</Typography>
                     </Grid>
                   </>
@@ -94,79 +138,127 @@ function Adeudos({ adeudos, tipo }) {
                 {typeof obj.tercero !== 'undefined' &&
                   obj.tercero.map((tercero, id) => {
                     return tercero.tipoPersona !== 'MORAL' ? (
-                      <Grid key={'tercero-' + id} item xs={12}>
+                      <Grid key={'tercero-' + id} size={12}>
                         <Grid container spacing={1}>
-                          <Grid item xs={12} md={3}>
+                          <Grid
+                            size={{
+                              xs: 12,
+                              md: 3
+                            }}>
                             <Typography className={classes.cardTitle}>TIPO PERSONA:</Typography>
                             <Typography className={classes.cardReserved}>FÍSICA</Typography>
                           </Grid>
-                          <Grid item xs={12} md={6}>
+                          <Grid
+                            size={{
+                              xs: 12,
+                              md: 6
+                            }}>
                             <Typography className={classes.cardTitle}>NOMBRE DEL TERCERO O TERCEROS:</Typography>
                             <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
                           </Grid>
-                          <Grid item xs={12} md={3}>
+                          <Grid
+                            size={{
+                              xs: 12,
+                              md: 3
+                            }}>
                             <Typography className={classes.cardTitle}>RFC:</Typography>
                             <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
                           </Grid>
                         </Grid>
                       </Grid>
                     ) : (
-                      <Grid key={'tercero-' + id} item xs={12}>
+                      <Grid key={'tercero-' + id} size={12}>
                         <Grid container spacing={1}>
-                          <Grid item xs={12} md={3}>
+                          <Grid
+                            size={{
+                              xs: 12,
+                              md: 3
+                            }}>
                             <Typography className={classes.cardTitle}>TIPO PERSONA:</Typography>
                             <Typography className={classes.card}>MORAL</Typography>
                           </Grid>
-                          <Grid item xs={12} md={6}>
+                          <Grid
+                            size={{
+                              xs: 12,
+                              md: 6
+                            }}>
                             <Typography className={classes.cardTitle}>NOMBRE DEL TERCERO O TERCEROS:</Typography>
                             <Typography className={classes.card}>{tercero.nombreRazonSocial}</Typography>
                           </Grid>
-                          <Grid item xs={12} md={3}>
+                          <Grid
+                            size={{
+                              xs: 12,
+                              md: 3
+                            }}>
                             <Typography className={classes.cardTitle}>RFC:</Typography>
                             <Typography className={classes.card}>{tercero.rfc}</Typography>
                           </Grid>
                         </Grid>
                       </Grid>
-                    )
+                    );
                   })}
                 <Divider />
 
-                <Grid item xs={12} style={{ textAlign: 'center' }}>
+                <Grid style={{ textAlign: 'center' }} size={12}>
                   <Typography className={classes.tituloSubSeccion}>OTORGANTE DEL CRÉDITO</Typography>
                 </Grid>
                 {obj.otorganteCredito && obj.otorganteCredito.tipoPersona === 'MORAL' ? (
-                  <Grid item xs={12}>
+                  <Grid size={12}>
                     <Grid container spacing={1}>
-                      <Grid item xs={12} md={4}>
+                      <Grid
+                        size={{
+                          xs: 12,
+                          md: 4
+                        }}>
                         <Typography className={classes.cardTitle}>TIPO PERSONA:</Typography>
                         <Typography className={classes.card}>{obj.otorganteCredito.tipoPersona}</Typography>
                       </Grid>
 
-                      <Grid item xs={12} md={4}>
+                      <Grid
+                        size={{
+                          xs: 12,
+                          md: 4
+                        }}>
                         <Typography className={classes.cardTitle}>NOMBRE/INSTITUCIÓN O RAZÓN SOCIAL</Typography>
                         <Typography className={classes.card}>{obj.otorganteCredito.nombreInstitucion}</Typography>
                       </Grid>
 
-                      <Grid item xs={12} md={4}>
+                      <Grid
+                        size={{
+                          xs: 12,
+                          md: 4
+                        }}>
                         <Typography className={classes.cardTitle}>RFC </Typography>
                         <Typography className={classes.card}>{obj.otorganteCredito.rfc}</Typography>
                       </Grid>
                     </Grid>
                   </Grid>
                 ) : (
-                  <Grid item xs={12}>
+                  <Grid size={12}>
                     <Grid container spacing={1}>
-                      <Grid item xs={12} md={4}>
+                      <Grid
+                        size={{
+                          xs: 12,
+                          md: 4
+                        }}>
                         <Typography className={classes.cardTitle}>TIPO PERSONA:</Typography>
                         <Typography className={classes.cardReserved}>FÍSICA</Typography>
                       </Grid>
 
-                      <Grid item xs={12} md={4}>
+                      <Grid
+                        size={{
+                          xs: 12,
+                          md: 4
+                        }}>
                         <Typography className={classes.cardTitle}>NOMBRE/INSTITUCIÓN O RAZÓN SOCIAL</Typography>
                         <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
                       </Grid>
 
-                      <Grid item xs={12} md={4}>
+                      <Grid
+                        size={{
+                          xs: 12,
+                          md: 4
+                        }}>
                         <Typography className={classes.cardTitle}>RFC </Typography>
                         <Typography className={classes.cardReserved}>NO PÚBLICO</Typography>
                       </Grid>
@@ -176,15 +268,15 @@ function Adeudos({ adeudos, tipo }) {
               </Grid>
             </BoxAccordionDetails>
           </BoxAccordion>
-        )
+        );
       })}
       <AclaracionesObservacions />
     </>
-  )
+  );
 }
 
 const Adeudo = ({ data, tipo, titulo }) => {
-  const classes = useStyles()
+  const { classes } = useStyles()
 
   let adeudos
 
@@ -200,19 +292,19 @@ const Adeudo = ({ data, tipo, titulo }) => {
 
   return (
     <Grid container spacing={2} className={classes.rootPrincipal}>
-      <Grid item xs={12}>
+      <Grid size={12}>
         <Typography className={classes.tituloSeccion} align='center'>
           {titulo}
         </Typography>
       </Grid>
       {data ? (
-        <Grid item xs={12}>
+        <Grid size={12}>
           {data.ninguno ? <DatosNoRegistrados /> : adeudos.length ? <Adeudos adeudos={adeudos} tipo={tipo} /> : <DatosReservados />}
         </Grid>
       ) : (
         <Disclaimer />
       )}
     </Grid>
-  )
+  );
 }
 export default Adeudo

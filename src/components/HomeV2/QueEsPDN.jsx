@@ -1,5 +1,5 @@
 import AnimatedCanvas from './AnimatedCanvas'
-import withStyles from "@mui/styles/withStyles";
+import { withStyles } from 'tss-react/mui';
 import { Typography, Grid } from "@mui/material";
 // import { Link } from "react-router-dom";
 import BuscadorModal from "./Asistente/BotonPrincipal";
@@ -25,19 +25,30 @@ const QueEsPDN = () => {
   /* const { classes } = props; */
   return (
     <>
-      <Grid py={5} container alignItems="row" justifyContent="center" style={{ position: 'relative' }}>
-        <Grid item xs={12} style={{ opacity: 0.5, zIndex: -1, position: 'absolute', top: -100, left: -60, width: '100vw', height: '100vh' }}>
+      <Grid
+        container
+        style={{ position: 'relative' }}
+        sx={{
+          py: 5,
+          alignItems: "row",
+          justifyContent: "center"
+        }}>
+        <Grid
+          style={{ opacity: 0.5, zIndex: -1, position: 'absolute', top: -100, left: -60, width: '100vw', height: '100vh' }}
+          size={12}>
           <AnimatedCanvas />
         </Grid>
           <Grid
-            item
-            md={12}
-            lg={12}
-            xs={12}
-            p={{ xs: 1, xl: 0 }}
-            sx={{ textAlign: "center" }}
             style={{ zIndex: 1 }}
-          >
+            size={{
+              md: 12,
+              lg: 12,
+              xs: 12
+            }}
+            sx={{
+              p: { xs: 1, xl: 0 },
+              textAlign: "center"
+            }}>
          
             <div className="pdn-txt-bg">
               <ScrollAnimation>
@@ -66,4 +77,4 @@ const QueEsPDN = () => {
     </>
   );
 };
-export default withStyles(styles)(QueEsPDN);
+export default withStyles(QueEsPDN, styles);

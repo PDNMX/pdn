@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 
 import { Button, Checkbox, FormControl, Grid, ListItemText, MenuItem, TextField } from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
@@ -42,7 +42,7 @@ const styles = theme => ({
     padding: theme.spacing(1),
     fontWeight: 'bold'
   }
-})
+});
 
 const tiposSancion = [
   { label: 'Inhabilitado', value: 'I' },
@@ -71,18 +71,34 @@ const FormServidoresSancionados = ({ classes, handleForm, handleOrder, query, or
 
   return (
     <>
-      <Grid item xs={12} md={2}>
+      <Grid
+        size={{
+          xs: 12,
+          md: 2
+        }}>
         <TextField style={{ background: '#f2f0f2' }} name='nombres' label='Nombre(s)' onChange={handleForm} value={query.nombres} margin='normal' />
       </Grid>
-      <Grid item xs={12} md={2}>
+      <Grid
+        size={{
+          xs: 12,
+          md: 2
+        }}>
         <TextField style={{ background: '#f2f0f2' }} name='primerApellido' label='Primer Apellido' type='search' onChange={handleForm} value={query.primerApellido} margin='normal' />
       </Grid>
-      <Grid item xs={12} md={2}>
+      <Grid
+        size={{
+          xs: 12,
+          md: 2
+        }}>
         <FormControl className={classes.formControl}>
           <TextField style={{ background: '#f2f0f2' }} name='segundoApellido' label='Segundo Apellido' type='search' onChange={handleForm} value={query.segundoApellido} margin='normal' />
         </FormControl>
       </Grid>
-      <Grid item xs={12} md={6}>
+      <Grid
+        size={{
+          xs: 12,
+          md: 6
+        }}>
         <FormControl className={classes.formControl}>
           <TextField
             style={{ background: '#f2f0f2' }}
@@ -90,11 +106,13 @@ const FormServidoresSancionados = ({ classes, handleForm, handleOrder, query, or
             margin='normal'
             select
             label='Tipo sanción'
-            SelectProps={{
-              multiple: true,
-              renderValue: selected => selected.map(s => s.label).join(', '),
-              onChange: handleForm,
-              value: query.tipoSancion
+            slotProps={{
+              select: {
+                multiple: true,
+                renderValue: selected => selected.map(s => s.label).join(', '),
+                onChange: handleForm,
+                value: query.tipoSancion
+              }
             }}
           >
             <MenuItem disabled value={[]}>
@@ -109,7 +127,11 @@ const FormServidoresSancionados = ({ classes, handleForm, handleOrder, query, or
           </TextField>
         </FormControl>
       </Grid>
-      <Grid item xs={12} md={2}>
+      <Grid
+        size={{
+          xs: 12,
+          md: 2
+        }}>
         <FormControl className={classes.formControl}>
           <TextField style={{ background: '#f2f0f2' }} name='nivel' margin='normal' select label='Nivel' value={query.nivel} onChange={handleForm}>
             <MenuItem value='any'>
@@ -124,7 +146,11 @@ const FormServidoresSancionados = ({ classes, handleForm, handleOrder, query, or
           </TextField>
         </FormControl>
       </Grid>
-      <Grid item md={4} xs={12}>
+      <Grid
+        size={{
+          md: 4,
+          xs: 12
+        }}>
         <FormControl className={classes.formControl}>
           <TextField style={{ background: '#f2f0f2' }} name='provider' margin='normal' select label='Proveedor información' value={query.provider} onChange={handleForm}>
             <MenuItem value='any'>
@@ -140,7 +166,11 @@ const FormServidoresSancionados = ({ classes, handleForm, handleOrder, query, or
           </TextField>
         </FormControl>
       </Grid>
-      <Grid item md={6} xs={12}>
+      <Grid
+        size={{
+          md: 6,
+          xs: 12
+        }}>
         <FormControl className={classes.formControl}>
           <TextField style={{ background: '#f2f0f2' }} name='institucionDependencia' margin='normal' select label='Institución' value={query.institucionDependencia} onChange={handleForm}>
             <MenuItem value='any'>
@@ -156,14 +186,18 @@ const FormServidoresSancionados = ({ classes, handleForm, handleOrder, query, or
           </TextField>
         </FormControl>
       </Grid>
-      <Grid item xs={12}>
+      <Grid size={12}>
         <Button onClick={() => setShowAdvancedSearch(prevState => !prevState)} color='text' startIcon={showAdvancedSearch ? <ExpandLessIcon /> : <ExpandMoreIcon />}>
           Búsqueda avanzada
         </Button>
       </Grid>
       {showAdvancedSearch && (
         <>
-          <Grid item xs={12} md={3}>
+          <Grid
+            size={{
+              xs: 12,
+              md: 3
+            }}>
             <FormControl className={classes.formControl}>
               <TextField style={{ background: '#f2f0f2' }} name='orderCamp' margin='normal' select label='Ordenar por' value={order.orderCamp} onChange={handleOrder}>
                 <MenuItem value='any'>
@@ -179,7 +213,11 @@ const FormServidoresSancionados = ({ classes, handleForm, handleOrder, query, or
               </TextField>
             </FormControl>
           </Grid>
-          <Grid item xs={12} md={3}>
+          <Grid
+            size={{
+              xs: 12,
+              md: 3
+            }}>
             <FormControl className={classes.formControl}>
               <TextField style={{ background: '#f2f0f2' }} name='orderType' margin='normal' select label='Tipo ordenamiento' value={order.orderType} onChange={handleOrder}>
                 <MenuItem value='any'>
@@ -198,7 +236,7 @@ const FormServidoresSancionados = ({ classes, handleForm, handleOrder, query, or
         </>
       )}
     </>
-  )
+  );
 }
 
-export default withStyles(styles, { withTheme: true })(FormServidoresSancionados)
+export default withStyles(FormServidoresSancionados, styles);

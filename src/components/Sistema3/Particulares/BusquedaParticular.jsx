@@ -2,7 +2,7 @@ import React from 'react'
 import {
   Grid, MenuItem, FormControl, Typography, ListItemText, TextField, Button, Checkbox, Modal, CircularProgress
 } from '@mui/material'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import PropTypes from 'prop-types'
 import Previos from '../../Compartidos/Previos'
 import ExpandLessIcon from '@mui/icons-material/ExpandLess'
@@ -54,7 +54,7 @@ const styles = theme => ({
     padding: theme.spacing(1),
     fontWeight: 'bold'
   }
-})
+});
 
 const tiposSancion = [
   { label: 'Inhabilitado', value: 'I' },
@@ -320,11 +320,15 @@ function BusquedaParticular ({ classes }) {
       <>
         {/* Buscador */}
         <Grid container spacing={4}>
-          <Grid item xs={12}>
+          <Grid size={12}>
             <Typography><b>Busca un particular sancionado</b></Typography>
           </Grid>
 
-          <Grid item md={4} xs={12}>
+          <Grid
+            size={{
+              md: 4,
+              xs: 12
+            }}>
             <FormControl className={classes.formControl}>
               <TextField
                 style={{ background: '#f2f0f2' }}
@@ -337,7 +341,11 @@ function BusquedaParticular ({ classes }) {
               />
             </FormControl>
           </Grid>
-          <Grid item xs={12} md={2}>
+          <Grid
+            size={{
+              xs: 12,
+              md: 2
+            }}>
             <FormControl className={classes.formControl}>
               <TextField
                 style={{ background: '#f2f0f2' }}
@@ -351,15 +359,21 @@ function BusquedaParticular ({ classes }) {
 
             </FormControl>
           </Grid>
-          <Grid item xs={12} md={4}>
+          <Grid
+            size={{
+              xs: 12,
+              md: 4
+            }}>
             <FormControl className={classes.formControl}>
               <TextField
                 style={{ background: '#f2f0f2' }} id='tipoSancion' name='tipoSancion-select' margin='normal' select label='Tipo sanción'
-                SelectProps={{
-                  multiple: true,
-                  renderValue: selected => selected.map(element => element.label).join(', '),
-                  onChange: e => setFilter({ ...filter, tipoSancion: e.target.value }),
-                  value: filter.tipoSancion
+                slotProps={{
+                  select: {
+                    multiple: true,
+                    renderValue: selected => selected.map(element => element.label).join(', '),
+                    onChange: e => setFilter({ ...filter, tipoSancion: e.target.value }),
+                    value: filter.tipoSancion
+                  }
                 }}
               >
                 {tiposSancion.map(tipo => (
@@ -371,7 +385,11 @@ function BusquedaParticular ({ classes }) {
               </TextField>
             </FormControl>
           </Grid>
-          <Grid item xs={12} md={2}>
+          <Grid
+            size={{
+              xs: 12,
+              md: 2
+            }}>
             <FormControl className={classes.formControl}>
               <TextField style={{ background: '#f2f0f2' }} id='tipoPersona' name='tipoPersona' margin='normal' select label='Tipo persona' value={filter.tipoPersona} onChange={(e) => setFilter({ ...filter, tipoPersona: e.target.value })}>
                 <MenuItem value='any'><em>Todos</em></MenuItem>
@@ -380,7 +398,11 @@ function BusquedaParticular ({ classes }) {
               </TextField>
             </FormControl>
           </Grid>
-          <Grid item md={2} xs={12}>
+          <Grid
+            size={{
+              md: 2,
+              xs: 12
+            }}>
             <FormControl className={classes.formControl}>
               <TextField style={{ background: '#f2f0f2' }} id='nivel' name='nivel' margin='normal' select label='Nivel' value={filter.nivel} onChange={(e) => setFilter({ ...filter, nivel: e.target.value })}>
                 <MenuItem value='any'><em>Todos</em></MenuItem>
@@ -389,7 +411,11 @@ function BusquedaParticular ({ classes }) {
               </TextField>
             </FormControl>
           </Grid>
-          <Grid item md={4} xs={12}>
+          <Grid
+            size={{
+              md: 4,
+              xs: 12
+            }}>
             <FormControl className={classes.formControl}>
               <TextField style={{ background: '#f2f0f2' }} id='proveedor' name='proveedor' margin='normal' select label='Proveedor información' value={filter.provider} onChange={(e) => setFilter({ ...filter, provider: e.target.value })}>
                 <MenuItem value='any' key={-1}><em>Todos</em></MenuItem>
@@ -403,7 +429,11 @@ function BusquedaParticular ({ classes }) {
               </TextField>
             </FormControl>
           </Grid>
-          <Grid item md={6} xs={12}>
+          <Grid
+            size={{
+              md: 6,
+              xs: 12
+            }}>
             <FormControl className={classes.formControl}>
               <TextField style={{ background: '#f2f0f2' }} id='institucionDependencia' name='institucionDependencia' margin='normal' select label='Institución' value={filter.institucionDependencia} onChange={(e) => setFilter({ ...filter, institucionDependencia: e.target.value })}>
                 <MenuItem value='any'><em>Todas</em></MenuItem>
@@ -418,7 +448,7 @@ function BusquedaParticular ({ classes }) {
             </FormControl>
           </Grid>
 
-          <Grid item xs={12}>
+          <Grid size={12}>
             <Button
               onClick={() => setShowAdvancedSearch(prevState => {
                 return !prevState
@@ -428,7 +458,11 @@ function BusquedaParticular ({ classes }) {
             </Button>
           </Grid>
 
-          {showAdvancedSearch && <Grid item xs={12} md={3}>
+          {showAdvancedSearch && <Grid
+            size={{
+              xs: 12,
+              md: 3
+            }}>
             <FormControl className={classes.formControl}>
               <TextField style={{ background: '#f2f0f2' }} id='campoOrden' name='campoOrden' margin='normal' select label='Ordenar por' value={sort.campoOrden} onChange={e => setSort({ ...sort, campoOrden: e.target.value })}>
                 <MenuItem value='any'>
@@ -442,7 +476,11 @@ function BusquedaParticular ({ classes }) {
               </TextField>
             </FormControl>
           </Grid>}
-          {showAdvancedSearch && <Grid item xs={12} md={3}>
+          {showAdvancedSearch && <Grid
+            size={{
+              xs: 12,
+              md: 3
+            }}>
             <FormControl className={classes.formControl}>
               <TextField style={{ background: '#f2f0f2' }} id='namtipoOrdene' name='tipoOrden' margin='normal' select label='Tipo ordenamiento' value={sort.tipoOrden} onChange={e => setSort({ ...sort, tipoOrden: e.target.value })}>
                 <MenuItem value='any'>
@@ -457,8 +495,15 @@ function BusquedaParticular ({ classes }) {
             </FormControl>
           </Grid>}
 
-          <Grid item md={9.5} />
-          <Grid item xs={12} md={1}>
+          <Grid
+            size={{
+              md: 9.5
+            }} />
+          <Grid
+            size={{
+              xs: 12,
+              md: 1
+            }}>
             <ButtonPDN
               variant='contained'
               onClick={() => handleCleanAll()}
@@ -466,7 +511,11 @@ function BusquedaParticular ({ classes }) {
               Limpiar
             </ButtonPDN>
           </Grid>
-          <Grid item xs={12} md={1}>
+          <Grid
+            size={{
+              xs: 12,
+              md: 1
+            }}>
             <ButtonPDN
               variant='contained'
               onClick={() => {
@@ -477,7 +526,7 @@ function BusquedaParticular ({ classes }) {
               Buscar
             </ButtonPDN>
           </Grid>
-          <Grid item xs={12}>
+          <Grid size={12}>
             {
                                 loading &&
                                   <Modal
@@ -498,7 +547,7 @@ function BusquedaParticular ({ classes }) {
         {/* Previos */}
         {view === 1 && previos && previos.length > 0 &&
           <Grid container>
-            <Grid item xs={12} className={classes.section}>
+            <Grid className={classes.section} size={12}>
               <Previos
                 data={previos}
                 handleChangeSujetoObligado={handleChangeSujetoObligado}
@@ -508,7 +557,7 @@ function BusquedaParticular ({ classes }) {
         {/* Tabla */}
         {view === 2 && filterData && filterData.length > 0 && selectedItem === null &&
           <Grid container>
-            <Grid item xs={12}>
+            <Grid size={12}>
               <TablaParticularesSancionados
                 data={filterData} page={pagination.page}
                 rowsPerPage={pagination.rowsPerPage}
@@ -530,12 +579,11 @@ function BusquedaParticular ({ classes }) {
                     }
       </>
     </ThemeProvider>
-
-  )
+  );
 }
 
 BusquedaParticular.propTypes = {
   classes: PropTypes.object.isRequired
 }
 
-export default withStyles(styles, { withTheme: true })(BusquedaParticular)
+export default withStyles(BusquedaParticular, styles);

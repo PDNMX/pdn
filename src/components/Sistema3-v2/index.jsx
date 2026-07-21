@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { withStyles } from '@mui/styles';
+import { useState, useEffect } from 'react';
+import { withStyles } from 'tss-react/mui';
 import { Grid, Box, Tabs, Tab, Paper, CircularProgress } from '@mui/material';
 import PropTypes from 'prop-types';
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
@@ -50,7 +50,7 @@ const styles = (theme) => ({
       backgroundColor: '#9c27b0',
       height: '3px',
     },
-    '& .MuiTabs-flexContainer': {
+    '& .MuiTabs-list': {
       [theme.breakpoints.down('md')]: {
         flexDirection: 'column',
       },
@@ -166,7 +166,13 @@ const Index = ({ classes }) => {
 
   if (loading) {
     return (
-      <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          minHeight: "100vh"
+        }}>
         <CircularProgress />
       </Box>
     );
@@ -174,7 +180,13 @@ const Index = ({ classes }) => {
 
   if (error) {
     return (
-      <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          minHeight: "100vh"
+        }}>
         <div>Error al cargar los datos: {error}</div>
       </Box>
     );
@@ -183,9 +195,10 @@ const Index = ({ classes }) => {
   return (
     <div className={classes.root}>
       <HeaderV2 section={system} />
-
-      <Grid container justifyContent="center">
-        <Grid item xs={12} className={classes.section}>
+      <Grid container sx={{
+        justifyContent: "center"
+      }}>
+        <Grid className={classes.section} size={12}>
           <Paper className={classes.mainContainer} elevation={0}>
             <Box className={classes.tabsContainer}>
             <Tabs 
@@ -273,4 +286,4 @@ Index.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Index);
+export default withStyles(Index, styles);

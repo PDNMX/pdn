@@ -1,5 +1,5 @@
 import { Typography, Grid, Paper, Box } from "@mui/material";
-import { withStyles } from "@mui/styles";
+import { withStyles } from 'tss-react/mui';
 import HeaderV2 from "../HomeV2/HeaderV2";
 import pdnRoutes from "../../routes";
 import working from "../../assets/rediseno2023/imgs/iconos/ico-construccion.svg";
@@ -48,19 +48,22 @@ const index = (props) => {
   return (
     <div className={classes.root}>
       <HeaderV2 section={system} />
-      <Grid container justifyContent="center">
-        <Grid item xs={12} className={classes.item}>
+      <Grid container sx={{
+        justifyContent: "center"
+      }}>
+        <Grid className={classes.item} size={12}>
           <Paper elevation={15} className={classes.paper}>
             <Box className={classes.box}>
               <Typography variant="h4" align="center">
                 Sistema en construcción
               </Typography>
               <Box
-                display="flex"
-                flexWrap="wrap"
-                justifyContent="center"
-                alignItems="center"
-              >
+                sx={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  justifyContent: "center",
+                  alignItems: "center"
+                }}>
                 <Box>
                   <img
                     alt="enConstruccion"
@@ -73,12 +76,16 @@ const index = (props) => {
                     maxWidth: "800px",
                   }}
                 >
-                  <Typography paragraph>
+                  <Typography sx={{
+                    marginBottom: "16px"
+                  }}>
                     Estamos trabajando en el desarrollo del Sistema de
                     información y comunicación del Sistema Nacional
                     Anticorrupción y del Sistema Nacional de Fiscalización.
                   </Typography>
-                  <Typography paragraph>
+                  <Typography sx={{
+                    marginBottom: "16px"
+                  }}>
                     El objeto del sistema es permitir la centralización de la
                     información que generan los órganos integrantes del Sistema
                     Nacional de Fiscalización, con la finalidad de ampliar la
@@ -88,7 +95,9 @@ const index = (props) => {
                     municipios.
                   </Typography>
 
-                  <Typography paragraph>
+                  <Typography sx={{
+                    marginBottom: "16px"
+                  }}>
                     Este Sistema se encuentra en proceso de consulta con el
                     Comité Rector del Sistema Nacional de Fiscalización.
                   </Typography>
@@ -102,4 +111,4 @@ const index = (props) => {
   );
 };
 
-export default withStyles(styles)(index);
+export default withStyles(index, styles);

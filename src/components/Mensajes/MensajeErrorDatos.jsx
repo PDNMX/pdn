@@ -1,4 +1,4 @@
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import { Grid, Typography } from '@mui/material'
 import IconProblem from '@mui/icons-material/ReportProblem'
 
@@ -15,21 +15,23 @@ const styles = theme => ({
     textAlign: 'center'
 
   }
-})
+});
 
 function MensajeErrorDatos ({ classes }) {
   return (
     <Grid container>
-      <Grid item xs={12} className={classes.iconContainer}>
+      <Grid className={classes.iconContainer} size={12}>
         <IconProblem className={classes.icon} />
       </Grid>
-      <Grid item xs={12}>
-        <Typography variant='h6' paragraph className={classes.mensaje}>
+      <Grid size={12}>
+        <Typography variant='h6' className={classes.mensaje} sx={{
+          marginBottom: "16px"
+        }}>
           <b>Servicio no disponible</b>
         </Typography>
       </Grid>
     </Grid>
-  )
+  );
 }
 
-export default withStyles(styles, { withTheme: true })(MensajeErrorDatos)
+export default withStyles(MensajeErrorDatos, styles);

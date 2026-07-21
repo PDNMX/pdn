@@ -1,11 +1,11 @@
 import React from 'react'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import { Grid, Modal, CircularProgress } from '@mui/material'
 import MensajeErrorDatos from '../../../../Mensajes/MensajeError'
 import Previos from '../Previos'
 import TablaServidoresSancionados from '../../../../Sistema3/Servidores/TablaServidoresSancionados'
 import DetalleServidorSancionado from '../../../../Sistema3/Servidores/DetalleServidorSancionado'
-import { makeStyles } from '@mui/styles'
+import { makeStyles } from 'tss-react/mui';
 import ReactGA from 'react-ga4'
 import Chips from '../Chips'
 
@@ -14,7 +14,7 @@ import ThemeV2 from '../../../../../ThemeV2'
 
 import axios from 'axios'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles()(theme => ({
   formControl: {
     width: '100%'
   },
@@ -48,7 +48,7 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(1),
     fontWeight: 'bold'
   }
-}))
+}));
 
 const initialPagination = {
   page: 1,
@@ -64,7 +64,7 @@ const initialSort = {
 export function ResultadosS3s (props) {
   const dataProps = JSON.parse(props.data)
   const data = dataProps['psp-sancionados']
-  const classes = useStyles()
+  const { classes } = useStyles()
   /*
   1.- Servidores publicos sancionados
   - Nombre
@@ -262,7 +262,7 @@ export function ResultadosS3s (props) {
     <ThemeProvider theme={ThemeV2}>
       {/* Buscador */}
       <Grid container spacing={0}>
-        <Grid item xs={12}>
+        <Grid size={12}>
           {loading && (
             <Modal open={loading} disableAutoFocus>
               <CircularProgress id='spinnerLoading' size={200} className={classes.progress} />
@@ -274,7 +274,7 @@ export function ResultadosS3s (props) {
       {/* PREVIOS */}
       {view === 1 && previos && previos.length > 0 && (
         <Grid container>
-          <Grid item xs={12}>
+          <Grid size={12}>
             {/* {console.log} */}
             <Chips criterios={JSON.stringify(data)} />
             <Previos
@@ -290,7 +290,7 @@ export function ResultadosS3s (props) {
 
         selectedItem === null && (
           <Grid container>
-            <Grid item xs={12}>
+            <Grid size={12}>
               <TablaServidoresSancionados
                 info={filterData}
                 /* page={pagination.page}
@@ -311,9 +311,7 @@ export function ResultadosS3s (props) {
         />
       )}
     </ThemeProvider>
-  )
+  );
 }
 
-export default withStyles(useStyles, { withTheme: false })(
-  ResultadosS3s
-)
+export default withStyles(ResultadosS3s, useStyles);

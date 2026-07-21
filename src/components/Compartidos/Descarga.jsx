@@ -1,5 +1,5 @@
 import React from 'react'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import { Typography } from '@mui/material'
 import Grid from '@mui/material/Grid'
 import IconButton from '@mui/material/IconButton'
@@ -29,7 +29,7 @@ const styles = (theme) => ({
     padding: theme.spacing(0),
     margin: theme.spacing(0)
   }
-})
+});
 class Descarga extends React.Component {
   render () {
     const { classes, url, tipoGA } = this.props
@@ -38,10 +38,11 @@ class Descarga extends React.Component {
         <Grid
           container
           direction='row'
-          justifyContent='center'
-          alignItems='stretch'
-        >
-          <Grid item xs={12} align='center'>
+          sx={{
+            justifyContent: 'center',
+            alignItems: 'stretch'
+          }}>
+          <Grid size={12} sx={{ textAlign: 'center' }}>
             <Typography className={classes.descarga} variant='h5'>
               Descarga todos los datos
             </Typography>
@@ -59,7 +60,7 @@ class Descarga extends React.Component {
           </Grid>
         </Grid>
       </div>
-    )
+    );
   }
 }
 
@@ -67,4 +68,4 @@ Descarga.propTypes = {
   url: PropTypes.string.isRequired
 }
 
-export default withStyles(styles)(Descarga)
+export default withStyles(Descarga, styles);

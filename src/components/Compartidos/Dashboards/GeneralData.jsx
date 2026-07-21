@@ -1,5 +1,5 @@
 import { Paper, Typography } from '@mui/material'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 
 const styles = theme => ({
   paperChart: {
@@ -16,7 +16,7 @@ const styles = theme => ({
     textAlign: 'center',
     color: theme.palette.text.main
   }
-})
+});
 const GeneralData = (props) => {
   const { classes, digit, text, currency } = props
   return (
@@ -33,4 +33,4 @@ const GeneralData = (props) => {
   )
 }
 
-export default withStyles(styles)(GeneralData)
+export default withStyles(GeneralData, styles);

@@ -1,5 +1,4 @@
 // TotalParticulares.jsx
-import React from 'react';
 import PropTypes from 'prop-types';
 import { Paper, Typography, Box } from '@mui/material';
 import { Business } from '@mui/icons-material';
@@ -40,17 +39,15 @@ const TotalParticulares = ({ totalCases }) => {
       >
         <Business sx={{ fontSize: 150 }} />
       </Box>
-      
-      <Box 
-        display="flex" 
-        flexDirection="column" 
-        alignItems="flex-start"
-        sx={{ 
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start",
           p: 3,
           position: 'relative',
           zIndex: 1
-        }}
-      >
+        }}>
         <Typography 
           variant="body2" 
           color="textSecondary"

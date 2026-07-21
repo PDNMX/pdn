@@ -10,7 +10,7 @@ import pdnRoutes from '../../routes'
 import { Typography, Grid, Paper, Box } from '@mui/material'
 import UploadForm from './UploadForm'
 
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import PropTypes from 'prop-types'
 
 const styles = theme => ({
@@ -44,7 +44,7 @@ const styles = theme => ({
     color: theme.palette.text.main,
     borderBottomColor: theme.palette.secondary.main
   }
-})
+});
 
 class Validador extends Component {
   state = {
@@ -88,8 +88,10 @@ class Validador extends Component {
 
   _renderFirst = () => {
     return this.state.results === true
-      ? <Typography paragraph> El archivo ha sido comprobado con éxito </Typography>
-      : this._renderListErrors()
+      ? <Typography sx={{
+      marginBottom: "16px"
+    }}> El archivo ha sido comprobado con éxito </Typography>
+      : this._renderListErrors();
   }
 
   render () {
@@ -99,16 +101,22 @@ class Validador extends Component {
     return (
       <div className={classes.root}>
         <HeaderV2 section={section} />
-        <Grid container justifyContent='center' spacing={0}>
-          <Grid item xs={12} className={classes.rootItem}>
+        <Grid container spacing={0} sx={{
+          justifyContent: 'center'
+        }}>
+          <Grid className={classes.rootItem} size={12}>
             <Paper className={classes.paper} elevation={15}>
               <Box className={classes.box}>
-                <Typography paragraph align='left'>
+                <Typography align='left' sx={{
+                  marginBottom: "16px"
+                }}>
                   Este validador te ayudará a verificar que la respuesta generada por tus API&apos;s cumplen las
                   especificaciones que se refieren a los campos mínimos de datos que debe contener cada sistema, así como el estándar que debe seguir cada campo para ser interoperable con la Plataforma Digital Nacional.
                   Dado que actualmente se encuentran disponibles las especificaciones para los Sistemas 1, 2 y 3, son estas las que se podrán verificar, para hacerlo sigue los siguientes pasos.
                 </Typography>
-                <Typography paragraph align='left'>
+                <Typography align='left' sx={{
+                  marginBottom: "16px"
+                }}>
                   <ul>
                     <li>Ejecuta tu API y guarda la respuesta en un archivo de texto con extensión</li>
                     <li>Da clic en el botón &quot;Cargar archivo&quot; y selecciona el archivo que generaste.</li>
@@ -117,7 +125,9 @@ class Validador extends Component {
                   </ul>
                 </Typography>
 
-                <Typography paragraph align='left'>
+                <Typography align='left' sx={{
+                  marginBottom: "16px"
+                }}>
                   En caso de que tu archivo sea validado exitosamente se desplegará un mensaje indicandolo.
                   En caso de no validarse satisfactoriamente, se desplegará una tabla mostrando el(los) campo(s) que contiene(n) errores y el detalle de los mismos.
                 </Typography>
@@ -131,9 +141,8 @@ class Validador extends Component {
             </Paper>
           </Grid>
         </Grid>
-
       </div>
-    )
+    );
   }
 }
 
@@ -141,4 +150,4 @@ Validador.propTypes = {
   classes: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(Validador)
+export default withStyles(Validador, styles);

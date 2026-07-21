@@ -1,5 +1,5 @@
 import * as React from 'react'
-import makeStyles from '@mui/styles/makeStyles'
+import { makeStyles } from 'tss-react/mui';
 import PropTypes from 'prop-types'
 import { styled } from '@mui/material/styles'
 import Dialog from '@mui/material/Dialog'
@@ -13,7 +13,7 @@ import { Grid } from '@mui/material'
 import Stepper from './LinearStepper'
 import ButtonPDN from '../../Compartidos/ButtonPDN'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
   container: {
     padding: '2% 3%',
     backgroundColor: theme.palette.background.noSelect
@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     border: '0px',
     boxShadow: 'none'
   }
-}))
+}));
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -73,7 +73,7 @@ BootstrapDialogTitle.propTypes = {
 }
 
 export default function CustomizedDialogs () {
-  const classes = useStyles()
+  const { classes } = useStyles()
   const [open, setOpen] = React.useState(false)
   const [titulo, setTitulo] = React.useState('Asistente de búsqueda')
   // console.log(titulo);
@@ -107,17 +107,24 @@ export default function CustomizedDialogs () {
         <DialogContent>
           <Grid
             container
-            alignItems='center'
-            justifyContent='center'
             className={classes.container}
             spacing={0}
-          >
-            <Grid item md={12} sm={12} xs={12} align='center'>
+            sx={{
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+            <Grid
+              sx={{ textAlign: 'center' }}
+              size={{
+                md: 12,
+                sm: 12,
+                xs: 12
+              }}>
               <Stepper stateChanger={setTitulo} />
             </Grid>
           </Grid>
         </DialogContent>
       </BootstrapDialog>
     </>
-  )
+  );
 }

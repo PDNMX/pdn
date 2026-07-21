@@ -9,14 +9,14 @@ import Divider from '@mui/material/Divider'
 import TextField from '@mui/material/TextField'
 import Link from '@mui/material/Link'
 import Grid from '@mui/material/Grid'
-import makeStyles from '@mui/styles/makeStyles'
+import { makeStyles } from 'tss-react/mui';
 
 import ClearIcon from '@mui/icons-material/Clear'
 import { IconButton } from '@mui/material'
 
 const glosarioData = process.env.REACT_APP_GLOSARIO
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
   drawerPaper: {
     background: '#f5f8fb'
   },
@@ -34,14 +34,14 @@ const useStyles = makeStyles((theme) => ({
   textTitulo: {
     color: theme.palette.text.secondary
   }
-}))
+}));
 
 export default function Busqueda () {
   const [palabras, setPalabras] = useState([])
   const [loading, setLoading] = useState(false)
   const [search, setSearch] = useState('')
   const [filteredPalabras, setFilteredPalabras] = useState([])
-  const classes = useStyles()
+  const { classes } = useStyles()
 
   useEffect(() => {
     setLoading(true)
@@ -81,23 +81,21 @@ export default function Busqueda () {
         value={search}
         placeholder='Escribe la letra o palabra a buscar'
         onChange={(e) => setSearch(e.target.value)}
-        InputProps={{
-          endAdornment: (
-            <IconButton
-              onClick={() => {
-                setSearch('')
-              }}
-              size='large'
-            >
-              <ClearIcon />
-            </IconButton>
-          )
+        slotProps={{
+          input: {
+            endAdornment: (
+              <IconButton
+                onClick={() => {
+                  setSearch('')
+                }}
+                size='large'
+              >
+                <ClearIcon />
+              </IconButton>
+            )
+          }
         }}
-        /* InputAdornmentProps={{
-          position: "start"
-        }} */
       />
-
       <br />
       <br />
       <Typography style={{ wordWrap: 'break-word' }}>
@@ -110,11 +108,11 @@ export default function Busqueda () {
       <br />
       {filteredPalabras.length === 0 ? <Typography className={classes.text}><i>Sin resultados</i></Typography> : filteredPalabras.map((queryString, idx) => (<ResultDetail className={classes.palabra} key={idx} {...queryString} />))}
     </div>
-  )
+  );
 }
 
 const ResultDetail = (props) => {
-  const classes = useStyles()
+  const { classes } = useStyles()
   return (
     <>
       <Accordion className={classes.palabra}>
@@ -123,12 +121,12 @@ const ResultDetail = (props) => {
         </AccordionSummary>
         <AccordionDetails>
           <Grid container spacing={2}>
-            <Grid item xs={12}>
+            <Grid size={12}>
               <Typography className={classes.text} variant='body1'>
                 {props[1]}
               </Typography>
             </Grid>
-            <Grid item xs={12}>
+            <Grid size={12}>
               <Typography className={classes.text} variant='body2'>
                 <i><b>Fuente: </b>{props[2]}</i>
               </Typography>
@@ -138,5 +136,5 @@ const ResultDetail = (props) => {
         </AccordionDetails>
       </Accordion>
     </>
-  )
+  );
 }

@@ -1,9 +1,9 @@
 import Toolbar from '@mui/material/Toolbar'
 import { lighten } from '@mui/material/styles'
 import { Typography } from '@mui/material'
-import makeStyles from '@mui/styles/makeStyles'
+import { makeStyles } from 'tss-react/mui';
 
-const useToolbarStyles = makeStyles(theme => ({
+const useToolbarStyles = makeStyles()(theme => ({
   root: {
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(1)
@@ -23,18 +23,20 @@ const useToolbarStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.text.contrastText
   }
-}))
+}));
 
 const EnhancedTableToolbar = () => {
-  const classes = useToolbarStyles()
+  const { classes } = useToolbarStyles()
 
   return (
     <Toolbar className={classes.title}>
-      <Typography paragraph variant='h6' style={{ color: 'white' }} id='tableTitle'>
+      <Typography variant='h6' style={{ color: 'white' }} id='tableTitle' sx={{
+        marginBottom: "16px"
+      }}>
         Pulsa sobre el registro para ver su detalle
       </Typography>
     </Toolbar>
-  )
+  );
 }
 
 export default EnhancedTableToolbar

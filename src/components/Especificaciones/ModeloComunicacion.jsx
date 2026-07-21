@@ -1,7 +1,7 @@
 import Diagrama from '../../assets/diagrama_comunicacion_v1.1.svg'
 import { Typography } from '@mui/material'
 import Grid from '@mui/material/Grid'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 
 const styles = theme => ({
   root: {
@@ -32,17 +32,20 @@ const styles = theme => ({
   title: {
     color: theme.palette.primary.main
   }
-})
+});
 
 const ModeloComunicacion = props => {
   const { classes } = props
   return (
-    <Grid item xs={12}>
-      <Typography variant='h5' className={classes.title} paragraph>
+    <Grid size={12}>
+      <Typography variant='h5' className={classes.title} sx={{
+        marginBottom: "16px"
+      }}>
         Modelo de comunicación
       </Typography>
-
-      <Typography paragraph className={classes.text}>
+      <Typography className={classes.text} sx={{
+        marginBottom: "16px"
+      }}>
         A través de la de la PDN, los usuarios serán capaces de realizar consultas a las APIs de las
         Instituciones,
         dichas consultas se configurarán usando parámetros (Ver la sección Parámetros de consulta). La
@@ -52,17 +55,16 @@ const ModeloComunicacion = props => {
         correspondiente. Dicha respuesta deberá estar apegada al estándar de Servidores Públicos y
         Particulares Sancionados que se proporciona en la siguiente sección.
       </Typography>
-
       <img src={Diagrama} alt='Comunicación' className={classes.diagrama} />
-
-      <Typography paragraph className={classes.text}>
+      <Typography className={classes.text} sx={{
+        marginBottom: "16px"
+      }}>
         <b>Figura 1. </b> Esquema conceptual del flujo de comunicación entre Instituciones y la
         Plataforma Digital Nacional. De derecha a izquierda se observan usuarios con diferentes perfiles
         accediendo a la PDN y solicitando información de acuerdo a sus atribuciones.
       </Typography>
     </Grid>
-
-  )
+  );
 }
 
-export default withStyles(styles)(ModeloComunicacion)
+export default withStyles(ModeloComunicacion, styles);

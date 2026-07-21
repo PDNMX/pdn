@@ -1,6 +1,6 @@
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import { IconButton, Paper, Tooltip } from '@mui/material'
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
+import HelpOutlineIcon from '@mui/icons-material/HelpOutlineOutlined'
 
 const styles = theme => ({
   paperChart: {
@@ -16,7 +16,7 @@ const styles = theme => ({
   /* spaceTop:{
         height: 40
     } */
-})
+});
 
 const ContainerChart = (props) => {
   const { handleOpen, children, classes } = props
@@ -38,4 +38,4 @@ const ContainerChart = (props) => {
   )
 }
 
-export default withStyles(styles)(ContainerChart)
+export default withStyles(ContainerChart, styles);

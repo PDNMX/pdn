@@ -1,6 +1,6 @@
 import { Typography, Grid, Link, Paper, Box } from '@mui/material'
 import { Link as RouterLink } from 'react-router-dom'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import pdnRoutes from '../../routes/index'
 import HeaderV2 from '../HomeV2/HeaderV2'
 
@@ -67,14 +67,14 @@ const styles = theme => ({
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4)
   }
-})
+});
 
-const CustomTypography = withStyles(theme => ({
+const CustomTypography = withStyles(Typography, theme => ({
   root: {
     color: theme.palette.text.primary
 
   }
-}))(Typography)
+}));
 
 const About = props => {
   const { classes } = props
@@ -83,78 +83,150 @@ const About = props => {
   return (
     <div className={classes.root}>
       <HeaderV2 section={section} />
-      <Grid container justifyContent='center' spacing={0}>
-        <Grid item xs={12} className={classes.rootItem}>
+      <Grid container spacing={0} sx={{
+        justifyContent: 'center'
+      }}>
+        <Grid className={classes.rootItem} size={12}>
           <Paper className={classes.paper} elevation={15}>
             <Box className={classes.box}>
 
-              <CustomTypography paragraph>
+              <CustomTypography sx={{ marginBottom: '16px' }}>
                 Usando la PDN, las autoridades encargadas de la lucha anticorrupción pueden tomar decisiones basadas en evidencia a partir de grandes cantidades de datos.
               </CustomTypography>
 
-              <CustomTypography paragraph>
+              <CustomTypography sx={{ marginBottom: '16px' }}>
                 El desarrollo de la PDN considera seis sistemas contemplados en la Ley General del Sistema Nacional Anticorrupción (LGSNA):
               </CustomTypography>
 
-              <Typography color='S1.color' display='inline'>Sistema 1 | </Typography>
-              <CustomTypography display='inline'>
+              <Typography
+                sx={{
+                  color: 'S1.color',
+                  display: 'inline'
+                }}>Sistema 1 | </Typography>
+              <CustomTypography sx={{ display: 'inline' }}>
                 Evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal (S1).
               </CustomTypography>
               <br />
-              <Typography color='S2.color' display='inline'>Sistema 2 | </Typography>
-              <CustomTypography display='inline'>
+              <Typography
+                sx={{
+                  color: 'S2.color',
+                  display: 'inline'
+                }}>Sistema 2 | </Typography>
+              <CustomTypography sx={{ display: 'inline' }}>
                 Servidores públicos que intervengan en procedimientos de contrataciones públicas (S2).
               </CustomTypography>
               <br />
-              <Typography color='S3.color' display='inline'>Sistema 3 | </Typography>
-              <CustomTypography display='inline'>
+              <Typography
+                sx={{
+                  color: 'S3.color',
+                  display: 'inline'
+                }}>Sistema 3 | </Typography>
+              <CustomTypography sx={{ display: 'inline' }}>
                 Servidores públicos y particulares sancionados (S3).
               </CustomTypography>
               <br />
-              <Typography color='S4.color' display='inline'>Sistema 4 | </Typography>
-              <CustomTypography display='inline'>
+              <Typography
+                sx={{
+                  color: 'S4.color',
+                  display: 'inline'
+                }}>Sistema 4 | </Typography>
+              <CustomTypography sx={{ display: 'inline' }}>
                 Información y comunicación del Sistema Nacional Anticorrupción y del Sistema Nacional de Fiscalización (S4).
               </CustomTypography>
               <br />
-              <Typography color='S5.color' display='inline'>Sistema 5 | </Typography>
-              <CustomTypography display='inline'>
+              <Typography
+                sx={{
+                  color: 'S5.color',
+                  display: 'inline'
+                }}>Sistema 5 | </Typography>
+              <CustomTypography sx={{ display: 'inline' }}>
                 Denuncias públicas de  faltas administrativas y hechos de corrupción (S5).
               </CustomTypography>
               <br />
-              <Typography color='S6.color' display='inline'>Sistema 6 | </Typography>
-              <CustomTypography display='inline'>
+              <Typography
+                sx={{
+                  color: 'S6.color',
+                  display: 'inline'
+                }}>Sistema 6 | </Typography>
+              <CustomTypography sx={{ display: 'inline' }}>
                 Información Pública de Contrataciones (S6).
               </CustomTypography>
 
-              <Grid container spacing={0} justifyContent='center'>
-                <Grid item xs={12} className={classes.containerSistemas}>
-                  <Grid container spacing={0} justifyContent='center'>
-                      <Grid item xs={12} md={6} lg={4} xl={2} align='center'>
+              <Grid container spacing={0} sx={{
+                justifyContent: 'center'
+              }}>
+                <Grid className={classes.containerSistemas} size={12}>
+                  <Grid container spacing={0} sx={{
+                    justifyContent: 'center'
+                  }}>
+                      <Grid
+                        sx={{ textAlign: 'center' }}
+                        size={{
+                          xs: 12,
+                          md: 6,
+                          lg: 4,
+                          xl: 2
+                        }}>
                   <RouterLink to='/declaraciones' className={classes.link}>
                           <img src={S1} alt='' className={classes.sistemas} />
                         </RouterLink>
                 </Grid>
-                      <Grid item xs={12} md={6} lg={4} xl={2} align='center'>
+                      <Grid
+                        sx={{ textAlign: 'center' }}
+                        size={{
+                          xs: 12,
+                          md: 6,
+                          lg: 4,
+                          xl: 2
+                        }}>
                   <RouterLink to='/servidores' className={classes.link}>
                           <img src={S2} alt='' className={classes.sistemas} />
                         </RouterLink>
                 </Grid>
-                      <Grid item xs={12} md={6} lg={4} xl={2} align='center'>
+                      <Grid
+                        sx={{ textAlign: 'center' }}
+                        size={{
+                          xs: 12,
+                          md: 6,
+                          lg: 4,
+                          xl: 2
+                        }}>
                   <RouterLink to='/sancionados' className={classes.link}>
                           <img src={S3} alt='' className={classes.sistemas} />
                         </RouterLink>
                 </Grid>
-                      <Grid item xs={12} md={6} lg={4} xl={2} align='center'>
+                      <Grid
+                        sx={{ textAlign: 'center' }}
+                        size={{
+                          xs: 12,
+                          md: 6,
+                          lg: 4,
+                          xl: 2
+                        }}>
                   <RouterLink to='/fiscalizacion' className={classes.link}>
                           <img src={S4} alt='' className={classes.sistemas} />
                         </RouterLink>
                 </Grid>
-                      <Grid item xs={12} md={6} lg={4} xl={2} align='center'>
+                      <Grid
+                        sx={{ textAlign: 'center' }}
+                        size={{
+                          xs: 12,
+                          md: 6,
+                          lg: 4,
+                          xl: 2
+                        }}>
                   <RouterLink to='/denuncias' className={classes.link}>
                           <img src={S5} alt='' className={classes.sistemas} />
                         </RouterLink>
                 </Grid>
-                      <Grid item xs={12} md={6} lg={4} xl={2} align='center'>
+                      <Grid
+                        sx={{ textAlign: 'center' }}
+                        size={{
+                          xs: 12,
+                          md: 6,
+                          lg: 4,
+                          xl: 2
+                        }}>
                   <RouterLink to='/contrataciones' className={classes.link}>
                           <img src={S6} alt='' className={classes.sistemas} />
                         </RouterLink>
@@ -163,7 +235,7 @@ const About = props => {
                     </Grid>
                 </Grid>
               </Grid>
-              <CustomTypography paragraph>
+              <CustomTypography sx={{ marginBottom: '16px' }}>
                 ¿Quieres saber más sobre el marco normativo de la PDN? haz click <Link
                   component={RouterLink} to='/mesa-de-ayuda'
                                                                                  >aquí
@@ -179,19 +251,19 @@ const About = props => {
                 />
               </div>
 
-              <CustomTypography variant='h4' paragraph>
+              <CustomTypography variant='h4' sx={{ marginBottom: '16px' }}>
                 ¿Cómo estamos desarrollando la PDN?
               </CustomTypography>
 
-              <CustomTypography paragraph>
+              <CustomTypography sx={{ marginBottom: '16px' }}>
                 La PDN opera con una arquitectura que permite consultar información de diversos proveedores (instituciones públicas), en tiempo real y de manera estandarizada (en un mismo formato). Con el objetivo de incorporar datos a la PDN, los generadores de información deben establecer mecanismos de comunicación que permitan la consulta de información desde la PDN hacia sus bases de datos.
               </CustomTypography>
 
-              <CustomTypography paragraph>
+              <CustomTypography sx={{ marginBottom: '16px' }}>
                 La SESNA publicó las especificaciones técnicas y estándares de datos que permiten que cualquier institución pública  pueda desarrollar los mecanismos de comunicación con la PDN.
               </CustomTypography>
 
-              <CustomTypography variant='h5' paragraph>
+              <CustomTypography variant='h5' sx={{ marginBottom: '16px' }}>
                 El desarrollo de la PDN tiene grandes ventajas:
               </CustomTypography>
 
@@ -223,11 +295,11 @@ const About = props => {
                 </li>
               </ol>
 
-              <CustomTypography variant='h4' paragraph>
+              <CustomTypography variant='h4' sx={{ marginBottom: '16px' }}>
                 ¿Qué puedo hacer a través de la PDN?
               </CustomTypography>
 
-              <CustomTypography paragraph>
+              <CustomTypography sx={{ marginBottom: '16px' }}>
                 A través de la PDN podrás saber:
               </CustomTypography>
 
@@ -263,7 +335,7 @@ const About = props => {
         </Grid>
       </Grid>
     </div>
-  )
+  );
 }
 
-export default withStyles(styles)(About)
+export default withStyles(About, styles);

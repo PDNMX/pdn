@@ -1,9 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import {
-  // lighten,
-  makeStyles
-} from '@mui/styles'
+// lighten,
+makeStyles
+} from 'tss-react/mui';
+
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
@@ -101,7 +103,7 @@ const useToolbarStyles = makeStyles(theme => ({
     },
 })); */
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles()(theme => ({
   root: {
     width: '100%',
     marginTop: theme.spacing(3)
@@ -166,7 +168,7 @@ export default function EnhancedTable (props) {
       for (const c of d.contracts) {
         try {
           total += c.value.amount
-        } catch (e) {
+        } catch {
           // ignore exception
         }
       }
@@ -195,7 +197,7 @@ export default function EnhancedTable (props) {
     }
   })
 
-  const classes = useStyles()
+  const { classes } = useStyles()
   // const [order, setOrder] = React.useState('asc');
   // const [orderBy, setOrderBy] = React.useState('calories');
   const order = 'asc'

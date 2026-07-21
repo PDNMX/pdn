@@ -1,15 +1,14 @@
-import React from 'react';
 import { TablePagination } from '@mui/material';
 import PropTypes from 'prop-types';
 
 const PaginationControls = ({ pagination, onPageChange }) => {
   const { page, limit, totalItems } = pagination;
 
-  const handleChangePage = (event, newPage) => {
+  const handleChangePage = (_event, newPage) => {
     onPageChange(newPage + 1); // +1 porque MUI usa paginación base-0
   };
 
-  const handleChangeRowsPerPage = (event) => {
+  const handleChangeRowsPerPage = () => {
     // Si necesitas implementar el cambio de límite por página
     // onLimitChange(parseInt(event.target.value, 10));
   };

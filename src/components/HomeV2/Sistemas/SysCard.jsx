@@ -1,6 +1,6 @@
 import { Typography, Grid, CardActionArea } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
-import { withStyles } from "@mui/styles";
+import { withStyles } from 'tss-react/mui';
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import ScrollAnimation from "../ScrollAnimation";
@@ -34,7 +34,15 @@ const styles = () => ({
 const SysCard = (props) => {
   const { classes, sys } = props;
   return (
-    <Grid item lg={2} sm={4} xs={6} p={1}>
+    <Grid
+      size={{
+        lg: 2,
+        sm: 4,
+        xs: 6
+      }}
+      sx={{
+        p: 1
+      }}>
       <Card
         className={classes.card}
         component={RouterLink}
@@ -55,7 +63,13 @@ const SysCard = (props) => {
                 width: "auto",
               }}
             />
-            <Typography mx={1} mb={2} color="#fff" variant="body1">
+            <Typography
+              variant="body1"
+              sx={{
+                mx: 1,
+                mb: 2,
+                color: "#fff"
+              }}>
               {sys.name}
             </Typography>
             {/* <CardContent>
@@ -67,4 +81,4 @@ const SysCard = (props) => {
   );
 };
 
-export default withStyles(styles)(SysCard);
+export default withStyles(SysCard, styles);

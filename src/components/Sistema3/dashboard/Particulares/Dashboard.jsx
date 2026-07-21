@@ -1,4 +1,4 @@
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import PropTypes from 'prop-types'
 import { Grid, Paper } from '@mui/material'
 // import AnioResolucionSanciones from "./AnioResolucionSanciones";
@@ -56,15 +56,17 @@ const styles = theme => ({
     color: theme.palette.text.linkColor,
     wordBreak: 'break-word'
   }
-})
+});
 
 function Dashboard (props) {
   const { classes } = props
   return (
     <div id='s3pgraf' className={classes.root}>
       <Paper elevation={1} className={classes.paper}>
-        <Grid container spacing={3} justifyContent='center' className={classes.aux}>
-          <Grid item xs={4}>
+        <Grid container spacing={3} className={classes.aux} sx={{
+          justifyContent: 'center'
+        }}>
+          <Grid size={4}>
             <TotalRows />
           </Grid>
           {
@@ -75,10 +77,10 @@ function Dashboard (props) {
 
                          */
                     }
-          <Grid item xs={4}>
+          <Grid size={4}>
             <TotalParticulares />
           </Grid>
-          <Grid item xs={4}>
+          <Grid size={4}>
             <TotalMultas />
           </Grid>
           {/*
@@ -108,7 +110,7 @@ function Dashboard (props) {
                          */
                     }
 
-          <Grid item xs={12}>
+          <Grid size={12}>
             <FooterPage
               dataSet='Proveedores y contratistas sancionados'
               provider='Secretaría de la Función Pública'
@@ -118,11 +120,11 @@ function Dashboard (props) {
         </Grid>
       </Paper>
     </div>
-  )
+  );
 }
 
 Dashboard.propTypes = {
   classes: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(Dashboard)
+export default withStyles(Dashboard, styles);

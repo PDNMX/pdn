@@ -1,26 +1,26 @@
-import makeStyles from '@mui/styles/makeStyles'
+import { makeStyles } from 'tss-react/mui';
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 
 import style from '../styleSecciones'
 import DatosReservados from '../DatosReservados'
 
-const useStyles = makeStyles(style)
+const useStyles = makeStyles()(style);
 
 const Domicilio = ({ titulo }) => {
-  const classes = useStyles()
+  const { classes } = useStyles()
 
   return (
     <Grid container spacing={2} className={classes.rootPrincipal}>
-      <Grid item xs={12}>
+      <Grid size={12}>
         <Typography className={classes.tituloSeccion} align='center'>
           {titulo}
         </Typography>
       </Grid>
-      <Grid item xs={12}>
+      <Grid size={12}>
         <DatosReservados />
       </Grid>
     </Grid>
-  )
+  );
 }
 export default Domicilio

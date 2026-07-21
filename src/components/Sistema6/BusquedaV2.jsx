@@ -1,5 +1,5 @@
 import React from 'react'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 // import InputBusqueda from './InputBusqueda';
 import TablaResultados from './TablaResultados'
 import axios from 'axios'
@@ -10,7 +10,7 @@ const styles = () => ({
   root: {
     flexGrow: 1
   }
-})
+});
 
 const Busqueda = props => {
   const [state, setState] = React.useState({
@@ -355,4 +355,4 @@ const Busqueda = props => {
   )
 }
 
-export default withStyles(styles)(Busqueda)
+export default withStyles(Busqueda, styles);

@@ -2,8 +2,8 @@ import { Grid, LinearProgress, Paper, TextField, FormControl, MenuItem } from '@
 import Typography from '@mui/material/Typography'
 
 import { lighten } from '@mui/material/styles'
-import makeStyles from '@mui/styles/makeStyles'
-import withStyles from '@mui/styles/withStyles'
+import { makeStyles } from 'tss-react/mui';
+import { withStyles } from 'tss-react/mui';
 import style from './styleSecciones'
 
 import log from 'loglevel'
@@ -31,9 +31,9 @@ export const info = msg => {
   log.info(msg)
 }
 
-const useStyles = makeStyles(style)
+const useStyles = makeStyles()(style);
 
-const BorderLinearProgress = withStyles({
+const BorderLinearProgress = withStyles(LinearProgress, {
   root: {
     height: 10,
     backgroundColor: lighten('#856404', 0.5)
@@ -42,7 +42,7 @@ const BorderLinearProgress = withStyles({
     borderRadius: 20,
     backgroundColor: '#004085'
   }
-})(LinearProgress)
+});
 
 export const getMoneda = valor => {
   console.log("valor: ", valor);
@@ -81,14 +81,14 @@ export const getMorales = elements => {
 
 /************** CSS *******************/
 /************** Expansion *******************/
-export const sumary = makeStyles(() => ({
+export const sumary = makeStyles()(() => ({
   root: {
     backgroundColor: '#83dfff',
     textTransform: 'uppercase'
   }
-}))
+}));
 
-export const expansion = makeStyles(theme => ({
+export const expansion = makeStyles()(theme => ({
   root: {
     width: '100%'
   },
@@ -102,79 +102,91 @@ export const expansion = makeStyles(theme => ({
     fontWeight: theme.typography.fontWeightRegular,
     color: theme.palette.text.primary
   }
-}))
+}));
 /************** Expansion *******************/
 export function Ubicacion(props) {
-  const classes = useStyles()
+  const { classes } = useStyles()
   // const { pais, entidadFederativa } = props.ubicacion
 
   const pais = typeof props.ubicacion === 'undefined' ? undefined : props.ubicacion.pais
   const entidadFederativa = typeof props.ubicacion === 'undefined' ? undefined : props.ubicacion.entidadFederativa
   return (
-    <Grid item xs={12}>
+    <Grid size={12}>
       <Grid container spacing={1}>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Typography className={classes.tituloSubSeccion} align='center'>
             LUGAR DONDE SE UBICA
           </Typography>
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 4
+          }}>
           <Typography className={classes.cardTitle}>UBICACIÓN:</Typography>
           <Typography className={classes.card}>{typeof pais === 'undefined' ? 'DESCONOCIDO' : pais === 'MX' ? 'EN MÉXICO' : 'EN EL EXTRANJERO'}</Typography>
         </Grid>
         {pais === 'MX' ? (
-          <Grid item xs={12} md={8}>
+          <Grid
+            size={{
+              xs: 12,
+              md: 8
+            }}>
             <Typography className={classes.cardTitle}>ENTIDAD FEDERATIVA:</Typography>
             <Typography className={classes.card}>{entidadFederativa?.valor}</Typography>
           </Grid>
         ) : (
-          <Grid item xs={12} md={8}>
+          <Grid
+            size={{
+              xs: 12,
+              md: 8
+            }}>
             <Typography className={classes.cardTitle}>PAÍS DONDE SE LOCALIZA:</Typography>
             <Typography className={classes.card}>{pais}</Typography>
           </Grid>
         )}
       </Grid>
     </Grid>
-  )
+  );
 }
 
 export function Porcentaje(props) {
-  const classes = useStyles()
+  const { classes } = useStyles()
   const { porcentaje, titulo } = props
 
   return (
-    <Grid item xs={12}>
+    <Grid size={12}>
       <Typography className={classes.cardTitle}>{titulo}:</Typography>
       <Typography component='div' className={classes.card} align='center'>
         <strong>{porcentaje}%</strong> <br />
         <BorderLinearProgress variant='determinate' value={porcentaje} />
       </Typography>
     </Grid>
-  )
+  );
 }
 
 export function Divider() {
   return (
-    <Grid item xs={12}>
+    <Grid size={12}>
       <hr style={{ border: '4px solid #f2f2f2' }} />
     </Grid>
-  )
+  );
 }
 
 export function DomicilioReservado() {
   return (
-    <Grid item xs={12}>
+    <Grid size={12}>
       <hr style={{ border: '4px solid #f2f2f2' }} />
     </Grid>
-  )
+  );
 }
 
 export function Disclaimer() {
-  const sel = useStyles()
+  const { classes: sel } = useStyles()
   return (
     <Paper className={sel.rootPrincipal}>
       <Grid container spacing={2}>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Typography component='div' className={sel.alertSuccess}>
             Estimado-a ciudadano-a:
             <br />
@@ -199,48 +211,76 @@ export function Disclaimer() {
         </Grid>
       </Grid>
     </Paper>
-  )
+  );
 }
 
 export function CompDomicilio(props) {
-  const classes = useStyles()
+  const { classes } = useStyles()
   const { domicilioMexico, domicilioExtranjero } = props
 
   return (
-    <Grid item xs={12}>
+    <Grid size={12}>
       {domicilioMexico && (
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Grid container spacing={1}>
-            <Grid item xs={12}>
+            <Grid size={12}>
               <Typography className={classes.cardTitle} align='center'>
                 DOMICILIO EN MÉXICO
               </Typography>
             </Grid>
-            <Grid item xs={12} md={3}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 3
+              }}>
               <Typography className={classes.cardTitle}>CALLE</Typography>
               <Typography className={classes.card}>{domicilioMexico.calle}</Typography>
             </Grid>
-            <Grid item xs={12} md={3}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 3
+              }}>
               <Typography className={classes.cardTitle}>NÚMERO EXTERIOR</Typography>
               <Typography className={classes.card}>{domicilioMexico.numeroExterior}</Typography>
             </Grid>
-            <Grid item xs={12} md={3}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 3
+              }}>
               <Typography className={classes.cardTitle}>NÚMERO INTERIOR</Typography>
               <Typography className={classes.card}>{domicilioMexico.numeroInterior}</Typography>
             </Grid>
-            <Grid item xs={12} md={3}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 3
+              }}>
               <Typography className={classes.cardTitle}>COLONIA/LOCALIDAD</Typography>
               <Typography className={classes.card}>{domicilioMexico.coloniaLocalidad}</Typography>
             </Grid>
-            <Grid item xs={12} md={3}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 3
+              }}>
               <Typography className={classes.cardTitle}>MUNICIPIO/ALCALDÍA</Typography>
               <Typography className={classes.card}>{domicilioMexico.municipioAlcaldia?.valor}</Typography>
             </Grid>
-            <Grid item xs={12} md={3}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 3
+              }}>
               <Typography className={classes.cardTitle}>ENTIDAD FEDERATIVA</Typography>
               <Typography className={classes.card}>{domicilioMexico.entidadFederativa?.valor}</Typography>
             </Grid>
-            <Grid item xs={12} md={3}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 3
+              }}>
               <Typography className={classes.cardTitle}>CÓDIGO POSTAL</Typography>
               <Typography className={classes.card}>{domicilioMexico.codigoPostal}</Typography>
             </Grid>
@@ -248,38 +288,66 @@ export function CompDomicilio(props) {
         </Grid>
       )}
       {domicilioExtranjero && (
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Grid container spacing={1}>
-            <Grid item xs={12}>
+            <Grid size={12}>
               <Typography className={classes.cardTitle} align='center'>
                 DOMICILIO EN EL EXTRANJERO
               </Typography>
             </Grid>
-            <Grid item xs={12} md={3}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 3
+              }}>
               <Typography className={classes.cardTitle}>CALLE</Typography>
               <Typography className={classes.card}>{domicilioExtranjero.calle}</Typography>
             </Grid>
-            <Grid item xs={12} md={3}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 3
+              }}>
               <Typography className={classes.cardTitle}>NÚMERO EXTERIOR</Typography>
               <Typography className={classes.card}>{domicilioExtranjero.numeroExterior}</Typography>
             </Grid>
-            <Grid item xs={12} md={3}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 3
+              }}>
               <Typography className={classes.cardTitle}>NÚMERO INTERIOR</Typography>
               <Typography className={classes.card}>{domicilioExtranjero.numeroInterior}</Typography>
             </Grid>
-            <Grid item xs={12} md={3}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 3
+              }}>
               <Typography className={classes.cardTitle}>CIUDAD/LOCALIDAD</Typography>
               <Typography className={classes.card}>{domicilioExtranjero.ciudadLocalidad}</Typography>
             </Grid>
-            <Grid item xs={12} md={3}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 3
+              }}>
               <Typography className={classes.cardTitle}>ESTADO/PROVINCIA</Typography>
               <Typography className={classes.card}>{domicilioExtranjero.estadoProvincia}</Typography>
             </Grid>
-            <Grid item xs={12} md={3}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 3
+              }}>
               <Typography className={classes.cardTitle}>PAÍS</Typography>
               <Typography className={classes.card}>{domicilioExtranjero.pais}</Typography>
             </Grid>
-            <Grid item xs={12} md={3}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 3
+              }}>
               <Typography className={classes.cardTitle}>CÓDIGO POSTAL</Typography>
               <Typography className={classes.card}>{domicilioExtranjero.codigoPostal}</Typography>
             </Grid>
@@ -287,7 +355,7 @@ export function CompDomicilio(props) {
         </Grid>
       )}
     </Grid>
-  )
+  );
 }
 
 export function SelectElement({ formControl, value, handle, data, label, name }) {

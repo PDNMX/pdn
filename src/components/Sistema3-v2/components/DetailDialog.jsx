@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Dialog,
   DialogTitle,
@@ -11,7 +10,7 @@ import {
 } from '@mui/material';
 import { Close } from '@mui/icons-material';
 import PropTypes from 'prop-types';
-import { withStyles } from '@mui/styles';
+import { withStyles } from 'tss-react/mui';
 import commonStyles from '../commonStyles';
 
 const styles = theme => ({
@@ -25,10 +24,18 @@ const DetailDialog = ({ open, onClose, data, classes, tipoFalta }) => {
     if (!value) return null;
     return (
       <Grid container spacing={1}>
-        <Grid item xs={12} sm={4}>
+        <Grid
+          size={{
+            xs: 12,
+            sm: 4
+          }}>
           <Typography className={classes.label}>{label}:</Typography>
         </Grid>
-        <Grid item xs={12} sm={8}>
+        <Grid
+          size={{
+            xs: 12,
+            sm: 8
+          }}>
           <Typography className={classes.value}>{value}</Typography>
         </Grid>
       </Grid>
@@ -69,7 +76,9 @@ const DetailDialog = ({ open, onClose, data, classes, tipoFalta }) => {
             Falta Cometida
           </Typography>
           {data.faltaCometida?.map((falta, index) => (
-            <Box key={index} mb={1}>
+            <Box key={index} sx={{
+              mb: 1
+            }}>
               {renderField('Tipo', falta.valor)}
               {renderField('Descripción', falta.descripcionHechos)}
             </Box>
@@ -84,10 +93,18 @@ const DetailDialog = ({ open, onClose, data, classes, tipoFalta }) => {
           {renderField('Fecha de Resolución', data.resolucion?.fechaResolucion)}
           {data.resolucion?.urlResolucion && (
             <Grid container spacing={1}>
-              <Grid item xs={12} sm={4}>
+              <Grid
+                size={{
+                  xs: 12,
+                  sm: 4
+                }}>
                 <Typography className={classes.label}>URL de Resolución:</Typography>
               </Grid>
-              <Grid item xs={12} sm={8}>
+              <Grid
+                size={{
+                  xs: 12,
+                  sm: 8
+                }}>
                 <Link variant="body1" href={data.resolucion.urlResolucion} underline="hover" target="_blank" rel="noopener noreferrer">
                   Ver resolución
                 </Link>
@@ -101,7 +118,9 @@ const DetailDialog = ({ open, onClose, data, classes, tipoFalta }) => {
             Sanciones
           </Typography>
           {data.tipoSancion?.map((sancion, index) => (
-            <Box key={index} mb={2}>
+            <Box key={index} sx={{
+              mb: 2
+            }}>
               {renderField('Tipo', sancion.clave)}
               {sancion.inhabilitacion && (
                 <>
@@ -129,4 +148,4 @@ DetailDialog.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(DetailDialog);
+export default withStyles(DetailDialog, styles);

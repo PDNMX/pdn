@@ -1,4 +1,4 @@
-import withStyles from '@mui/styles/withStyles';
+import { withStyles } from 'tss-react/mui';
 import ExpansionPanels from './ExpansionPanels';
 import HeaderV2 from '../HomeV2/HeaderV2';
 import pdnRoutes from '../../routes';
@@ -51,8 +51,10 @@ const Normatividad = props => {
     return (
         <div className={classes.root}>
             <HeaderV2 section={section}/>
-            <Grid container spacing={0} justifyContent="center">
-                <Grid item xs={12} className={classes.rootItem}>
+            <Grid container spacing={0} sx={{
+                justifyContent: "center"
+            }}>
+                <Grid className={classes.rootItem} size={12}>
                     <Paper className={classes.paper} elevation={15}>
                         <Box className={classes.box}>
 
@@ -62,9 +64,8 @@ const Normatividad = props => {
                 </Grid>
 
             </Grid>
-
         </div>
     );
 }
 
-export default withStyles(styles)(Normatividad);
+export default withStyles(Normatividad, styles);

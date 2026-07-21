@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import Divider from '@mui/material/Divider'
 import Grid from '@mui/material/Grid'
 import DescripcionEstandar from './DescripcionEstandar'
@@ -22,12 +22,14 @@ class Declaraciones extends React.Component {
 
     return (
       <>
-        <Grid container spacing={0} justifyContent='center'>
-          <Grid item xs={12}>
+        <Grid container spacing={0} sx={{
+          justifyContent: 'center'
+        }}>
+          <Grid size={12}>
             <HeaderV2 section={section} />
           </Grid>
 
-          <Grid item xs={12} style={{ maxWidth: 1190, marginTop: 50, marginBottom: 50 }}>
+          <Grid style={{ maxWidth: 1190, marginTop: 50, marginBottom: 50 }} size={12}>
             <Paper className={classes.paper_search} elevation={15}>
               <div style={{ maxWidth: 900, paddingTop: '50px', paddingBottom: '50px', margin: '0 auto' }}>
                 <DescripcionEstandar />
@@ -60,12 +62,14 @@ class Declaraciones extends React.Component {
           </Grid>
         </Grid>
         <div className={classes.root}>
-          <Grid container spacing={0} justifyContent='center' className={classes.container}>
-            <Grid item xs={12} className={classes.item} />
+          <Grid container spacing={0} className={classes.container} sx={{
+            justifyContent: 'center'
+          }}>
+            <Grid className={classes.item} size={12} />
           </Grid>
         </div>
       </>
-    )
+    );
   }
 }
 
@@ -73,4 +77,4 @@ Declaraciones.propTypes = {
   classes: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(Declaraciones)
+export default withStyles(Declaraciones, styles);

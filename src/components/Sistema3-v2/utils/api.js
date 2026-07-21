@@ -1,17 +1,13 @@
 export const fetchProviders = async baseUrl => {
-  try {
-    const response = await fetch(`${baseUrl}/api/v1/providers`);
-    if (!response.ok) throw new Error('Error al obtener los proveedores');
+  const response = await fetch(`${baseUrl}/api/v1/providers`);
+  if (!response.ok) throw new Error('Error al obtener los proveedores');
 
-    const result = await response.json();
-    if (!result.success || !Array.isArray(result.data)) {
-      throw new Error('Formato de datos inválido');
-    }
-
-    return result.data;
-  } catch (err) {
-    throw err;
+  const result = await response.json();
+  if (!result.success || !Array.isArray(result.data)) {
+    throw new Error('Formato de datos inválido');
   }
+
+  return result.data;
 };
 
 export const checkProviderAvailability = async (baseUrl, endpoint, providerId) => {
@@ -21,7 +17,7 @@ export const checkProviderAvailability = async (baseUrl, endpoint, providerId) =
       providerId,
       available: response.ok,
     };
-  } catch (error) {
+  } catch {
     return {
       providerId,
       available: false,

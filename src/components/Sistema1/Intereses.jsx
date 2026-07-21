@@ -1,5 +1,5 @@
 import Paper from '@mui/material/Paper'
-import makeStyles from '@mui/styles/makeStyles'
+import { makeStyles } from 'tss-react/mui';
 import Grid from '@mui/material/Grid'
 
 import MenuLateral from './MenuLateral'
@@ -93,15 +93,15 @@ const Menu = data => {
   ]
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles()(theme => ({
   root: {
     flexGrow: 1,
     width: '100%',
     backgroundColor: theme.palette.background.opaque
   }
-}))
+}));
 
-const styles = makeStyles(style)
+const styles = makeStyles()(style);
 
 function opcion(valor, data) {
   const { participacion, participacionTomaDecisiones, apoyos, representacion, clientesPrincipales, beneficiosPrivados, fideicomisos } = data
@@ -128,8 +128,8 @@ function opcion(valor, data) {
 }
 
 export default function Intereses({ data, value, setValue }) {
-  const classes = useStyles()
-  const classes2 = styles()
+  const { classes } = useStyles()
+  const { classes: classes2 } = styles()
 
   if (typeof data === 'undefined') {
     //no operation
@@ -191,15 +191,24 @@ export default function Intereses({ data, value, setValue }) {
   return data ? (
     <Paper square className={classes.root}>
       <Grid container spacing={0}>
-        <Grid item xs={12} md={2} className={classes2.menulateral_fondo}>
+        <Grid
+          className={classes2.menulateral_fondo}
+          size={{
+            xs: 12,
+            md: 2
+          }}>
           <MenuLateral value={value} setValue={setValue} opciones={Menu(data)} />
         </Grid>
-        <Grid item xs={12} md={10}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 10
+          }}>
           <ErrorBoundary>{opcion(value, data)}</ErrorBoundary>
         </Grid>
       </Grid>
     </Paper>
   ) : (
     <Disclaimer />
-  )
+  );
 }

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import withStyles from '@mui/styles/withStyles';
+import { withStyles } from 'tss-react/mui';
 import { Typography, Link } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import legislacion_icono from '../../assets/rediseno2023/imgs/iconos/menu/ico_sistemas123.svg';
@@ -21,18 +21,11 @@ const styles = theme => ({
   },
   item: {
     borderStyle: 'solid',
-    borderWidth: 1,
-    borderColor: '#c0c0c0',
     minWidth: theme.spacing(25),
-    transition: 'height 2s',
-    height: '70%',
-    borderRadius: '8px',
     borderWidth: 0,
     borderColor: '#c0c0c0',
     maxWidth: theme.spacing(25),
-    transition: 'height 2s',
     height: '70%',
-    borderRadius: '8px',
     borderRadius: '0.6em',
     boxShadow:
       '0 13px 27px -5px hsla(240, 30.1%, 28%, 0.25), 0 8px 16px -8px hsla(0, 0%, 0%, 0.3), 0 -6px 16px -6px hsla(0, 0%, 0%, 0.03)',
@@ -88,9 +81,7 @@ const InterconexionMenu = props => {
         justifyContent: 'center',
       }}
     >
-
-
-      <Link className={classes.link} href="/mapa-sla/" onClick={() => ReactGA.pageview('/mapa-sla')}>
+      <Link className={classes.link} href="/mapa-sla/" onClick={() => ReactGA.send({ hitType: 'pageview', page: '/mapa-sla' })}>
         <Box
           className={`${classes.item}`}
           sx={{
@@ -101,12 +92,13 @@ const InterconexionMenu = props => {
         >
           <div className={`${classes.opc} `}>
             <img src={legislacion_icono} alt="Legislación" className={classes.icon} />
-            <Typography color="#3a1c3a">Legislación</Typography>
+            <Typography sx={{
+              color: "#3a1c3a"
+            }}>Legislación</Typography>
           </div>
         </Box>
       </Link>
-
-      <Link className={classes.link} href="/mapa-avance/" onClick={() => ReactGA.pageview('/mapa-avance')}>
+      <Link className={classes.link} href="/mapa-avance/" onClick={() => ReactGA.send({ hitType: 'pageview', page: '/mapa-avance' })}>
         <Box
           className={`${classes.item}`}
           sx={{
@@ -117,11 +109,12 @@ const InterconexionMenu = props => {
         >
           <div className={`${classes.opc} `}>
             <img src={mapa_s2s3_icono} alt="Sistemas 1, 2, 3 y 6" className={classes.icon} />
-            <Typography color="#3a1c3a">Sistemas 1, 2, 3 y 6</Typography>
+            <Typography sx={{
+              color: "#3a1c3a"
+            }}>Sistemas 1, 2, 3 y 6</Typography>
           </div>
         </Box>
       </Link>
-
       <Link className={classes.link} component={RouterLink} to="/cobertura">
         <Box
           className={`${classes.item}`}
@@ -133,12 +126,13 @@ const InterconexionMenu = props => {
         >
           <div className={`${classes.opc} `}>
             <img src={icon_cobertura} alt="Cobertura" className={classes.icon} />
-            <Typography color="#3a1c3a">Cobertura</Typography>
+            <Typography sx={{
+              color: "#3a1c3a"
+            }}>Cobertura</Typography>
           </div>
         </Box>
       </Link>
-
-      <Link className={classes.link} href="https://cobertura.plataformadigitalnacional.org" onClick={() => ReactGA.pageview('/tablero-cobertura')}>
+      <Link className={classes.link} href="https://cobertura.plataformadigitalnacional.org" onClick={() => ReactGA.send({ hitType: 'pageview', page: '/tablero-cobertura' })}>
         <Box
           className={`${classes.item}`}
           sx={{
@@ -149,11 +143,13 @@ const InterconexionMenu = props => {
         >
           <div className={`${classes.opc} `}>
             <img src={tablero_interconexion} alt="Tablero" className={classes.icon} />
-            <Typography color="#3a1c3a">Tablero Estadístico de Interconexión Nacional</Typography>
+            <Typography sx={{
+              color: "#3a1c3a"
+            }}>Tablero Estadístico de Interconexión Nacional</Typography>
           </div>
         </Box>
       </Link>
     </Box>
   );
 };
-export default withStyles(styles)(InterconexionMenu);
+export default withStyles(InterconexionMenu, styles);

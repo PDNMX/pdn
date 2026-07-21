@@ -1,6 +1,6 @@
 import React from 'react'
-import makeStyles from '@mui/styles/makeStyles'
-import withStyles from '@mui/styles/withStyles'
+import { makeStyles } from 'tss-react/mui';
+import { withStyles } from 'tss-react/mui';
 import MuiExpansionPanel from '@mui/material/Accordion'
 import MuiExpansionPanelSummary from '@mui/material/AccordionSummary'
 import MuiExpansionPanelDetails from '@mui/material/AccordionDetails'
@@ -18,16 +18,16 @@ import IconS6 from '../../assets/rediseno2023/imgs/iconos/sistemas/ico_s6.svg'
 import IconNormativa from '../../assets/rediseno2023/imgs/iconos/menu/ico_norma.svg'
 
 
-const Accordion = withStyles(theme => ({
+const Accordion = withStyles(MuiExpansionPanel, theme => ({
     root: {
         background: "none",
         border: '1px solid' + theme.palette.background.opaque,
         boxShadow: 'none'
     },
     expanded: {}
-}))(MuiExpansionPanel)
+}));
 
-const AccordionSummary = withStyles(theme => ({
+const AccordionSummary = withStyles(MuiExpansionPanelSummary, theme => ({
     root: {
         backgroundColor: "none",
         minHeight: 56,
@@ -42,18 +42,18 @@ const AccordionSummary = withStyles(theme => ({
     expandIconWrapper: {
         color: theme.palette.secondary.main
     }
-}))(MuiExpansionPanelSummary)
+}));
 
-const AccordionDetails = withStyles(theme => ({
+const AccordionDetails = withStyles(MuiExpansionPanelDetails, theme => ({
     root: {
         padding: theme.spacing(2),
         color: theme.palette.text.primary,
         backgroundColor: theme.palette.background.opaque,
         borderTop: '1px solid' + theme.palette.secondary.main
     }
-}))(MuiExpansionPanelDetails)
+}));
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles()(theme => ({
     link: {
         textDecoration: 'none',
         color: theme.palette.text.linkColor,
@@ -86,7 +86,7 @@ const useStyles = makeStyles(theme => ({
             opacity: .8
         }
     }
-}))
+}));
 
 export default function CustomizedExpansionPanels() {
 
@@ -115,7 +115,7 @@ export default function CustomizedExpansionPanels() {
         }
     };
 
-    const classes = useStyles();
+    const { classes } = useStyles();
 
     return (
         <div>

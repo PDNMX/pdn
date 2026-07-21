@@ -1,4 +1,4 @@
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import { Box, Paper, Divider, Grid, Tooltip, Typography, Button } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
 import DownloadItem from '../Compartidos/DownloadItem'
@@ -9,13 +9,13 @@ const Glosario = props => {
   const data = servidores.servidores.find(e => e.id === props.id)
   return (
     <>
-      <Typography color='inherit'>{data.title}</Typography>
+      <Typography sx={{ color: 'inherit' }}>{data.title}</Typography>
       <em>{data.description}</em>
     </>
   )
 }
 
-const HtmlTooltip = withStyles(theme => ({
+const HtmlTooltip = withStyles(Tooltip, theme => ({
   tooltip: {
     backgroundColor: '#f5f5f9',
     color: 'rgba(0, 0, 0, 0.87)',
@@ -23,7 +23,7 @@ const HtmlTooltip = withStyles(theme => ({
     fontSize: theme.typography.pxToRem(12),
     border: '1px solid #dadde9'
   }
-}))(Tooltip)
+}));
 
 const styles = theme => ({
   root: {
@@ -68,7 +68,7 @@ const styles = theme => ({
   btnBack: {
     color: theme.palette.primary.dark
   }
-})
+});
 
 const FichaDetalle = props => {
   const { closeDialog, servidorPublico, classes } = props
@@ -78,7 +78,9 @@ const FichaDetalle = props => {
     <Paper className={classes.root} elevation={3}>
       <Box sx={{ display: 'flex', flexDirection: 'row' }}>
         <Box sx={{ flexGrow: 1 }}>
-          <Typography paragraph variant='h5'>
+          <Typography variant='h5' sx={{
+            marginBottom: "16px"
+          }}>
             FICHA DE LA PERSONA SERVIDORA PÚBLICA
           </Typography>
         </Box>
@@ -87,9 +89,8 @@ const FichaDetalle = props => {
           <Button startIcon={<CloseIcon />} onClick={() => closeDialog()} variant='text' className={classes.btnBack} />
         </Box>
       </Box>
-
       <Grid container spacing={0}>
-        <Grid item xs={6}>
+        <Grid size={6}>
           <Typography component='div'>
 
             <HtmlTooltip title={<Glosario id={1} />}>
@@ -102,24 +103,24 @@ const FichaDetalle = props => {
           </Typography>
         </Grid>
 
-        <Grid item xs={6}>
+        <Grid size={6}>
           <Typography>
             <HtmlTooltip title={<Glosario id={0} />}>
               <b>Institución / Dependencia</b>
             </HtmlTooltip>
           </Typography>
 
-          <Typography paragraph className={classes.sangria}>
+          <Typography className={classes.sangria} sx={{
+            marginBottom: "16px"
+          }}>
             {institucionDependencia.nombre}
           </Typography>
 
         </Grid>
       </Grid>
-
       <Divider className={classes.divider} />
-
       <Grid container spacing={0}>
-        <Grid item xs={6}>
+        <Grid size={6}>
           <Typography>
             <b>Nivel de responsabilidad</b>
           </Typography>
@@ -135,7 +136,7 @@ const FichaDetalle = props => {
           </ul>
         </Grid>
 
-        <Grid item xs={6}>
+        <Grid size={6}>
           <Typography>
             <b>Interviene en</b>
           </Typography>
@@ -151,13 +152,11 @@ const FichaDetalle = props => {
           </ul>
         </Grid>
       </Grid>
-
       <Box sx={{ display: 'flex', justifyContent: 'center', padding: 2 }}>
         <DownloadItem item={servidorPublico} />
       </Box>
-
     </Paper>
-  )
+  );
 }
 
-export default withStyles(styles)(FichaDetalle)
+export default withStyles(FichaDetalle, styles);

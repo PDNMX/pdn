@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Paper, Typography, Box, CircularProgress } from '@mui/material';
 import { GavelOutlined } from '@mui/icons-material';
@@ -117,17 +117,15 @@ const SancionesVigentes = ({ providers }) => {
       >
         <GavelOutlined sx={{ fontSize: 150 }} />
       </Box>
-      
-      <Box 
-        display="flex" 
-        flexDirection="column" 
-        alignItems="flex-start"
-        sx={{ 
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start",
           p: 3,
           position: 'relative',
           zIndex: 1
-        }}
-      >
+        }}>
         <Typography 
           variant="body2" 
           color="textSecondary"

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 const AnimatedCanvas = () => {
   const canvasRef = useRef(null);

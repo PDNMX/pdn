@@ -4,7 +4,7 @@ import {
   TextField,
   MenuItem,
   Select
-} from '@mui/material/'
+} from '@mui/material'
 import { Controller, useFormContext } from 'react-hook-form'
 import { ThemeProvider } from '@mui/material/styles'
 import ThemeV2 from '../../../../ThemeV2'

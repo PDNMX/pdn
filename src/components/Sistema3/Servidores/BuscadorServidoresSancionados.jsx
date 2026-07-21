@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import BusquedaServidor from './BusquedaServidor'
 import Grid from '@mui/material/Grid'
 import { Typography, Box } from '@mui/material'
@@ -53,7 +53,7 @@ const styles = theme => ({
     borderColor: theme.palette.background.border,
     borderRadius: '0px 10px 10px 10px'
   }
-})
+});
 
 function BuscadorServidoresSancionados (props) {
   const { classes } = props
@@ -62,14 +62,20 @@ function BuscadorServidoresSancionados (props) {
       {/* TEXTO */}
       <Paper elevation={15} className={classes.paper}>
         <Grid container className={classes.container}>
-          <Grid item xs={12} style={{ maxWidth: 1200, margin: 0 }}>
-            <Box p={1}>
+          <Grid style={{ maxWidth: 1200, margin: 0 }} size={12}>
+            <Box sx={{
+              p: 1
+            }}>
             <Typography>
               <b>Aquí puedes consultar:</b>
             </Typography>
             <ul className={classes.ul}>
-              <li className={classes.li}><Typography display='inline'>Datos de la sanción firme impuesta a la persona servidora pública como: plazo, tipo de falta y la causa.</Typography></li>
-              <li className={classes.li}><Typography display='inline'>Información de la persona servidora pública sancionada como:  nombre, puesto e institución en donde se realizó la falta o hecho de corrupción.</Typography></li>
+              <li className={classes.li}><Typography sx={{
+                display: 'inline'
+              }}>Datos de la sanción firme impuesta a la persona servidora pública como: plazo, tipo de falta y la causa.</Typography></li>
+              <li className={classes.li}><Typography sx={{
+                display: 'inline'
+              }}>Información de la persona servidora pública sancionada como:  nombre, puesto e institución en donde se realizó la falta o hecho de corrupción.</Typography></li>
               {/* <li className={classes.li}>
                                 <Typography display='inline'>
                                     Obtén los datos de la sanción impuesta al servidor: plazo, tipo de falta,
@@ -82,24 +88,28 @@ function BuscadorServidoresSancionados (props) {
           </Grid>
         </Grid>
         {/* BUSCADOR */}
-        <Grid container justifyContent='center' className={classes.container}>
-          <Grid item xs={12}>
+        <Grid container className={classes.container} sx={{
+          justifyContent: 'center'
+        }}>
+          <Grid size={12}>
             <BusquedaServidor />
           </Grid>
         </Grid>
       </Paper>
       {/* DESCARGA */}
-      <Grid container spacing={0} justifyContent='center'>
-        <Grid item xs={12} className={classes.itemD}>
+      <Grid container spacing={0} sx={{
+        justifyContent: 'center'
+      }}>
+        <Grid className={classes.itemD} size={12}>
           <Descarga url={process.env.REACT_APP_BULK_S3_SERVIDORES} tipoGA='bulk-s3SP' />
         </Grid>
       </Grid>
     </div>
-  )
+  );
 }
 
 BuscadorServidoresSancionados.propTypes = {
   classes: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(BuscadorServidoresSancionados)
+export default withStyles(BuscadorServidoresSancionados, styles);

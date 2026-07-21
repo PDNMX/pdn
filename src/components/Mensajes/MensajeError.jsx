@@ -1,5 +1,5 @@
 import React from 'react'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 import { Grid, Typography, Modal } from '@mui/material'
 
 const styles = theme => ({
@@ -31,7 +31,7 @@ const styles = theme => ({
     textAlign: 'center',
     color: theme.palette.redColor
   }
-})
+});
 
 function getModalStyle () {
   const top = 50
@@ -55,20 +55,19 @@ class MensajeError extends React.Component {
           onClose={() => this.props.handleClose()}
         >
           <div style={getModalStyle()} className={classes.paperModal}>
-            <Grid container justify='center'>
-              <Grid item xs={12}>
+            <Grid container sx={{ justifyContent: 'center' }}>
+              <Grid size={12}>
                 <Typography variant='h5' className={classes.titleError}>Error</Typography>
               </Grid>
-              <Grid item xs={12}>
+              <Grid size={12}>
                 <Typography variant='subtitle1'>{mensaje}</Typography>
               </Grid>
             </Grid>
           </div>
         </Modal>
-
       </div>
-    )
+    );
   }
 }
 
-export default withStyles(styles)(MensajeError)
+export default withStyles(MensajeError, styles);

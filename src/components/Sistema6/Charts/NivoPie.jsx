@@ -43,7 +43,7 @@ const data = [
 
 const MyResponsivePie = ({ data, dataType }) => (
   // dataType => Counts || Amounts
-  <ResponsivePie
+  (<ResponsivePie
     data={data}
     colors={{ scheme: 'set2' }}
     margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
@@ -170,7 +170,7 @@ const MyResponsivePie = ({ data, dataType }) => (
         ]
       }
     ]}
-  />
+  />)
 )
 
 export default MyResponsivePie

@@ -1,6 +1,6 @@
 import React from 'react'
-import { withStyles } from '@mui/styles'
-import { Typography, List, ListItem, ListItemText, Alert } from '@mui/material'
+import { withStyles } from 'tss-react/mui';
+import { Typography, Alert } from '@mui/material'
 import axios from 'axios'
 import { ResponsiveBar } from '@nivo/bar'
 import ModalInfo from '../../Compartidos/Dashboards/ModalInfo'
@@ -88,44 +88,7 @@ const styles = theme => ({
     paddingRight: theme.spacing(1),
     marginBottom: theme.spacing(3)
   }
-})
-
-const BarTotalsLayer = (props) => {
-  const labelOffset = 10
-  const labelFontSize = 12
-  if (props.bars.length === 0) return null
-  // compute totals for each index/bar
-  const totals = {}
-  const bandwidth = props.bars[0].width
-  props.bars.forEach((bar) => {
-    const indexValue = bar.data.indexValue
-    if (!(indexValue in totals)) {
-      totals[indexValue] = 0
-    }
-    if (!bar.data.hidden) {
-      totals[indexValue] += bar.data.value
-    }
-  })
-  // place text elements above the bars
-  const labels = Object.keys(totals).map((indexValue) => {
-    const x = props.xScale(indexValue) + bandwidth / 2
-    const y = props.yScale(totals[indexValue]) - labelOffset
-    return (
-      <text
-        key={'total.' + indexValue}
-        x={x}
-        y={y}
-        textAnchor='middle'
-        fontWeight='bold'
-        fontSize={labelFontSize}
-      >
-        {totals[indexValue]}
-      </text>
-    )
-  })
-  return <>{labels}</>
-}
-
+});
 
 const aux = () => axios({
   url: process.env.REACT_APP_S2_BACKEND + '/api/v0/getAgrupacionEjercicio',
@@ -165,7 +128,9 @@ const Ejercicio = props => {
   return (
     <div  style={{ height: '500px' }}>
       <ModalInfo open={open} setOpen={setOpen}>
-        <Typography variant='h6' className={classes.titulo} paragraph>
+        <Typography variant='h6' className={classes.titulo} sx={{
+          marginBottom: "16px"
+        }}>
           Registros de personas servidoras públicas que intervinieron en procesos de contrataciones por año
         </Typography>
         <Typography variant='body1'>
@@ -231,9 +196,8 @@ const Ejercicio = props => {
                       <Alert severity='error'> No disponible por el momento, intente más tarde. </Alert>
                 }
       </ContainerChart>
-
     </div>
-  )
+  );
 }
 
-export default withStyles(styles)(Ejercicio)
+export default withStyles(Ejercicio, styles);

@@ -8,12 +8,12 @@ import { ThemeProvider } from '@mui/material/styles'
 import ThemeV2 from '../../../../../ThemeV2'
 
 import ReactGA from 'react-ga4'
-import { makeStyles } from '@mui/styles'
+import { makeStyles } from 'tss-react/mui';
 
 import Chips from '../Chips'
 
 import axios from 'axios'
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
   formControl: {
     width: '100%'
   },
@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1),
     fontWeight: 'bold'
   }
-}))
+}));
 
 const initialPagination = {
   page: 1,
@@ -98,7 +98,7 @@ export function ResultadosS3p (props) {
   const [view, setView] = React.useState(0)
 
   const [fixpaginador, setFixpaginador] = React.useState(false)
-  const classes = useStyles()
+  const { classes } = useStyles()
 
   React.useEffect(() => {
     /* loadInstitutions();
@@ -258,7 +258,7 @@ export function ResultadosS3p (props) {
         {/* Buscador */}
         <Grid container spacing={0}>
 
-          <Grid item xs={12}>
+          <Grid size={12}>
             {
                                 loading &&
                                   <Modal
@@ -279,7 +279,7 @@ export function ResultadosS3p (props) {
         {/* Previos */}
         {view === 1 && previos && previos.length > 0 &&
           <Grid container>
-            <Grid item xs={12} className={classes.section}>
+            <Grid className={classes.section} size={12}>
               <Chips criterios={JSON.stringify(data)} />
               <Previos
                 data={previos}
@@ -290,7 +290,7 @@ export function ResultadosS3p (props) {
         {/* Tabla */}
         {view === 2 && filterData && filterData.length > 0 && selectedItem === null &&
           <Grid container>
-            <Grid item xs={12}>
+            <Grid size={12}>
               <TablaParticularesSancionados
                 data={filterData} page={pagination.page}
                 rowsPerPage={pagination.rowsPerPage}
@@ -312,8 +312,7 @@ export function ResultadosS3p (props) {
                     }
       </>
     </ThemeProvider>
-
-  )
+  );
 }
 
 // export default ResultadosS3p;

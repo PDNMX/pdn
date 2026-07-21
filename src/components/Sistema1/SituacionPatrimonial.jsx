@@ -1,5 +1,5 @@
 import Paper from '@mui/material/Paper';
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import Grid from '@mui/material/Grid';
 
 import MenuLateral from './MenuLateral';
@@ -174,7 +174,7 @@ const situacionPatrimonial = (data, tipo) => {
   }
 };
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles()(theme => ({
   root: {
     flexGrow: 1,
     width: '100%',
@@ -182,7 +182,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const styles = makeStyles(style);
+const styles = makeStyles()(style);
 
 const titulos = {
   INICIAL: [
@@ -367,16 +367,25 @@ function opcion(valor, data, tipo) {
 }
 
 export default function SituacionPatrimonial({ data, value, setValue, tipo }) {
-  const classes = useStyles();
-  const classes2 = styles();
+  const { classes } = useStyles();
+  const { classes: classes2 } = styles();
 
   return (
     <Paper square className={classes.root}>
       <Grid container spacing={0}>
-        <Grid item xs={12} md={2} className={classes2.menulateral_fondo}>
+        <Grid
+          className={classes2.menulateral_fondo}
+          size={{
+            xs: 12,
+            md: 2
+          }}>
           <MenuLateral value={value} setValue={setValue} opciones={situacionPatrimonial(data, tipo)} />
         </Grid>
-        <Grid item xs={12} md={10}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 10
+          }}>
           <ErrorBoundary>{opcion(value, data, tipo)}</ErrorBoundary>
         </Grid>
       </Grid>

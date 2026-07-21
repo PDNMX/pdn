@@ -1,5 +1,5 @@
 import React from 'react'
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 import Busqueda from './BusquedaV2'
 import Cifras from './Cifras'
 // import Perspectivas from "./Perspectivas";
@@ -18,96 +18,6 @@ import { ThemeProvider } from '@mui/material/styles'
 import ThemeV2 from '../../ThemeV2'
 import styles from '../style'
 
-const styles2 = theme => ({
-  root: {
-    flexGrow: 1
-    /*         backgroundImage: `url(${bgimg})`,
-        backgroundRepeat: "repeat", */
-  },
-  tabContainer: {
-    paddingTop: 90
-    // paddingBottom: 90
-  },
-  section: {
-    maxWidth: '1200px',
-    marginTop: theme.spacing(8)
-  },
-  sectionT: {
-    maxWidth: '1200px',
-    color: theme.palette.primary.contrastText
-  },
-  tabItem: {
-    maxWidth: 1200
-  },
-  item: {
-    maxWidth: 1200
-    /* paddingTop: theme.spacing(8),
-        paddingBottom: theme.spacing(8), */
-    // overflow: "auto"
-  },
-  paper1: {
-    backgroundColor: theme.palette.background.opaque,
-    padding: theme.spacing(2),
-    color: theme.palette.primary.contrastText,
-    borderStyle: 'solid',
-    borderWidth: 1,
-    borderColor: theme.palette.background.border,
-    borderRadius: '0px 10px 10px 10px'
-  },
-  paper2: {
-    backgroundColor: theme.palette.background.opaque,
-    padding: theme.spacing(2),
-    color: theme.palette.primary.contrastText,
-    borderStyle: 'solid',
-    borderWidth: 1,
-    borderColor: theme.palette.background.border,
-    borderRadius: '0px 10px 10px 10px'
-  },
-  image: {
-    width: '60px'
-  },
-  card: {
-    backgroundColor: theme.palette.background.noSelect,
-    paddingLeft: theme.spacing(1),
-    paddingRight: theme.spacing(1),
-    paddingTop: theme.spacing(1),
-    paddingBottom: theme.spacing(1),
-    margin: 0,
-    '&:hover': {
-      cursor: 'pointer',
-      borderColor: theme.palette.background.border,
-      transition: 'background 0.3s ease',
-      opacity: 0.7
-    },
-    display: 'flex',
-    float: 'left',
-    padding: 0,
-    borderStyle: 'solid',
-    borderColor: theme.palette.background.opaque,
-    borderBottomStyle: 'none',
-    borderRadius: '10px 10px 0px 0px',
-    marginRight: 10
-
-  },
-  cardSeleccionada: {
-    backgroundColor: theme.palette.background.select,
-    borderColor: theme.palette.background.border,
-    paddingLeft: theme.spacing(1),
-    paddingRight: theme.spacing(1),
-    paddingTop: theme.spacing(1),
-    paddingBottom: theme.spacing(1),
-    margin: 0,
-    borderStyle: 'solid',
-
-    borderBottomStyle: 'none',
-    borderRadius: '10px 10px 0px 0px',
-    display: 'flex',
-    float: 'left',
-    marginRight: 10,
-  },
-
-})
-
 const Index = props => {
   const { classes } = props
   const [selectedTab, setSelectedTab] = React.useState(0)
@@ -119,13 +29,22 @@ const Index = props => {
   return (
     <div className={classes.root}>
       <HeaderV2 section={system} />
-      <Grid container justifyContent='center' alignItems='center'>
-        <Grid item xs={12} style={{ maxWidth: 1200, margin: '0 auto', marginTop: 50 }}>
+      <Grid
+        container
+        sx={{
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+        <Grid style={{ maxWidth: 1200, margin: '0 auto', marginTop: 50 }} size={12}>
           <Grid container spacing={0}>
-            <Grid item lg={3} xs={12} style={{ display: 'flex',  alignItems: 'stretch' }}
+            <Grid
+              style={{ display: 'flex',  alignItems: 'stretch' }}
               onClick={() => handleSelectTab(0)}
               id={0}
-            >
+              size={{
+                lg: 3,
+                xs: 12
+              }}>
 
               <figure className={isSelected(0) ? classes.selectedTab : classes.card}>
                 <img src={img1} className={classes.logo} alt='explora' />
@@ -137,10 +56,14 @@ const Index = props => {
               </figure>
 
             </Grid>
-            <Grid item lg={3} xs={12} style={{ display: 'flex',  alignItems: 'stretch' }}
+            <Grid
+              style={{ display: 'flex',  alignItems: 'stretch' }}
               onClick={() => handleSelectTab(1)}
               id={1}
-            >
+              size={{
+                lg: 3,
+                xs: 12
+              }}>
 
               <figure className={isSelected(1) ? classes.selectedTab : classes.card}>
                 <img src={img3} className={classes.logo} alt='Visualiza' />
@@ -155,15 +78,21 @@ const Index = props => {
           </Grid>
         </Grid>
       </Grid>
-
-      <Grid container justifyContent='center'>
-        <Grid item xs={12} className={classes.sectionT}>
+      <Grid container sx={{
+        justifyContent: 'center'
+      }}>
+        <Grid className={classes.sectionT} size={12}>
           <Grid container spacing={0}>
             <ThemeProvider theme={ThemeV2}>
               {selectedTab === 0
-                ? <Grid item xs={12} className={classes.tabItem} style={{ overflow: 'auto' }}>
+                ? <Grid className={classes.tabItem} style={{ overflow: 'auto' }} size={12}>
                   <Paper className={classes.paper1} elevation={15}>
-                    <Box paddingLeft={1} paddingRight={1} paddingBottom={3}>
+                    <Box
+                      sx={{
+                        paddingLeft: 1,
+                        paddingRight: 1,
+                        paddingBottom: 3
+                      }}>
 
                       <SelectSupplier dataSupplier={dataSupplier} setDataSupplier={setDataSupplier} />
 
@@ -172,9 +101,13 @@ const Index = props => {
                     <Busqueda dataSupplier={dataSupplier} />
                   </Paper>
                 </Grid>
-                : <Grid item xs={12} className={classes.tabItem}>
+                : <Grid className={classes.tabItem} size={12}>
                   <Paper className={classes.paper2} elevation={15}>
-                    <Box paddingTop={1} paddingBottom={3}>
+                    <Box
+                      sx={{
+                        paddingTop: 1,
+                        paddingBottom: 3
+                      }}>
                       <SelectSupplier dataSupplier={dataSupplier} setDataSupplier={setDataSupplier} />
                     </Box>
 
@@ -192,22 +125,20 @@ const Index = props => {
           </Grid>
         </Grid>
       </Grid>
-
-
       {/* <Grid container spacing={0} justifyContent="center" style={{backgroundColor: "#34b3eb"}}>
             <Grid item xs={12} className={classes.item}>
                 <Perspectivas/>
             </Grid>
         </Grid> */}
-
-      <Grid container spacing={0} justifyContent='center'>
-        <Grid item xs={12} className={classes.item}>
+      <Grid container spacing={0} sx={{
+        justifyContent: 'center'
+      }}>
+        <Grid className={classes.item} size={12}>
           <Descarga url={process.env.REACT_APP_BULK_S6} tipoGA='bulk-s6' />
         </Grid>
       </Grid>
-
     </div>
-  )
+  );
 }
 
-export default withStyles(styles)(Index)
+export default withStyles(Index, styles);

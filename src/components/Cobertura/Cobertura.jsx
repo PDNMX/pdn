@@ -5,9 +5,8 @@ import HeaderV2 from '../HomeV2/HeaderV2'
 import pdnRoutes from '../../routes'
 import estados from './estados.json'
 import PropTypes from 'prop-types'
-import DialogoNoConectado from './DialogoNoConectado'
 
-import withStyles from '@mui/styles/withStyles'
+import { withStyles } from 'tss-react/mui';
 const styles = theme => ({
   estado: {
     width: '150px',
@@ -39,23 +38,18 @@ const styles = theme => ({
     // border: "2px",
     borderColor: theme.palette.primary.main
   }
-})
+});
 
 const Cobertura = props => {
   const section = pdnRoutes.find(r => r.path === '/cobertura')
   const { classes } = props
 
   const [value, setValue] = React.useState(0)
-  const [open, setOpen] = React.useState(false)
 
   const handleChange = (event, newValue) => {
     setValue(newValue)
   }
 
-  // Esta función ya no se usará pero la mantenemos por compatibilidad
-  const handleClick = () => {
-    setOpen(true)
-  }
 
   const tabStyle = selected => ({
     background: selected ? '#b25fac' : '#f2f0f2',
@@ -67,42 +61,68 @@ const Cobertura = props => {
   return (
     <div>
       <HeaderV2 section={section} />
-      <Grid container spacing={0} justifyContent='center'>
-        <Grid item xs={12} style={{ maxWidth: 1200, marginBottom: '32px', marginTop: '30px' }}>
+      <Grid container spacing={0} sx={{
+        justifyContent: 'center'
+      }}>
+        <Grid
+          style={{ maxWidth: 1200, marginBottom: '32px', marginTop: '30px' }}
+          size={12}>
 
           <Tabs value={value} onChange={handleChange}>
             <Tab
-              label={<Typography color={value == 0 ? '#f1e9f2' : '#713972'}>Entidades conectadas</Typography>}
+              label={<Typography sx={{ color: value == 0 ? '#f1e9f2' : '#713972' }}>Entidades conectadas</Typography>}
               id='simple-tab-0' aria-controls='simple-tabpanel-0'
               className={classes.tab} style={tabStyle(value === 0)}
             />
             <Tab
-              label={<Typography color={value == 0 ? '#713972' : '#f1e9f2'}>Entidades no conectadas</Typography>}
+              label={<Typography sx={{ color: value == 0 ? '#713972' : '#f1e9f2' }}>Entidades no conectadas</Typography>}
               id='simple-tab-1' aria-controls='simple-tabpanel-1'
               className={classes.tab} sx={tabStyle(value === 1)}
             />
           </Tabs>
 
           <TabPanel value={value} index={0} className={classes.tabPanel1}>
-            <Box display='flex' flexWrap='wrap'>
+            <Box
+              sx={{
+                display: 'flex',
+                flexWrap: 'wrap'
+              }}>
               {estados.filter(e => !e.disabled).map((e, i) => {
                 return (
-                  <Box textAlign='center' p={1} m={1} key={i} className={classes.estado}>
+                  <Box
+                    key={i}
+                    className={classes.estado}
+                    sx={{
+                      textAlign: 'center',
+                      p: 1,
+                      m: 1
+                    }}>
                     <Link component={RouterLink} to={e.route} className={classes.link}>
                       <img src={`/img/cobertura/ico_edos/${e.icon1}`} style={{ width: 100 }} alt='Estado' />
                       <Typography>{e.name}</Typography>
                     </Link>
                   </Box>
-                )
+                );
               })}
             </Box>
           </TabPanel>
 
           <TabPanel value={value} index={1} className={classes.tabPanel2}>
-            <Box display='flex' flexWrap='wrap'>
+            <Box
+              sx={{
+                display: 'flex',
+                flexWrap: 'wrap'
+              }}>
               {estados.filter(e => e.disabled).map((e, i) => {
                 return (
-                  <Box textAlign='center' p={1} m={1} key={i} className={classes.estado}>
+                  <Box
+                    key={i}
+                    className={classes.estado}
+                    sx={{
+                      textAlign: 'center',
+                      p: 1,
+                      m: 1
+                    }}>
                     {/* Modificación clave: Ahora también usamos Link en lugar de abrir el diálogo */}
                     {e.route ? (
                       <Link component={RouterLink} to={e.route} className={classes.link}>
@@ -116,7 +136,7 @@ const Cobertura = props => {
                       </Box>
                     )}
                   </Box>
-                )
+                );
               })}
             </Box>
           </TabPanel>
@@ -124,9 +144,8 @@ const Cobertura = props => {
         </Grid>
       </Grid>
       {/* Ya no necesitamos el diálogo */}
-      {/* <DialogoNoConectado open={open} setOpen={setOpen} /> */}
     </div>
-  )
+  );
 }
 
 function TabPanel (props) {
@@ -155,4 +174,4 @@ TabPanel.propTypes = {
   value: PropTypes.number.isRequired
 }
 
-export default withStyles(styles)(Cobertura)
+export default withStyles(Cobertura, styles);

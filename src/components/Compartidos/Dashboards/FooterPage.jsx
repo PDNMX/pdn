@@ -1,5 +1,5 @@
 import { Paper, Typography, Link } from '@mui/material'
-import { withStyles } from '@mui/styles'
+import { withStyles } from 'tss-react/mui';
 
 const styles = theme => ({
   paperChart: {
@@ -19,7 +19,7 @@ const styles = theme => ({
     color: theme.palette.text.linkColor,
     wordBreak: 'break-word'
   }
-})
+});
 
 const FooterPage = (props) => {
   const { classes, dataSet, provider, referenceDate } = props
@@ -31,7 +31,9 @@ const FooterPage = (props) => {
         </Typography>
         <Typography className={classes.text} variant='body2'>
           Los datos utilizados para la realización de estas gráficas fueron tomados de la página
-          <Link display='inline' href='https://datos.gob.mx/' target='_blank' className={classes.link} rel='noreferrer'>
+          <Link href='https://datos.gob.mx/' target='_blank' className={classes.link} rel='noreferrer' sx={{
+            display: 'inline'
+          }}>
             {' datos.gob.mx '}
           </Link>
           y corresponden al conjunto de datos <b>{`"${dataSet}"`}</b> publicado por la <b>{`${provider}`}</b>.
@@ -40,7 +42,7 @@ const FooterPage = (props) => {
 
       </Paper>
     </>
-  )
+  );
 }
 
-export default withStyles(styles)(FooterPage)
+export default withStyles(FooterPage, styles);
