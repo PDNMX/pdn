@@ -14,6 +14,13 @@ const styles = (theme) => ({
     overflow: "hidden",
     marginTop: theme.spacing(3),
   },
+  wideTableMainContainer: {
+    width: "calc(100vw - 32px)",
+    maxWidth: "1680px",
+    position: "relative",
+    left: "50%",
+    transform: "translateX(-50%)",
+  },
   tabsContainer: {
     backgroundColor: "#ede7f6",
     borderBottom: "1px solid rgba(113, 57, 114, 0.2)",

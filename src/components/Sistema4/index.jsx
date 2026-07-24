@@ -40,7 +40,12 @@ const ContentWithDownload = ({ classes, tab, tabs }) => {
 
   return (
     <>
-      <Paper className={classes.mainContainer} elevation={0}>
+      <Paper
+        className={`${classes.mainContainer} ${
+          tab === 0 || tab === 1 ? classes.wideTableMainContainer : ""
+        }`}
+        elevation={0}
+      >
         {/* Tabs */}
         <Box className={classes.tabsContainer}>
           <Tabs

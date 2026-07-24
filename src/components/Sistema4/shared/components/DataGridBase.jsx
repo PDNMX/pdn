@@ -20,6 +20,14 @@ const DataGridBase = ({
   data,
   enableSearch = true,
   searchableFields,
+  columnHeaderHeight,
+  onColumnHeaderEnter,
+  onColumnHeaderLeave,
+  columnVisibilityModel,
+  onColumnVisibilityModelChange,
+  disableColumnMenu = false,
+  gridSx,
+  rootSx,
   children, // Nueva prop para contenido personalizado
 }) => {
   // Si se pasan children, no necesitamos data
@@ -56,7 +64,7 @@ const DataGridBase = ({
   }
 
   return (
-    <Box className={classes.root}>
+    <Box className={classes.root} sx={rootSx}>
       <Box p={1}>
         {title && (
           <Typography
@@ -122,7 +130,13 @@ const DataGridBase = ({
             pageSizeOptions={[10, 25, 50, 100]}
             disableRowSelectionOnClick
             filterMode="client"
-            sx={dataGridSx}
+            columnHeaderHeight={columnHeaderHeight}
+            onColumnHeaderEnter={onColumnHeaderEnter}
+            onColumnHeaderLeave={onColumnHeaderLeave}
+            columnVisibilityModel={columnVisibilityModel}
+            onColumnVisibilityModelChange={onColumnVisibilityModelChange}
+            disableColumnMenu={disableColumnMenu}
+            sx={gridSx ? [dataGridSx, gridSx] : dataGridSx}
           />
         )}
       </Box>
