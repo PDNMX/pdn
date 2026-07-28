@@ -1,6 +1,6 @@
 import React from "react";
 import withStyles from "@mui/styles/withStyles";
-import { Grid, Box, Typography, Paper, Tab, Tabs } from "@mui/material";
+import { Grid, Box, Paper, Tab, Tabs } from "@mui/material";
 import HeaderV2 from "../HomeV2/HeaderV2";
 import pdnRoutes from "../../routes/index";
 import { ThemeProvider } from "@mui/material/styles";
@@ -8,11 +8,11 @@ import ThemeV2 from "../../ThemeV2";
 
 import AssessmentIcon from "@mui/icons-material/Assessment";
 import DescriptionIcon from "@mui/icons-material/Description";
-import FindInPageIcon from "@mui/icons-material/FindInPage";
 
 import TablaAuditorias from "./pages/TablaAuditorias/TablaAuditorias.jsx";
 import TablaInformes from "./pages/TablaInformes/TablaInformes.jsx";
 import TablaConsulta from "./pages/TablaConsulta/TablaConsulta.jsx";
+import InformeGrafico from "./pages/InformeGrafico/InformeGrafico.jsx";
 import AlertPrototipo from "./shared/components/AlertPrototipo.jsx";
 import {
   Sistema4DataProvider,
@@ -28,21 +28,53 @@ import { AccountBox } from "@mui/icons-material";
 // Componente interno que usa el contexto para obtener los datos
 const ContentWithDownload = ({ classes, tab, tabs }) => {
   const { auditorias, informes, miembrosSNF } = useSistema4Data();
+  const [filteredData, setFilteredData] = React.useState({
+    auditorias: null,
+    informes: null,
+  });
+
+  const handleFilteredAuditorias = React.useCallback((rows) => {
+    setFilteredData((current) => ({ ...current, auditorias: rows }));
+  }, []);
+
+  const handleFilteredInformes = React.useCallback((rows) => {
+    setFilteredData((current) => ({ ...current, informes: rows }));
+  }, []);
 
   // Mapeo de datos según la pestaña activa
-  const dataMap = [
-    { fileName: "programas_anuales_auditorias", data: auditorias.rows },
-    { fileName: "informes_publicos_fiscalizacion", data: informes.rows },
-    { fileName: "miembros_snf", data: miembrosSNF.rows },
-  ];
+  const dataMap = {
+    0: {
+      fileName: "programas_anuales_auditorias",
+      data: filteredData.auditorias ?? auditorias.rows,
+    },
+    1: {
+      fileName: "informes_publicos_fiscalizacion",
+      data: filteredData.informes ?? informes.rows,
+    },
+    3: { fileName: "miembros_snf", data: miembrosSNF.rows },
+  };
 
   const currentData = dataMap[tab];
+  const content = [
+    <TablaAuditorias
+      key="auditorias"
+      onFilteredRowsChange={handleFilteredAuditorias}
+    />,
+    <TablaInformes
+      key="informes"
+      onFilteredRowsChange={handleFilteredInformes}
+    />,
+    <InformeGrafico key="informe-grafico" />,
+    <TablaConsulta key="consulta" />,
+  ][tab];
 
   return (
     <>
       <Paper
         className={`${classes.mainContainer} ${
-          tab === 0 || tab === 1 ? classes.wideTableMainContainer : ""
+          tab === 0 || tab === 1 || tab === 2
+            ? classes.wideTableMainContainer
+            : ""
         }`}
         elevation={0}
       >
@@ -75,27 +107,34 @@ const ContentWithDownload = ({ classes, tab, tabs }) => {
 
         {/* Contenido */}
         <ThemeProvider theme={ThemeV2}>
-          <Box className={classes.tabPanel}>{tabs.list[tab].content}</Box>
+          <Box className={classes.tabPanel}>{content}</Box>
         </ThemeProvider>
       </Paper>
 
-      <Box mt={3}>
-        <Grid container justifyContent="center" spacing={2} alignItems="center">
-          <Grid item>
-            <DescargaSistema4
-              fileName={currentData.fileName}
-              data={currentData.data}
-            />
-          </Grid>
+      {currentData && (
+        <Box mt={3}>
+          <Grid
+            container
+            justifyContent="center"
+            spacing={2}
+            alignItems="center"
+          >
+            <Grid item>
+              <DescargaSistema4
+                fileName={currentData.fileName}
+                data={currentData.data}
+              />
+            </Grid>
 
-          <Grid item>
-            <DescargaSistema4Excel
-              fileName={currentData.fileName}
-              data={currentData.data}
-            />
+            <Grid item>
+              <DescargaSistema4Excel
+                fileName={currentData.fileName}
+                data={currentData.data}
+              />
+            </Grid>
           </Grid>
-        </Grid>
-      </Box>
+        </Box>
+      )}
     </>
   );
 };
@@ -116,20 +155,22 @@ const Index = ({ classes }) => {
         icon: <DescriptionIcon />,
         label: "Programas Anuales de Auditorías",
         aria: "auditorias",
-        content: <TablaAuditorias />,
       },
       {
         icon: <DescriptionIcon />,
         label: "Informes Públicos de Fiscalización",
         aria: "informes",
-        content: <TablaInformes />,
+      },
+      {
+        icon: <AssessmentIcon />,
+        label: "Informe Gráfico-Estadístico",
+        aria: "informe-grafico-estadistico",
       },
       {
         icon: <AccountBox />,
         label:
           "Intercambio de Información entre los Miembros del Sistema Nacional de Fiscalización (Consulta)",
         aria: "consulta",
-        content: <TablaConsulta />,
       },
     ],
     handleTabChange,

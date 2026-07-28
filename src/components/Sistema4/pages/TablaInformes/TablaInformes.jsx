@@ -18,6 +18,13 @@ import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
 import { useSistema4Data } from "../../shared/context/Sistema4DataContext";
 import { createColumns } from "./columns";
 import DataGridBase from "../../shared/components/DataGridBase";
+import AnalyticsFilters from "../../shared/components/AnalyticsFilters";
+import InformesDashboard from "../../shared/components/InformesDashboard";
+import {
+  EMPTY_ANALYTICS_FILTERS,
+  REPORT_FILTER_FIELDS,
+  filterAnalyticsRows,
+} from "../../shared/services/analyticsUtils";
 
 const displayValue = (value) =>
   value === null || value === undefined || value === ""
@@ -102,13 +109,20 @@ const getVisibilityModel = (mode) => {
   };
 };
 
-const TablaInformes = () => {
+const TablaInformes = ({ onFilteredRowsChange }) => {
   const { informes } = useSistema4Data();
   const theme = useTheme();
   const isCompactViewport = useMediaQuery(theme.breakpoints.down("xl"));
   const isMobileViewport = useMediaQuery(theme.breakpoints.down("md"));
   const isPhoneViewport = useMediaQuery(theme.breakpoints.down("sm"));
   const [selectedReport, setSelectedReport] = React.useState(null);
+  const [filters, setFilters] = React.useState({
+    ...EMPTY_ANALYTICS_FILTERS,
+  });
+  const filteredRows = React.useMemo(
+    () => filterAnalyticsRows(informes.rows, filters, REPORT_FILTER_FIELDS),
+    [informes.rows, filters]
+  );
 
   const mode = isMobileViewport
     ? "mobile"
@@ -131,6 +145,12 @@ const TablaInformes = () => {
   React.useEffect(() => {
     setColumnVisibilityModel(getVisibilityModel(mode));
   }, [mode]);
+
+  React.useEffect(() => {
+    if (!informes.loading && !informes.error) {
+      onFilteredRowsChange?.(filteredRows);
+    }
+  }, [filteredRows, informes.error, informes.loading, onFilteredRowsChange]);
 
   const responsiveGridSx = React.useMemo(() => {
     const headerFontSize = mode === "mobile" ? "0.72rem" : "0.78rem";
@@ -171,10 +191,24 @@ const TablaInformes = () => {
 
   return (
     <>
+      {!informes.loading && !informes.error && (
+        <Box sx={{ p: { xs: 1, md: 2.5 }, pb: 0 }}>
+          <AnalyticsFilters
+            rows={informes.rows}
+            filters={filters}
+            fields={REPORT_FILTER_FIELDS}
+            onChange={setFilters}
+            title="Filtrar informes públicos"
+          />
+          <InformesDashboard rows={filteredRows} />
+        </Box>
+      )}
+
       <DataGridBase
         title="Aquí puedes consultar:"
         descriptionItems={descriptionItems}
-        data={{ ...informes, columns }}
+        data={{ ...informes, rows: filteredRows, columns }}
+        enableSearch={false}
         columnHeaderHeight={mode === "mobile" ? 64 : 72}
         columnVisibilityModel={columnVisibilityModel}
         onColumnVisibilityModelChange={setColumnVisibilityModel}

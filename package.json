@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "rsbuild dev --host 0.0.0.0",
     "build": "rsbuild build",
-    "preview": "rsbuild preview --host 0.0.0.0"
+    "preview": "rsbuild preview --host 0.0.0.0",
+    "test": "node --test"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",

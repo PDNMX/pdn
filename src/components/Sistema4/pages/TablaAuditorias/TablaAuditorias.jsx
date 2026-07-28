@@ -18,6 +18,13 @@ import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
 import { useSistema4Data } from "../../shared/context/Sistema4DataContext";
 import { createColumns } from "./columns";
 import DataGridBase from "../../shared/components/DataGridBase";
+import AnalyticsFilters from "../../shared/components/AnalyticsFilters";
+import ProgramasDashboard from "../../shared/components/ProgramasDashboard";
+import {
+  EMPTY_ANALYTICS_FILTERS,
+  PROGRAM_FILTER_FIELDS,
+  filterAnalyticsRows,
+} from "../../shared/services/analyticsUtils";
 
 const displayValue = (value) =>
   value === null || value === undefined || value === ""
@@ -96,13 +103,25 @@ const getVisibilityModel = (mode) => {
   };
 };
 
-const TablaAuditorias = () => {
+const TablaAuditorias = ({ onFilteredRowsChange }) => {
   const { auditorias } = useSistema4Data();
   const theme = useTheme();
   const isCompactViewport = useMediaQuery(theme.breakpoints.down("xl"));
   const isMobileViewport = useMediaQuery(theme.breakpoints.down("md"));
   const isPhoneViewport = useMediaQuery(theme.breakpoints.down("sm"));
   const [selectedProgram, setSelectedProgram] = React.useState(null);
+  const [filters, setFilters] = React.useState({
+    ...EMPTY_ANALYTICS_FILTERS,
+  });
+  const filteredRows = React.useMemo(
+    () =>
+      filterAnalyticsRows(
+        auditorias.rows,
+        filters,
+        PROGRAM_FILTER_FIELDS
+      ),
+    [auditorias.rows, filters]
+  );
 
   const mode = isMobileViewport
     ? "mobile"
@@ -125,6 +144,17 @@ const TablaAuditorias = () => {
   React.useEffect(() => {
     setColumnVisibilityModel(getVisibilityModel(mode));
   }, [mode]);
+
+  React.useEffect(() => {
+    if (!auditorias.loading && !auditorias.error) {
+      onFilteredRowsChange?.(filteredRows);
+    }
+  }, [
+    auditorias.error,
+    auditorias.loading,
+    filteredRows,
+    onFilteredRowsChange,
+  ]);
 
   const responsiveGridSx = React.useMemo(() => {
     const headerFontSize = mode === "mobile" ? "0.72rem" : "0.78rem";
@@ -165,10 +195,24 @@ const TablaAuditorias = () => {
 
   return (
     <>
+      {!auditorias.loading && !auditorias.error && (
+        <Box sx={{ p: { xs: 1, md: 2.5 }, pb: 0 }}>
+          <AnalyticsFilters
+            rows={auditorias.rows}
+            filters={filters}
+            fields={PROGRAM_FILTER_FIELDS}
+            onChange={setFilters}
+            title="Filtrar programas anuales"
+          />
+          <ProgramasDashboard rows={filteredRows} />
+        </Box>
+      )}
+
       <DataGridBase
         title="Aquí puedes consultar:"
         descriptionItems={descriptionItems}
-        data={{ ...auditorias, columns }}
+        data={{ ...auditorias, rows: filteredRows, columns }}
+        enableSearch={false}
         columnHeaderHeight={mode === "mobile" ? 64 : 72}
         columnVisibilityModel={columnVisibilityModel}
         onColumnVisibilityModelChange={setColumnVisibilityModel}
