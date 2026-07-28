@@ -99,7 +99,14 @@ const InformesDashboard = ({ rows, showTitle = true }) => {
         </ToggleButtonGroup>
       </Box>
 
-      <Grid container spacing={2} sx={{ mb: 2 }}>
+      <Grid
+        container
+        spacing={{ xs: 1, sm: 2 }}
+        sx={{
+          mb: 2,
+          "& > .MuiGrid-item": { display: "flex", minWidth: 0 },
+        }}
+      >
         <Grid item xs={12} sm={4}>
           <AnalyticsMetricCard
             label="Informes públicos"
@@ -149,7 +156,11 @@ const InformesDashboard = ({ rows, showTitle = true }) => {
         </Grid>
       </Grid>
 
-      <Grid container spacing={2}>
+      <Grid
+        container
+        spacing={{ xs: 1, sm: 2 }}
+        sx={{ "& > .MuiGrid-item": { display: "flex", minWidth: 0 } }}
+      >
         <Grid item xs={12} lg={6}>
           <AnalyticsBarChart
             title={`Resultados de fiscalización ${
@@ -187,4 +198,3 @@ const InformesDashboard = ({ rows, showTitle = true }) => {
 };
 
 export default InformesDashboard;
-

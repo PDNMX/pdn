@@ -191,24 +191,24 @@ const TablaInformes = ({ onFilteredRowsChange }) => {
 
   return (
     <>
-      {!informes.loading && !informes.error && (
-        <Box sx={{ p: { xs: 1, md: 2.5 }, pb: 0 }}>
-          <AnalyticsFilters
-            rows={informes.rows}
-            filters={filters}
-            fields={REPORT_FILTER_FIELDS}
-            onChange={setFilters}
-            title="Filtrar informes públicos"
-          />
-          <InformesDashboard rows={filteredRows} />
-        </Box>
-      )}
-
       <DataGridBase
         title="Aquí puedes consultar:"
         descriptionItems={descriptionItems}
         data={{ ...informes, rows: filteredRows, columns }}
         enableSearch={false}
+        beforeGrid={
+          !informes.loading && !informes.error ? (
+            <Box sx={{ p: { xs: 1, md: 2.5 }, pb: 0 }}>
+              <AnalyticsFilters
+                rows={informes.rows}
+                filters={filters}
+                fields={REPORT_FILTER_FIELDS}
+                onChange={setFilters}
+                title="Filtrar informes públicos"
+              />
+            </Box>
+          ) : null
+        }
         columnHeaderHeight={mode === "mobile" ? 64 : 72}
         columnVisibilityModel={columnVisibilityModel}
         onColumnVisibilityModelChange={setColumnVisibilityModel}
@@ -221,6 +221,12 @@ const TablaInformes = ({ onFilteredRowsChange }) => {
               : undefined
         }
       />
+
+      {!informes.loading && !informes.error && (
+        <Box sx={{ p: { xs: 1, md: 2.5 }, pt: 0 }}>
+          <InformesDashboard rows={filteredRows} />
+        </Box>
+      )}
 
       <Dialog
         open={Boolean(selectedReport)}

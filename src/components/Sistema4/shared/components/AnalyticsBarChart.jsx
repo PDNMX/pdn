@@ -38,7 +38,9 @@ const AnalyticsBarChart = ({
       aria-label={title}
       elevation={0}
       sx={{
-        height: "100%",
+        width: "100%",
+        minWidth: 0,
+        boxSizing: "border-box",
         p: { xs: 1.5, sm: 2 },
         border: "1px solid rgba(113, 57, 114, 0.15)",
         borderRadius: 2,
@@ -72,7 +74,14 @@ const AnalyticsBarChart = ({
           No hay datos para los filtros seleccionados.
         </Box>
       ) : (
-        <Box sx={{ height: { xs: 330, md: 360 }, mt: 1 }}>
+        <Box
+          sx={{
+            width: "100%",
+            minWidth: 0,
+            height: { xs: 400, md: 430 },
+            mt: 1,
+          }}
+        >
           <ResponsiveBar
             data={visibleData}
             keys={keys}
@@ -80,7 +89,7 @@ const AnalyticsBarChart = ({
             margin={{
               top: 20,
               right: 20,
-              bottom: isMobile ? 92 : 70,
+              bottom: isMobile ? 128 : 110,
               left: amount ? 78 : 62,
             }}
             padding={0.3}
@@ -96,7 +105,7 @@ const AnalyticsBarChart = ({
               tickRotation: isMobile ? -45 : -25,
               legend: "Desglose",
               legendPosition: "middle",
-              legendOffset: isMobile ? 78 : 58,
+              legendOffset: isMobile ? 108 : 90,
             }}
             axisLeft={{
               tickSize: 5,

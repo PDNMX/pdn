@@ -6,13 +6,11 @@ import pdnRoutes from "../../routes/index";
 import { ThemeProvider } from "@mui/material/styles";
 import ThemeV2 from "../../ThemeV2";
 
-import AssessmentIcon from "@mui/icons-material/Assessment";
 import DescriptionIcon from "@mui/icons-material/Description";
 
 import TablaAuditorias from "./pages/TablaAuditorias/TablaAuditorias.jsx";
 import TablaInformes from "./pages/TablaInformes/TablaInformes.jsx";
 import TablaConsulta from "./pages/TablaConsulta/TablaConsulta.jsx";
-import InformeGrafico from "./pages/InformeGrafico/InformeGrafico.jsx";
 import AlertPrototipo from "./shared/components/AlertPrototipo.jsx";
 import {
   Sistema4DataProvider,
@@ -51,7 +49,7 @@ const ContentWithDownload = ({ classes, tab, tabs }) => {
       fileName: "informes_publicos_fiscalizacion",
       data: filteredData.informes ?? informes.rows,
     },
-    3: { fileName: "miembros_snf", data: miembrosSNF.rows },
+    2: { fileName: "miembros_snf", data: miembrosSNF.rows },
   };
 
   const currentData = dataMap[tab];
@@ -64,7 +62,6 @@ const ContentWithDownload = ({ classes, tab, tabs }) => {
       key="informes"
       onFilteredRowsChange={handleFilteredInformes}
     />,
-    <InformeGrafico key="informe-grafico" />,
     <TablaConsulta key="consulta" />,
   ][tab];
 
@@ -72,7 +69,7 @@ const ContentWithDownload = ({ classes, tab, tabs }) => {
     <>
       <Paper
         className={`${classes.mainContainer} ${
-          tab === 0 || tab === 1 || tab === 2
+          tab === 0 || tab === 1
             ? classes.wideTableMainContainer
             : ""
         }`}
@@ -160,11 +157,6 @@ const Index = ({ classes }) => {
         icon: <DescriptionIcon />,
         label: "Informes Públicos de Fiscalización",
         aria: "informes",
-      },
-      {
-        icon: <AssessmentIcon />,
-        label: "Informe Gráfico-Estadístico",
-        aria: "informe-grafico-estadistico",
       },
       {
         icon: <AccountBox />,

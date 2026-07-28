@@ -87,7 +87,14 @@ const ProgramasDashboard = ({ rows, showTitle = true }) => {
         </ToggleButtonGroup>
       </Box>
 
-      <Grid container spacing={2} sx={{ mb: 2 }}>
+      <Grid
+        container
+        spacing={{ xs: 1, sm: 2 }}
+        sx={{
+          mb: 2,
+          "& > .MuiGrid-item": { display: "flex", minWidth: 0 },
+        }}
+      >
         <Grid item xs={12} sm={4}>
           <AnalyticsMetricCard
             label="Programas anuales"
@@ -117,7 +124,11 @@ const ProgramasDashboard = ({ rows, showTitle = true }) => {
         </Grid>
       </Grid>
 
-      <Grid container spacing={2}>
+      <Grid
+        container
+        spacing={{ xs: 1, sm: 2 }}
+        sx={{ "& > .MuiGrid-item": { display: "flex", minWidth: 0 } }}
+      >
         <Grid item xs={12} lg={6}>
           <AnalyticsBarChart
             title={`Auditorías / actos programados ${
@@ -148,4 +159,3 @@ const ProgramasDashboard = ({ rows, showTitle = true }) => {
 };
 
 export default ProgramasDashboard;
-

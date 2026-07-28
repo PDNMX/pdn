@@ -28,6 +28,7 @@ const DataGridBase = ({
   disableColumnMenu = false,
   gridSx,
   rootSx,
+  beforeGrid,
   children, // Nueva prop para contenido personalizado
 }) => {
   // Si se pasan children, no necesitamos data
@@ -87,6 +88,8 @@ const DataGridBase = ({
           </ul>
         )}
       </Box>
+
+      {beforeGrid}
 
       {/* Solo mostrar búsqueda si no hay children y está habilitada */}
       {!children && enableSearch && (

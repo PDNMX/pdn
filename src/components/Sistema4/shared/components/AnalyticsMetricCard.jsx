@@ -4,7 +4,9 @@ const AnalyticsMetricCard = ({ label, value, subtitle, accent = "#713972" }) => 
   <Paper
     elevation={0}
     sx={{
-      height: "100%",
+      width: "100%",
+      minWidth: 0,
+      boxSizing: "border-box",
       p: 2,
       border: "1px solid rgba(113, 57, 114, 0.15)",
       borderTop: `4px solid ${accent}`,

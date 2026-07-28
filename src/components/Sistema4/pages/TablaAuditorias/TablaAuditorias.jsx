@@ -195,24 +195,24 @@ const TablaAuditorias = ({ onFilteredRowsChange }) => {
 
   return (
     <>
-      {!auditorias.loading && !auditorias.error && (
-        <Box sx={{ p: { xs: 1, md: 2.5 }, pb: 0 }}>
-          <AnalyticsFilters
-            rows={auditorias.rows}
-            filters={filters}
-            fields={PROGRAM_FILTER_FIELDS}
-            onChange={setFilters}
-            title="Filtrar programas anuales"
-          />
-          <ProgramasDashboard rows={filteredRows} />
-        </Box>
-      )}
-
       <DataGridBase
         title="Aquí puedes consultar:"
         descriptionItems={descriptionItems}
         data={{ ...auditorias, rows: filteredRows, columns }}
         enableSearch={false}
+        beforeGrid={
+          !auditorias.loading && !auditorias.error ? (
+            <Box sx={{ p: { xs: 1, md: 2.5 }, pb: 0 }}>
+              <AnalyticsFilters
+                rows={auditorias.rows}
+                filters={filters}
+                fields={PROGRAM_FILTER_FIELDS}
+                onChange={setFilters}
+                title="Filtrar programas anuales"
+              />
+            </Box>
+          ) : null
+        }
         columnHeaderHeight={mode === "mobile" ? 64 : 72}
         columnVisibilityModel={columnVisibilityModel}
         onColumnVisibilityModelChange={setColumnVisibilityModel}
@@ -225,6 +225,12 @@ const TablaAuditorias = ({ onFilteredRowsChange }) => {
               : undefined
         }
       />
+
+      {!auditorias.loading && !auditorias.error && (
+        <Box sx={{ p: { xs: 1, md: 2.5 }, pt: 0 }}>
+          <ProgramasDashboard rows={filteredRows} />
+        </Box>
+      )}
 
       <Dialog
         open={Boolean(selectedProgram)}
