@@ -13,6 +13,11 @@ import { dataGridLocaleText } from "../../styles/datagridLocaleText";
 import { dataGridStyles } from "../../styles/dataGridStyles";
 import { dataGridSx } from "../../styles/dataGridSx";
 
+const getTogglableColumns = (columns) =>
+  columns
+    .filter((column) => column.hideable !== false)
+    .map((column) => column.field);
+
 const DataGridBase = ({
   classes,
   title,
@@ -139,6 +144,11 @@ const DataGridBase = ({
             columnVisibilityModel={columnVisibilityModel}
             onColumnVisibilityModelChange={onColumnVisibilityModelChange}
             disableColumnMenu={disableColumnMenu}
+            slotProps={{
+              columnsManagement: {
+                getTogglableColumns,
+              },
+            }}
             sx={gridSx ? [dataGridSx, gridSx] : dataGridSx}
           />
         )}
