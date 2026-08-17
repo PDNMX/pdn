@@ -1,5 +1,5 @@
 import React from 'react'
-import { Alert, Grid, Modal } from '@mui/material'
+import { Grid, Modal, Typography } from '@mui/material'
 
 import axios from 'axios'
 
@@ -9,6 +9,7 @@ import Perfil from '../Perfil'
 import { error } from '../../../../Sistema1/utils'
 
 import ActiveResultProv from '../Resultados'
+import FuenteSinRespuesta from '../FuenteSinRespuesta'
 /* import Descarga from '../../../../Compartidos/Descarga'; */
 import MantenimentResultProv from '../../../../Sistema1/MantenimentResultProv'
 
@@ -365,15 +366,6 @@ export class ResultadosS1 extends React.Component {
         <Chips criterios={JSON.stringify(data)} />
         {!this.state.dataSelect && (
           <>
-            {this.state.prov.some((p) => p.status === 'ACTIVE' && p.error) && (
-              <Alert severity='warning' sx={{ marginTop: 2 }}>
-                Los resultados son parciales. No respondieron las siguientes fuentes: {' '}
-                {this.state.prov
-                  .filter((p) => p.status === 'ACTIVE' && p.error)
-                  .map((p) => p.supplier_name)
-                  .join(', ')}.
-              </Alert>
-            )}
             <Grid container style={{ margin: '2% 0%' }} sx={{
               margin: 'normal'
             }}>
@@ -394,6 +386,22 @@ export class ResultadosS1 extends React.Component {
                       )
                     }
                   })}
+                {this.state.prov.some((p) => p.status === 'ACTIVE' && p.error) && (
+                  <Grid container spacing={1} sx={{ marginTop: 2 }}>
+                    <Grid size={12}>
+                      <Typography color='text.secondary' sx={{ fontWeight: '700 !important' }}>
+                        <strong>Fuentes sin respuesta:</strong>
+                      </Typography>
+                    </Grid>
+                    <Grid size={12}>
+                    {this.state.prov
+                      .filter((p) => p.status === 'ACTIVE' && p.error)
+                      .map((p) => (
+                        <FuenteSinRespuesta key={'error-' + p.supplier_id} p={p} />
+                      ))}
+                    </Grid>
+                  </Grid>
+                )}
                 {this.state.prov
                   .filter((p) => p.status === 'MANTENIMENT')
                   .map((p, i) => {
