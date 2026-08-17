@@ -72,6 +72,24 @@ export function PersonasServidorasPublicasYSusDeclaraciones () {
           <Controller
             control={control}
             defaultValue=''
+            name='psp-declaraciones.nombreEntePublico'
+            render={({ field }) => (
+              <TextField
+                style={{ background: '#fff' }}
+                id='nombreEntePublico'
+                label='Institución o ente público'
+                variant='outlined'
+                placeholder='Ingresa la institución o ente público'
+                fullWidth
+                margin='normal'
+                {...field}
+              />
+            )}
+          />
+
+          <Controller
+            control={control}
+            defaultValue=''
             name='psp-declaraciones.empleoCargoComision'
             render={({ field }) => (
               <TextField

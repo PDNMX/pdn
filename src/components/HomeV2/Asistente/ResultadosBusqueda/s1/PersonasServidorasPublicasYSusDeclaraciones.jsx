@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Modal } from '@mui/material'
+import { Alert, Grid, Modal } from '@mui/material'
 
 import axios from 'axios'
 
@@ -15,6 +15,12 @@ import MantenimentResultProv from '../../../../Sistema1/MantenimentResultProv'
 import CircularProgress from '@mui/material/CircularProgress'
 import Chips from '../Chips'
 import ReactGA from 'react-ga4'
+import {
+  SEARCH_TIMEOUT_MS,
+  buildSearchQuery,
+  normalizeRequestError,
+  providerFromSettledResult
+} from './searchUtils'
 
 export class ResultadosS1 extends React.Component {
   /*
@@ -180,7 +186,7 @@ export class ResultadosS1 extends React.Component {
       /* console.log(data) */
 
       axios
-        .post(url, data)
+        .post(url, data, { timeout: SEARCH_TIMEOUT_MS })
         .then((resp) => {
           const { data } = resp
 
@@ -190,6 +196,7 @@ export class ResultadosS1 extends React.Component {
           p.total = 0
           p.data = []
           p.pagination = {}
+          p.error = undefined
 
           // no hay error
           if (typeof data.error === 'undefined') {
@@ -215,7 +222,6 @@ export class ResultadosS1 extends React.Component {
           })
         })
         .catch((err) => {
-          const { status, statusText } = err.response
           p = {
             ...p,
             finding: false,
@@ -223,10 +229,7 @@ export class ResultadosS1 extends React.Component {
             total: 0,
             data: [],
             pagination: {},
-            error: {
-              status,
-              statusText
-            }
+            error: normalizeRequestError(err)
           }
           this.setState((prevState) => {
             const { prov } = prevState
@@ -250,97 +253,32 @@ export class ResultadosS1 extends React.Component {
     const data = dataProps['psp-declaraciones']
     const requests = providers.map(function (provider) {
       const dataRequest = {
-        query: {
-          nombres: data.nombres.trim(),
-          primerApellido: data.primerApellido.trim(),
-          segundoApellido: data.segundoApellido.trim(),
-          escolaridadNivel: '',
-          nivelOrdenGobierno: '',
-          nombreEntePublico: '',
-          entidadFederativa: '',
-          municipioAlcaldia: '',
-          empleoCargoComision: data.empleoCargoComision.trim(),
-          nivelEmpleoCargoComision: '',
-          superficieConstruccionMin: '',
-          superficieConstruccionMax: '',
-          superficieTerrenoMin: '',
-          superficieTerrenoMax: '',
-          valorAdquisicionMin: '',
-          valorAdquisicionMax: '',
-          formaAdquisicion: '',
-          totalIngresosNetosMin: '',
-          totalIngresosNetosMax: ''
-        },
+        query: buildSearchQuery(data),
         sort: {},
         page: provider.pagination.page,
         pageSize: provider.pagination.pageSize,
         supplier_id: provider.supplier_id
       }
 
-      return axios.post(url, dataRequest)
+      return provider.status === 'MANTENIMENT'
+        ? Promise.resolve({ data: { pagination: { totalRows: 0 }, results: [] } })
+        : axios.post(url, dataRequest, { timeout: SEARCH_TIMEOUT_MS })
     })
 
     Promise.allSettled(requests)
       .then((results) => {
-        // (*)
-        // console.log(results)
-        results.forEach((result, id) => {
-          const p = this.state.prov[id]
-          /* console.log(p) */
-
-          if (p.status === 'MANTENIMENT') {
-            // defaults
-            p.finding = false
-            p.estatus = true
-            p.total = 0
-            p.data = []
-            p.pagination = {}
-
-            this.setState((prevState) => {
-              const { prov } = prevState
-
-              prov[id] = p
-
-              return {
-                ...prevState,
-                prov
-              }
-            })
-          }
-
-          // defaults
-          p.finding = false
-          p.estatus = false
-          p.total = 0
-          p.data = []
-          p.pagination = {}
-
-          // no hay error
-          if (typeof result.value.data.error === 'undefined') {
-            p.finding = false
-            p.estatus = true
-            p.total = result.value.data.pagination.totalRows
-            p.data = result.value.data.results
-            p.pagination = result.value.data.pagination
-          } else {
-            p.error = result.value.data.error
-          }
-
-          this.setState((prevState) => {
-            const { prov } = prevState
-
-            prov[id] = p
-
-            return {
-              ...prevState,
-              prov
-            }
-          })
-        })
+        this.setState((prevState) => ({
+          ...prevState,
+          prov: prevState.prov.map((provider, id) => (
+            providerFromSettledResult(provider, results[id])
+          ))
+        }))
       })
-      .then(() => {
+      .catch((err) => {
+        error('findAll' + err)
+      })
+      .finally(() => {
         this.setState({ loading: false })
-        /* console.log("terminamos los requests"); */
       })
   }
 
@@ -358,7 +296,8 @@ export class ResultadosS1 extends React.Component {
         estatus: false,
         total: 0,
         data: [],
-        pagination: []
+        pagination: [],
+        error: undefined
       }
     })
 
@@ -397,6 +336,7 @@ export class ResultadosS1 extends React.Component {
       .catch((err) => {
         this.setState((prevState) => ({
           ...prevState,
+          loading: false,
           providers: [
             {
               supplier_id: -1,
@@ -425,6 +365,15 @@ export class ResultadosS1 extends React.Component {
         <Chips criterios={JSON.stringify(data)} />
         {!this.state.dataSelect && (
           <>
+            {this.state.prov.some((p) => p.status === 'ACTIVE' && p.error) && (
+              <Alert severity='warning' sx={{ marginTop: 2 }}>
+                Los resultados son parciales. No respondieron las siguientes fuentes: {' '}
+                {this.state.prov
+                  .filter((p) => p.status === 'ACTIVE' && p.error)
+                  .map((p) => p.supplier_name)
+                  .join(', ')}.
+              </Alert>
+            )}
             <Grid container style={{ margin: '2% 0%' }} sx={{
               margin: 'normal'
             }}>

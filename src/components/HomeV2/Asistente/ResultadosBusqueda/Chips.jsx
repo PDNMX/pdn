@@ -52,6 +52,10 @@ export default function ChipsArray (props) {
           obj = { id: nanoid(), key: 1, label: value.nombre }
           etiquetas.push(obj)
           break
+        case 'nombreEntePublico':
+          obj = { id: nanoid(), key: 1, label: value }
+          etiquetas.push(obj)
+          break
         case 'buyer_name':
           obj = { id: nanoid(), key: 1, label: value.name }
           etiquetas.push(obj)
