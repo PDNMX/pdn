@@ -42,18 +42,28 @@ const Numeralia = props => {
   const [numeralia, setNumeralia] = useState(null)
   const [error, setError] = useState(null)
   async function fetchData () {
+    if (!ligaDatosNumeralia) {
+      setError('No pudimos obtener la información en este momento')
+      setIsLoading(false)
+      return
+    }
+
     try {
       const response = await fetch(ligaDatosNumeralia)
       if (response.ok) {
         const data = await response.json()
+        if (!Array.isArray(data?.values) || data.values.length < 6) {
+          throw new Error('Respuesta de numeralia inválida')
+        }
         setNumeralia(data)
         setError(null)
-        setIsLoading(false)
       } else {
         setError('Hubo un error al obtener la información')
       }
     } catch {
       setError('No pudimos hacer la solicitud para obtener la información')
+    } finally {
+      setIsLoading(false)
     }
   }
   useEffect(() => {

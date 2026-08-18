@@ -14,7 +14,6 @@ Dockerfile*
 docker-compose*
 yarn-error.log
 package-lock.json
-.env
 .env.*
 DEPENDENCY_MIGRATION.md
 tests

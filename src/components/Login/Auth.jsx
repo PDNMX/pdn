@@ -1,6 +1,15 @@
 import axios from 'axios'
 
+const authUrl = process.env.REACT_APP_PDN_AUTH_URL
+
 const logIn = async (email, password) => {
+  if (!authUrl) {
+    return {
+      success: false,
+      message: 'El servicio de autenticación no está configurado'
+    }
+  }
+
   const options = {
     method: 'POST',
     data: {
@@ -8,7 +17,7 @@ const logIn = async (email, password) => {
       password
     },
     withCredentials: true,
-    url: `${process.env.REACT_APP_PDN_AUTH_URL}/login`
+    url: `${authUrl}/login`
   }
 
   try {
@@ -29,10 +38,12 @@ const logIn = async (email, password) => {
 }
 
 const getUser = async () => {
+  if (!authUrl) return null
+
   const options = {
     method: 'POST',
     withCredentials: true,
-    url: `${process.env.REACT_APP_PDN_AUTH_URL}/user`
+    url: `${authUrl}/user`
   }
 
   try {
@@ -46,10 +57,12 @@ const getUser = async () => {
 }
 
 const logOut = async () => {
+  if (!authUrl) return null
+
   const options = {
     method: 'POST',
     withCredentials: true,
-    url: `${process.env.REACT_APP_PDN_AUTH_URL}/logout`
+    url: `${authUrl}/logout`
   }
 
   try {

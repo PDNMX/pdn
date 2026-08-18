@@ -26,8 +26,11 @@ const BlogComponent = (props) => {
   const [posts, setPosts] = React.useState([])
 
   React.useEffect(() => {
+    const blogUrl = process.env.REACT_APP_BLOG_API_URL
+    if (!blogUrl) return
+
     const config = {
-      url: process.env.REACT_APP_BLOG_API_URL,
+      url: blogUrl,
       method: 'GET',
       params: {
         key: process.env.REACT_APP_BLOG_API_KEY,
@@ -38,8 +41,7 @@ const BlogComponent = (props) => {
 
     axios(config)
       .then((data) => {
-        // console.log(data);
-        setPosts(data.data.posts)
+        setPosts(Array.isArray(data.data?.posts) ? data.data.posts : [])
       })
       .catch((error) => {
         console.log(error)
