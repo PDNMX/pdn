@@ -13,7 +13,12 @@ const FuenteSinRespuesta = ({ p }) => {
     <BoxAccordion square>
       <BoxAccordionSummary
         aria-disabled='true'
-        sx={{ pointerEvents: 'none' }}
+        sx={{
+          pointerEvents: 'none',
+          backgroundColor: '#f3f0e8 !important',
+          borderColor: '#d8d0bc !important',
+          color: '#8a857c !important'
+        }}
       >
         <Grid container spacing={0} sx={{ width: '100%' }}>
           <Grid size={8}>
