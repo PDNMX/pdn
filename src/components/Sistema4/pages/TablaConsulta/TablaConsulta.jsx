@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useSistema4Data } from "../../shared/context/Sistema4DataContext";
 import { columns } from "./columns";
+import SnfParticipationMap from "./SnfParticipationMap";
 import DataGridBase from "../../shared/components/DataGridBase";
 import {
   Box,
@@ -81,12 +82,15 @@ const HeaderLink = styled(Link)(({ theme }) => ({
 
 const NetworkFigure = styled("figure")(({ theme }) => ({
   margin: `0 0 ${theme.spacing(3)}`,
-  padding: theme.spacing(2.5),
+  padding: theme.spacing(2),
   border: "1px solid rgba(113, 57, 114, 0.16)",
   borderRadius: 16,
   background:
     "radial-gradient(circle at 50% 46%, rgba(113, 57, 114, 0.1), transparent 30%), linear-gradient(145deg, #ffffff 0%, #fbf8fc 100%)",
   overflow: "hidden",
+  [theme.breakpoints.down("sm")]: {
+    display: "none",
+  },
 }));
 
 const NetworkViewport = styled(Box)(() => ({
@@ -97,7 +101,8 @@ const NetworkViewport = styled(Box)(() => ({
 
 const NetworkSvg = styled("svg")(() => ({
   display: "block",
-  width: "100%",
+  width: "88%",
+  maxWidth: 1056,
   minWidth: 760,
   height: "auto",
   margin: "0 auto",
@@ -625,6 +630,13 @@ const TablaConsulta = () => {
         title="Integrantes del SNF"
         descriptionItems={descriptionItems}
         data={{ ...miembrosSNF, columns }}
+        beforeGrid={
+          <SnfParticipationMap
+            rows={miembrosSNF.rows}
+            loading={miembrosSNF.loading}
+            error={miembrosSNF.error}
+          />
+        }
       />
       <DataGridBase
         title="Directorio del SNF"
