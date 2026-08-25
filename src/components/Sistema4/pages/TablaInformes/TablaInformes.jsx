@@ -9,6 +9,7 @@ import {
   Divider,
   Grid,
   IconButton,
+  LinearProgress,
   Typography,
   useMediaQuery,
 } from "@mui/material";
@@ -24,6 +25,7 @@ import {
   EMPTY_ANALYTICS_FILTERS,
   REPORT_FILTER_FIELDS,
   filterAnalyticsRows,
+  normalizeText,
 } from "../../shared/services/analyticsUtils";
 
 const displayValue = (value) =>
@@ -123,6 +125,19 @@ const TablaInformes = ({ onFilteredRowsChange }) => {
     () => filterAnalyticsRows(informes.rows, filters, REPORT_FILTER_FIELDS),
     [informes.rows, filters]
   );
+  const participatingEntities = React.useMemo(
+    () =>
+      new Set(
+        informes.rows
+          .map((row) => normalizeText(row.entidadFederativa))
+          .filter(Boolean)
+      ).size,
+    [informes.rows]
+  );
+  const participationPercentage = Math.min(
+    100,
+    (participatingEntities / 32) * 100
+  );
 
   const mode = isMobileViewport
     ? "mobile"
@@ -185,6 +200,58 @@ const TablaInformes = ({ onFilteredRowsChange }) => {
     "Conforme al Artículo 55 de la LGSNA, se establece que, al menos, lo que también debe contemplar el sistema son los informes que deben hacerse públicos en términos de las disposiciones jurídicas aplicables.",
     "Esta sección reúne los informes públicos generados por las entidades de control del país como resultado de sus auditorías y revisiones. Estos documentos muestran los hallazgos, observaciones y seguimientos detectados.",
     "Puede filtrar los informes por año, entidad federativa, ente público o nombre del informe.",
+    <Box
+      component="span"
+      sx={{
+        display: "inline-flex",
+        flexDirection: "column",
+        alignItems: "stretch",
+        gap: 0.75,
+        width: "100%",
+      }}
+    >
+      <Box component="span">
+        Actualmente participan{" "}
+        <Box component="span" sx={{ color: "#a85a12", fontWeight: 700 }}>
+          {participatingEntities} de 32
+        </Box>{" "}
+        entidades federativas.
+      </Box>
+      <Box
+        component="span"
+        sx={{
+          display: "inline-flex",
+          alignItems: "center",
+          gap: 0.75,
+          flex: 1,
+          minWidth: 120,
+        }}
+      >
+        <LinearProgress
+          variant="determinate"
+          value={participationPercentage}
+          aria-label={`Cumplimiento: ${Math.round(participationPercentage)}%`}
+          sx={{
+            flex: 1,
+            height: 10,
+            borderRadius: 5,
+            backgroundColor: "rgba(217, 130, 43, 0.2)",
+            "& .MuiLinearProgress-bar": {
+              position: "absolute",
+              overflow: "hidden",
+              borderRadius: 5,
+              backgroundColor: "#d9822b",
+            },
+          }}
+        />
+        <Box
+          component="span"
+          sx={{ minWidth: 38, color: "#a85a12", fontWeight: 700 }}
+        >
+          {Math.round(participationPercentage)}%
+        </Box>
+      </Box>
+    </Box>,
   ];
 
   const handleCloseDetails = () => setSelectedReport(null);

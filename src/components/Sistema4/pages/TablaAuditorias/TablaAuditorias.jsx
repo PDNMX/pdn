@@ -9,6 +9,7 @@ import {
   Divider,
   Grid,
   IconButton,
+  LinearProgress,
   Typography,
   useMediaQuery,
 } from "@mui/material";
@@ -24,6 +25,7 @@ import {
   EMPTY_ANALYTICS_FILTERS,
   PROGRAM_FILTER_FIELDS,
   filterAnalyticsRows,
+  normalizeText,
 } from "../../shared/services/analyticsUtils";
 
 const displayValue = (value) =>
@@ -122,6 +124,19 @@ const TablaAuditorias = ({ onFilteredRowsChange }) => {
       ),
     [auditorias.rows, filters]
   );
+  const participatingEntities = React.useMemo(
+    () =>
+      new Set(
+        auditorias.rows
+          .map((row) => normalizeText(row.entidadFederativa))
+          .filter(Boolean)
+      ).size,
+    [auditorias.rows]
+  );
+  const participationPercentage = Math.min(
+    100,
+    (participatingEntities / 32) * 100
+  );
 
   const mode = isMobileViewport
     ? "mobile"
@@ -189,6 +204,58 @@ const TablaAuditorias = ({ onFilteredRowsChange }) => {
     "En cumplimiento del Artículo 55 de la Ley General del Sistema Nacional Anticorrupción (LGSNA), que establece que, al menos, lo que debe contemplar el sistema son los Programas Anuales de Auditorías de los órganos de fiscalización de los tres órdenes de gobierno.",
     "En esta sección puede consultar los Programas Anuales de Auditoría (PAA) y sus documentos equivalentes, como son los Programas Anuales de Fiscalización o los Programas Anuales de Trabajo de los distintos órganos fiscalizadores del país.",
     "Utilice los filtros de la tabla para buscar los programas por año, por ente público o por nombre del documento.",
+    <Box
+      component="span"
+      sx={{
+        display: "inline-flex",
+        flexDirection: "column",
+        alignItems: "stretch",
+        gap: 0.75,
+        width: "100%",
+      }}
+    >
+      <Box component="span">
+        Actualmente participan{" "}
+        <Box component="span" sx={{ color: "#a85a12", fontWeight: 700 }}>
+          {participatingEntities} de 32
+        </Box>{" "}
+        entidades federativas.
+      </Box>
+      <Box
+        component="span"
+        sx={{
+          display: "inline-flex",
+          alignItems: "center",
+          gap: 0.75,
+          flex: 1,
+          minWidth: 120,
+        }}
+      >
+        <LinearProgress
+          variant="determinate"
+          value={participationPercentage}
+          aria-label={`Cumplimiento: ${Math.round(participationPercentage)}%`}
+          sx={{
+            flex: 1,
+            height: 10,
+            borderRadius: 5,
+            backgroundColor: "rgba(217, 130, 43, 0.2)",
+            "& .MuiLinearProgress-bar": {
+              position: "absolute",
+              overflow: "hidden",
+              borderRadius: 5,
+              backgroundColor: "#d9822b",
+            },
+          }}
+        />
+        <Box
+          component="span"
+          sx={{ minWidth: 38, color: "#a85a12", fontWeight: 700 }}
+        >
+          {Math.round(participationPercentage)}%
+        </Box>
+      </Box>
+    </Box>,
   ];
 
   const handleCloseDetails = () => setSelectedProgram(null);
