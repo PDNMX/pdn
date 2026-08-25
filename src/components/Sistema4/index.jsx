@@ -103,7 +103,7 @@ const ContentWithDownload = ({ classes, tab, tabs }) => {
           </Tabs>
         </Box>
 
-        {(tab === 0 || tab === 1) && <Snf2025CoveragePanel />}
+        {tab === 2 && <Snf2025CoveragePanel />}
 
         {/* Contenido */}
         <ThemeProvider theme={ThemeV2}>
