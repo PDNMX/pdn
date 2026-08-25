@@ -12,6 +12,7 @@ import TablaAuditorias from "./pages/TablaAuditorias/TablaAuditorias.jsx";
 import TablaInformes from "./pages/TablaInformes/TablaInformes.jsx";
 import TablaConsulta from "./pages/TablaConsulta/TablaConsulta.jsx";
 import AlertPrototipo from "./shared/components/AlertPrototipo.jsx";
+import Snf2025CoveragePanel from "./shared/components/Snf2025CoveragePanel.jsx";
 import {
   Sistema4DataProvider,
   useSistema4Data,
@@ -101,6 +102,8 @@ const ContentWithDownload = ({ classes, tab, tabs }) => {
             ))}
           </Tabs>
         </Box>
+
+        {(tab === 0 || tab === 1) && <Snf2025CoveragePanel />}
 
         {/* Contenido */}
         <ThemeProvider theme={ThemeV2}>
