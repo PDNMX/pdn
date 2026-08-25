@@ -1,7 +1,9 @@
+import { useEffect, useRef } from "react";
 import { useSistema4Data } from "../../shared/context/Sistema4DataContext";
 import { columns } from "./columns";
 import DataGridBase from "../../shared/components/DataGridBase";
 import {
+  Box,
   Typography,
   Link,
   Table,
@@ -76,6 +78,381 @@ const HeaderLink = styled(Link)(({ theme }) => ({
     textDecoration: "underline",
   },
 }));
+
+const NetworkFigure = styled("figure")(({ theme }) => ({
+  margin: `0 0 ${theme.spacing(3)}`,
+  padding: theme.spacing(2.5),
+  border: "1px solid rgba(113, 57, 114, 0.16)",
+  borderRadius: 16,
+  background:
+    "radial-gradient(circle at 50% 46%, rgba(113, 57, 114, 0.1), transparent 30%), linear-gradient(145deg, #ffffff 0%, #fbf8fc 100%)",
+  overflow: "hidden",
+}));
+
+const NetworkViewport = styled(Box)(() => ({
+  width: "100%",
+  overflowX: "auto",
+  scrollbarWidth: "thin",
+}));
+
+const NetworkSvg = styled("svg")(() => ({
+  display: "block",
+  width: "100%",
+  minWidth: 760,
+  height: "auto",
+  margin: "0 auto",
+  "& .network-edge": {
+    fill: "none",
+    strokeWidth: 2.5,
+    opacity: 0.52,
+  },
+  "& .network-edge-halo": {
+    fill: "none",
+    stroke: "#fff",
+    strokeWidth: 8,
+    opacity: 0.82,
+  },
+  "& .network-node": {
+    cursor: "pointer",
+    outline: "none",
+  },
+  "& .network-node circle": {
+    transition: "filter 180ms ease, stroke-width 180ms ease, transform 180ms ease",
+    transformBox: "fill-box",
+    transformOrigin: "center",
+  },
+  "& .network-node:hover circle, & .network-node:focus circle": {
+    filter: "drop-shadow(0 7px 8px rgba(44, 24, 45, 0.22))",
+    strokeWidth: 5,
+    transform: "scale(1.035)",
+  },
+  "& .node-name": {
+    fill: "#fff",
+    fontSize: 13.5,
+    fontWeight: 700,
+    textAnchor: "middle",
+    pointerEvents: "none",
+  },
+  "& .node-role": {
+    fill: "rgba(255, 255, 255, 0.88)",
+    fontSize: 10.5,
+    fontWeight: 600,
+    letterSpacing: 0.35,
+    textAnchor: "middle",
+    pointerEvents: "none",
+  },
+}));
+
+const NetworkLegend = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexWrap: "wrap",
+  justifyContent: "center",
+  gap: theme.spacing(1, 2.5),
+  marginTop: theme.spacing(1),
+  color: theme.palette.text.secondary,
+  "& span": {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: theme.spacing(0.75),
+    fontSize: "0.8rem",
+  },
+  "& i": {
+    width: 10,
+    height: 10,
+    borderRadius: "50%",
+    display: "inline-block",
+  },
+}));
+
+const ComiteRectorNetwork = ({ data }) => {
+  const viewportRef = useRef(null);
+
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    if (viewport && viewport.scrollWidth > viewport.clientWidth) {
+      viewport.scrollLeft = (viewport.scrollWidth - viewport.clientWidth) / 2;
+    }
+  }, []);
+
+  const nodes = [
+    {
+      ...data.ASOFIS[0],
+      id: "asf",
+      x: 425,
+      y: 105,
+      color: "#713972",
+      stroke: "#e8d643",
+      lines: ["Auditoría Superior", "de la Federación"],
+      role: "ASF · PRESIDENCIA",
+    },
+    {
+      ...data.CPCEF[0],
+      id: "sabg",
+      x: 775,
+      y: 105,
+      color: "#713972",
+      stroke: "#e8d643",
+      lines: ["Secretaría", "Anticorrupción y", "Buen Gobierno"],
+      role: "SABG · PRESIDENCIA",
+    },
+    {
+      ...data.ASOFIS[1],
+      id: "chiapas",
+      x: 195,
+      y: 225,
+      color: "#a64f7a",
+      stroke: "#f1c8dc",
+      lines: ["Auditoría Superior", "de Chiapas"],
+      role: "ASOFIS · ROTATORIO",
+    },
+    {
+      ...data.ASOFIS[2],
+      id: "hidalgo",
+      x: 145,
+      y: 440,
+      color: "#a64f7a",
+      stroke: "#f1c8dc",
+      lines: ["Auditoría Superior", "de Hidalgo"],
+      role: "ASOFIS · ROTATORIO",
+    },
+    {
+      ...data.ASOFIS[3],
+      id: "sinaloa",
+      x: 330,
+      y: 620,
+      color: "#a64f7a",
+      stroke: "#f1c8dc",
+      lines: ["Auditoría Superior", "de Sinaloa"],
+      role: "ASOFIS · ROTATORIO",
+    },
+    {
+      ...data.CPCEF[1],
+      id: "aguascalientes",
+      x: 1005,
+      y: 190,
+      color: "#28777a",
+      stroke: "#bfe2df",
+      lines: ["Contraloría", "de Aguascalientes"],
+      role: "CPCE-F · ROTATORIO",
+    },
+    {
+      ...data.CPCEF[2],
+      id: "puebla",
+      x: 1070,
+      y: 405,
+      color: "#28777a",
+      stroke: "#bfe2df",
+      lines: ["Buen Gobierno", "de Puebla"],
+      role: "CPCE-F · ROTATORIO",
+    },
+    {
+      ...data.CPCEF[3],
+      id: "michoacan",
+      x: 930,
+      y: 600,
+      color: "#28777a",
+      stroke: "#bfe2df",
+      lines: ["Secretaría", "de Contraloría", "de Michoacán"],
+      role: "CPCE-F · ROTATORIO",
+    },
+    {
+      ...data.CPCEF[4],
+      id: "chihuahua",
+      x: 695,
+      y: 665,
+      color: "#28777a",
+      stroke: "#bfe2df",
+      lines: ["Función Pública", "de Chihuahua"],
+      role: "CPCE-F · ROTATORIO",
+    },
+  ];
+
+  return (
+    <NetworkFigure>
+      <Box textAlign="center" mb={1}>
+        <Typography variant="h6" component="h3" sx={{ fontWeight: 700 }}>
+          Así se integra el Comité Rector del SNF
+        </Typography>
+        <Typography variant="body2" color="textSecondary">
+          Presidencia dual y siete integrantes rotatorios · periodo 2025–2027
+        </Typography>
+      </Box>
+
+      <NetworkViewport ref={viewportRef}>
+        <NetworkSvg
+          viewBox="0 0 1200 755"
+          role="img"
+          aria-labelledby="comite-network-title comite-network-description"
+        >
+          <title id="comite-network-title">
+            Integración del Comité Rector del Sistema Nacional de Fiscalización
+          </title>
+          <desc id="comite-network-description">
+            La Auditoría Superior de la Federación y la Secretaría
+            Anticorrupción y Buen Gobierno ejercen la presidencia dual, junto
+            con siete integrantes rotatorios de ASOFIS y CPCE-F para el periodo
+            2025 a 2027.
+          </desc>
+
+          <g aria-hidden="true">
+            {nodes.map((node) => (
+              <line
+                key={`halo-${node.id}`}
+                className="network-edge-halo"
+                x1="600"
+                y1="370"
+                x2={node.x}
+                y2={node.y}
+              />
+            ))}
+            {nodes.map((node) => (
+              <line
+                key={`edge-${node.id}`}
+                className="network-edge"
+                x1="600"
+                y1="370"
+                x2={node.x}
+                y2={node.y}
+                stroke={node.color}
+              />
+            ))}
+          </g>
+
+          <g aria-hidden="true">
+            <circle
+              cx="600"
+              cy="370"
+              r="126"
+              fill="rgba(232, 214, 67, 0.22)"
+            />
+            <circle
+              cx="600"
+              cy="370"
+              r="113"
+              fill="#fff"
+              stroke="#713972"
+              strokeWidth="4"
+            />
+            <text
+              x="600"
+              y="337"
+              textAnchor="middle"
+              fill="#713972"
+              fontSize="22"
+              fontWeight="800"
+            >
+              Comité Rector
+            </text>
+            <text
+              x="600"
+              y="364"
+              textAnchor="middle"
+              fill="#713972"
+              fontSize="18"
+              fontWeight="700"
+            >
+              del SNF
+            </text>
+            <line
+              x1="542"
+              y1="380"
+              x2="658"
+              y2="380"
+              stroke="#e3d4e4"
+              strokeWidth="2"
+            />
+            <text
+              x="600"
+              y="404"
+              textAnchor="middle"
+              fill="#5c5260"
+              fontSize="12.5"
+              fontWeight="600"
+            >
+              9 INTEGRANTES
+            </text>
+            <text
+              x="600"
+              y="425"
+              textAnchor="middle"
+              fill="#756d77"
+              fontSize="11.5"
+            >
+              Presidencia dual + 7 rotatorios
+            </text>
+          </g>
+
+          {nodes.map((node) => (
+            <a
+              className="network-node"
+              key={node.id}
+              href={node.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${node.nombre}. Abrir sitio institucional`}
+            >
+              <title>{node.nombre}</title>
+              <circle
+                cx={node.x}
+                cy={node.y}
+                r="78"
+                fill={node.color}
+                stroke={node.stroke}
+                strokeWidth="4"
+              />
+              <text
+                className="node-name"
+                x={node.x}
+                y={node.y - (node.lines.length === 3 ? 20 : 10)}
+              >
+                {node.lines.map((line, index) => (
+                  <tspan key={line} x={node.x} dy={index === 0 ? 0 : 18}>
+                    {line}
+                  </tspan>
+                ))}
+              </text>
+              <text className="node-role" x={node.x} y={node.y + 37}>
+                {node.role}
+              </text>
+            </a>
+          ))}
+        </NetworkSvg>
+      </NetworkViewport>
+
+      <NetworkLegend aria-label="Clave de colores">
+        <span>
+          <i style={{ backgroundColor: "#713972" }} /> Presidencia dual
+        </span>
+        <span>
+          <i style={{ backgroundColor: "#a64f7a" }} /> Integrantes ASOFIS
+        </span>
+        <span>
+          <i style={{ backgroundColor: "#28777a" }} /> Integrantes CPCE-F
+        </span>
+      </NetworkLegend>
+
+      <Typography
+        component="figcaption"
+        variant="caption"
+        color="textSecondary"
+        display="block"
+        textAlign="center"
+        mt={1.5}
+      >
+        Seleccione un nodo para abrir el sitio institucional. Fuente:{" "}
+        <Link
+          href="https://www.snf.org.mx/informaci%C3%B3n-general-del-comit%C3%A9-rector.aspx"
+          target="_blank"
+          rel="noopener noreferrer"
+          sx={{ fontWeight: 600 }}
+        >
+          Sistema Nacional de Fiscalización
+        </Link>
+        .
+      </Typography>
+    </NetworkFigure>
+  );
+};
 
 const TablaConsulta = () => {
   const { miembrosSNF } = useSistema4Data();
@@ -168,6 +545,7 @@ const TablaConsulta = () => {
         title="Integrantes del Comité Rector"
         descriptionItems={comiteRectorDescriptionItems}
       >
+        <ComiteRectorNetwork data={comiteRectorData} />
         <StyledTableContainer component={Paper}>
           <Table>
             <StyledTableHead>
