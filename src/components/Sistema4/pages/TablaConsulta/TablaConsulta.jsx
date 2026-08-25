@@ -465,7 +465,16 @@ const TablaConsulta = () => {
   const descriptionItems = [
     "En esta sección puede consultar los miembros del Sistema Nacional de Fiscalización (SNF) organizados por el Comité Rector y grupos de trabajo.",
     "El Comité Rector está integrado por la Auditoría Superior de la Federación (ASF) y representantes de la Asociación Nacional de Organismos de Fiscalización Superior y Control Gubernamental (ASOFIS) y la Comisión Permanente de Contralores Estados-Federación (CPCE-F).",
-    "Utilice los filtros de la tabla para buscar por ente público, responsable, grupo de trabajo o filial (ASOFIS/CPCE-F).",
+    <>
+      <Box component="span" sx={{ display: { xs: "none", sm: "inline" } }}>
+        Seleccione los nodos de la red para explorar la participación de los
+        integrantes en los grupos de trabajo.
+      </Box>
+      <Box component="span" sx={{ display: { xs: "inline", sm: "none" } }}>
+        Utilice los filtros de la tabla para buscar por ente público,
+        responsable, grupo de trabajo o filial (ASOFIS/CPCE-F).
+      </Box>
+    </>,
   ];
 
   const comiteRectorDescriptionItems = [
@@ -630,6 +639,8 @@ const TablaConsulta = () => {
         title="Integrantes del SNF"
         descriptionItems={descriptionItems}
         data={{ ...miembrosSNF, columns }}
+        gridSx={{ display: { xs: "flex", sm: "none" } }}
+        searchContainerSx={{ display: { xs: "block", sm: "none" } }}
         beforeGrid={
           <SnfParticipationMap
             rows={miembrosSNF.rows}

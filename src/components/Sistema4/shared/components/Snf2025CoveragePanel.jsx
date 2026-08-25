@@ -71,7 +71,12 @@ const CoverageIndicator = ({ label, value, count, detail, color }) => (
     >
       <Typography
         variant="body2"
-        sx={{ color: "text.primary", fontWeight: 700, lineHeight: 1.35 }}
+        sx={{
+          minHeight: { sm: "2.7em" },
+          color: "text.primary",
+          fontWeight: 700,
+          lineHeight: 1.35,
+        }}
       >
         {label}
       </Typography>

@@ -131,6 +131,98 @@ export const summarizeNumericField = (rows, field) => {
   };
 };
 
+const hasAvailableValue = (value) => {
+  const normalized = normalizeText(value);
+  return (
+    Boolean(normalized) &&
+    !["na", "n/a", "sin dato", "no aplica"].includes(normalized)
+  );
+};
+
+const chooseDisplayLabel = (current, candidate) => {
+  const value = String(candidate ?? "").trim().replace(/\s+/g, " ");
+  if (!current) return value;
+
+  const currentIsUppercase = current === current.toLocaleUpperCase("es-MX");
+  const candidateHasLowercase = value !== value.toLocaleUpperCase("es-MX");
+  return currentIsUppercase && candidateHasLowercase ? value : current;
+};
+
+export const buildPilotCoverage = (programRows = [], reportRows = []) => {
+  const states = new Map();
+  const years = new Set();
+
+  const addRows = (rows, type) => {
+    rows.forEach((row) => {
+      const rawState = String(row.entidadFederativa ?? "").trim();
+      const stateKey = normalizeText(rawState);
+      const year = String(row.año ?? "").trim();
+      if (!stateKey || !year) return;
+
+      years.add(year);
+      if (!states.has(stateKey)) {
+        states.set(stateKey, {
+          key: stateKey,
+          state: rawState,
+          programs: 0,
+          reports: 0,
+          programsWithLink: 0,
+          reportsWithLink: 0,
+          byYear: {},
+        });
+      }
+
+      const state = states.get(stateKey);
+      state.state = chooseDisplayLabel(state.state, rawState);
+      if (!state.byYear[year]) {
+        state.byYear[year] = { programs: 0, reports: 0 };
+      }
+
+      if (type === "programs") {
+        state.programs += 1;
+        state.byYear[year].programs += 1;
+        if (hasAvailableValue(row.enlace)) state.programsWithLink += 1;
+      } else {
+        state.reports += 1;
+        state.byYear[year].reports += 1;
+        if (hasAvailableValue(row.enlace)) state.reportsWithLink += 1;
+      }
+    });
+  };
+
+  addRows(programRows, "programs");
+  addRows(reportRows, "reports");
+
+  const sortedYears = Array.from(years).sort((a, b) =>
+    a.localeCompare(b, "es-MX", { numeric: true })
+  );
+  const stateRows = Array.from(states.values()).sort((a, b) =>
+    a.state.localeCompare(b.state, "es-MX", { sensitivity: "base" })
+  );
+
+  return {
+    years: sortedYears,
+    states: stateRows,
+    stateCount: stateRows.length,
+    programCount: stateRows.reduce(
+      (total, state) => total + state.programs,
+      0
+    ),
+    reportCount: stateRows.reduce(
+      (total, state) => total + state.reports,
+      0
+    ),
+    programsWithLink: stateRows.reduce(
+      (total, state) => total + state.programsWithLink,
+      0
+    ),
+    reportsWithLink: stateRows.reduce(
+      (total, state) => total + state.reportsWithLink,
+      0
+    ),
+  };
+};
+
 export const aggregateAnalyticsRows = (rows, dimensionField, metrics) => {
   const groups = new Map();
 

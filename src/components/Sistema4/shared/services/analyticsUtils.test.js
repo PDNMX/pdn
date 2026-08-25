@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import {
   PROGRAM_FILTER_FIELDS,
   aggregateAnalyticsRows,
+  buildPilotCoverage,
   filterAnalyticsRows,
   getAnalyticsFilterOptions,
   parseNumericValue,
@@ -88,5 +89,45 @@ test("excluye faltantes de la suma y conserva la cobertura", () => {
   assert.equal(summary.valid, 2);
   assert.equal(summary.total, 3);
   assert.equal(summary.hasData, true);
+});
+
+test("construye la cobertura del piloto por entidad y ejercicio", () => {
+  const coverage = buildPilotCoverage(
+    [
+      {
+        año: "2024",
+        entidadFederativa: "TABASCO",
+        enlace: "https://ejemplo.mx/paa-2024",
+      },
+      {
+        año: "2025",
+        entidadFederativa: "Tabasco",
+        enlace: "N/A",
+      },
+    ],
+    [
+      {
+        año: "2024",
+        entidadFederativa: "Tabasco",
+        enlace: "https://ejemplo.mx/informe-2024",
+      },
+      {
+        año: "2025",
+        entidadFederativa: "Guanajuato",
+        enlace: "",
+      },
+    ]
+  );
+
+  assert.deepEqual(coverage.years, ["2024", "2025"]);
+  assert.equal(coverage.stateCount, 2);
+  assert.equal(coverage.programCount, 2);
+  assert.equal(coverage.reportCount, 2);
+  assert.equal(coverage.programsWithLink, 1);
+  assert.equal(coverage.reportsWithLink, 1);
+
+  const tabasco = coverage.states.find((state) => state.state === "Tabasco");
+  assert.deepEqual(tabasco.byYear["2024"], { programs: 1, reports: 1 });
+  assert.deepEqual(tabasco.byYear["2025"], { programs: 1, reports: 0 });
 });
 

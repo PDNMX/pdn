@@ -13,6 +13,7 @@ import TablaInformes from "./pages/TablaInformes/TablaInformes.jsx";
 import TablaConsulta from "./pages/TablaConsulta/TablaConsulta.jsx";
 import AlertPrototipo from "./shared/components/AlertPrototipo.jsx";
 import Snf2025CoveragePanel from "./shared/components/Snf2025CoveragePanel.jsx";
+import Sistema4PilotCoveragePanel from "./shared/components/Sistema4PilotCoveragePanel.jsx";
 import {
   Sistema4DataProvider,
   useSistema4Data,
@@ -109,6 +110,8 @@ const ContentWithDownload = ({ classes, tab, tabs }) => {
         <ThemeProvider theme={ThemeV2}>
           <Box className={classes.tabPanel}>{content}</Box>
         </ThemeProvider>
+
+        {tab === 2 && <Sistema4PilotCoveragePanel />}
       </Paper>
 
       {currentData && (
