@@ -560,7 +560,10 @@ const TablaConsulta = () => {
         descriptionItems={comiteRectorDescriptionItems}
       >
         <ComiteRectorNetwork data={comiteRectorData} />
-        <StyledTableContainer component={Paper}>
+        <StyledTableContainer
+          component={Paper}
+          sx={{ display: { xs: "block", sm: "none" } }}
+        >
           <Table>
             <StyledTableHead>
               <TableRow>
