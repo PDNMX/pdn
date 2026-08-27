@@ -1,10 +1,11 @@
 import React from 'react'
 import TablaResultados from './TablaResultados'
 import axios from 'axios'
-import { Modal, CircularProgress } from '@mui/material'
+import { Alert, Modal, CircularProgress } from '@mui/material'
 import ReactGA from 'react-ga4'
 
 import Chips from '../Chips'
+import { getS6ErrorMessage, S6_REQUEST_TIMEOUT_MS } from '../../../../Sistema6/api'
 
 export function ResultadosS6v2 (props) {
   const dataProps = JSON.parse(props.data)
@@ -35,7 +36,8 @@ export function ResultadosS6v2 (props) {
     supplierName: '',
     cycle: 'any',
     cycles: [],
-    terminado: false
+    terminado: false,
+    error: null
   })
 
   React.useEffect(() => {
@@ -48,6 +50,7 @@ export function ResultadosS6v2 (props) {
     setState({
       ...state,
       loading: true,
+      error: null,
       pagination: {
         page: 0,
         pageSize
@@ -60,6 +63,7 @@ export function ResultadosS6v2 (props) {
     setState({
       ...state,
       loading: true,
+      error: null,
       pagination: {
         page, // incrementar página
         pageSize: state.pagination.pageSize
@@ -110,22 +114,24 @@ export function ResultadosS6v2 (props) {
         },
         method: 'POST',
         data: body,
-        json: true
+        json: true,
+        timeout: S6_REQUEST_TIMEOUT_MS
       }).then((res) => {
-        setState({
-          /* ...state, */
+        setState(current => ({
+          ...current,
           loading: false,
           results: res.data.data,
           pagination: res.data.pagination, // solo debe actualizarse el total
-          terminado: true
-        })
+          terminado: true,
+          error: null
+        }))
       })
     } catch (error) {
-      console.log(error)
-      setState({
-        ...state,
-        loading: false
-      })
+      setState(current => ({
+        ...current,
+        loading: false,
+        error: getS6ErrorMessage(error)
+      }))
     }
   }
 
@@ -137,6 +143,7 @@ export function ResultadosS6v2 (props) {
           <CircularProgress size={200} style={{ position: 'fixed', margin: 'auto', left: 0, right: 0, top: 0, bottom: 0 }} />
         </Modal>
       )}
+      {state.error && <Alert severity='error' sx={{ my: 2 }}>{state.error}</Alert>}
       <div style={{ overflow: 'auto' }}>
         <TablaResultados
           data={state.results}

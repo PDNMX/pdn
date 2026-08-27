@@ -16,6 +16,7 @@ import CircularProgress from '@mui/material/CircularProgress'
 import axios from 'axios'
 
 import dataSuppliers from '../../../Sistema6/suppliers'
+import { S6_REQUEST_TIMEOUT_MS } from '../../../Sistema6/api'
 
 const KEY = 'pdn.camposBusqueda'
 
@@ -23,7 +24,8 @@ export function InstitucionesRealizaronContrataciones () {
   const { control } = useFormContext()
   const [open, setOpen] = React.useState(false)
   const [options, setOptions] = React.useState([])
-  const loading = open && options.length === 0
+  const [loading, setLoading] = React.useState(false)
+  const [loadError, setLoadError] = React.useState(false)
 
   const storedCampos = JSON.parse(localStorage.getItem(KEY))
   const [supplier, setSupplier] = React.useState('SHCP')
@@ -45,9 +47,12 @@ export function InstitucionesRealizaronContrataciones () {
   React.useEffect(() => {
     let active = true
 
-    if (!loading) {
+    if (!open) {
       return undefined
     }
+
+    setLoading(true)
+    setLoadError(false)
 
     /* if (valueInstitucion === "") {
       setOptions(valueInstitucion ? [valueInstitucion] : []);
@@ -55,38 +60,35 @@ export function InstitucionesRealizaronContrataciones () {
     } */
     // const supplierSelected = document.querySelector("input[name='instituciones-contrataciones.supplier']").value;
 
-    (async () => {
-      if (active) {
-        const sug = []
-        const options = {
-          url: process.env.REACT_APP_S6_BACKEND + '/api/v1/buyers',
-          params: {
-            supplier_id: supplier
-          },
-          json: true,
-          method: 'GET'
-        }
+    const suggestions = []
+    const requestOptions = {
+      url: process.env.REACT_APP_S6_BACKEND + '/api/v1/buyers',
+      params: {
+        supplier_id: supplier
+      },
+      json: true,
+      method: 'GET',
+      timeout: S6_REQUEST_TIMEOUT_MS
+    }
 
-        axios(options)
-          .then((data) => {
-            data.data.forEach((item, index) => {
-              if (item.name) {
-                // console.log(item)
-                sug.push({ ...item, key: index })
-              }
-            })
-            setOptions([...sug])
-          })
-          .catch(() => {
-            // setError(true);
-          })
-      }
-    })()
+    axios(requestOptions)
+      .then((data) => {
+        data.data.forEach((item, index) => {
+          if (item.name) suggestions.push({ ...item, key: index })
+        })
+        if (active) setOptions(suggestions)
+      })
+      .catch(() => {
+        if (active) setLoadError(true)
+      })
+      .finally(() => {
+        if (active) setLoading(false)
+      })
 
     return () => {
       active = false
     }
-  }, [loading])
+  }, [open, supplier])
 
   React.useEffect(() => {
 
@@ -118,6 +120,7 @@ export function InstitucionesRealizaronContrataciones () {
                   onChange={(e) => {
                     setValueInstitucion(null)
                     setOptions([])
+                    setLoadError(false)
                     setSupplier(e.target.value)
                     field.onChange(e)
                   }}
@@ -154,6 +157,7 @@ export function InstitucionesRealizaronContrataciones () {
                   value === undefined || value === '' || option.name === value.name}
                 options={options}
                 loading={loading}
+                noOptionsText={loadError ? 'No fue posible cargar las instituciones' : 'Sin opciones'}
                 onChange={(e, newValue) => {
                   // console.log(newValue, newValue);
                   setOptions(newValue ? [newValue, ...options] : options)
@@ -175,6 +179,8 @@ export function InstitucionesRealizaronContrataciones () {
                     label='Institución contratante'
                     placeholder='Ingresa la institución contratante'
                     fullWidth
+                    error={loadError}
+                    helperText={loadError ? 'El catálogo no está disponible temporalmente. Puedes continuar sin seleccionar una institución.' : undefined}
                     slotProps={{
                       ...params.slotProps,
 

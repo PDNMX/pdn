@@ -5,6 +5,8 @@ import TablaResultados from './TablaResultados'
 import axios from 'axios'
 import SearchControls from './SearchControls'
 import Box from '@mui/material/Box'
+import Alert from '@mui/material/Alert'
+import { getS6ErrorMessage, S6_REQUEST_TIMEOUT_MS } from './api'
 
 const styles = () => ({
   root: {
@@ -28,7 +30,8 @@ const Busqueda = props => {
     procurementMethod: 'any',
     supplierName: '',
     cycle: 'any',
-    cycles: []
+    cycles: [],
+    error: null
   })
 
   React.useEffect(() => {
@@ -41,7 +44,8 @@ const Busqueda = props => {
         supplier_id
       },
       method: 'GET',
-      json: true
+      json: true,
+      timeout: S6_REQUEST_TIMEOUT_MS
     })
 
     const _search = () => axios({
@@ -50,7 +54,8 @@ const Busqueda = props => {
         supplier_id
       },
       method: 'POST',
-      json: true
+      json: true,
+      timeout: S6_REQUEST_TIMEOUT_MS
     })
 
     const _cycles = () => axios({
@@ -59,22 +64,26 @@ const Busqueda = props => {
         supplier_id
       },
       method: 'GET',
-      json: true
+      json: true,
+      timeout: S6_REQUEST_TIMEOUT_MS
     })
 
-    Promise.all([_buyers(), _search(), _cycles()]).then(res => {
-      // console.log (res);
-      setState({
-        ...state,
+    Promise.allSettled([_buyers(), _search(), _cycles()]).then(res => {
+      const [buyersResult, searchResult, cyclesResult] = res
+      const failedRequest = res.find(result => result.status === 'rejected')
+
+      setState(current => ({
+        ...current,
         dataSupplier: supplier_id, //
-        buyers: res[0].data,
-        pagination: res[1].data.pagination,
-        results: res[1].data.data,
-        cycles: res[2].data,
-        loading: false
-      })
-    }).catch(error => {
-      console.log(error)
+        buyers: buyersResult.status === 'fulfilled' ? buyersResult.value.data : [],
+        pagination: searchResult.status === 'fulfilled'
+          ? searchResult.value.data.pagination
+          : current.pagination,
+        results: searchResult.status === 'fulfilled' ? searchResult.value.data.data : [],
+        cycles: cyclesResult.status === 'fulfilled' ? cyclesResult.value.data : [],
+        loading: false,
+        error: failedRequest ? getS6ErrorMessage(failedRequest.reason) : null
+      }))
     })
   }, [])
 
@@ -111,29 +120,11 @@ const Busqueda = props => {
   ])
 
   const handleChangeDS = async dataSupplier => {
-    const _buyers = await axios({
-      url: process.env.REACT_APP_S6_BACKEND + '/api/v1/buyers',
-      params: {
-        supplier_id: dataSupplier
-      },
-      method: 'GET',
-      json: true
-    })
-
-    const _cycles = await axios({
-      url: process.env.REACT_APP_S6_BACKEND + '/api/v1/cycles',
-      params: {
-        supplier_id: dataSupplier
-      },
-      method: 'GET',
-      json: true
-    })
-
-    setState({
-      ...state,
+    setState(current => ({
+      ...current,
       dataSupplier,
-      buyers: _buyers.data,
-      cycles: _cycles.data,
+      buyers: [],
+      cycles: [],
       pagination: {
         pageSize: 10,
         page: 0,
@@ -143,7 +134,42 @@ const Busqueda = props => {
       procurementMethod: 'any',
       supplierName: '',
       cycle: 'any',
-      loading: true
+      loading: true,
+      error: null
+    }))
+
+    const buyersRequest = axios({
+      url: process.env.REACT_APP_S6_BACKEND + '/api/v1/buyers',
+      params: {
+        supplier_id: dataSupplier
+      },
+      method: 'GET',
+      json: true,
+      timeout: S6_REQUEST_TIMEOUT_MS
+    })
+
+    const cyclesRequest = axios({
+      url: process.env.REACT_APP_S6_BACKEND + '/api/v1/cycles',
+      params: {
+        supplier_id: dataSupplier
+      },
+      method: 'GET',
+      json: true,
+      timeout: S6_REQUEST_TIMEOUT_MS
+    })
+
+    const [buyersResult, cyclesResult] = await Promise.allSettled([buyersRequest, cyclesRequest])
+    const failedRequest = [buyersResult, cyclesResult].find(result => result.status === 'rejected')
+
+    setState(current => {
+      if (current.dataSupplier !== dataSupplier) return current
+
+      return {
+        ...current,
+        buyers: buyersResult.status === 'fulfilled' ? buyersResult.value.data : [],
+        cycles: cyclesResult.status === 'fulfilled' ? cyclesResult.value.data : [],
+        error: current.error || (failedRequest ? getS6ErrorMessage(failedRequest.reason) : null)
+      }
     })
   }
 
@@ -151,6 +177,7 @@ const Busqueda = props => {
     setState({
       ...state,
       loading: true,
+      error: null,
       pagination: {
         page: 0,
         pageSize
@@ -163,6 +190,7 @@ const Busqueda = props => {
     setState({
       ...state,
       loading: true,
+      error: null,
       pagination: {
         page, // incrementar página
         pageSize: state.pagination.pageSize
@@ -175,6 +203,7 @@ const Busqueda = props => {
     setState({
       ...state,
       loading: true,
+      error: null,
       pagination: {
         page: 0,
         pageSize: state.pagination.pageSize
@@ -188,6 +217,7 @@ const Busqueda = props => {
     setState({
       ...state,
       loading: true,
+      error: null,
       pagination: {
         page: 0,
         pageSize: state.pagination.pageSize
@@ -225,6 +255,7 @@ const Busqueda = props => {
     setState({
       ...state,
       loading: true,
+      error: null,
       pagination: {
         page: 0,
         pageSize: state.pagination.pageSize
@@ -238,6 +269,7 @@ const Busqueda = props => {
     setState({
       ...state,
       loading: true,
+      error: null,
       pagination: {
         pageSize: 10,
         page: 0
@@ -255,7 +287,8 @@ const Busqueda = props => {
   const handleSearch = () => {
     setState({
       ...state,
-      loading: true
+      loading: true,
+      error: null
     })
   }
 
@@ -299,22 +332,24 @@ const Busqueda = props => {
         },
         method: 'POST',
         data: body,
-        json: true
+        json: true,
+        timeout: S6_REQUEST_TIMEOUT_MS
       })
 
       // console.log(data)
-      setState({
-        ...state,
+      setState(current => ({
+        ...current,
         loading: false,
         results: res.data.data,
-        pagination: res.data.pagination // solo debe actualizarse el total
-      })
+        pagination: res.data.pagination, // solo debe actualizarse el total
+        error: null
+      }))
     } catch (error) {
-      console.log(error)
-      setState({
-        ...state,
-        loading: false
-      })
+      setState(current => ({
+        ...current,
+        loading: false,
+        error: getS6ErrorMessage(error)
+      }))
     }
   }
 
@@ -340,6 +375,12 @@ const Busqueda = props => {
           cleanup={cleanup}
         />
       </Box>
+
+      {state.error && (
+        <Alert severity='error' sx={{ mx: 1, mt: 2 }}>
+          {state.error}
+        </Alert>
+      )}
 
       <div style={{ overflow: 'auto' }}>
         <TablaResultados
