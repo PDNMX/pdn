@@ -1,6 +1,11 @@
 import { describe, expect, it } from 'vitest'
 
-import { getS6ErrorMessage, S6_REQUEST_TIMEOUT_MS } from './api'
+import {
+  DEFAULT_S6_PAGINATION,
+  getS6ErrorMessage,
+  normalizeS6Pagination,
+  S6_REQUEST_TIMEOUT_MS
+} from './api'
 
 describe('manejo de errores del servicio S6', () => {
   it('configura un tiempo de espera finito', () => {
@@ -17,5 +22,17 @@ describe('manejo de errores del servicio S6', () => {
 
   it('tolera errores de red sin respuesta HTTP', () => {
     expect(getS6ErrorMessage(new TypeError('Network Error'))).toContain('No fue posible')
+  })
+
+  it('evita paginaciones incompletas o inválidas', () => {
+    expect(normalizeS6Pagination({ page: 2, pageSize: 25 })).toEqual({
+      ...DEFAULT_S6_PAGINATION,
+      page: 2,
+      pageSize: 25
+    })
+
+    expect(normalizeS6Pagination({ page: -1, pageSize: 0, total: undefined })).toEqual(
+      DEFAULT_S6_PAGINATION
+    )
   })
 })

@@ -6,7 +6,12 @@ import axios from 'axios'
 import SearchControls from './SearchControls'
 import Box from '@mui/material/Box'
 import Alert from '@mui/material/Alert'
-import { getS6ErrorMessage, S6_REQUEST_TIMEOUT_MS } from './api'
+import {
+  DEFAULT_S6_PAGINATION,
+  getS6ErrorMessage,
+  normalizeS6Pagination,
+  S6_REQUEST_TIMEOUT_MS
+} from './api'
 
 const styles = () => ({
   root: {
@@ -14,17 +19,15 @@ const styles = () => ({
   }
 });
 
-const Busqueda = props => {
+export const Busqueda = props => {
   const [state, setState] = React.useState({
     dataSupplier: 'SHCP',
     inputText: '',
-    pagination: {
-      pageSize: 10,
-      page: 0,
-      total: 0
-    },
+    pagination: DEFAULT_S6_PAGINATION,
     results: [],
     loading: false,
+    initialLoading: true,
+    hasSuccessfulSearch: false,
     buyers: [],
     buyer_id: 'any',
     procurementMethod: 'any',
@@ -71,17 +74,22 @@ const Busqueda = props => {
     Promise.allSettled([_buyers(), _search(), _cycles()]).then(res => {
       const [buyersResult, searchResult, cyclesResult] = res
       const failedRequest = res.find(result => result.status === 'rejected')
+      const searchSucceeded = searchResult.status === 'fulfilled'
 
       setState(current => ({
         ...current,
         dataSupplier: supplier_id, //
         buyers: buyersResult.status === 'fulfilled' ? buyersResult.value.data : [],
-        pagination: searchResult.status === 'fulfilled'
-          ? searchResult.value.data.pagination
+        pagination: searchSucceeded
+          ? normalizeS6Pagination(searchResult.value.data?.pagination, current.pagination)
           : current.pagination,
-        results: searchResult.status === 'fulfilled' ? searchResult.value.data.data : [],
+        results: searchSucceeded && Array.isArray(searchResult.value.data?.data)
+          ? searchResult.value.data.data
+          : current.results,
         cycles: cyclesResult.status === 'fulfilled' ? cyclesResult.value.data : [],
         loading: false,
+        initialLoading: false,
+        hasSuccessfulSearch: current.hasSuccessfulSearch || searchSucceeded,
         error: failedRequest ? getS6ErrorMessage(failedRequest.reason) : null
       }))
     })
@@ -125,11 +133,9 @@ const Busqueda = props => {
       dataSupplier,
       buyers: [],
       cycles: [],
-      pagination: {
-        pageSize: 10,
-        page: 0,
-        total: 0
-      },
+      pagination: DEFAULT_S6_PAGINATION,
+      results: [],
+      hasSuccessfulSearch: false,
       buyer_id: 'any',
       procurementMethod: 'any',
       supplierName: '',
@@ -179,6 +185,7 @@ const Busqueda = props => {
       loading: true,
       error: null,
       pagination: {
+        ...state.pagination,
         page: 0,
         pageSize
         // total: 0
@@ -192,6 +199,7 @@ const Busqueda = props => {
       loading: true,
       error: null,
       pagination: {
+        ...state.pagination,
         page, // incrementar página
         pageSize: state.pagination.pageSize
         // total: 0
@@ -205,6 +213,7 @@ const Busqueda = props => {
       loading: true,
       error: null,
       pagination: {
+        ...state.pagination,
         page: 0,
         pageSize: state.pagination.pageSize
         // total: 0
@@ -219,6 +228,7 @@ const Busqueda = props => {
       loading: true,
       error: null,
       pagination: {
+        ...state.pagination,
         page: 0,
         pageSize: state.pagination.pageSize
         // total: 0
@@ -231,6 +241,7 @@ const Busqueda = props => {
     setState({
       ...state,
       pagination: {
+        ...state.pagination,
         page: 0,
         pageSize: state.pagination.pageSize
         // total: 0
@@ -243,6 +254,7 @@ const Busqueda = props => {
     setState({
       ...state,
       pagination: {
+        ...state.pagination,
         page: 0,
         pageSize: state.pagination.pageSize
         // total: 0
@@ -257,6 +269,7 @@ const Busqueda = props => {
       loading: true,
       error: null,
       pagination: {
+        ...state.pagination,
         page: 0,
         pageSize: state.pagination.pageSize
         // total: 0
@@ -272,10 +285,11 @@ const Busqueda = props => {
       error: null,
       pagination: {
         pageSize: 10,
-        page: 0
-        // total: 0
+        page: 0,
+        total: 0
       },
       results: [],
+      hasSuccessfulSearch: false,
       buyer_id: 'any',
       procurementMethod: 'any',
       inputText: '',
@@ -340,8 +354,9 @@ const Busqueda = props => {
       setState(current => ({
         ...current,
         loading: false,
-        results: res.data.data,
-        pagination: res.data.pagination, // solo debe actualizarse el total
+        results: Array.isArray(res.data?.data) ? res.data.data : [],
+        pagination: normalizeS6Pagination(res.data?.pagination, current.pagination),
+        hasSuccessfulSearch: true,
         error: null
       }))
     } catch (error) {
@@ -354,6 +369,10 @@ const Busqueda = props => {
   }
 
   const { classes } = props
+  const hasResults = state.results.length > 0
+  const isLoading = state.initialLoading || state.loading
+  const showResultsArea = isLoading || (state.hasSuccessfulSearch && hasResults)
+  const showEmptyState = state.hasSuccessfulSearch && !isLoading && !state.error && !hasResults
 
   return (
     <div className={classes.root}>
@@ -382,16 +401,23 @@ const Busqueda = props => {
         </Alert>
       )}
 
-      <div style={{ overflow: 'auto' }}>
-        <TablaResultados
-          data={state.results}
-          pagination={state.pagination}
-          handleChangeRowsPerPage={handleChangeRowsPerPage}
-          handleChangePage={handlePageChange}
-          loading={state.loading}
-        />
+      {showEmptyState && (
+        <Alert severity='info' sx={{ mx: 1, mt: 2 }}>
+          No se encontraron resultados para los criterios seleccionados.
+        </Alert>
+      )}
 
-      </div>
+      {showResultsArea && (
+        <div style={{ overflow: 'auto' }}>
+          <TablaResultados
+            data={state.results}
+            pagination={state.pagination}
+            handleChangeRowsPerPage={handleChangeRowsPerPage}
+            handleChangePage={handlePageChange}
+            loading={isLoading}
+          />
+        </div>
+      )}
     </div>
   )
 }

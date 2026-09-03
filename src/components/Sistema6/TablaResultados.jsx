@@ -16,6 +16,7 @@ import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 import LinearIndeterminate from './LinearIndeterminate'
 import ResponsiveDialog from './ResponsiveDialog'
+import { normalizeS6Pagination } from './api'
 
 const headRows = [
   { id: 'col1', numeric: false, disablePadding: false, label: 'OCID' },
@@ -232,8 +233,8 @@ export default function EnhancedTable (props) {
 
   // const isSelected = name => selected.indexOf(name) !== -1;
   // const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
-  const { page, total, pageSize } = props.pagination
-  const emptyRows = pageSize - Math.min(pageSize, total - page * pageSize)
+  const { page, total, pageSize } = normalizeS6Pagination(props.pagination)
+  const emptyRows = Math.max(0, pageSize - Math.min(pageSize, total - page * pageSize))
 
   return (
     <div className={classes.root}>
