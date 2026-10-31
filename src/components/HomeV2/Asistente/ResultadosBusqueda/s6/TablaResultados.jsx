@@ -262,11 +262,11 @@ export default function EnhancedTable (props) {
                 count={total}// {rows.length}
                 rowsPerPage={pageSize}// {rowsPerPage}
                 page={page}// {page}
-                backIconButtonProps={{
-                  'aria-label': 'previous page'
-                }}
-                nextIconButtonProps={{
-                  'aria-label': 'next page'
+                slotProps={{
+                  actions: {
+                    previousButton: { 'aria-label': 'previous page' },
+                    nextButton: { 'aria-label': 'next page' }
+                  }
                 }}
                 onPageChange={handleChangePage}
                             // onChangePage={handleChangePage}

@@ -183,7 +183,8 @@ const LinaerStepper = ({ stateChanger }) => {
     const parametrosBusqueda = JSON.stringify(methods.getValues())
     // console.log(parametrosBusqueda)
     // let tipoBusqueda = methods.getValues().tipoBusqueda;
-    localStorage.setItem(KEY, parametrosBusqueda)
+    const storage = typeof window !== 'undefined' ? window.localStorage : undefined
+    storage?.setItem(KEY, parametrosBusqueda)
     const tipoBusqueda = name
     switch (tipoBusqueda) {
       case 'psp-sancionados':
@@ -363,7 +364,8 @@ const LinaerStepper = ({ stateChanger }) => {
   })
 
   useEffect(() => {
-    const storedCampos = JSON.parse(localStorage.getItem(KEY))
+    const storage = typeof window !== 'undefined' ? window.localStorage : undefined
+    const storedCampos = storage ? JSON.parse(storage.getItem(KEY)) : null
     // const values = methods.getValues();
     if (storedCampos) {
       // setTodos(storedTodos);

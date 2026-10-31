@@ -114,7 +114,7 @@ class Validador extends Component {
                   especificaciones que se refieren a los campos mínimos de datos que debe contener cada sistema, así como el estándar que debe seguir cada campo para ser interoperable con la Plataforma Digital Nacional.
                   Dado que actualmente se encuentran disponibles las especificaciones para los Sistemas 1, 2 y 3, son estas las que se podrán verificar, para hacerlo sigue los siguientes pasos.
                 </Typography>
-                <Typography align='left' sx={{
+                <Typography component='div' align='left' sx={{
                   marginBottom: "16px"
                 }}>
                   <ul>

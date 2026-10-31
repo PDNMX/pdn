@@ -215,7 +215,7 @@ const Intro = props => {
       }}>
         Protocolo de conexión
       </Typography>
-      <Typography paragrap className={classes.text}>
+      <Typography className={classes.text}>
         La interoperabilidad entre los sistemas informáticos de las Instituciones y la PDN se establece a través de servicios web o APIs que intercambian información a través de Internet.
       </Typography>
       <Typography className={classes.text} sx={{

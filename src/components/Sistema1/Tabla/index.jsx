@@ -117,11 +117,11 @@ export default function EnhancedTable({ rows, pagination, posicion, handleDataSe
         rowsPerPage={pagination.pageSize}
         rowsPerPageOptions={[5, 10, 50, 100, 150, 200]}
         page={pagination.page - 1}
-        backIconButtonProps={{
-          'aria-label': 'página anterior'
-        }}
-        nextIconButtonProps={{
-          'aria-label': 'siguiente página'
+        slotProps={{
+          actions: {
+            previousButton: { 'aria-label': 'página anterior' },
+            nextButton: { 'aria-label': 'siguiente página' }
+          }
         }}
         labelDisplayedRows={({ from, to, count }) => from + '-' + (to === -1 ? count : to) + ' de ' + count}
         onPageChange={(e, page) => {
