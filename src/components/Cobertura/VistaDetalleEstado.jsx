@@ -231,7 +231,7 @@ const VistaDetalleEstado = props => {
                 color: '#000',
                 marginBottom: "16px"
               }}>
-              Información al 30 de junio de 2026, reportada por la Secretaría Ejecutiva del Sistema Estatal Anticorrupción 
+              Información al 30 de septiembre de 2026, reportada por la Secretaría Ejecutiva del Sistema Estatal Anticorrupción 
             </Typography>
 
             {/* Header con resumen general - Unificado */}
