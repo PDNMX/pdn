@@ -141,3 +141,11 @@ dist
 *.sw?
 
 DEPENDENCY_MIGRATION.md
+
+# AI assistant / agent instruction files
+AGENTS.md
+agentes.md
+CLAUDE.md
+.cursorrules
+.cursor/rules/
+.github/copilot-instructions.md
