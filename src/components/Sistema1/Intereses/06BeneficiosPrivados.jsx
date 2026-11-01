@@ -28,7 +28,7 @@ function BeneficiosPrivados(props) {
       {beneficio.map((obj, idx) => {
         return (
           <BoxAccordion key={'bene-priv-' + idx}>
-            <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon style={{ color: 'white' }} />} aria-controls='panel1a-content' id='panel1a-header'>
+            <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon style={{ color: 'white' }} />}>
               <Typography className={exp.heading}>
                 <strong>{obj.tipoBeneficio.valor}</strong>
               </Typography>

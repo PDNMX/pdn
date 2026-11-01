@@ -126,7 +126,7 @@ const EmpleoCargoComision = ({ data, titulo }) => {
               data.otroEmpleoCargoComision.map((o, i) => {
                 return (
                   <BoxAccordion key={'e-' + i}>
-                    <BoxAccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header' className={classes.resultadosTitulo}>
+                    <BoxAccordionSummary expandIcon={<ExpandMoreIcon />} className={classes.resultadosTitulo}>
                       <Grid container spacing={0}>
                         <Grid size={8}>
                           OTRO EMPLEO, CARGO O COMISIÓN EN EL SERVICIO PÚBLICO

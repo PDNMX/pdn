@@ -30,7 +30,7 @@ function BienMueble(props) {
       {bienMueble.map((obj, idx) => {
         return (
           <BoxAccordion key={'veh-' + idx}>
-            <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon style={{ color: 'white' }} />} aria-controls='panel1a-content' id='panel1a-header'>
+            <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon style={{ color: 'white' }} />}>
               <Typography className={exp.heading}>
                 <strong>
                   TIPO DEL BIEN: {obj.tipoBien?.valor} ({obj.tipoOperacion.replace('_', ' ')})

@@ -30,7 +30,7 @@ function BienInmuble(props) {
       {inmuebles.map((inm, idx) => {
         return (
           <BoxAccordion key={'inm-' + idx}>
-            <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon style={{ color: 'white' }} />} aria-controls='panel1a-content' id='panel1a-header'>
+            <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon style={{ color: 'white' }} />}>
               <Typography className={exp.heading}>
                 <strong>
                   TIPO DE INMUEBLE: {inm.tipoInmueble.valor} ({inm.tipoOperacion.replace('_', ' ')})

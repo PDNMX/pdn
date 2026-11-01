@@ -220,7 +220,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                     <TextField
                       style={{ background: '#f2f0f2' }}
                       id='superficieConstruccionMin'
-                      placeholder='mínimo'
+                      type='number' inputMode='decimal' min={0} placeholder='mínimo'
                       value={superficieConstruccionMin}
                       name='superficieConstruccionMin'
                       onChange={handleInputChange}
@@ -238,7 +238,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                     <TextField
                       style={{ background: '#f2f0f2' }}
                       id='superficieConstruccionMax'
-                      placeholder='máximo'
+                      type='number' inputMode='decimal' min={0} placeholder='máximo'
                       value={superficieConstruccionMax}
                       name='superficieConstruccionMax'
                       onChange={handleInputChange}
@@ -268,7 +268,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                     <TextField
                       style={{ background: '#f2f0f2' }}
                       id='superficieTerrenoMin'
-                      placeholder='mínimo'
+                      type='number' inputMode='decimal' min={0} placeholder='mínimo'
                       value={superficieTerrenoMin}
                       name='superficieTerrenoMin'
                       onChange={handleInputChange}
@@ -286,7 +286,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                     <TextField
                       style={{ background: '#f2f0f2' }}
                       id='superficieTerrenoMax'
-                      placeholder='máximo'
+                      type='number' inputMode='decimal' min={0} placeholder='máximo'
                       value={superficieTerrenoMax}
                       name='superficieTerrenoMax'
                       onChange={handleInputChange}
@@ -316,7 +316,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                     <TextField
                       style={{ background: '#f2f0f2' }}
                       id='valorAdquisicionMin'
-                      placeholder='mínimo'
+                      type='number' inputMode='decimal' min={0} placeholder='mínimo'
                       value={valorAdquisicionMin}
                       name='valorAdquisicionMin'
                       onChange={handleInputChange}
@@ -334,7 +334,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                     <TextField
                       style={{ background: '#f2f0f2' }}
                       id='valorAdquisicionMax'
-                      placeholder='máximo'
+                      type='number' inputMode='decimal' min={0} placeholder='máximo'
                       value={valorAdquisicionMax}
                       name='valorAdquisicionMax'
                       onChange={handleInputChange}
@@ -364,7 +364,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                     <TextField
                       style={{ background: '#f2f0f2' }}
                       id='totalIngresosNetosMin'
-                      placeholder='mínimo'
+                      type='number' inputMode='decimal' min={0} placeholder='mínimo'
                       value={totalIngresosNetosMin}
                       name='totalIngresosNetosMin'
                       onChange={handleInputChange}
@@ -382,7 +382,7 @@ const FormSearch = ({ query, handleInputChange, catEscolaridadNivel, catFormaAdq
                     <TextField
                       style={{ background: '#f2f0f2' }}
                       id='totalIngresosNetosMax'
-                      placeholder='máximo'
+                      type='number' inputMode='decimal' min={0} placeholder='máximo'
                       value={totalIngresosNetosMax}
                       name='totalIngresosNetosMax'
                       onChange={handleInputChange}

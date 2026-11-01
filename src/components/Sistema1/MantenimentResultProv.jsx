@@ -13,11 +13,11 @@ const MantenimentResultProv = props => {
   const { p } = props
   return (
     <BoxAccordion>
-      <BoxAccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header' className={classes.resultadosTituloMantenimiento} style={{ backgroundColor: '#7a3e7c' }}>
+      <BoxAccordionSummary expandIcon={<ExpandMoreIcon />} className={classes.resultadosTituloMantenimiento} style={{ backgroundColor: '#7a3e7c' }}>
         <Grid container spacing={0}>
           <Grid size={8}>
             <Typography className={classes.resultadosHeading} style={{ color: '#fff' }}>{p.supplier_name}</Typography>
-            <Typography className={classes.resultadosHeading} style={{ color: '#fff' }}>[{p.levels.join(', ')}]</Typography>
+            <Typography className={classes.resultadosHeading} style={{ color: '#fff' }}>[{(p.levels || []).join(', ')}]</Typography>
           </Grid>
           <Grid size={4}>
             <Grid container spacing={0}>

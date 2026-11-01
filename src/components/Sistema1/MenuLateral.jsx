@@ -40,7 +40,7 @@ export default function TypographyMenu(props) {
       {props.opciones.map((opcion, index) => {
         return (
           <MenuItem key={'opcion-' + index} selected={props.value === index} onClick={e => props.setValue(e, index)} classes={classes}>
-            <MyBadge badgeContent={opcion.valor ? opcion.valor : 0} color='error' anchorOrigin={{ vertical: 'top', horizontal: 'left' }} />
+            <MyBadge badgeContent={opcion.valor ?? 0} color='error' anchorOrigin={{ vertical: 'top', horizontal: 'left' }} />
             {index + 1}. {opcion.clave}
           </MenuItem>
         );

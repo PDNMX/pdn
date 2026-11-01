@@ -17,11 +17,11 @@ const ActiveResultProv = props => {
 
   return (
     <BoxAccordion square key={'res-' + i}>
-      <BoxAccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
+      <BoxAccordionSummary expandIcon={<ExpandMoreIcon />}>
         <Grid container spacing={0}>
           <Grid size={8}>
             <Typography className={classes.resultadosHeading}>{p.supplier_name}</Typography>
-            <Typography className={classes.resultadosHeading}>[{p.levels.join(', ')}]</Typography>
+            <Typography className={classes.resultadosHeading}>[{(p.levels || []).join(', ')}]</Typography>
           </Grid>
           {p.finding ? (
             <Grid size={4}>
@@ -36,7 +36,14 @@ const ActiveResultProv = props => {
               <Grid container spacing={0}>
                 <Grid size={4}>
                   <Typography className={classes.resultadosHeading}>
-                    <Tooltip title={p.estatus ? 'Con respuesta' : 'Sin respuesta: ' + p.error.status + ' ' + p.error.statusText}>
+                    <Tooltip
+                      title={
+                        p.estatus
+                          ? 'Con respuesta'
+                          : 'Sin respuesta' +
+                            (p.error ? ': ' + [p.error.status, p.error.statusText].filter(Boolean).join(' ') : '')
+                      }
+                    >
                       <IconSunny color={p.estatus ? 'primary' : 'inherit'} />
                     </Tooltip>
                   </Typography>
