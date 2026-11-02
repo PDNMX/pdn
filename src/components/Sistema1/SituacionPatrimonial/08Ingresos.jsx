@@ -25,7 +25,7 @@ export function ActividadFinanciera({ actividadFinanciera }) {
 
   return (
     <BoxAccordion>
-      <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
+      <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon />}>
         <Grid container spacing={1}>
           <Grid
             size={{
@@ -104,7 +104,7 @@ export function ServiciosProfesionales({ serviciosProfesionales }) {
 
   return (
     <BoxAccordion>
-      <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
+      <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon />}>
         <Grid container spacing={1}>
           <Grid
             size={{
@@ -183,7 +183,7 @@ export function EnajenacionBienes({ enajenacionBienes }) {
 
   return (
     <BoxAccordion>
-      <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
+      <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon />}>
         <Grid container spacing={1}>
           <Grid
             size={{
@@ -262,7 +262,7 @@ export function OtrosIngresos({ otrosIngresos }) {
 
   return (
     <BoxAccordion>
-      <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
+      <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon />}>
         <Grid container spacing={1}>
           <Grid
             size={{

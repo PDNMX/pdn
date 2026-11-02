@@ -24,6 +24,8 @@ import ErrorBoundary from './ErrorBoundary';
 import { info } from './utils';
 import style from '../style';
 
+const length = value => (Array.isArray(value) ? value.length : 0);
+
 const situacionPatrimonial = (data, tipo) => {
   let { datosCurricularesDeclarante, experienciaLaboral, bienesInmuebles, vehiculos, bienesMuebles } = data;
 
@@ -47,7 +49,7 @@ const situacionPatrimonial = (data, tipo) => {
     prestamoOComodato = data.prestamoComodato;
   }
 
-  const onlyDec = i => i.titular.length === 1 && i.titular[0].clave === 'DEC';
+  const onlyDec = i => i.titular && i.titular.length === 1 && i.titular[0].clave === 'DEC';
 
   let bienInmueble, vehiculo, bienMueble, inversion, adeudo, tExperienciaLaboral, tprestamoOComodato;
   // let bienInmueble = bienesInmuebles.ninguno ? 0 : bienesInmuebles.bienInmueble.filter(onlyDec)
@@ -102,10 +104,10 @@ const situacionPatrimonial = (data, tipo) => {
     adeudo = 0;
   }
 
-  if (experienciaLaboral.ninguno) {
+  if (experienciaLaboral && experienciaLaboral.ninguno) {
     tExperienciaLaboral = 0;
   } else {
-    tExperienciaLaboral = experienciaLaboral.experiencia ? experienciaLaboral.experiencia.length : 0;
+    tExperienciaLaboral = experienciaLaboral && experienciaLaboral.experiencia ? experienciaLaboral.experiencia.length : 0;
   }
 
   if (prestamoOComodato) {
@@ -118,7 +120,7 @@ const situacionPatrimonial = (data, tipo) => {
     tprestamoOComodato = 0;
   }
 
-  const tDatosCurricurales = typeof datosCurricularesDeclarante === 'undefined' ? 0 : datosCurricularesDeclarante.escolaridad.length;
+  const tDatosCurricurales = datosCurricularesDeclarante ? length(datosCurricularesDeclarante.escolaridad) : 0;
 
   // const tExperienciaLaboral = typeof experienciaLaboral === 'undefined' ? 0 : experienciaLaboral.experiencia.length
 
@@ -146,14 +148,14 @@ const situacionPatrimonial = (data, tipo) => {
       clave: '¿TE DESEMPEÑASTE COMO SERVIDOR PÚBLICO EN EL AÑO INMEDIATO ANTERIOR?',
       valor: 0
     },
-    { clave: 'BIENES INMUEBLES', valor: bienInmueble.length },
-    { clave: 'VEHÍCULOS', valor: vehiculo.length },
-    { clave: 'BIENES MUEBLES', valor: bienMueble.length },
+    { clave: 'BIENES INMUEBLES', valor: length(bienInmueble) },
+    { clave: 'VEHÍCULOS', valor: length(vehiculo) },
+    { clave: 'BIENES MUEBLES', valor: length(bienMueble) },
     {
       clave: 'INVERSIONES, CUENTAS BANCARIAS Y OTRO TIPO DE VALORES/ACTIVOS',
-      valor: inversion.length
+      valor: length(inversion)
     },
-    { clave: 'ADEUDOS/PASIVOS', valor: adeudo.length },
+    { clave: 'ADEUDOS/PASIVOS', valor: length(adeudo) },
     {
       clave: 'PRÉSTAMO O COMODATO POR TERCEROS',
       valor: tprestamoOComodato
@@ -170,7 +172,7 @@ const situacionPatrimonial = (data, tipo) => {
       return menu.filter((op, index) => index !== 8);
     default:
       info('Tipo declaración: ' + tipo);
-      break;
+      return [];
   }
 };
 

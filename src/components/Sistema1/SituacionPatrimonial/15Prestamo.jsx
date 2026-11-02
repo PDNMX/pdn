@@ -101,7 +101,7 @@ function Prestamo({ prestamo }) {
       <React.Fragment key={'prestamo-' + idx}>
         {inmueble && (
           <BoxAccordion>
-            <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon style={{ color: 'white' }} />} aria-controls='panel1a-content' id='panel1a-header'>
+            <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon style={{ color: 'white' }} />}>
               <Typography className={exp.heading}>
                 <strong>INMUEBLE</strong>
               </Typography>
@@ -131,7 +131,7 @@ function Prestamo({ prestamo }) {
         )}
         {vehiculo && (
           <BoxAccordion>
-            <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
+            <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon />}>
               <Typography className={exp.heading}>
                 <strong>VEHÍCULO</strong>
               </Typography>

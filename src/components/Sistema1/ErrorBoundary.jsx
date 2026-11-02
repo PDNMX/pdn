@@ -7,30 +7,13 @@ import styleSecciones from './styleSecciones'
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { hasError: false, seccion: props.seccion, timer: null }
+    this.state = { hasError: false }
   }
 
   componentDidCatch(error, info) {
-    console.log('info: ', info)
-    console.log('error: ', error)
-    // console.log('seccion: ', this.state.seccion)
-    // Display fallback UI
+    console.error('Error al renderizar la sección: ', error, info)
     this.setState({ hasError: true })
-    // You can also log the error to an error reporting service
-
-    // logErrorToMyService(error, info)
   }
-
-  // componentDidMount() {
-  // 	let timer = setTimeout(() => {
-  // 		window.location.reload()
-  // 	}, 3000)
-  // 	this.setState({ timer })
-  // }
-  // componentWillUnmount() {
-  // 	let timer = this.state.timer
-  // 	clearTimeout(timer)
-  // }
 
   render() {
     const { classes } = this.props
@@ -38,7 +21,7 @@ class ErrorBoundary extends React.Component {
       return (
         <Grid style={{ marginTop: 20 }} size={12}>
           <Typography className={classes.alertWarning} align='center'>
-            Algo ha salido mal... espera unos segundos el navegador se refrescará en 3 segundos.
+            Algo ha salido mal al mostrar esta sección. Intenta recargar la página.
           </Typography>
         </Grid>
       );

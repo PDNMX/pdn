@@ -19,7 +19,6 @@ import HeaderV2 from '../HomeV2/HeaderV2'
 import Disclaimer from './Disclaimer'
 // import MyPaper from './MyPaper'
 
-const titulo = 'Sistema de evolución patrimonial, de declaración de intereses y constancia de presentación de declaración fiscal'
 // const subtitulo = 'Declaraciones'
 // const copy = 'Consulta y visualiza los datos <b>públicos</b> de las declaraciones patrimoniales, y de intereses, así como la constancia de declaración anual de impuestos de las y los servidores públicos.'
 
@@ -35,6 +34,13 @@ class Declaraciones extends React.Component {
 
   handleTabChange = (tab) => {
     this.setState({ activeTab: tab })
+  }
+
+  handleTabKeyDown = (event, tab) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault()
+      this.handleTabChange(tab)
+    }
   }
 
   render() {
@@ -56,10 +62,15 @@ class Declaraciones extends React.Component {
               <Grid style={{ display: 'flex', alignItems: 'stretch' }}>
                 <figure
                   className={activeTab === 'busqueda' ? classes.selectedTab : classes.card}
+                  role='button'
+                  tabIndex={0}
+                  aria-pressed={activeTab === 'busqueda'}
+                  aria-label='Buscador de una persona servidora pública'
                   onClick={() => this.handleTabChange('busqueda')}
+                  onKeyDown={event => this.handleTabKeyDown(event, 'busqueda')}
                   style={{ cursor: 'pointer' }}
                 >
-                  <img src={img} alt={titulo} className={classes.logo} />{' '}
+                  <img src={img} alt='' className={classes.logo} />{' '}
                   <Typography variant='subtitle1' className={classes.labelCard}>
                     Buscador de una persona servidora pública
                   </Typography>
@@ -68,7 +79,12 @@ class Declaraciones extends React.Component {
               <Grid style={{ display: 'flex', alignItems: 'stretch' }}>
                 <figure
                   className={activeTab === 'evolucion' ? classes.selectedTab : classes.card}
+                  role='button'
+                  tabIndex={0}
+                  aria-pressed={activeTab === 'evolucion'}
+                  aria-label='Módulo de evolución patrimonial'
                   onClick={() => this.handleTabChange('evolucion')}
+                  onKeyDown={event => this.handleTabKeyDown(event, 'evolucion')}
                   style={{ cursor: 'pointer' }}
                 >
                   <QueryStatsIcon sx={{ width: '60px', height: '60px', color: 'primary.main' }} />{' '}

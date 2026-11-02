@@ -38,7 +38,7 @@ const ExperienciaLaboral = ({ data, titulo }) => {
             {experiencia.map((expe, index) => {
               return (
                 <BoxAccordion key={'exp-' + index}>
-                  <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon style={{ color: 'white' }} />} aria-controls='panel1a-content' id='panel1a-header'>
+                  <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon style={{ color: 'white' }} />}>
                     <Typography className={exp.heading}>
                       <strong>
                         {expe.ambitoSector.clave === 'PUB' ? (

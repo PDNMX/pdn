@@ -1,4 +1,3 @@
-import React from 'react'
 import { makeStyles } from 'tss-react/mui';
 import Table from '@mui/material/Table'
 import TableContainer from '@mui/material/TableContainer'
@@ -10,30 +9,6 @@ import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 import EnhancedTableToolbar from './EnhancedTableToolbar'
 import EnhancedTableHead from './EnhancedTableHead'
-
-function desc(a, b, orderBy) {
-  if (b[orderBy] < a[orderBy]) {
-    return -1
-  }
-  if (b[orderBy] > a[orderBy]) {
-    return 1
-  }
-  return 0
-}
-
-function stableSort(array, cmp) {
-  const stabilizedThis = array.map((el, index) => [el, index])
-  stabilizedThis.sort((a, b) => {
-    const order = cmp(a[0], b[0])
-    if (order !== 0) return order
-    return a[1] - b[1]
-  })
-  return stabilizedThis.map(el => el[0])
-}
-
-function getSorting(order, orderBy) {
-  return order === 'desc' ? (a, b) => desc(a, b, orderBy) : (a, b) => -desc(a, b, orderBy)
-}
 
 const useStyles = makeStyles()(theme => ({
   root: {
@@ -69,17 +44,16 @@ const useStyles = makeStyles()(theme => ({
 
 export default function EnhancedTable({ rows, pagination, posicion, handleDataSelect, handleSetPage, handleChangeRowsPerPage }) {
   const { classes } = useStyles()
-  const [order, setOrder] = React.useState('asc')
-  const [orderBy, setOrderBy] = React.useState('nombres')
-
-  const handleRequestSort = (event, property) => {
-    const isDesc = orderBy === property && order === 'desc'
-    setOrder(isDesc ? 'asc' : 'desc')
-    setOrderBy(property)
-  }
 
   const handleClick = (event, data) => {
     handleDataSelect(data)
+  }
+
+  const handleKeyDown = (event, data) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault()
+      handleClick(event, data)
+    }
   }
 
   return (
@@ -87,23 +61,30 @@ export default function EnhancedTable({ rows, pagination, posicion, handleDataSe
       <EnhancedTableToolbar />
       <TableContainer>
         <Table className={classes.table} aria-labelledby='tableTitle' aria-label='enhanced table'>
-          <EnhancedTableHead classes={classes} order={order} orderBy={orderBy} onRequestSort={handleRequestSort} rowCount={pagination.totalRows} />
+          <EnhancedTableHead classes={classes} rowCount={pagination.totalRows} />
           <TableBody>
-            {stableSort(rows, getSorting(order, orderBy)).map((row, index) => {
+            {rows.map((row, index) => {
               const labelId = `enhanced-table-checkbox-${index}`
-              const { tipo } = row.metadata
-              const { datosGenerales, datosEmpleoCargoComision } = row.declaracion.situacionPatrimonial
+              const { tipo } = row.metadata ?? {}
+              const { datosGenerales, datosEmpleoCargoComision } = row.declaracion?.situacionPatrimonial ?? {}
+              const generales = datosGenerales ?? {}
+              const empleo = datosEmpleoCargoComision ?? {}
               return (
-                <TableRow hover onClick={event => handleClick(event, row)} tabIndex={-1} key={row.nombre + '-' + index}>
-                  <TableCell component='th' id={labelId} scope='row'>{row.metadata.actualizacion.split("T")[0]}</TableCell>
-                  <TableCell>{datosGenerales.nombre} {datosGenerales.primerApellido} {datosGenerales.segundoApellido}</TableCell>
+                <TableRow
+                  hover
+                  onClick={event => handleClick(event, row)}
+                  onKeyDown={event => handleKeyDown(event, row)}
+                  tabIndex={0}
+                  key={'row-' + index}
+                >
+                  <TableCell component='th' id={labelId} scope='row'>{row.metadata?.actualizacion?.split('T')[0]}</TableCell>
+                  <TableCell>{generales.nombre} {generales.primerApellido} {generales.segundoApellido}</TableCell>
                   <TableCell>{tipo}</TableCell>
-                  <TableCell>{datosEmpleoCargoComision.nombreEntePublico}</TableCell>
+                  <TableCell>{empleo.nombreEntePublico}</TableCell>
                   <TableCell>
-                    {datosEmpleoCargoComision.areaAdscripcion}
-                    {/* {row.metadata.tipo} */}
+                    {empleo.areaAdscripcion}
                   </TableCell>
-                  <TableCell>{datosEmpleoCargoComision.empleoCargoComision}</TableCell>
+                  <TableCell>{empleo.empleoCargoComision}</TableCell>
                 </TableRow>
               )
             })}
@@ -117,11 +98,11 @@ export default function EnhancedTable({ rows, pagination, posicion, handleDataSe
         rowsPerPage={pagination.pageSize}
         rowsPerPageOptions={[5, 10, 50, 100, 150, 200]}
         page={pagination.page - 1}
-        backIconButtonProps={{
-          'aria-label': 'página anterior'
-        }}
-        nextIconButtonProps={{
-          'aria-label': 'siguiente página'
+        slotProps={{
+          actions: {
+            previousButton: { 'aria-label': 'página anterior' },
+            nextButton: { 'aria-label': 'siguiente página' }
+          }
         }}
         labelDisplayedRows={({ from, to, count }) => from + '-' + (to === -1 ? count : to) + ' de ' + count}
         onPageChange={(e, page) => {

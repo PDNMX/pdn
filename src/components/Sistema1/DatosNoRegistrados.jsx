@@ -5,7 +5,7 @@ import { makeStyles } from 'tss-react/mui';
 import style from '../style'
 const useStyles = makeStyles()(style);
 
-export default function DatosReservados() {
+export default function DatosNoRegistrados() {
   const { classes } = useStyles()
 
   return (

@@ -28,7 +28,7 @@ function Adeudos({ adeudos, tipo }) {
       {adeudos.map((obj, idx) => {
         return (
           <BoxAccordion key={'adeudo-' + idx}>
-            <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon style={{ color: 'white' }} />} aria-controls='panel1a-content' id='panel1a-header'>
+            <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon style={{ color: 'white' }} />}>
               <Typography className={exp.heading}>
                 <strong>TIPO DE ADEUDO: {obj.tipoAdeudo.valor}</strong>
               </Typography>

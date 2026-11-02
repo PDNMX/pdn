@@ -82,15 +82,17 @@ class Perfil extends React.Component {
   };
 
   getIngresos = data => {
-    switch (data.metadata.tipo) {
+    const situacion = data?.declaracion?.situacionPatrimonial;
+
+    switch (data?.metadata?.tipo) {
       case 'INICIAL':
-        return getMoneda(data.declaracion.situacionPatrimonial.ingresos?.ingresoMensualNetoDeclarante?.valor);
+        return getMoneda(situacion?.ingresos?.ingresoMensualNetoDeclarante?.valor);
       case 'MODIFICACIÓN':
       case 'MODIFICACION':
-        return getMoneda(data.declaracion.situacionPatrimonial.ingresos?.ingresoAnualNetoDeclarante?.valor);
+        return getMoneda(situacion?.ingresos?.ingresoAnualNetoDeclarante?.valor);
       case 'CONCLUSIÓN':
       case 'CONCLUSION':
-        return getMoneda(data.declaracion.situacionPatrimonial.ingresos?.ingresoConclusionNetoDeclarante?.valor);
+        return getMoneda(situacion?.ingresos?.ingresoConclusionNetoDeclarante?.valor);
       default:
         return 'Tipo de declaración no definida';
     }
@@ -99,12 +101,17 @@ class Perfil extends React.Component {
   render() {
     const { classes, data, handleGoBack, refPerfil } = this.props;
 
+    const declaracion = data?.declaracion ?? {};
+    const metadata = data?.metadata ?? {};
+    const situacion = declaracion.situacionPatrimonial ?? {};
+    const datosEmpleo = situacion.datosEmpleoCargoComision ?? {};
+
     const datosGenerales = {
       ...basicInicial.datosGenerales,
-      ...data.declaracion.situacionPatrimonial.datosGenerales
+      ...situacion.datosGenerales
     };
 
-    const tipo = data.metadata.tipo;
+    const tipo = metadata.tipo;
 
     return (
       <Paper className={classes.paper_search} elevation={15}>
@@ -133,7 +140,7 @@ class Perfil extends React.Component {
             sx={{
               textAlign: 'center'
             }}>
-            Actualización: {data.metadata.actualizacion}
+            Actualización: {metadata.actualizacion}
           </Grid>
           <Grid size={12}>
             <Paper className={classes.paper_perfil} elevation={10}>
@@ -146,7 +153,7 @@ class Perfil extends React.Component {
                   <Typography variant='h5' component='h3' className={classes.tituloCard}>
                     {datosGenerales.nombre} {datosGenerales.primerApellido} {datosGenerales.segundoApellido}
                   </Typography>
-                  <Typography className={classes.dataCard}>{datosGenerales.correoElectronico.institucional}</Typography>
+                  <Typography className={classes.dataCard}>{datosGenerales.correoElectronico?.institucional}</Typography>
                 </Grid>
                 <Grid
                   size={{
@@ -164,7 +171,7 @@ class Perfil extends React.Component {
                     md: 3
                   }}>
                   <Typography variant='h5' component='h3' className={classes.tituloCard}>
-                    {this.getTitleIngresos(data.metadata.tipo)}
+                    {this.getTitleIngresos(tipo)}
                   </Typography>
                   <Typography className={classes.dataCard}>{this.getIngresos(data)}</Typography>
                 </Grid>
@@ -176,7 +183,7 @@ class Perfil extends React.Component {
                   <Typography variant='h5' component='h3' className={classes.tituloCard}>
                     DEPENDENCIA:
                   </Typography>
-                  <Typography className={classes.dataCard}>{data.declaracion.situacionPatrimonial.datosEmpleoCargoComision.nombreEntePublico}</Typography>
+                  <Typography className={classes.dataCard}>{datosEmpleo.nombreEntePublico}</Typography>
                 </Grid>
                 <Grid
                   size={{
@@ -186,7 +193,7 @@ class Perfil extends React.Component {
                   <Typography variant='h5' component='h3' className={classes.tituloCard}>
                     ÁREA DE ADSCRIPCIÓN:
                   </Typography>
-                  <Typography className={classes.dataCard}>{data.declaracion.situacionPatrimonial.datosEmpleoCargoComision.areaAdscripcion}</Typography>
+                  <Typography className={classes.dataCard}>{datosEmpleo.areaAdscripcion}</Typography>
                 </Grid>
                 <Grid
                   size={{
@@ -196,7 +203,7 @@ class Perfil extends React.Component {
                   <Typography variant='h5' component='h3' className={classes.tituloCard}>
                     ENCARGO ACTUAL:
                   </Typography>
-                  <Typography className={classes.dataCard}>{data.declaracion.situacionPatrimonial.datosEmpleoCargoComision.empleoCargoComision}</Typography>
+                  <Typography className={classes.dataCard}>{datosEmpleo.empleoCargoComision}</Typography>
                 </Grid>
               </Grid>
             </Paper>
@@ -211,7 +218,7 @@ class Perfil extends React.Component {
           }}
         >
           <MenuSuperior menuSuperior={this.state.menuSuperior} handleChangeMenuSuperior={this.handleChangeMenuSuperior} />
-          {this.state.menuSuperior ? <Intereses value={this.state.menuIntereses} setValue={this.handleChangeMenuIntereses} data={data.declaracion.interes} tipo={data.metadata.tipo} /> : <SituacionPatrimonial value={this.state.menuSituacionPatrimonial} setValue={this.handleChangeMenuSituacionPatrimonial} data={data.declaracion.situacionPatrimonial} tipo={data.metadata.tipo} />}
+          {this.state.menuSuperior ? <Intereses value={this.state.menuIntereses} setValue={this.handleChangeMenuIntereses} data={declaracion.interes} tipo={tipo} /> : <SituacionPatrimonial value={this.state.menuSituacionPatrimonial} setValue={this.handleChangeMenuSituacionPatrimonial} data={situacion} tipo={tipo} />}
           <Grid
             style={{ textAlign: 'right', paddingTop: '20px' }}
             size={{

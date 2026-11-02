@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Paper } from '@mui/material'
+import { Grid, Paper, Typography } from '@mui/material'
 import { withStyles } from 'tss-react/mui';
 
 import axios from 'axios'
@@ -70,13 +70,11 @@ class Busqueda extends React.Component {
   }
 
   state = {
-    listado: [],
     ordenamiento: {},
     query: { ...this.query },
-    institucion: '',
-    nivel: '',
     btnSearch: false,
     providers: [],
+    providersError: false,
     prov: [],
     catEscolaridadNivel: [...this.defaultSelect],
     catFormaAdquisicion: [...this.defaultSelect],
@@ -98,8 +96,14 @@ class Busqueda extends React.Component {
 
   print_results = p => {
     this.listado.push({ supplier_id: p.supplier_id, total: p.total })
-    if (this.listado.length === this.state.prov.length) {
-      console.table(this.listado.sort((p, n) => p.supplier_id.localeCompare(n.supplier_id, 'es-mx')))
+
+    if (this.listado.length !== this.state.prov.length) return
+
+    // All providers have answered, so the search can be triggered again.
+    this.setState({ btnSearch: false })
+
+    if (process.env.NODE_ENV !== 'production') {
+      console.table(this.listado.sort((a, b) => String(a.supplier_id).localeCompare(String(b.supplier_id), 'es-mx')))
     }
   }
 
@@ -114,7 +118,7 @@ class Busqueda extends React.Component {
   }
 
   handleOrdenamiento = (e, property) => {
-    let ordena = this.state.ordenamiento
+    let ordena = { ...this.state.ordenamiento }
 
     if (typeof ordena[property] === 'undefined') {
       ordena = {
@@ -153,13 +157,11 @@ class Busqueda extends React.Component {
     ]
 
     this.setState(prevState => {
-      const { query } = prevState
-
-      query[name] = value
+      const query = { ...prevState.query, [name]: value }
 
       if (name === 'entidadFederativa') {
         catMunicipios = this.getMunicipios(value)
-        query.municipioAlcaldia = '0'
+        query.municipioAlcaldia = 0
       } else {
         catMunicipios = this.getMunicipios(query.entidadFederativa)
       }
@@ -195,18 +197,19 @@ class Busqueda extends React.Component {
 
   handleSetPage = (id, page) => {
     this.setState(
-      prevState => {
-        const { prov } = prevState
+      prevState => ({
+        ...prevState,
+        prov: prevState.prov.map((item, index) => {
+          if (index !== id) return item
 
-        prov[id].pagination.page = page + 1
-        prov[id].finding = true
-        prov[id].data = []
-
-        return {
-          ...prevState,
-          prov
-        }
-      },
+          return {
+            ...item,
+            finding: true,
+            data: [],
+            pagination: { ...item.pagination, page: page + 1 }
+          }
+        })
+      }),
       () => {
         this.find(id)
       }
@@ -217,128 +220,115 @@ class Busqueda extends React.Component {
     const rowsPerPage = parseInt(event.target.value, 10)
 
     this.setState(
-      prevState => {
-        const { prov } = prevState
+      prevState => ({
+        ...prevState,
+        prov: prevState.prov.map((item, index) => {
+          if (index !== id) return item
 
-        prov[id].pagination.pageSize = rowsPerPage
-        prov[id].pagination.page = 1
-        prov[id].finding = true
-        prov[id].data = []
-
-        return {
-          ...prevState,
-          prov
-        }
-      },
+          return {
+            ...item,
+            finding: true,
+            data: [],
+            pagination: { ...item.pagination, page: 1, pageSize: rowsPerPage }
+          }
+        })
+      }),
       () => {
         this.find(id)
       }
     )
   }
 
+  setProvider = (id, changes, callback) => {
+    this.setState(
+      prevState => ({
+        ...prevState,
+        prov: prevState.prov.map((item, index) => (index === id ? { ...item, ...changes } : item))
+      }),
+      callback
+    )
+  }
+
   find = id => {
     const url = process.env.REACT_APP_S1_BACKEND + '/search'
-    let p = this.state.prov[id]
+    const p = this.state.prov[id]
+
+    if (!p) return
 
     if (p.status === 'MANTENIMENT') {
-      // defaults
-      p.finding = false
-      p.estatus = true
-      p.total = 0
-      p.data = []
-      p.pagination = {}
-
-      this.setState(prevState => {
-        const { prov } = prevState
-
-        prov[id] = p
-        this.print_results(p)
-
-        return {
-          ...prevState,
-          prov
-        }
-      })
+      this.setProvider(
+        id,
+        { finding: false, estatus: true, total: 0, data: [], pagination: {} },
+        () => this.print_results(this.state.prov[id])
+      )
+      return
     }
 
-    if (p.status === 'ACTIVE') {
-      const data = {
-        page: p.pagination.page,
-        pageSize: p.pagination.pageSize,
-        query: this.state.query,
-        sort: this.state.ordenamiento,
-        supplier_id: p.supplier_id
-      }
+    // The provider catalog only exposes MANTENIMENT and ACTIVE.
+    const data = {
+      page: p.pagination?.page || 1,
+      pageSize: p.pagination?.pageSize || 10,
+      query: this.state.query,
+      sort: this.state.ordenamiento,
+      supplier_id: p.supplier_id
+    }
 
-      axios
-        .post(url, data)
-        .then(resp => {
-          const { data } = resp
+    axios
+      .post(url, data)
+      .then(resp => {
+        const { data } = resp
 
-          // defaults
-          p.finding = false
-          p.estatus = false
-          p.total = 0
-          p.data = []
-          p.pagination = {}
+        const changes =
+          typeof data.error === 'undefined'
+            ? {
+                finding: false,
+                estatus: true,
+                total: data.pagination?.totalRows ?? 0,
+                data: data.results ?? [],
+                pagination: data.pagination ?? {}
+              }
+            : {
+                finding: false,
+                estatus: false,
+                total: 0,
+                data: [],
+                pagination: {},
+                error: data.error
+              }
 
-          // no hay error
-          if (typeof data.error === 'undefined') {
-            p.finding = false
-            p.estatus = true
-            p.total = data.pagination.totalRows
-            p.data = data.results
-            p.pagination = data.pagination
-          } else {
-            p.error = data.error
-          }
+        this.setProvider(id, changes, () => this.print_results(this.state.prov[id]))
+      })
+      .catch(err => {
+        // `err.response` is undefined for network/CORS errors, so destructuring
+        // it directly made this catch throw and left the provider loading.
+        const status = err.response?.status
+        const statusText = err.response?.statusText || err.message
 
-          this.setState(prevState => {
-            const { prov } = prevState
-
-            prov[id] = p
-            this.print_results(p)
-
-            return {
-              ...prevState,
-              prov
-            }
-          })
-        })
-        .catch(err => {
-          const { status, statusText } = err.response
-          p = {
-            ...p,
+        this.setProvider(
+          id,
+          {
             finding: false,
             estatus: false,
             total: 0,
             data: [],
             pagination: {},
-            error: {
-              status,
-              statusText
-            }
-          }
-          this.setState(prevState => {
-            const { prov } = prevState
-
-            prov[id] = p
-            this.print_results(p)
-
-            return {
-              ...prevState,
-              prov
-            }
-          })
-          error('find' + err)
-        })
-    }
+            error: { status, statusText }
+          },
+          () => this.print_results(this.state.prov[id])
+        )
+        error('find' + err)
+      })
   }
 
   handlerFind = () => {
-    const { institucion, providers } = this.state
+    const { providers } = this.state
 
-    let prov = institucion ? providers.filter(p => p.supplier_id === institucion) : providers.filter(p => typeof p.supplier_id === 'string')
+    // provider 0 is the "Todos" placeholder and never has data.
+    let prov = providers.filter(p => p.supplier_id !== 0)
+
+    if (prov.length === 0) return
+
+    this.listado = []
 
     prov = prov.map(p => {
       return {
@@ -347,7 +337,7 @@ class Busqueda extends React.Component {
         estatus: false,
         total: 0,
         data: [],
-        pagination: []
+        pagination: { page: 1, pageSize: 10 }
       }
     })
 
@@ -376,7 +366,8 @@ class Busqueda extends React.Component {
         this.setState(
           prevState => ({
             ...prevState,
-            providers: [...defProviders, ...resp.data]
+            providers: [...defProviders, ...resp.data],
+            providersError: false
           }),
           () => {}
         )
@@ -384,12 +375,8 @@ class Busqueda extends React.Component {
       .catch(err => {
         this.setState(prevState => ({
           ...prevState,
-          providers: [
-            {
-              supplier_id: -1,
-              supplier_name: 'ERROR AL CARGAR LOS PROVEEDORES'
-            }
-          ]
+          providers: [],
+          providersError: true
         }))
         error('getProviders' + err)
       })
@@ -569,16 +556,23 @@ class Busqueda extends React.Component {
             </Grid>
             <Grid container spacing={0} className={classes.infoBusqueda}>
               <div className={classes.resultadosRoot}>
-                {this.state.prov
-                  .filter(p => p.status === 'ACTIVE')
-                  .map((p, i) => {
-                    return <ActiveResultProv key={'res-' + i} p={p} i={i} handleDataSelect={this.handleDataSelect} handleSetPage={this.handleSetPage} handleChangeRowsPerPage={this.handleChangeRowsPerPage} />
-                  })}
-                {this.state.prov
-                  .filter(p => p.status === 'MANTENIMENT')
-                  .map((p, i) => {
-                    return <MantenimentResultProv key={'man-' + i} p={p} />
-                  })}
+                {this.state.providersError && (
+                  <Typography className={classes.alertWarning} align='center'>
+                    No se logró cargar la lista de proveedores. Por favor intenta recargar la página.
+                  </Typography>
+                )}
+                {this.state.prov.map((p, i) => {
+                  if (p.status !== 'ACTIVE') return null
+
+                  // `i` is the index inside `prov`, which is what find() and
+                  // the pagination handlers expect.
+                  return <ActiveResultProv key={'res-' + p.supplier_id} p={p} i={i} handleDataSelect={this.handleDataSelect} handleSetPage={this.handleSetPage} handleChangeRowsPerPage={this.handleChangeRowsPerPage} />
+                })}
+                {this.state.prov.map(p => {
+                  if (p.status !== 'MANTENIMENT') return null
+
+                  return <MantenimentResultProv key={'man-' + p.supplier_id} p={p} />
+                })}
               </div>
             </Grid>
           </Paper>

@@ -128,7 +128,11 @@ export default function CustomizedExpansionPanels() {
                     <AccordionDetails>
                         <div>
                             {item.vinculo.map((vinculo, index) => (
-                                <ButtonPDN key={index} target="_blank" href={vinculo.url}>
+                                <ButtonPDN
+                                    key={index}
+                                    target={vinculo.url ? '_blank' : undefined}
+                                    href={vinculo.url || undefined}
+                                >
                                     {vinculo.titulo}
                                 </ButtonPDN>
                             ))}

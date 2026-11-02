@@ -73,7 +73,7 @@ const Licencia = props => {
           CC BY-NC 4.0
         </Link>
       </Typography>
-      <Typography style={{ marginBottom: 30 }} sx={{
+      <Typography component='div' style={{ marginBottom: 30 }} sx={{
         marginBottom: "16px"
       }}>
         <Link href='https://creativecommons.org/licenses/by-nc/4.0/deed.es' rel='license noreferrer' target='_blank'>

@@ -2,8 +2,7 @@ import { Grid, LinearProgress, Paper, TextField, FormControl, MenuItem } from '@
 import Typography from '@mui/material/Typography'
 
 import { lighten } from '@mui/material/styles'
-import { makeStyles } from 'tss-react/mui';
-import { withStyles } from 'tss-react/mui';
+import { makeStyles, withStyles } from 'tss-react/mui';
 import style from './styleSecciones'
 
 import log from 'loglevel'
@@ -15,13 +14,19 @@ const customJSON = log => ({
   stacktrace: log.stacktrace
 })
 
-remote.apply(log, {
-  method: 'POST',
-  format: customJSON,
-  url: process.env.REACT_APP_S1_BACKEND + '/logger'
-})
+const remoteUrl = process.env.REACT_APP_S1_BACKEND
 
-log.enableAll()
+if (remoteUrl) {
+  remote.apply(log, {
+    method: 'POST',
+    format: customJSON,
+    url: remoteUrl + '/logger'
+  })
+}
+
+if (process.env.NODE_ENV !== 'production') {
+  log.enableAll()
+}
 
 export const error = msg => {
   log.error(msg)
@@ -45,7 +50,6 @@ const BorderLinearProgress = withStyles(LinearProgress, {
 });
 
 export const getMoneda = valor => {
-  console.log("valor: ", valor);
   if(valor !== null && valor !== undefined) {
     return new Intl.NumberFormat('es-MX', {
       style: 'currency',

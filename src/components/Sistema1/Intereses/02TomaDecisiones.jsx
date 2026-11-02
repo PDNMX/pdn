@@ -29,7 +29,7 @@ function Participacion(props) {
       {participaciones.map((obj, idx) => {
         return (
           <BoxAccordion key={'par-' + idx}>
-            <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon style={{ color: 'white' }} />} aria-controls='panel1a-content' id='panel1a-header'>
+            <BoxAccordionSummary classes={sum} expandIcon={<ExpandMoreIcon style={{ color: 'white' }} />}>
               <Typography className={exp.heading}>
                 <strong>
                   {obj.nombreInstitucion} ({obj.tipoInstitucion.valor})
@@ -123,7 +123,7 @@ const TomaDecisiones = props => {
   const { data } = props
 
   // const participaciones = data.participacion.filter((i) => i.tipoRelacion === 'DECLARANTE')
-  const participaciones = data.participacion
+  const participaciones = data?.participacion ?? []
 
   return (
     <Grid container spacing={2} className={classes.rootPrincipal}>
@@ -133,7 +133,7 @@ const TomaDecisiones = props => {
         </Typography>
       </Grid>
       <Grid size={12}>
-        {data.ninguno ? <DatosNoRegistrados /> : participaciones.length ? <Participacion participaciones={participaciones} /> : <DatosReservados />}
+        {typeof data === 'undefined' || data.ninguno ? <DatosNoRegistrados /> : participaciones.length ? <Participacion participaciones={participaciones} /> : <DatosReservados />}
       </Grid>
     </Grid>
   );
