@@ -16,6 +16,75 @@ vi.mock('../src/components/HomeV2/AnimatedCanvas.jsx', () => ({
   default: () => <canvas />
 }))
 
+vi.mock('axios', async importOriginal => {
+  const axios = await importOriginal()
+  const original = axios.default
+
+  const mockedResponse = url => {
+    const target = String(url)
+
+    // Sistema 1 requests its provider catalog and its select catalogs on
+    // mount. Keep the route smoke test offline.
+    if (
+      target.endsWith('/providers') ||
+      target.startsWith('https://raw.githubusercontent.com/PDNMX/catalogos/')
+    ) {
+      return { data: [] }
+    }
+
+    // Contrataciones (Sistema 6) loads its catalogs and an initial search on
+    // mount.
+    if (target.endsWith('/api/v1/buyers') || target.endsWith('/api/v1/cycles')) {
+      return { data: [] }
+    }
+
+    // Servidores (Sistema 2) loads its institution catalog on mount. The
+    // component reads `entities[0].error`, so the mock cannot be an empty
+    // array.
+    if (target.endsWith('/api/v1/entities')) {
+      return { data: [{ supplier_id: 'ANY', clave: 'ANY', id: 'ANY', nombre: 'Todas' }] }
+    }
+
+    // Both Sistema 2 and Sistema 6 search through `/api/v1/search`, but read
+    // different properties from the response.
+    if (target.endsWith('/api/v1/search')) {
+      return {
+        data: {
+          data: [],
+          results: [],
+          pagination: { page: 0, pageSize: 10, total: 0, totalRows: 0 }
+        }
+      }
+    }
+
+    // Servidores (Sistema 2) summary.
+    if (target.endsWith('/api/v1/summary')) {
+      return { data: [] }
+    }
+
+    return null
+  }
+
+  // Keep the callable axios(config) form used by some components.
+  const axiosMock = vi.fn(config => {
+    const response = mockedResponse(config?.url)
+
+    return response ? Promise.resolve(response) : original(config)
+  })
+  Object.assign(axiosMock, original)
+
+  axiosMock.get = vi.fn((url, config) => {
+    const response = mockedResponse(url)
+
+    return response ? Promise.resolve(response) : original.get(url, config)
+  })
+
+  return {
+    ...axios,
+    default: axiosMock
+  }
+})
+
 import App from '../src/App.jsx'
 import pdnRoutes from '../src/routes/index.js'
 
