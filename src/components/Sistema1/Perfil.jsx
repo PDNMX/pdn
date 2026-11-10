@@ -139,8 +139,12 @@ class Perfil extends React.Component {
             }}
             sx={{
               textAlign: 'center'
-            }}>
-            Actualización: {metadata.actualizacion}
+            }}>            
+            <Typography variant='h6' component='h3' className={classes.tituloCard} sx={{ color: 'white' }}>
+              ID: {data.id} </Typography>
+            <Typography variant='h6' component='h3' className={classes.tituloCard} sx={{ color: 'white' }}>
+              Actualización: {metadata.actualizacion}
+            </Typography>
           </Grid>
           <Grid size={12}>
             <Paper className={classes.paper_perfil} elevation={10}>
