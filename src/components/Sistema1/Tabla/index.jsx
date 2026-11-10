@@ -64,7 +64,7 @@ export default function EnhancedTable({ rows, pagination, posicion, handleDataSe
           <EnhancedTableHead classes={classes} rowCount={pagination.totalRows} />
           <TableBody>
             {rows.map((row, index) => {
-              const labelId = `enhanced-table-checkbox-${index}`
+              const labelId = `enhanced-table-checkbox-${index}`                
               const { tipo } = row.metadata ?? {}
               const { datosGenerales, datosEmpleoCargoComision } = row.declaracion?.situacionPatrimonial ?? {}
               const generales = datosGenerales ?? {}
@@ -77,6 +77,7 @@ export default function EnhancedTable({ rows, pagination, posicion, handleDataSe
                   tabIndex={0}
                   key={'row-' + index}
                 >
+                  <TableCell scope='row'>{row.id}</TableCell>
                   <TableCell component='th' id={labelId} scope='row'>{row.metadata?.actualizacion?.split('T')[0]}</TableCell>
                   <TableCell>{generales.nombre} {generales.primerApellido} {generales.segundoApellido}</TableCell>
                   <TableCell>{tipo}</TableCell>
